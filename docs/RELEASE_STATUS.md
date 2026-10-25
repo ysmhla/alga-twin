@@ -8,8 +8,8 @@ No verified minutissima parameter ranges were established in the audited papers.
 Research simulation remains blocked for the incomplete literature preset.
 Missing parameters and f_C are unset; source points do not become arbitrary ranges.
 
-Local verification: 62 tests passed; Ruff lint and format checks passed. Current
-v0.3 cloud CI is pending. See VERIFICATION.md for exact limits and commands.
+Local verification: 62 tests passed; Ruff lint and format checks passed. Cloud CI passed on Python 3.11 and 3.12, with 62 tests and Ruff lint on each:
+https://github.com/ysmhla/alga-twin/actions/runs/40182152435. See VERIFICATION.md for exact limits and commands.
 
 - NOT DEPLOYED: hosted app. Streamlit sign-in/terms remain pending.
 - NOT TESTED: visual browser layout and Docker build/run.

@@ -100,7 +100,7 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**62 local tests passed on Python 3.12**, including real Streamlit workflows. **Ruff check and format check passed.** Current v0.3 cloud CI is pending; the older v0.2.1 cloud result does not certify this change. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
+**62 local tests passed on Python 3.12**, including real Streamlit workflows. **Ruff check and format check passed.** **Cloud CI passed on Python 3.11 and 3.12: 62 tests and Ruff lint on each.** [CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40182152435) certifies source commit 6746dde6bf07151c75511731c5f9eb17e296935b. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
 
 ```bash
 pip install -r requirements.txt -e '.[dev]'

@@ -10,7 +10,7 @@
 | Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py: LITERATURE gate, explicit DEMO, provenance, sublinear UI, calibration, scenario snapshots and planner invalidation |
 | Ruff lint | PASS | ruff check src app.py tests |
 | Ruff formatting | PASS | ruff format --check src app.py tests |
-| Current cloud CI | PENDING | The v0.2.1 result does not certify v0.3 |
+| Current cloud CI, Python 3.11 and 3.12 | PASS: 62 tests and Ruff lint each | [Run 40182152435](https://github.com/ysmhla/alga-twin/actions/runs/40182152435); source commit 6746dde6bf07151c75511731c5f9eb17e296935b |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
 | Visual browser verification | NOT TESTED | AppTest is not pixel/browser verification |
 | Docker build/run | NOT TESTED | No build/run claim |
