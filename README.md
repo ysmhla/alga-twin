@@ -13,7 +13,7 @@ for the labelled teaching path. Real strain inputs require your own evidence.
 *Actual hosted app, initial v0.7.0 smoke capture. Missing species parameters remain
 unset. No independent biological validation.*
 
-## What it does today (v0.7.1)
+## What it does today (v0.8.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -33,7 +33,7 @@ unset. No independent biological validation.*
 - Provides a separate **Selectable models (SYNTHETIC)** workspace: Monod / Droop N quota,
   saturation / Haldane / steady-state Han light, optional CTMI temperature and half-sine diurnal light.
 - Tracks dissolved, stored and removed nitrogen with a common `ModelBase.rhs/params/states`
-  interface. A separate joint calibration workspace/API fits selected shared parameters; supported model selection is pending.
+  interface. A separate joint calibration workspace/API fits selected shared parameters; conditional supported model selection is available separately.
 - Documents and regression-tests the printed arXiv v1 Eq. 9 high-light branch discrepancy;
   the general optical-depth calculation compares both compensation roots and Y=0.
 
@@ -52,6 +52,9 @@ unset. No independent biological validation.*
 - Fits paired **OD/cell-count -> dry weight** linear/quadratic conversions with residuals/in-sample R² and refuses extrapolation. User conversion uncertainty is not propagated into growth intervals.
 - Keeps research/unknown-strain biological fields blank when evidence is missing; no executable VERIFIED-range C. minutissima preset is available.
 - Includes [two executed SYNTHETIC tutorials](tutorials/README.md), [worked report](tutorials/output/synthetic_report.pdf), and a [guided workflow guide](docs/GUIDED_WORKFLOW.md). Public hosting and actual app screenshots are verified in the [browser smoke record](docs/smoke/README.md); actual novice timing/observed human usability remain pending.
+
+- **Model support and next experiment** compares identical-data Monod/Droop/light models using AIC/BIC, conditional profiles and an explicitly approximate residual screen. It can report no supportable model.
+- Ranks supplied feasible next experiments by local expected Fisher information and shows top three with reasons. Local SD/volume reductions are not confidence intervals or biological guarantees. See [methods, explicit inputs and limits](docs/DECISION_SUPPORT.md).
 
 ### Parameter tiers and evidence
 
@@ -131,6 +134,13 @@ Values above are **illustrative**, not empirical measurements. All data must use
 See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calibration restrictions, numerical integration, and current limitations. Assumed parameters in the default model are pedagogical placeholders, **not measured parameters for any specific Chlorella strain**.
 
 ## Tests
+
+**v0.8.0 local verification:** 155 tests passed (215.24 s), plus Ruff lint/format,
+compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)
+passed 155 tests/Ruff and both tutorials on Python 3.12, and 144 tests/one optional skip/Ruff
+on Python 3.11. Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c.
+Live v0.8 rollout is pending; browser evidence below applies to v0.7.1. See [decision methods](docs/DECISION_SUPPORT.md)
+and [generated synthetic example](docs/decision_example/README.md).
 
 **v0.7.1: cloud Python 3.12 passed 143 tests/Ruff and both real-kernel tutorial
 notebooks; Python 3.11 passed 132 tests, one optional PEtab skip and Ruff.**

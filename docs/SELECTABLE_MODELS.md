@@ -31,7 +31,7 @@ print(result[["time_day", "X", "N", "q", "removed_n_mg_L", "total_n_mg_L"]])
 `MonodModel.from_baseline(parameters, conditions)` adapts the existing explicit
 Monod configuration. Its trajectories are regression-compared to `simulate`.
 The original simulator, CLI fitting, TrustLens and planner retain their baseline
-scope. They retain their Monod scope; the joint interface fits selected Droop parameters. Model-support selection remains pending.
+scope. They retain their Monod scope; the joint interface fits selected Droop parameters. Conditional model-support selection is implemented separately; see DECISION_SUPPORT.md.
 
 ## Source audit for this implementation
 

@@ -1,6 +1,10 @@
-# Release status — v0.7.1, 2026-10-26
+# Release status — v0.8.0, 2026-10-26
 
-Steps 1–5 software engineering are implemented (5/7 engineering packages).
+Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
+155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.
+Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c. Live v0.8 rollout remains pending. See DECISION_SUPPORT.md for the new conditional methods.
+
+Steps 1–6 software engineering are implemented (6/7 engineering packages).
 Step 5 human acceptance remains incomplete: no independent novice <5-minute
 upload-to-report study or five observed human issues/fixes has been conducted.
 Measured benchmark/biological evaluation also remains pending human data.
@@ -28,5 +32,5 @@ No biological validation, novelty or operational-recommendation claim is made.
 - PENDING HUMAN INPUT: legally reusable measured datasets/metadata and novice-study observations.
 - NOT VALIDATED: independent biological/optical predictions or interval coverage.
 - NOT TESTED: human novice/mobile/measured-upload browser acceptance and Docker/Render deployment.
-- NOT BUILT: information-based experiment ranking, supported model selection, publication/DOI/docs site,
+- NOT BUILT: publication/DOI/docs site,
   optional MCMC or streaming estimator (deferred until suitable independent data).

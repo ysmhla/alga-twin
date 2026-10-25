@@ -23,9 +23,9 @@ jobs:
         if: matrix.python-version == '3.12'
         run: pip install -e '.[benchmark]'
       - name: Check Python compilation
-        run: python -m compileall -q src app.py benchmark
+        run: python -m compileall -q src app.py benchmark examples
       - name: Ruff lint
-        run: ruff check src app.py tests benchmark tutorials/execute_tutorials.py
+        run: ruff check src app.py tests benchmark examples tutorials/execute_tutorials.py
       - name: Run tests
         run: pytest -q
       - name: Execute SYNTHETIC tutorials (Python 3.12)
