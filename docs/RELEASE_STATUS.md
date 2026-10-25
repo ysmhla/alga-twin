@@ -1,7 +1,9 @@
 # Release status — v0.5.0 (2026-10-25)
 
 Steps 1–3 engineering are implemented. Local v0.5 verification passed: 119 tests,
-Ruff lint/format and compileall. Current cloud CI is pending.
+Ruff lint/format and compileall. Cloud Python 3.11/3.12 passed 119 tests and
+Ruff each: https://github.com/ysmhla/alga-twin/actions/runs/40207853593.
+Source commit: 53ffe2c117750efa7f8aa86b8e878cbda7f28b97.
 Source evidence/units, optical helper and selectable models remain in place.
 Calibration now shares selected parameters across runs, preserves technical
 replicates, supports additive/log-normal errors with explicit SDs, computes

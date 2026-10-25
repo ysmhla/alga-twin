@@ -9,7 +9,7 @@
 | Joint calibration | PASS | Noisy additive/log-normal recovery, nuisance profiles, flat/sparse/failed cases, confounding and whole-run leakage/refusal tests |
 | Log-nitrogen numerical coordinates | PASS | Unit/limiting checks, original-coordinate agreement, Monod/Droop N ledger with/without loss |
 | Real Streamlit workflows | PASS | Baseline gate, weak-data refusal and joint profiles/whole-run CV |
-| Current cloud Python 3.11/3.12 | NOT YET RUN | Historical checks below do not certify v0.5 |
+| Current cloud Python 3.11/3.12 | PASS: 119 tests and Ruff each | [Run 40207853593](https://github.com/ysmhla/alga-twin/actions/runs/40207853593); source commit 53ffe2c117750efa7f8aa86b8e878cbda7f28b97; pytest 169.23 s / 320.27 s; compilation and import checks passed |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
 | Visual browser/usability testing | NOT TESTED | AppTest is not pixel review or a timed novice study |
 | Docker build/run | NOT TESTED | No build/run claim |
