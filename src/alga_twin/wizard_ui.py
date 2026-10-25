@@ -231,6 +231,10 @@ def render_wizard():
     result = bundle[1]
     for message in plain_language(result):
         st.info(message)
+    st.caption(
+        f"Interval method: {result.report()['interval_method']}. Confidence: {result.confidence:.0%}. "
+        "Marginal intervals conditional on fixed inputs; empirical coverage is not established."
+    )
     st.dataframe(result.table(), width="stretch", hide_index=True)
     st.dataframe(result.metrics, width="stretch", hide_index=True)
     for observable, group in result.predictions.groupby("observable"):

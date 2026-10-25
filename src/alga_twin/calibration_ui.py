@@ -77,6 +77,10 @@ def render_joint_calibration():
     bundle = st.session_state.get("joint_fit")
     if bundle and bundle[0] == signature:
         result = bundle[1]
+        st.caption(
+            f"Interval method: {result.report()['interval_method']}. Confidence: {result.confidence:.0%}. "
+            "Marginal intervals conditional on fixed inputs; empirical coverage is not established."
+        )
         st.dataframe(result.table(), width="stretch", hide_index=True)
         if result.supported:
             st.success("Selected parameters passed the conditional profile gate; this is in-sample evidence.")

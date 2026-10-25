@@ -44,6 +44,10 @@ def test_guided_synthetic_fit_report_and_back_navigation_invalidation():
     widget(app, "button", "Read result and export report").click().run()
     assert not app.exception
     assert any("Download PDF report" == w.label for w in app.get("download_button"))
+    assert any(
+        "Interval method: Reoptimized profile likelihood" in w.value and "Confidence: 95%" in w.value
+        for w in app.caption
+    )
     assert any("Held-out error not computed" in w.value for w in app.warning)
     widget(app, "selectbox", "Current step").set_value("4 Choose model").run()
     widget(app, "selectbox", "Current step").set_value("6 Read result / report").run()

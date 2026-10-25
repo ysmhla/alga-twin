@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.1 — 2026-10-26
+
+- Keep the full profile-interval method and confidence visible above result tables; horizontal scrolling cannot hide this scientific context.
+- Deploy the public Streamlit demo on tested Python 3.12, with actual app screenshots and SYNTHETIC browser/report-download evidence.
+- Human novice timing/five observed issues and independent biological validation remain pending.
+
 ## 0.7.0 — 2026-10-26
 
 - Add paired OD/cell-count -> DW linear/quadratic OLS with residuals, in-sample R-squared,

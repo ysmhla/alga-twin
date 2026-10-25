@@ -369,11 +369,13 @@ with calib_tab:
                 f"{active_fit.parameters.biomass_yield_g_per_gN:.2f} g/g N",
             )
         st.metric("In-sample biomass RMSE", f"{active_fit.rmse_biomass_g_L:.4f} g/L")
-        st.dataframe(active_fit.inference.table(), width="stretch", hide_index=True)
         st.caption(
-            "Intervals: reoptimized profile likelihood; marginal asymptotic chi-square(df=1), "
-            "95%, conditional on fixed assumptions and noise SDs. NOT IDENTIFIABLE values are withheld."
+            f"Interval method: {active_fit.inference.report()['interval_method']}. "
+            f"Confidence: {active_fit.inference.confidence:.0%}. "
+            "Marginal intervals conditional on fixed inputs; empirical coverage is not established. "
+            "NOT IDENTIFIABLE values are withheld."
         )
+        st.dataframe(active_fit.inference.table(), width="stretch", hide_index=True)
         st.download_button(
             "Download calibration evidence",
             json.dumps(active_fit.inference.report(), indent=2, allow_nan=False),
