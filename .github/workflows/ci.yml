@@ -19,10 +19,13 @@ jobs:
           cache: pip
       - name: Install project and dashboard
         run: pip install -r requirements.txt -e '.[dev]'
+      - name: Install benchmark toolchain (requires Python 3.12)
+        if: matrix.python-version == '3.12'
+        run: pip install -e '.[benchmark]'
       - name: Check Python compilation
-        run: python -m compileall -q src app.py
+        run: python -m compileall -q src app.py benchmark
       - name: Ruff lint
-        run: ruff check src app.py tests
+        run: ruff check src app.py tests benchmark
       - name: Run tests
         run: pytest -q
       - name: Dashboard import sanity check

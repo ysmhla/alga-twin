@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AlgaTwin benchmark dataset metadata v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "origin",
+    "species",
+    "reactor",
+    "light",
+    "path",
+    "N_source",
+    "units",
+    "basis",
+    "licence",
+    "DOI",
+    "doi_status",
+    "source",
+    "files"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+    },
+    "origin": {
+      "enum": [
+        "SYNTHETIC",
+        "MEASURED"
+      ]
+    },
+    "species": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reactor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "light": {
+      "type": "object",
+      "required": [
+        "unit",
+        "values",
+        "mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "values": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "mode": {
+          "enum": [
+            "constant",
+            "diurnal_half_sine"
+          ]
+        }
+      }
+    },
+    "path": {
+      "type": "object",
+      "required": [
+        "unit",
+        "values"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "values": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "N_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "basis": {
+      "type": "object",
+      "required": [
+        "biomass",
+        "nitrogen"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "biomass": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nitrogen": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "licence": {
+      "type": "object",
+      "required": [
+        "id",
+        "url",
+        "attribution",
+        "status",
+        "redistribution_allowed",
+        "reviewer",
+        "reviewed_on"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "UNVERIFIED",
+            "REPOSITORY_LICENSE",
+            "CHECKED_BY_DATA_PROVIDER"
+          ]
+        },
+        "redistribution_allowed": {
+          "type": "boolean"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_on": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        }
+      }
+    },
+    "DOI": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^10\\.[0-9]{4,9}/\\S+$"
+        }
+      ]
+    },
+    "doi_status": {
+      "enum": [
+        "NOT_APPLICABLE_SYNTHETIC",
+        "NOT_ASSIGNED",
+        "PROVIDED_UNVERIFIED"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "files": {
+      "type": "object",
+      "required": [
+        "job",
+        "observations",
+        "licence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "job": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "observations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "licence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

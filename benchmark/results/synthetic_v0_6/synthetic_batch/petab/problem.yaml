@@ -1,0 +1,16 @@
+format_version: 2.0.0
+id: synthetic_batch
+model_files:
+  alga_model:
+    location: model.json
+    language: alga_twin_native_v1
+parameter_files:
+- parameters.tsv
+measurement_files:
+- measurements.tsv
+observable_files:
+- observables.tsv
+condition_files:
+- conditions.tsv
+experiment_files:
+- experiments.tsv

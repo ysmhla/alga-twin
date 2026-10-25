@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {
+      "dataset": "synthetic_batch",
+      "origin": "SYNTHETIC",
+      "species": "SYNTHETIC",
+      "model": "monod/monod",
+      "in_sample": "N: 0.301342 mg_N/liter; X: 0.00279633 g_DW/liter",
+      "held_out": "N: 0.298713 mg_N/liter; X: 0.00284467 g_DW/liter",
+      "folds": "3/3",
+      "status": "SUPPORTED",
+      "licence": "MIT"
+    }
+  ],
+  "failed_or_unsupported": 0
+}

@@ -8,7 +8,7 @@
 
 *Illustrative simulation and synthetic measurements — not lab-validated.*
 
-## What it does today (v0.5.0)
+## What it does today (v0.6.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -37,6 +37,11 @@
 - Labels flat/open/unsupported profiles **NOT IDENTIFIABLE** and refuses their point estimates.
 - Refits/reprofiles whole-run holdouts and exports **in-sample vs held-out** metrics separately.
 - Provides a paired JSON-job/long-CSV loader and `fit-joint` CLI; see [calibration methods/limitations](docs/CALIBRATION.md).
+
+- Provides a `benchmark/` registry, metadata/licence/units/hash checks and an explicitly SYNTHETIC fixture.
+- Exports **PEtab 2 native-model** problems and checks them using libpetab; the explicit AlgaTwin reader is required.
+- Runs actual **pyPESTO profiles** as a full-data cross-check, alongside native profile-gated whole-run CV, and writes a licence-bearing scoreboard.
+- Keeps in-sample/held-out errors separate and refuses held-out aggregation when folds fail. See [benchmark instructions and compatibility limits](benchmark/README.md) and [actual synthetic scoreboard](benchmark/scoreboard.md).
 
 ### Parameter tiers and evidence
 
@@ -113,18 +118,20 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**v0.5: 119 local tests passed (Python 3.12), Ruff lint/format and compileall passed.**
-**Cloud Python 3.11/3.12: 119 tests and Ruff passed each.** [Current CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40207853593)
-certifies source commit 53ffe2c117750efa7f8aa86b8e878cbda7f28b97. See [verification record](docs/VERIFICATION.md).
-Public deployment, visual browser checks, Docker build and independent biological
-validation remain unverified.
+v0.6 full verification is **IN PROGRESS**. The historical v0.5 run passed 119 tests
+on Python 3.11/3.12 ([evidence](https://github.com/ysmhla/alga-twin/actions/runs/40207853593));
+it does not certify the new benchmark code. See [verification record](docs/VERIFICATION.md).
+The optional PEtab 0.9 benchmark toolchain requires **Python 3.12+**; core app/CLI
+support Python 3.11. No measured cultivation data or independent biological
+validation is present. Public hosting and timed novice usability remain pending.
 
 
 ```bash
-pip install -r requirements.txt -e '.[dev]'
+# Full benchmark checks require Python 3.12+:
+pip install -r requirements.txt -e '.[dev,benchmark]'
 pytest -q
-ruff check src app.py tests
-ruff format --check src app.py tests
+ruff check src app.py tests benchmark
+ruff format --check src app.py tests benchmark
 ```
 
 ## Project design
@@ -150,7 +157,7 @@ See [Architecture](docs/ARCHITECTURE.md), [Release status](docs/RELEASE_STATUS.m
 2. Empirical coverage assessment and broader profile robustness on licensed benchmark problems.
 3. Statistically and operationally meaningful light/nutrient optimisation; current grid is exploratory only.
 4. Evaluate the selectable models against independently held-out cultivation runs.
-5. Research collaboration and reproducible benchmark suites.
+5. Licensed measured candidate datasets and independent-run biological evaluation.
 
 ## Security and privacy
 

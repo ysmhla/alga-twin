@@ -1,4 +1,4 @@
-# AlgaTwin v0.5 — model, units and parameter evidence
+# AlgaTwin v0.6 — model, units and parameter evidence
 
 ## Retained baseline equations
 
@@ -293,3 +293,32 @@ are treated as supplied conditions; their uncertainty is not propagated.
 Synthetic held-out tests check leakage/refusal behavior, not biological validity.
 MCMC, censored errors, random culture effects and empirically calibrated coverage
 remain unimplemented. No independent cultivation dataset has validated AlgaTwin.
+
+
+## Benchmark/PEtab exchange (v0.6.0)
+
+No new biological equation, parameter default or numerical state law is added.
+PEtab 2.0 tables plus a versioned alga_twin_native_v1 JSON model invoke the
+existing ModelBase implementation, optics, units, likelihood and solver settings.
+The explicit reader uses libpetab's public Model/Problem interfaces and official
+validators. It reconstructs initial states/controls from condition/experiment
+TSVs, observations/replicates from measurement TSVs and bounds/noise from their
+tables. It does not load a duplicate original calibration job. Package version
+and file hashes must match. Stock libpetab from_yaml/SBML/AMICI compatibility is
+not claimed; see ../benchmark/README.md for the supported subset.
+
+Native SciPy profile gates determine reported values/intervals and whole-run CV.
+Real pyPESTO 0.7.0 Powell optimization and full-bound parameter_profile provide
+a separate full-data cross-check of the exported likelihood. Material optimum
+mismatch or external failure refuses the benchmark result. Profile grids are
+not permission to display an unsupported point estimate. Search-coordinate
+steps are algorithm settings, not biological ranges or priors.
+
+Unit/basis checks, likelihood/trajectory round-trip tests, a dark/transparent
+limit and Monod/Droop nitrogen-ledger tests check export fidelity. Scoreboards
+retain observable units and distinguish full-data in-sample RMSE from held-out
+RMSE. Failed folds withhold held-out aggregation. Each dataset carries licence,
+source/origin and permission evidence; neither a DOI nor metadata syntax
+establishes rights, source verification or biological validity. All currently
+shipped data are SYNTHETIC. Independent biological evaluation is pending human
+candidate datasets with recorded permission to reuse/redistribute.

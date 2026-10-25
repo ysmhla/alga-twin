@@ -1,0 +1,12 @@
+{
+  "alga_twin": "0.6.0",
+  "python": "3.12.14",
+  "petab": "0.9.0",
+  "pypesto": "0.7.0",
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "scipy": "1.18.1",
+  "registry_sha256": "1ebf6dfe633dfa46dd33a12af5a471db9aeff57a5961ece7a073de2767c3dfa5",
+  "estimates_and_cv_engine": "AlgaTwin SciPy reoptimized profile gates / leave-one-whole-run-out",
+  "external_crosscheck": "pyPESTO Powell optimization and parameter_profile, same exported PEtab objective"
+}

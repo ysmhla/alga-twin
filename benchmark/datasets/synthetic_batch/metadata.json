@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "synthetic_batch",
+  "origin": "SYNTHETIC",
+  "species": "SYNTHETIC",
+  "reactor": "SYNTHETIC well-mixed batch; effective one-dimensional optical path",
+  "light": {
+    "mode": "constant",
+    "unit": "micromole/meter**2/second",
+    "values": {
+      "synthetic-0": 60,
+      "synthetic-1": 200,
+      "synthetic-2": 500
+    }
+  },
+  "path": {
+    "unit": "meter",
+    "values": {
+      "synthetic-0": 0.05,
+      "synthetic-1": 0.05,
+      "synthetic-2": 0.05
+    }
+  },
+  "N_source": "SYNTHETIC available elemental-N pool; no real chemical feed compound claimed",
+  "units": {
+    "time": "day",
+    "X": "g_DW/liter",
+    "N": "mg_N/liter",
+    "light": "micromole/meter**2/second",
+    "path": "meter"
+  },
+  "basis": {
+    "biomass": "dry_weight",
+    "nitrogen": "elemental_nitrogen"
+  },
+  "licence": {
+    "id": "MIT",
+    "url": "https://github.com/ysmhla/alga-twin/blob/main/LICENSE",
+    "attribution": "Copyright (c) 2026 AlgaTwin contributors; synthetic software test fixture",
+    "status": "REPOSITORY_LICENSE",
+    "redistribution_allowed": true,
+    "reviewer": "AlgaTwin fixture generator; copied repository MIT licence",
+    "reviewed_on": "2026-10-25"
+  },
+  "DOI": null,
+  "doi_status": "NOT_APPLICABLE_SYNTHETIC",
+  "source": "alga_twin.calibration_io.synthetic_job; seed 619; all physiological inputs UNVERIFIED; no biological species",
+  "files": {
+    "job": {
+      "path": "job.json",
+      "sha256": "42f1879f883d6649cf27bf382e6a848efc35e02df4162fccab5ef6404984b548"
+    },
+    "observations": {
+      "path": "observations.csv",
+      "sha256": "f60d7e6c74d18c892dd4fa89f706c6c416a0630bfb44ef3b267efe6f0d82f786"
+    },
+    "licence": {
+      "path": "LICENCE.txt",
+      "sha256": "89e5aed7888a760d5bb08e459f8406b4900f61ec2bcc9ef3618b31a66ccd3c9d"
+    }
+  }
+}

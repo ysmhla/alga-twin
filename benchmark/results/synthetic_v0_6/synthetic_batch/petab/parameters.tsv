@@ -1,0 +1,2 @@
+parameterId	lowerBound	upperBound	nominalValue	estimate	algaTwinSearchScale	unit
+mu_max_day	0.3	1.8	0.7	true	log	1/day

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "candidate_minutissima",
+  "origin": "MEASURED",
+  "species": "Chlorella minutissima",
+  "reactor": "UNVERIFIED: supply reactor description",
+  "light": {
+    "mode": "constant",
+    "unit": "micromole/meter**2/second",
+    "values": {}
+  },
+  "path": {
+    "unit": "meter",
+    "values": {}
+  },
+  "N_source": "UNVERIFIED: supply actual nitrogen compound",
+  "units": {
+    "time": "day",
+    "X": "g_DW/liter",
+    "N": "mg_N/liter",
+    "light": "micromole/meter**2/second",
+    "path": "meter"
+  },
+  "basis": {
+    "biomass": "dry_weight",
+    "nitrogen": "elemental_nitrogen"
+  },
+  "licence": {
+    "id": "UNVERIFIED",
+    "url": "UNVERIFIED: supply authoritative licence URL",
+    "attribution": "UNVERIFIED: supply attribution",
+    "status": "UNVERIFIED",
+    "redistribution_allowed": false,
+    "reviewer": "UNVERIFIED",
+    "reviewed_on": "YYYY-MM-DD"
+  },
+  "DOI": null,
+  "doi_status": "NOT_ASSIGNED",
+  "source": "UNVERIFIED: supply dataset source URL/description",
+  "files": {
+    "job": {
+      "path": "job.json",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+    },
+    "observations": {
+      "path": "observations.csv",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+    },
+    "licence": {
+      "path": "LICENCE.txt",
+      "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+    }
+  }
+}

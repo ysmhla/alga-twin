@@ -1,0 +1,3 @@
+observableId	observableFormula	noiseFormula	noiseDistribution	unit
+obs_X	X	0.003	normal	g_DW/liter
+obs_N	N	0.3	normal	mg_N/liter

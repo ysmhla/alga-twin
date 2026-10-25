@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 — 2026-10-25
+
+- Add benchmark metadata schema and fail-closed licence/unit/basis/species/hash loaders.
+- Include only a clearly labelled, seeded SYNTHETIC fixture with repository MIT permission evidence.
+- Export PEtab 2 native-model bundles, an explicit reader and actual libpetab format checks.
+- Run actual pyPESTO full-data profiles/optimization against the exported likelihood;
+  native SciPy profile gates and whole-run CV remain separately labelled.
+- Write licence-bearing scoreboards with distinct in-sample/held-out errors and fold coverage.
+- Add equivalence, limiting-case, conservation, licence refusal and unsupported-inference tests.
+- Optional benchmark toolchain requires Python 3.12+ (PEtab 0.9); core Python 3.11 remains supported.
+- Measured benchmarks, generic SBML/AMICI import and independent biological evaluation remain pending.
+
+
 ## 0.5.0 — 2026-10-25
 
 - Fit selected shared parameters across runs with additive/log-normal errors and explicit SDs/bounds.

@@ -1,0 +1,13 @@
+conditionId	targetId	targetValue
+condition_0	X	0.06
+condition_0	N	9.0
+condition_0	incident_light_umol_m2_s	60.0
+condition_0	optical_path_m	0.05
+condition_1	X	0.06
+condition_1	N	35.0
+condition_1	incident_light_umol_m2_s	200.0
+condition_1	optical_path_m	0.05
+condition_2	X	0.06
+condition_2	N	90.0
+condition_2	incident_light_umol_m2_s	500.0
+condition_2	optical_path_m	0.05

@@ -1,0 +1,137 @@
+{
+  "format": "alga_twin_native_v1",
+  "implementation_version": "0.6.0",
+  "kind": "monod",
+  "light": "monod",
+  "diurnal": false,
+  "parameters": {
+    "k_n_mg_L": {
+      "value": 5.0,
+      "low": null,
+      "high": null,
+      "unit": "mg_N/liter",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "elemental_nitrogen",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "extinction_a0": {
+      "value": 12.0,
+      "low": null,
+      "high": null,
+      "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "dry_weight",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "background_extinction_m_inv": {
+      "value": 0.3,
+      "low": null,
+      "high": null,
+      "unit": "1/meter",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "medium",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "extinction_exponent": {
+      "value": 1.0,
+      "low": null,
+      "high": null,
+      "unit": "dimensionless",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "dimensionless",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "loss_rate_day": {
+      "value": 0.0,
+      "low": null,
+      "high": null,
+      "unit": "1/day",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "specific_growth",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "biomass_yield_g_per_gN": {
+      "value": 8.0,
+      "low": null,
+      "high": null,
+      "unit": "g_DW/g_N",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "dry_weight_per_nitrogen",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "mu_max_day": {
+      "value": 0.9,
+      "low": null,
+      "high": null,
+      "unit": "1/day",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "specific_growth",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    },
+    "k_i_umol_m2_s": {
+      "value": 85.0,
+      "low": null,
+      "high": null,
+      "unit": "micromole/meter**2/second",
+      "source": null,
+      "status": "UNVERIFIED",
+      "species": "SYNTHETIC",
+      "conditions": "Teaching fixture, not measured species physiology",
+      "basis": "photons",
+      "tier": "DEMO",
+      "evidence": "synthetic",
+      "locator": ""
+    }
+  },
+  "conditions": {
+    "biomass_initial_g_L": 0.06,
+    "nitrogen_initial_mg_L": 9,
+    "incident_light_umol_m2_s": 60,
+    "optical_path_m": 0.05
+  },
+  "temperature_c": null,
+  "initial_state": [
+    0.06,
+    9.0
+  ],
+  "state_units": {
+    "X": "g_DW/liter",
+    "N": "mg_N/liter"
+  },
+  "time_unit": "day"
+}

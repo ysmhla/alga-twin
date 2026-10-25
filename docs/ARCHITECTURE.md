@@ -55,3 +55,17 @@ calibration uses the same refusal gate. Joint models are not connected to the
 legacy planner; supported model comparison remains pending. These models have
 state/unit specifications and synthetic conservation/limiting tests, but no
 independent biological evaluation. See SELECTABLE_MODELS.md and MODEL.md.
+
+
+## Benchmark boundary
+
+`alga_twin.benchmark.data` validates explicit metadata, DW/elemental-N units,
+source/model species, origins, checksums and provider-recorded permission.
+`benchmark.petab` writes/read PEtab 2 native-model tables through a public
+libpetab Model adapter, then runs official format validators. Its files are
+not SBML and require the explicit native reader. `benchmark.pypesto` executes
+actual pyPESTO full-data optimization/profiles; the existing calibration engine
+retains control of inference gates and whole-run CV. `benchmark.run` writes
+per-dataset evidence and split scoreboards. The toolchain is an optional
+Python 3.12+ extra, leaving Python 3.11 core operation intact. No measured
+source is registered automatically or substituted by a synthetic fallback.

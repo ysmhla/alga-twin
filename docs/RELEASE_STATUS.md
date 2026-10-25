@@ -1,28 +1,28 @@
-# Release status — v0.5.0 (2026-10-25)
+# Release status — v0.6.0 (2026-10-25)
 
-Steps 1–3 engineering are implemented. Local v0.5 verification passed: 119 tests,
-Ruff lint/format and compileall. Cloud Python 3.11/3.12 passed 119 tests and
-Ruff each: https://github.com/ysmhla/alga-twin/actions/runs/40207853593.
-Source commit: 53ffe2c117750efa7f8aa86b8e878cbda7f28b97.
-Source evidence/units, optical helper and selectable models remain in place.
-Calibration now shares selected parameters across runs, preserves technical
-replicates, supports additive/log-normal errors with explicit SDs, computes
-nuisance-reoptimized profiles and withholds unsupported estimates/intervals.
-The baseline UI/CLI uses the same gate. Whole-run holdouts refit/reprofile
-training data, with separate in-sample/held-out metrics and failed-fold reasons.
-Explicit JSON jobs/long CSV, joint Streamlit workspace and fit-joint CLI run.
-See MODEL.md, CALIBRATION.md and VERIFICATION.md for assumptions and checks.
+Steps 1–3 remain implemented. Step 4 benchmark engineering is implemented;
+final full local/cloud checks are in progress. Metadata/licence/units/hash
+loaders, a labelled synthetic fixture, PEtab 2 native-model exchange,
+actual pyPESTO full-data profiles and licence-bearing split scoreboards run.
+Native SciPy gates/whole-run CV remain the reported inference engine.
+The recorded synthetic run has three runs, 48 measurements, 13 external
+profile points, zero PEtab format issues and 3/3 held-out folds scored.
+See benchmark/README.md and docs/VERIFICATION.md for scope/evidence.
 
-Missing C. minutissima values/f_C remain unset; no species range is invented.
-All provided example data/biological parameters are SYNTHETIC / UNVERIFIED.
-Optional log-N integration preserves near-depletion likelihoods without adding
-pseudocounts. Named marginal asymptotic intervals do not establish empirical
-coverage or independent biological validation.
+The optional PEtab 0.9 benchmark toolchain requires Python 3.12+; core app/CLI
+remain Python 3.11 compatible. Native exports require the explicit reader;
+stock from_yaml/SBML/AMICI compatibility is NOT IMPLEMENTED. Source DOI
+syntax and provider licence records are not independent verification of
+ownership or scientific validity. No measured dataset is present.
 
+C. minutissima missing parameters/f_C stay unset. All example biological
+parameters and data remain SYNTHETIC / UNVERIFIED, with no invented range/DOI.
+Conditional profile intervals do not establish empirical coverage.
+
+- PENDING HUMAN INPUT: measured candidate datasets and recorded reuse/redistribution permission.
+- NOT VALIDATED: independent cultivation/optical predictions.
 - NOT DEPLOYED: hosted app; sign-in/terms remain pending.
-- NOT TESTED: visual browser layout, timed novice studies and Docker build/run.
-- NOT VALIDATED: independent cultivation/optical data.
-- NOT BUILT: licensed benchmark/PEtab pipeline, supported model comparison,
-  information-based experiment recommender, OD calibration/full wizard,
-  HTML/PDF reports, tutorials/observed usability and publication package.
-- Optional MCMC, detection-limit/correlated-error models: NOT BUILT.
+- NOT TESTED: pixel review, timed novice studies and Docker build/run.
+- NOT BUILT: supported model selection, information-based experiment recommender,
+  OD calibration/full wizard, HTML/PDF reports, tutorials/observed usability,
+  publication/DOI/docs-site package and optional MCMC.
