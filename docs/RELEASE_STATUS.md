@@ -1,19 +1,19 @@
-# Release status — v0.3.0 (2026-10-25)
+# Release status — v0.4.0 (2026-10-25)
 
-Step 1 engineering is implemented: parameter records, unit/mass-basis guards,
-C. minutissima catalogue, explicit DEMO gate, linear/sublinear extinction,
-user optical-fit helper, provenance UI/exports and override warnings.
+Steps 1 and 2 engineering are implemented: parameter evidence/units, optical helper,
+common model interface, Monod/Droop, Haldane/steady-state Han, CTMI, diurnal forcing,
+N-loss ledger and a separate synthetic model workspace with provenance export.
+Local verification passed: 100 tests (Python 3.12), Ruff lint/format and compileall.
+Current cloud verification is pending; see VERIFICATION.md.
 
-No verified minutissima parameter ranges were established in the audited papers.
-Research simulation remains blocked for the incomplete literature preset.
-Missing parameters and f_C are unset; source points do not become arbitrary ranges.
-
-Local verification: 62 tests passed; Ruff lint and format checks passed. Cloud CI passed on Python 3.11 and 3.12, with 62 tests and Ruff lint on each:
-https://github.com/ysmhla/alga-twin/actions/runs/40182152435. See VERIFICATION.md for exact limits and commands.
+Missing C. minutissima values and f_C remain unset. All new numerical fixtures are
+SYNTHETIC / UNVERIFIED. No species parameter ranges are invented. Eq. 9's printed
+high-light branch discrepancy and the amended analytic check are documented in
+SELECTABLE_MODELS.md. No independent biological validation is claimed.
 
 - NOT DEPLOYED: hosted app. Streamlit sign-in/terms remain pending.
 - NOT TESTED: visual browser layout and Docker build/run.
 - NOT VALIDATED: independent cultivation/optical data.
-- NOT BUILT: selectable Droop/Haldane/CTMI growth models, joint calibration,
-  profile likelihood, benchmark suite, experiment recommendation, tutorial/report
-  workflows and publication package. See RESEARCH_ROADMAP.md.
+- NOT BUILT: joint calibration, profile likelihood/identifiability, licensed
+  benchmark/PEtab pipeline, experiment recommendation, model-support selection,
+  OD calibration, tutorial/report/user-testing workflows and publication package.

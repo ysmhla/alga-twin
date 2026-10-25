@@ -8,16 +8,16 @@
 
 *Illustrative simulation and synthetic measurements — not lab-validated.*
 
-## What it does today (v0.3.0)
+## What it does today (v0.4.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
-- Uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
+- Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
 - Accepts UTF-8 CSV with user-mapped time, biomass and optional nitrate-N columns; checks units/values and plots observations.
 - Calibrates **one** growth-rate parameter for biomass-only observations; estimates biomass yield too if at least three nitrogen observations exist. Other parameters remain fixed assumptions.
 - Shows biomass and nitrogen curves, a depth-vs-time light heatmap, and stored comparative scenarios with snapshot model parameters.
 - **TrustLens:** local finite-difference parameter sensitivity and warnings about leaving the calibration conditions (NOT uncertainty intervals).
 - **Planner:** a bounded light × nitrogen grid with sampled Pareto tags; scenario exploration, NOT an experimentally validated optimiser.
-- **CLI:** run research simulations or constrained CSV fitting without the web interface.
+- **CLI:** run explicitly synthetic simulations or constrained DEMO-assumption CSV fitting without the web interface.
 - Exports CSV predictions and a JSON provenance manifest.
 - Includes numerical/scientific tests, GitHub Actions and Docker/Streamlit deployment setup.
 - Records value, source, status, species, conditions, mass basis and evidence tier in a provenance table and JSON exports.
@@ -25,13 +25,20 @@
 - Provides a direct extinction-measurement CSV helper with residuals, method and in-sample R²; user estimates stay UNVERIFIED / MEASURED.
 - Supports linear and optional sublinear extinction; coefficient units depend on the exponent. No verified species range is invented.
 
+- Provides a separate **Selectable models (SYNTHETIC)** workspace: Monod / Droop N quota,
+  saturation / Haldane / steady-state Han light, optional CTMI temperature and half-sine diurnal light.
+- Tracks dissolved, stored and removed nitrogen with a common `ModelBase.rhs/params/states`
+  interface. New-model fitting/model-support selection is pending.
+- Documents and regression-tests the printed arXiv v1 Eq. 9 high-light branch discrepancy;
+  the general optical-depth calculation compares both compensation roots and Y=0.
+
 ### Parameter tiers and evidence
 
 LITERATURE contains audited source records, not a complete runnable Monod preset. DEMO contains explicitly selected UNVERIFIED assumptions; MEASURED identifies user optical estimates. Source transcription does not establish validation for your strain. Reported Haldane points are not substituted into Monod equations. Verified-range overrides generate warnings when source-reported bounds exist; none were established for the present catalogue. See [source audit](docs/PARAMETER_AUDIT.md) and [model/units](docs/MODEL.md).
 
 ### Not built yet
 
-Droop intracellular quota, photoinhibition, multi-strain consortia, dynamic pH/CO₂, online IoT, formal statistical parameter intervals, independent-laboratory validation, global/continuous optimisation, formal model uncertainty intervals and scientifically supported operational recommendations.
+Joint multi-run fitting, profile likelihood/identifiability, dynamic photosystem adaptation, multi-strain consortia, dynamic pH/CO₂, online IoT, formal statistical parameter intervals, independent-laboratory validation, global/continuous optimisation, formal model uncertainty intervals and scientifically supported operational recommendations.
 
 ## Quick start
 
@@ -44,7 +51,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open http://localhost:8501 . The initial LITERATURE screen shows the C. minutissima catalogue and the direct extinction helper. Missing species parameters remain unset, so research simulation is blocked. Select **DEMO — synthetic assumptions** explicitly to run the simulator. No API keys are required.
+Open http://localhost:8501 . The initial LITERATURE screen shows the C. minutissima catalogue and the direct extinction helper. Missing species parameters remain unset, so research simulation is blocked. Select **DEMO — synthetic assumptions** explicitly to run the simulator. The Workspace selector also opens the new synthetic model sandbox; see [selectable models and Python example](docs/SELECTABLE_MODELS.md). No API keys are required.
 
 ### CLI usage
 
@@ -100,7 +107,9 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**62 local tests passed on Python 3.12**, including real Streamlit workflows. **Ruff check and format check passed.** **Cloud CI passed on Python 3.11 and 3.12: 62 tests and Ruff lint on each.** [CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40182152435) certifies source commit 6746dde6bf07151c75511731c5f9eb17e296935b. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
+**v0.4: 100 local tests passed (Python 3.12); Ruff lint/format and compileall passed.** Current cloud CI is pending; see [verification record](docs/VERIFICATION.md).
+The historical v0.3.0 cloud run passed 62 tests and Ruff on Python 3.11/3.12
+([run 40182152435](https://github.com/ysmhla/alga-twin/actions/runs/40182152435)); it does not certify the new model code. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
 
 ```bash
 pip install -r requirements.txt -e '.[dev]'
@@ -113,7 +122,9 @@ ruff format --check src app.py tests
 
 ```text
 app.py                    # Streamlit interactive laboratory
-src/alga_twin/model.py    # ODEs, light field, numerical solver
+src/alga_twin/model.py    # Retained baseline ODEs/light/solver
+src/alga_twin/models.py   # Common interface, Monod/Droop, light/temperature
+src/alga_twin/optimum.py  # Compensation roots and boundary optimum
 src/alga_twin/data.py     # Strict experimental CSV ingestion
 src/alga_twin/fitting.py  # Constrained multi-start fitting
 src/alga_twin/demo.py     # Reproducible SYNTHETIC observations
@@ -129,7 +140,7 @@ See [Architecture](docs/ARCHITECTURE.md), [Release status](docs/RELEASE_STATUS.m
 1. Independent-run evaluation on legally shareable measured data.
 2. Local identifiability diagnostics and statistically defensible intervals.
 3. Statistically and operationally meaningful light/nutrient optimisation; current grid is exploratory only.
-4. More detailed photophysiology (Droop quota, photoinhibition, light/dark cycles).
+4. Evaluate the selectable models against independently held-out cultivation runs.
 5. Research collaboration and reproducible benchmark suites.
 
 ## Security and privacy

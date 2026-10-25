@@ -60,6 +60,13 @@ st.markdown(
 
 render_parameter_gate()
 
+workspace = st.selectbox("Workspace", ["Baseline workflow", "Selectable models (SYNTHETIC)"])
+if workspace == "Selectable models (SYNTHETIC)":
+    from alga_twin.model_ui import render_model_sandbox
+
+    render_model_sandbox()
+    st.stop()
+
 with st.sidebar:
     st.markdown("### 🧫 AlgaTwin")
     st.caption(f"v{__version__} · Research prototype · NOT independently validated")
@@ -636,7 +643,7 @@ with methods_tab:
     with st.expander("Run manifest preview"):
         st.code(report, language="json")
     st.markdown(
-        "**Next planned scientific milestones:** independent-run validation, formal identifiability/profile likelihood, uncertainty intervals, advanced optimiser and Droop quota model."
+        "**Next planned scientific milestones:** independent-run validation, formal identifiability/profile likelihood, uncertainty intervals, and advanced optimiser. Selectable models are available in the synthetic workspace."
     )
     st.caption(
         "Project documentation and full model specification are in the GitHub repository and docs/ directory."

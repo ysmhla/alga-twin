@@ -45,4 +45,11 @@ The solver tracks nitrogen consumption from **gross** biomass growth; a biomass-
 
 ## Extending the model
 
-New model families (Droop, photoinhibition, CO₂ dynamics) should receive their own state-variable specifications, numerical tests, identifiable parameter subsets and independent datasets before being exposed as selectable scientific options. Avoid hiding a method change under the same model ID.
+`models.py` now exposes ModelBase.rhs/params/states and explicit Monod/Droop models,
+with selectable Haldane or steady-state Han light, CTMI and diurnal forcing.
+`optimum.py` keeps the printed Eq. 9 diagnostic separate from the general
+boundary/compensation-root optimum. `model_ui.py` exposes these through an explicit
+synthetic workspace. They are not connected to legacy calibration/planning;
+parameter-support comparisons and joint fitting remain pending. These models have
+state/unit specifications and synthetic conservation/limiting tests, but no
+independent biological evaluation. See SELECTABLE_MODELS.md and MODEL.md.

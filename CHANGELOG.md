@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0 — 2026-10-25
+
+- Add ModelBase interface, retained Monod adapter and reduced N-quota Droop model.
+- Add Haldane and steady-state Han light, CTMI and explicit half-sine diurnal forcing.
+- Track removed nitrogen for zero/nonzero loss mass-balance accounting.
+- Add explicit synthetic model workspace, evidence table and trajectory/provenance exports.
+- Document the arXiv v1 Eq. 9 second-branch discrepancy; compare both compensation roots
+  and the zero-depth boundary, with analytic/numerical regression checks.
+- Keep missing C. minutissima values/f_C unset; no source parameters transferred.
+- New model fitting, independent biological evaluation and hosting remain pending.
+
+
 ## 0.3.0 — 2026-10-25
 
 - Added immutable parameter evidence records, units/basis checks and C. minutissima source catalogue.

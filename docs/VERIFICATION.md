@@ -1,16 +1,14 @@
-# Verification record — v0.3.0, 2026-10-25
+# Verification record — v0.4.0, 2026-10-25
 
 ## Current implementation
 
 | Check | Result | Evidence and scope |
 |---|---|---|
-| Local pytest, Python 3.12 | PASS: 62 tests | Includes the original scientific workflows, explicit synthetic configurations and optical cases |
-| Parameter/unit evidence tests | PASS | tests/test_parameters_optics.py: statuses, missing species data, bases/units, f_C, overrides, synthetic recovery and failure cases |
-| Optical model limiting/conservation cases | PASS | s=1/s=0.5: zero light, clear medium, zero biomass, conserved X+Y*N/1000, monotonic N and positivity |
-| Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py: LITERATURE gate, explicit DEMO, provenance, sublinear UI, calibration, scenario snapshots and planner invalidation |
-| Ruff lint | PASS | ruff check src app.py tests |
-| Ruff formatting | PASS | ruff format --check src app.py tests |
-| Current cloud CI, Python 3.11 and 3.12 | PASS: 62 tests and Ruff lint each | [Run 40182152435](https://github.com/ysmhla/alga-twin/actions/runs/40182152435); source commit 6746dde6bf07151c75511731c5f9eb17e296935b |
+| Local pytest, Python 3.12 | PASS: 100 tests | Full suite; 26.84 s; synthetic scientific cases and real Streamlit AppTest |
+| Ruff lint/format and compileall | PASS | ruff check; ruff format --check (25 files); compileall src app.py tests |
+| Selectable model checks | PASS | tests/test_model_families.py: baseline regression, units, quota equilibrium, N ledger, positivity, light/temperature/diurnal limits, Eq. 9 discrepancy |
+| Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py includes new synthetic model workspace |
+| Current cloud CI | NOT YET RUN | Historical v0.3 evidence below does not certify v0.4 |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
 | Visual browser verification | NOT TESTED | AppTest is not pixel/browser verification |
 | Docker build/run | NOT TESTED | No build/run claim |
@@ -24,13 +22,16 @@
     python -m ruff format --check src app.py tests
     python -m compileall -q src app.py tests
 
-Streamlit 1.66.1, Plotly 6.9.0 and Ruff 0.17.2 were used locally. Deprecated
-use_container_width arguments were replaced by width="stretch"; Streamlit >=1.50
-is required. No pixel-level usability, <5-minute completion, independent prediction
-accuracy, confidence intervals or novel-method claims are made.
+No pixel-level usability, <5-minute completion, independent prediction accuracy,
+confidence intervals or novel-method claims are made. Streamlit >=1.50 is
+required; no deprecated use_container_width arguments remain. New model fitting,
+profiles, independent cross-validation and formal model support remain pending.
 
 ## Historical evidence
 
-v0.2.1 passed 34 tests on cloud Python 3.11 and 3.12 in
+v0.3.0 passed 62 tests and Ruff on Python 3.11/3.12 in
+https://github.com/ysmhla/alga-twin/actions/runs/40182152435,
+source commit 6746dde6bf07151c75511731c5f9eb17e296935b.
+v0.2.1 passed 34 tests on cloud Python 3.11/3.12 in
 https://github.com/ysmhla/alga-twin/actions/runs/40177389592.
-The old local HTTP health check also applied to v0.2.1, not proof of hosting.
+The old local HTTP health check applied to v0.2.1, not proof of hosting.

@@ -65,3 +65,52 @@ def synthetic_experiment(seed: int = 42) -> pd.DataFrame:
     observed.loc[0, "biomass_g_L"] = DEMO_CONDITIONS.biomass_initial_g_L
     observed.loc[0, "nitrate_n_mg_L"] = DEMO_CONDITIONS.nitrogen_initial_mg_L
     return observed
+
+
+def demo_model_parameters(kind="monod", light="monod", *, temperature=False, diurnal=False, **overrides):
+    """Synthetic fixtures for the common interface, unrelated to any species preset.
+
+    The extra quota, Han and cardinal numbers are invented teaching assumptions,
+    explicitly UNVERIFIED, not literature values or ranges.
+    """
+    from .models import parameter_schema
+
+    values = {
+        **{name: getattr(DEMO_PARAMETERS, name) for name in parameter_units()},
+        "rho_max": 0.06,
+        "q_min": 0.03,
+        "q_max": 0.15,
+        "i_opt": 85.0,
+        "alpha": 3 * DEMO_PARAMETERS.mu_max_day / 85.0,
+        "han_sigma": 0.02,
+        "han_tau": 0.1,
+        "han_damage": 0.01,
+        "han_repair": 0.2,
+        "han_k": 1.0,
+        "t_min": 5.0,
+        "t_opt": 25.0,
+        "t_max": 35.0,
+        "period_day": 1.0,
+        "daylight_day": 0.5,
+        "dawn_day": 0.0,
+    }
+    schema = parameter_schema(kind, light, temperature, diurnal, overrides.get("extinction_exponent", 1.0))
+    if overrides.keys() - schema.keys():
+        raise ValueError(f"Unknown/inactive parameter overrides: {overrides.keys() - schema.keys()}")
+    values.update(overrides)
+    return {
+        name: Parameter(
+            values[name],
+            None,
+            None,
+            unit,
+            None,
+            "UNVERIFIED",
+            "SYNTHETIC",
+            "Teaching fixture, not measured species physiology",
+            basis,
+            "DEMO",
+            "synthetic",
+        )
+        for name, (unit, basis) in schema.items()
+    }

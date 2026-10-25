@@ -1,3 +1,7 @@
+> Historical planning document. Current implementation/status is in
+> RESEARCH_ROADMAP.md, MODEL.md and VERIFICATION.md. This original plan's
+> conceptual quota-loss equation is not the implemented N-loss convention.
+
 # AlgaTwin 2.0 — Project Master Plan
 
 **Working title:** AlgaTwin — An Open, Calibrated Digital Twin for Microalgal Photobioreactors  

@@ -80,3 +80,28 @@ def test_sublinear_demo_renders_with_provenance():
     )
     assert set(provenance.status) == {"UNVERIFIED"}
     assert set(provenance.tier) == {"DEMO"}
+
+
+def test_selectable_model_sandbox_with_droop_han_ctmi_and_diurnal():
+    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app.radio[0].set_value("DEMO — synthetic assumptions").run()
+    next(w for w in app.selectbox if w.label == "Workspace").set_value("Selectable models (SYNTHETIC)").run()
+    assert not app.exception
+    next(w for w in app.selectbox if w.label == "Nutrient model").set_value("Droop").run()
+    next(w for w in app.selectbox if w.label == "Light response").set_value("Haldane photoinhibition").run()
+    assert not app.exception
+    next(w for w in app.checkbox if w.label == "Enable CTMI temperature factor").check().run()
+    next(w for w in app.checkbox if w.label == "Enable diurnal half-sine light").check().run()
+    next(w for w in app.number_input if w.label.startswith("Synthetic respiration")).set_value(0.1).run()
+    assert not app.exception
+    trajectory = next(frame.value for frame in app.dataframe if "total_n_mg_L" in frame.value.columns)
+    assert "q" in trajectory and trajectory.removed_n_mg_L.iloc[-1] > 0
+    assert trajectory.total_n_mg_L.max() - trajectory.total_n_mg_L.min() < 1e-6
+    provenance = next(frame.value for frame in app.dataframe if "basis" in frame.value.columns)
+    assert set(provenance.status) == {"UNVERIFIED"}
+    assert set(provenance.species) == {"SYNTHETIC"}
+    next(w for w in app.selectbox if w.label == "Light response").set_value("Han steady state").run()
+    assert not app.exception
+    provenance = next(frame.value for frame in app.dataframe if "basis" in frame.value.columns)
+    assert "han_sigma" in set(provenance.parameter)
+    assert any("pending" in m.value for m in app.caption)
