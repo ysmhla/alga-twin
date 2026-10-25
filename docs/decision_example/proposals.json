@@ -1,0 +1,162 @@
+[
+  {
+    "name": "moderate light, lower N",
+    "conditions": {
+      "biomass_initial_g_L": 0.06,
+      "nitrogen_initial_mg_L": 12.0,
+      "incident_light_umol_m2_s": 100.0,
+      "optical_path_m": 0.05
+    },
+    "initial_state": [
+      0.06,
+      12.0
+    ],
+    "duration_day": 4.0,
+    "sampling_times_day": [
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ],
+    "observables": [
+      "X",
+      "N"
+    ],
+    "errors": {
+      "kind": "additive",
+      "scales": {
+        "X": [
+          0.003,
+          "g_DW/liter"
+        ],
+        "N": [
+          0.3,
+          "mg_N/liter"
+        ]
+      }
+    },
+    "temperature_c": null,
+    "technical_replicates": 1
+  },
+  {
+    "name": "higher light, higher N",
+    "conditions": {
+      "biomass_initial_g_L": 0.06,
+      "nitrogen_initial_mg_L": 80.0,
+      "incident_light_umol_m2_s": 400.0,
+      "optical_path_m": 0.05
+    },
+    "initial_state": [
+      0.06,
+      80.0
+    ],
+    "duration_day": 4.0,
+    "sampling_times_day": [
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ],
+    "observables": [
+      "X",
+      "N"
+    ],
+    "errors": {
+      "kind": "additive",
+      "scales": {
+        "X": [
+          0.003,
+          "g_DW/liter"
+        ],
+        "N": [
+          0.3,
+          "mg_N/liter"
+        ]
+      }
+    },
+    "temperature_c": null,
+    "technical_replicates": 1
+  },
+  {
+    "name": "short frequent sampling",
+    "conditions": {
+      "biomass_initial_g_L": 0.06,
+      "nitrogen_initial_mg_L": 35.0,
+      "incident_light_umol_m2_s": 200.0,
+      "optical_path_m": 0.05
+    },
+    "initial_state": [
+      0.06,
+      35.0
+    ],
+    "duration_day": 2.0,
+    "sampling_times_day": [
+      0.2,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "observables": [
+      "X",
+      "N"
+    ],
+    "errors": {
+      "kind": "additive",
+      "scales": {
+        "X": [
+          0.003,
+          "g_DW/liter"
+        ],
+        "N": [
+          0.3,
+          "mg_N/liter"
+        ]
+      }
+    },
+    "temperature_c": null,
+    "technical_replicates": 1
+  },
+  {
+    "name": "dark control",
+    "conditions": {
+      "biomass_initial_g_L": 0.06,
+      "nitrogen_initial_mg_L": 35.0,
+      "incident_light_umol_m2_s": 0.0,
+      "optical_path_m": 0.05
+    },
+    "initial_state": [
+      0.06,
+      35.0
+    ],
+    "duration_day": 4.0,
+    "sampling_times_day": [
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ],
+    "observables": [
+      "X",
+      "N"
+    ],
+    "errors": {
+      "kind": "additive",
+      "scales": {
+        "X": [
+          0.003,
+          "g_DW/liter"
+        ],
+        "N": [
+          0.3,
+          "mg_N/liter"
+        ]
+      }
+    },
+    "temperature_c": null,
+    "technical_replicates": 1
+  }
+]

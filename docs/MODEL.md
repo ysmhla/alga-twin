@@ -388,3 +388,53 @@ and intervals are withheld. Descriptive curves remain in-sample only. PDF table
 numbers are rounded to six significant figures; JSON retains full precision.
 All scientific interpretation remains conditional, with no independent
 biological validation claim. See GUIDED_WORKFLOW.md and USABILITY.md.
+
+## Conditional decision support (v0.8)
+
+The growth, uptake, temperature and nitrogen-ledger equations above are unchanged.
+All candidate simulations use the same `ModelBase` implementation and canonical
+units. No new species parameter, physiological range or `f_C` is supplied.
+
+For models fitted to exactly the same scalar observations with the same fixed
+error family/SDs, AIC = 2*NLL + 2*k and BIC = 2*NLL + k*ln(n). Here k counts
+fitted shared parameters; n counts scalar assay rows, including independent
+technical repeats. Fixed initial states (including Droop q0), fixed noise and
+other fixed parameters are conditioning assumptions, not estimated degrees of
+freedom. The original-scale log-normal density retains its Jacobian. Unsupported
+profiles have no usable criterion/point vector. Unresolved numerical fits prevent
+a winner. An approximate fixed-noise residual screen uses
+p = chi2.sf(sum(r_i^2), n-k); nonlinear/small-data calibration of that approximation
+is not established. The supplied alpha and AIC/BIC windows are decision settings,
+not literature values. If no model passes the profile/residual gates, the result
+is NO SUPPORTABLE MODEL. Within both windows choose fewer fitted parameters,
+then fewer active parameters, fewer states, then name. Disagreeing criteria can
+leave the recommendation unset. This is in-sample support, not held-out accuracy.
+
+For proposed observations f_i(theta), define dimensionless normalized linear/log
+search coordinates z_j in [0,1]. With fixed independent errors,
+J_ij = (df_i/dz_j)/sigma_i for additive noise, or
+J_ij = (d log(f_i)/dz_j)/sigma_log,i for log-normal noise.
+Thus F = J^T J is dimensionless. Central differences at h and h/2 must agree;
+unsupported profiles, a stale fit or ill-conditioned/non-positive-definite F
+refuse ranking. No prior, ridge or pseudoinverse creates artificial information.
+Exact current-job provenance and recomputed likelihood bind the design to its fit.
+
+Each proposed run specifies light (umol photons/m^2/s), initial N (mg N/L),
+initial X (g DW/L), path (m), optional temperature (degC), initial quota
+(g N/g DW), duration/sampling days, observables and fixed assay SDs. No future
+measurement values are invented. Independent technical repeats add information.
+Rank each candidate individually by G = logdet(F_current+F_candidate) -
+logdet(F_current). The expected local ellipsoid-volume reduction is
+1-exp(-G/2); each local SD ratio is
+sqrt(diag(inv(F_current+F_candidate))/diag(inv(F_current))). These are local
+Fisher approximations, **not confidence intervals**, empirical coverage or
+profile-width forecasts. They condition on one chosen model and supported fit.
+Candidates need human feasibility/budget constraints; the ranking is neither
+cost-normalized nor a global optimum or model-discrimination objective.
+
+Tests compare a known-best light experiment to independently derived
+transparent/nutrient-saturated exponential sensitivities, and check coordinate
+invariance, additive/log noise, dark zero-information limit, repeated-assay
+information, proposed-run units and conserved nitrogen. Synthetic selection
+checks include Monod and photoinhibited truth, flat/dark and sparse failures,
+incomparable datasets/noise and numerical failures. See DECISION_SUPPORT.md.

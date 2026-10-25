@@ -1,4 +1,8 @@
-# Release status — v0.7.1, 2026-10-26
+# Release status — v0.8.0 verification in progress, 2026-10-26
+
+Step 6 implementation passed 155 local tests (215.24 s), Ruff lint/format,
+compilation and pip check. Cloud and live rollout checks remain in progress.
+No v0.8 cloud/deployment claim is made here yet. See DECISION_SUPPORT.md for the new conditional methods.
 
 Steps 1–5 software engineering are implemented (5/7 engineering packages).
 Step 5 human acceptance remains incomplete: no independent novice <5-minute
@@ -28,5 +32,5 @@ No biological validation, novelty or operational-recommendation claim is made.
 - PENDING HUMAN INPUT: legally reusable measured datasets/metadata and novice-study observations.
 - NOT VALIDATED: independent biological/optical predictions or interval coverage.
 - NOT TESTED: human novice/mobile/measured-upload browser acceptance and Docker/Render deployment.
-- NOT BUILT: information-based experiment ranking, supported model selection, publication/DOI/docs site,
+- NOT BUILT: publication/DOI/docs site,
   optional MCMC or streaming estimator (deferred until suitable independent data).

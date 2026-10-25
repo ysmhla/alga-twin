@@ -67,6 +67,7 @@ workspace = st.selectbox(
         "OD / cell count calibration",
         "Selectable models (SYNTHETIC)",
         "Joint calibration",
+        "Model support and next experiment",
     ],
 )
 if workspace == "Guided upload to report":
@@ -78,6 +79,12 @@ if workspace == "OD / cell count calibration":
     from alga_twin.biomass_ui import render_biomass_calibration
 
     render_biomass_calibration()
+    st.stop()
+
+if workspace == "Model support and next experiment":
+    from alga_twin.decision_ui import render_decisions
+
+    render_decisions()
     st.stop()
 
 render_parameter_gate()

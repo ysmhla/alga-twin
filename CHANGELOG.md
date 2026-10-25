@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 — 2026-10-26
+
+- Add same-data Monod/Droop/saturation/Haldane comparison with AIC/BIC, conditional profile gates and a labelled approximate fixed-noise residual screen.
+- Refuse model recommendations for unresolved fits or unsupported data; export complete assumptions/provenance.
+- Rank explicit proposed experiments using local expected Fisher information and show top three with reasons; flat profiles/stale fits/ill-conditioned information refuse.
+- Keep Fisher SD/volume ratios separate from named profile intervals and held-out errors; no biological presets or equations changed.
+- Add synthetic analytic known-best, limiting-case, unit, conservation, failure and actual Streamlit state checks.
+
 ## 0.7.1 — 2026-10-26
 
 - Keep the full profile-interval method and confidence visible above result tables; horizontal scrolling cannot hide this scientific context.

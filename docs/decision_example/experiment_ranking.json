@@ -1,0 +1,855 @@
+{
+  "method": "Local expected Fisher information; fixed independent noise; D-information gain at profile-supported fit",
+  "ranking": [
+    {
+      "rank": 1,
+      "candidate": "higher light, higher N",
+      "origin": "PROPOSED",
+      "light_umol_m2_s": 400.0,
+      "initial_N_mg_N_L": 80.0,
+      "duration_day": 4.0,
+      "sampling_times_day": [
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "scalar_measurements": 10,
+      "log_det_information_gain": 0.27973412803812714,
+      "local_ellipsoid_volume_reduction_fraction": 0.13052618792940737,
+      "local_sd_ratio_by_parameter": {
+        "mu_max_day": 0.8694738120705929
+      },
+      "reason": "Adds information about mu_max_day; expected local SD ratio 0.869. Light 400, initial N 80; 5 sampling times over 4 days. Conditional on supplied model/noise."
+    },
+    {
+      "rank": 2,
+      "candidate": "short frequent sampling",
+      "origin": "PROPOSED",
+      "light_umol_m2_s": 200.0,
+      "initial_N_mg_N_L": 35.0,
+      "duration_day": 2.0,
+      "sampling_times_day": [
+        0.2,
+        0.5,
+        1.0,
+        1.5,
+        2.0
+      ],
+      "scalar_measurements": 10,
+      "log_det_information_gain": 0.01697435222864563,
+      "local_ellipsoid_volume_reduction_fraction": 0.008451261710900876,
+      "local_sd_ratio_by_parameter": {
+        "mu_max_day": 0.9915487382890994
+      },
+      "reason": "Adds information about mu_max_day; expected local SD ratio 0.992. Light 200, initial N 35; 5 sampling times over 2 days. Conditional on supplied model/noise."
+    },
+    {
+      "rank": 3,
+      "candidate": "moderate light, lower N",
+      "origin": "PROPOSED",
+      "light_umol_m2_s": 100.0,
+      "initial_N_mg_N_L": 12.0,
+      "duration_day": 4.0,
+      "sampling_times_day": [
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "scalar_measurements": 10,
+      "log_det_information_gain": 0.0034705879895540193,
+      "local_ellipsoid_volume_reduction_fraction": 0.001733789242674469,
+      "local_sd_ratio_by_parameter": {
+        "mu_max_day": 0.9982662107573255
+      },
+      "reason": "Adds information about mu_max_day; expected local SD ratio 0.998. Light 100, initial N 12; 5 sampling times over 4 days. Conditional on supplied model/noise."
+    },
+    {
+      "rank": 4,
+      "candidate": "dark control",
+      "origin": "PROPOSED",
+      "light_umol_m2_s": 0.0,
+      "initial_N_mg_N_L": 35.0,
+      "duration_day": 4.0,
+      "sampling_times_day": [
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "scalar_measurements": 10,
+      "log_det_information_gain": 0.0,
+      "local_ellipsoid_volume_reduction_fraction": 0.0,
+      "local_sd_ratio_by_parameter": {
+        "mu_max_day": 1.0
+      },
+      "reason": "Adds information about mu_max_day; expected local SD ratio 1.000. Light 0, initial N 35; 5 sampling times over 4 days. Conditional on supplied model/noise."
+    }
+  ],
+  "parameters": [
+    "mu_max_day"
+  ],
+  "information_before_normalized_coordinates": [
+    [
+      2401137.128990976
+    ]
+  ],
+  "candidate_information_normalized_coordinates": {
+    "moderate light, lower N": [
+      [
+        8347.835250403205
+      ]
+    ],
+    "higher light, higher N": [
+      [
+        775034.4226572249
+      ]
+    ],
+    "short frequent sampling": [
+      [
+        41105.63113647808
+      ]
+    ],
+    "dark control": [
+      [
+        0.0
+      ]
+    ]
+  },
+  "context": {
+    "current_fit": {
+      "supported": true,
+      "optimizer_success": true,
+      "estimates": {
+        "mu_max_day": {
+          "value": 0.9016323521122356,
+          "interval": [
+            0.8995948572149268,
+            0.9036796376887329
+          ],
+          "unit": "1/day",
+          "status": "IDENTIFIABLE",
+          "reason": "Connected two-sided profile within supplied bounds, conditional on specified assumptions",
+          "method": "Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales"
+        }
+      },
+      "interval_method": "Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales",
+      "confidence": 0.95,
+      "cutoff": 3.841458820694124,
+      "interval_scope": "Marginal asymptotic, conditional on fixed parameters, initial states and specified SDs",
+      "search_bounds_not_literature_ranges": {
+        "mu_max_day": {
+          "low": 0.3,
+          "high": 1.8,
+          "initial": 0.7,
+          "scale": "log"
+        }
+      },
+      "error_model": {
+        "kind": "additive",
+        "scales": {
+          "X": [
+            0.003,
+            "g_DW/liter"
+          ],
+          "N": [
+            0.3,
+            "mg_N/liter"
+          ]
+        }
+      },
+      "flat_tolerance_delta_deviance": 0.001,
+      "nll_in_sample": -101.67215292879624,
+      "metrics_in_sample": [
+        {
+          "run_id": "synthetic-0",
+          "observable": "X",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "g_DW/liter",
+          "rmse": 0.0037158614415164406,
+          "mae": 0.0028675714956519875,
+          "nll": -32.984912877964334
+        },
+        {
+          "run_id": "synthetic-0",
+          "observable": "N",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "mg_N/liter",
+          "rmse": 0.2915354927959332,
+          "mae": 0.23374827129462944,
+          "nll": 1.4971899892417873
+        },
+        {
+          "run_id": "synthetic-1",
+          "observable": "X",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "g_DW/liter",
+          "rmse": 0.0021409355922062624,
+          "mae": 0.00190474622997329,
+          "nll": -37.08447778577459
+        },
+        {
+          "run_id": "synthetic-1",
+          "observable": "N",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "mg_N/liter",
+          "rmse": 0.3326351173463305,
+          "mae": 0.28372048791255466,
+          "nll": 2.637331221785762
+        },
+        {
+          "run_id": "synthetic-2",
+          "observable": "X",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "g_DW/liter",
+          "rmse": 0.002251033326513701,
+          "mae": 0.001957180267347647,
+          "nll": -36.8695685292858
+        },
+        {
+          "run_id": "synthetic-2",
+          "observable": "N",
+          "split": "in-sample",
+          "origin": "SYNTHETIC",
+          "n": 8,
+          "unit": "mg_N/liter",
+          "rmse": 0.27709670243228973,
+          "mae": 0.21550451038373902,
+          "nll": 1.1322850532009572
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "synthetic-0",
+          "origin": "SYNTHETIC",
+          "input_sha256": "88ac680be8b08d8cac70e10237909c2de93ba9695e749106d05ab7403d71b63e",
+          "kind": "monod",
+          "light": "monod",
+          "temperature_c": null,
+          "diurnal": false,
+          "conditions": {
+            "biomass_initial_g_L": 0.06,
+            "nitrogen_initial_mg_L": 9,
+            "incident_light_umol_m2_s": 60,
+            "optical_path_m": 0.05
+          },
+          "states": [
+            "X",
+            "N"
+          ],
+          "state_units": [
+            "g_DW/liter",
+            "mg_N/liter"
+          ],
+          "initial_state": [
+            0.06,
+            9.0
+          ],
+          "parameters_before_fitting": [
+            {
+              "parameter": "k_n_mg_L",
+              "value": 5.0,
+              "low": null,
+              "high": null,
+              "unit": "mg_N/liter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "elemental_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_a0",
+              "value": 12.0,
+              "low": null,
+              "high": null,
+              "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "background_extinction_m_inv",
+              "value": 0.3,
+              "low": null,
+              "high": null,
+              "unit": "1/meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "medium",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_exponent",
+              "value": 1.0,
+              "low": null,
+              "high": null,
+              "unit": "dimensionless",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dimensionless",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "loss_rate_day",
+              "value": 0.0,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "biomass_yield_g_per_gN",
+              "value": 8.0,
+              "low": null,
+              "high": null,
+              "unit": "g_DW/g_N",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight_per_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "mu_max_day",
+              "value": 0.9,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "k_i_umol_m2_s",
+              "value": 85.0,
+              "low": null,
+              "high": null,
+              "unit": "micromole/meter**2/second",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "photons",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            }
+          ]
+        },
+        {
+          "run_id": "synthetic-1",
+          "origin": "SYNTHETIC",
+          "input_sha256": "a964c352eb8733a56166fcaca881219afb8661c0ede52bdde82ded4f60662396",
+          "kind": "monod",
+          "light": "monod",
+          "temperature_c": null,
+          "diurnal": false,
+          "conditions": {
+            "biomass_initial_g_L": 0.06,
+            "nitrogen_initial_mg_L": 35,
+            "incident_light_umol_m2_s": 200,
+            "optical_path_m": 0.05
+          },
+          "states": [
+            "X",
+            "N"
+          ],
+          "state_units": [
+            "g_DW/liter",
+            "mg_N/liter"
+          ],
+          "initial_state": [
+            0.06,
+            35.0
+          ],
+          "parameters_before_fitting": [
+            {
+              "parameter": "k_n_mg_L",
+              "value": 5.0,
+              "low": null,
+              "high": null,
+              "unit": "mg_N/liter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "elemental_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_a0",
+              "value": 12.0,
+              "low": null,
+              "high": null,
+              "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "background_extinction_m_inv",
+              "value": 0.3,
+              "low": null,
+              "high": null,
+              "unit": "1/meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "medium",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_exponent",
+              "value": 1.0,
+              "low": null,
+              "high": null,
+              "unit": "dimensionless",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dimensionless",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "loss_rate_day",
+              "value": 0.0,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "biomass_yield_g_per_gN",
+              "value": 8.0,
+              "low": null,
+              "high": null,
+              "unit": "g_DW/g_N",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight_per_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "mu_max_day",
+              "value": 0.9,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "k_i_umol_m2_s",
+              "value": 85.0,
+              "low": null,
+              "high": null,
+              "unit": "micromole/meter**2/second",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "photons",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            }
+          ]
+        },
+        {
+          "run_id": "synthetic-2",
+          "origin": "SYNTHETIC",
+          "input_sha256": "696dd1ea0895bbd723c92cc00718c7372f557578e751364d9b1220a9fa8210e4",
+          "kind": "monod",
+          "light": "monod",
+          "temperature_c": null,
+          "diurnal": false,
+          "conditions": {
+            "biomass_initial_g_L": 0.06,
+            "nitrogen_initial_mg_L": 90,
+            "incident_light_umol_m2_s": 500,
+            "optical_path_m": 0.05
+          },
+          "states": [
+            "X",
+            "N"
+          ],
+          "state_units": [
+            "g_DW/liter",
+            "mg_N/liter"
+          ],
+          "initial_state": [
+            0.06,
+            90.0
+          ],
+          "parameters_before_fitting": [
+            {
+              "parameter": "k_n_mg_L",
+              "value": 5.0,
+              "low": null,
+              "high": null,
+              "unit": "mg_N/liter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "elemental_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_a0",
+              "value": 12.0,
+              "low": null,
+              "high": null,
+              "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "background_extinction_m_inv",
+              "value": 0.3,
+              "low": null,
+              "high": null,
+              "unit": "1/meter",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "medium",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "extinction_exponent",
+              "value": 1.0,
+              "low": null,
+              "high": null,
+              "unit": "dimensionless",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dimensionless",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "loss_rate_day",
+              "value": 0.0,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "biomass_yield_g_per_gN",
+              "value": 8.0,
+              "low": null,
+              "high": null,
+              "unit": "g_DW/g_N",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "dry_weight_per_nitrogen",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "mu_max_day",
+              "value": 0.9,
+              "low": null,
+              "high": null,
+              "unit": "1/day",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "specific_growth",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            },
+            {
+              "parameter": "k_i_umol_m2_s",
+              "value": 85.0,
+              "low": null,
+              "high": null,
+              "unit": "micromole/meter**2/second",
+              "source": null,
+              "status": "UNVERIFIED",
+              "species": "SYNTHETIC",
+              "conditions": "Teaching fixture, not measured species physiology",
+              "basis": "photons",
+              "tier": "DEMO",
+              "evidence": "synthetic",
+              "locator": ""
+            }
+          ]
+        }
+      ],
+      "scientific_status": "In-sample likelihood and numerical profiles; no independent biological validation"
+    },
+    "candidates": [
+      {
+        "name": "moderate light, lower N",
+        "conditions": {
+          "biomass_initial_g_L": 0.06,
+          "nitrogen_initial_mg_L": 12.0,
+          "incident_light_umol_m2_s": 100.0,
+          "optical_path_m": 0.05
+        },
+        "initial_state": [
+          0.06,
+          12.0
+        ],
+        "duration_day": 4.0,
+        "sampling_times_day": [
+          0.5,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "observables": [
+          "X",
+          "N"
+        ],
+        "errors": {
+          "kind": "additive",
+          "scales": {
+            "X": [
+              0.003,
+              "g_DW/liter"
+            ],
+            "N": [
+              0.3,
+              "mg_N/liter"
+            ]
+          }
+        },
+        "temperature_c": null,
+        "technical_replicates": 1
+      },
+      {
+        "name": "higher light, higher N",
+        "conditions": {
+          "biomass_initial_g_L": 0.06,
+          "nitrogen_initial_mg_L": 80.0,
+          "incident_light_umol_m2_s": 400.0,
+          "optical_path_m": 0.05
+        },
+        "initial_state": [
+          0.06,
+          80.0
+        ],
+        "duration_day": 4.0,
+        "sampling_times_day": [
+          0.5,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "observables": [
+          "X",
+          "N"
+        ],
+        "errors": {
+          "kind": "additive",
+          "scales": {
+            "X": [
+              0.003,
+              "g_DW/liter"
+            ],
+            "N": [
+              0.3,
+              "mg_N/liter"
+            ]
+          }
+        },
+        "temperature_c": null,
+        "technical_replicates": 1
+      },
+      {
+        "name": "short frequent sampling",
+        "conditions": {
+          "biomass_initial_g_L": 0.06,
+          "nitrogen_initial_mg_L": 35.0,
+          "incident_light_umol_m2_s": 200.0,
+          "optical_path_m": 0.05
+        },
+        "initial_state": [
+          0.06,
+          35.0
+        ],
+        "duration_day": 2.0,
+        "sampling_times_day": [
+          0.2,
+          0.5,
+          1.0,
+          1.5,
+          2.0
+        ],
+        "observables": [
+          "X",
+          "N"
+        ],
+        "errors": {
+          "kind": "additive",
+          "scales": {
+            "X": [
+              0.003,
+              "g_DW/liter"
+            ],
+            "N": [
+              0.3,
+              "mg_N/liter"
+            ]
+          }
+        },
+        "temperature_c": null,
+        "technical_replicates": 1
+      },
+      {
+        "name": "dark control",
+        "conditions": {
+          "biomass_initial_g_L": 0.06,
+          "nitrogen_initial_mg_L": 35.0,
+          "incident_light_umol_m2_s": 0.0,
+          "optical_path_m": 0.05
+        },
+        "initial_state": [
+          0.06,
+          35.0
+        ],
+        "duration_day": 4.0,
+        "sampling_times_day": [
+          0.5,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "observables": [
+          "X",
+          "N"
+        ],
+        "errors": {
+          "kind": "additive",
+          "scales": {
+            "X": [
+              0.003,
+              "g_DW/liter"
+            ],
+            "N": [
+              0.3,
+              "mg_N/liter"
+            ]
+          }
+        },
+        "temperature_c": null,
+        "technical_replicates": 1
+      }
+    ],
+    "step_in_normalized_search_coordinates": 0.0001,
+    "derivative_rtol": 0.02,
+    "max_condition": 1000000000000.0,
+    "base_condition_number": 1.0,
+    "assumptions": "Local plug-in fit; independent fixed noise; initial states/fixed parameters known; no cost normalization; no model-discrimination objective"
+  },
+  "scope": "Expected local uncertainty reduction, not intervals, empirical coverage or independent validation"
+}
