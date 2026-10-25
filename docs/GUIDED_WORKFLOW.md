@@ -1,5 +1,8 @@
 # Guided upload to report
 
+Public demo: https://alga-twin.streamlit.app/ . [Observed browser checks](smoke/README.md)
+use only the explicitly selected SYNTHETIC example; novice acceptance is pending.
+
 Select **Guided upload to report** in the Workspace menu. It is accessible
 without switching the research gate to DEMO. Its initial choice is **Upload my
 measurements**; teaching data require an explicit SYNTHETIC selection.
@@ -74,7 +77,8 @@ unsupported glyphs are escaped, while JSON retains the original strings. PDF
 numbers use six significant figures for readable tables; JSON retains full
 floating-point precision.
 
-Unsupported estimates/intervals are withheld. Descriptive training curves can
+The complete interval method/confidence also appears above result tables, so
+horizontal scrolling cannot hide it. Unsupported estimates/intervals are withheld. Descriptive training curves can
 still appear; they are not supported forecasts. Held-out error is marked **not
 computed** until requested. Failed folds retain their flags; no selectively
 pooled successful-fold accuracy is reported. Synthetic held-outs are engineering

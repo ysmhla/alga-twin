@@ -1,66 +1,60 @@
-# Deployment and release checklist
+# Deployment and smoke record
 
-## Streamlit Community Cloud
+## Current public demo — 2026-10-26
 
-1. Use the existing GitHub repository `ysmhla/alga-twin`.
-2. Use its checked `main` branch; do **not** flatten the `src/alga_twin` directory.
-3. Confirm the `Scientific Python CI` GitHub Actions workflow completes on Python 3.11 and 3.12.
-4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `ysmhla/alga-twin`, branch `main`, entry point `app.py`.
-5. No secret values are needed. Verify that LITERATURE initially blocks missing species parameters; explicitly select DEMO and check charts, tabs and exports.
-6. Run the public deployment smoke checklist below before publicising the link.
+**DEPLOYED:** https://alga-twin.streamlit.app/
 
-This repository contains **deployment configuration**, not proof that hosting was deployed. GitHub connection alone does not publish a Streamlit Cloud app.
+Repository ysmhla/alga-twin, branch main, entry point app.py. App settings showed
+**public and searchable**. Python 3.12 was selected and rebuilt; logs confirmed
+Python 3.12.15 and Streamlit 1.66.1. Initial smoke source was
+0b1090d45c2741996e66047058d7b73c1957b945 (v0.7.0). See
+[actual browser evidence, hashes and exports](smoke/README.md).
 
-## Render deployment (alternate hosting)
+The prior account sign-in/terms prerequisite was completed by the account holder.
+assets/hosting-pending.jpg is historical evidence, not the current status.
+No new permissions or viewer email invitations were added during smoke checks.
+No application secrets were required. Changes pushed to main can restart the
+Streamlit session; uploads are not intentionally persisted by the app.
 
-The repository includes a [Render Blueprint](../render.yaml) with a Python service, dependency installation, Streamlit run command bound to `$PORT` and an HTTP health check. Import the GitHub repository in Render and approve the deployment plan. Billing/plan selection and account authorization are handled by the hosting provider, not this project. No actual Render deploy was performed in preparation of this release.
+## Observed live smoke checklist
 
-## Local run
+- [x] App startup and literature provenance loaded without an app traceback.
+- [x] LITERATURE initially blocks missing species parameters without a synthetic fallback.
+- [x] Explicitly selected SYNTHETIC conversion shows UNVERIFIED assumptions, residuals and in-sample R-squared.
+- [x] Paired-DW helper refuses signal extrapolation beyond its measured domain.
+- [x] Guided SYNTHETIC example maps units and fits/reprofiles three cultures.
+- [x] Three whole-run held-out folds score; training/held-out rows stay separate.
+- [x] HTML/PDF/JSON reports download with methods, flags, origins and provenance.
+- [x] Revisiting model inputs withholds stale report exports.
+- [x] Actual desktop app screenshots captured.
+- [x] Invalid non-measurement CSV upload refused without falling back to simulation.
+- [x] Baseline DEMO zero-light/zero-loss export retained constant biomass and N.
+- [ ] Actual measured-CSV upload-to-report browser acceptance (requires human data/inputs).
+- [ ] Independent novice <5-minute completion and five observed issues/fixes.
+- [ ] Mobile layout, full baseline scenario/planner browser sweep and Docker build/run.
 
-```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
-```
+Automated tests separately cover missing/invalid data, unit conversions, quota/N
+balances, profile refusal, unknown-strain blank inputs and widget-state changes.
+They do not establish human usability or biological validation. No Streamlit
+deprecation appeared in retained console messages for tested paths; the retained
+browser-extension metadata errors are not an app scientific result.
 
-## Docker
+## Recreate hosting
 
-```bash
-docker build --tag alga-twin:0.3 .
-docker run --rm --publish 8501:8501 alga-twin:0.3
-```
+Use Streamlit Community Cloud -> Deploy from repo -> ysmhla/alga-twin -> main ->
+app.py. In app settings select Python 3.12 (covered in CI). Select a free public
+URL; account-holder actions handle sign-in, terms and any new access request.
+Confirm the page actually loads and run the scoped smoke checklist before
+claiming deployment. Do not publish confidential experiments on a public demo.
 
-Default local URL: `http://localhost:8501`.
+## Local / alternate hosting
 
-## Smoke checklist
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    streamlit run app.py
 
-- [ ] Startup loads with no import/asset errors.
-- [ ] LITERATURE is the initial screen; missing species parameters do not trigger simulation.
-- [ ] Direct extinction helper rejects invalid units/signals.
-- [ ] Explicitly selected DEMO identifies all parameter assumptions as UNVERIFIED.
-- [ ] `Fit supported parameters` returns estimates and diagnostics.
-- [ ] `Virtual Reactor` responds to irradiance and nitrogen sliders.
-- [ ] `LightScope` heatmap reflects optical attenuation.
-- [ ] `ScenarioLab` stores two conditions and exports comparisons.
-- [ ] `Run manifest` downloads JSON with model revision and input checksum.
-- [ ] Invalid/empty uploads show a validation error and do not crash process.
-- [ ] Guided workflow maps units, profiles and exports HTML/PDF reports.
-- [ ] Changed source/mapping/model choices withhold stale reports.
-- [ ] Paired OD/cell-count helper refuses extrapolation and shows residuals/R-squared.
-- [ ] Unknown-strain and missing species inputs remain unset.
-- [ ] Save actual app screenshots; a rendered report is not an app screenshot.
-- [ ] Mobile and desktop layouts remain readable.
-
-## Limitations for public hosting
-
-The app deliberately has no persistent user storage; session data may be reset when the service restarts. No authentication. Use only non-confidential experiments on public third-party hosting. Python dependency ranges are constrained, but there is no frozen lockfile in this alpha release. CI tests numerical kernel and synthetic demo, not full browser automation.
-
-## Current hosting prerequisite (2026-10-26)
-
-The observed https://share.streamlit.io/ screen requires account sign-in and
-states that signing in accepts its Terms of Service. The account holder must
-review/complete that step. [Captured screen](../assets/hosting-pending.jpg).
-No app was deployed and no public AlgaTwin app URL is available. After sign-in,
-use repository ysmhla/alga-twin, branch main, entry point app.py; complete the
-smoke checklist and real app screenshots before claiming deployment.
+render.yaml and Dockerfile remain configuration examples. **Render deployment
+and Docker build/run: NOT TESTED.** No claim of a frozen dependency lockfile,
+production hardening, persistence/authentication or independent biological
+validation is made for this alpha prototype.

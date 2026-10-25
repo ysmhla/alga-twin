@@ -5,7 +5,7 @@ feedback, five observed human issues or <5-minute success claim is available.
 AppTest is automated widget/state verification, not a novice usability study.
 The engineering items below must not be presented as human study observations.
 
-## Five engineering findings and fixes
+## Engineering findings and fixes (not a human study)
 
 | Finding from code review/automated checks | Fix/evidence |
 |---|---|
@@ -14,11 +14,14 @@ The engineering items below must not be presented as human study observations.
 | Initial wizard Continue button modified an already-created Streamlit widget key and crashed (reproduced by AppTest) | Pending-stage value applied before next widget creation; end-to-end AppTest now traverses six steps |
 | New input/mapping/model choices could leave an old report or proxy conversion available | Source/config signatures and conservative invalidation; back-navigation/source-removal and proxy-change AppTests |
 | CSV library silently mangles duplicate headings, obscuring the intended mapping | Check original CSV header before pandas; duplicate-column refusal test |
+| Agent browser review: interval-method column can be outside horizontal scrolling | v0.7.1 shows complete method/confidence above all result tables; existing guided AppTest checks readable context |
 
 These fixes do not establish that the interface is understandable to a new user.
 Research setup still requires complete parameter evidence and noise assumptions;
 there is no claim that an unknown strain with missing inputs can be fitted in
-five minutes.
+five minutes. An agent browser smoke test is now recorded in smoke/README.md.
+The built-in worked example does not exercise file upload; a novice upload
+acceptance test requires an actual upload with a documented data origin.
 
 ## Concrete human study protocol (pending)
 
@@ -44,12 +47,13 @@ SYNTHETIC worked example or measured data. Do not coach during the timed task.
 
 ## Screenshots and hosting
 
-The PDF report is generated and locally rendered for visual review; its page
-preview is **a report preview, not an app screenshot**. The current environment
-does not permit a browser connection to the local app or local-file browser
-previews. Actual app browser screenshots and public-host smoke checks remain
-pending a reachable deployed app. No pixel review of the Streamlit app is claimed.
-The observed Streamlit Cloud screen states that sign-in accepts its Terms of
-Service; the account holder must complete this prerequisite. The captured
-[hosting screen](../assets/hosting-pending.jpg) is not an app screenshot.
-See DEPLOYMENT.md for the prepared smoke checklist.
+**Public demo deployed:** https://alga-twin.streamlit.app/ . Actual desktop browser
+screenshots, downloaded SYNTHETIC reports and scoped checks are in
+[the smoke record](smoke/README.md). Python 3.12.15 was observed after selecting
+and rebuilding the runtime. Sharing was explicitly public/searchable.
+
+The three-run synthetic fit/profile/held-out report path worked in agent-operated
+browser checks. Proxy extrapolation and stale-report withholding also worked.
+These observations do not establish a new user's timing or comprehension. The
+human table above remains NOT TESTED; no participant quotes/issues/timings are
+invented. Mobile review and real measured-CSV browser acceptance remain pending.

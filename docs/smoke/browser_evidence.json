@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-26",
+  "url": "https://alga-twin.streamlit.app/",
+  "source_commit": "0b1090d45c2741996e66047058d7b73c1957b945",
+  "app_version": "0.7.0",
+  "runtime_observed": "Python 3.12.15; Streamlit 1.66.1; PyArrow 24.0.0 after provider replacement",
+  "origin": "SYNTHETIC",
+  "scope": "Agent-operated browser smoke test; NOT human novice usability or biological validation",
+  "runs": 3,
+  "measurements": 48,
+  "cv_folds_scored": 3,
+  "interval_method": "Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales",
+  "formats": {
+    "html": {
+      "bytes": 85546,
+      "sha256": "78f6977e56238c72683153bdb704994016b74ec86d4c7274645fd4588a23749c"
+    },
+    "pdf": {
+      "bytes": 59492,
+      "sha256": "09d8ec3abf3d5e711453dc354b3348ff1ed5fc4697bc6b1f0aeb9ad3de9a2fbb"
+    },
+    "json": {
+      "bytes": 41778,
+      "sha256": "d7cad4d39e0b663c028e36bca0d3600c13e0b5f5329091dab69bd984e90607a7"
+    }
+  },
+  "pdf_pages": 7,
+  "checks": [
+    "Default LITERATURE: missing C. minutissima extinction/biological values unset, no demo simulation",
+    "Paired-DW SYNTHETIC OLS, residual plot and extrapolation refusal",
+    "Guided default is upload; explicit SYNTHETIC example maps units, confirms inputs, fits and profiles",
+    "Three held-out folds and separate in-sample/held-out errors",
+    "HTML/PDF/JSON downloads parsed and method/origin/provenance flags retained"
+  ],
+  "public_sharing_observed": "This app is public and searchable",
+  "upstream_model_edit_withholds_old_pdf": true,
+  "retained_console_check": "No Streamlit deprecation in retained 40 warning/error entries; entries were browser-extension metadata errors.",
+  "not_tested": [
+    "Independent novice <5-minute upload-to-report study",
+    "Five observed human usability issues/fixes",
+    "Mobile layout",
+    "Measured cultivation data/independent biological validation"
+  ],
+  "baseline_dark_limit": {
+    "light_umol_m2_s": 0,
+    "biomass_g_DW_L": 0.1,
+    "nitrogen_mg_N_L": 70,
+    "status": "SYNTHETIC/DEMO; zero loss",
+    "trajectory_rows": 145
+  },
+  "invalid_software_fixture_upload": {
+    "filename": "synthetic-invalid.csv",
+    "outcome": "Refused: Each measurement must map to a different CSV column",
+    "measurement_data": false
+  }
+}

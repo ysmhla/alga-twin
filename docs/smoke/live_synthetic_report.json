@@ -1,0 +1,1532 @@
+{
+  "title": "SYNTHETIC live demo - software smoke test",
+  "software": "AlgaTwin 0.7.0",
+  "created_at_utc": "2026-10-25T22:14:00.566533+00:00",
+  "input_sha256": "795484908d7e182d0a94aa48c28adb22b13b5177286bcd106513dd6a3c336811",
+  "supported": true,
+  "messages": [
+    "The fitted curves describe these uploaded measurements. Independent biological validation is absent.",
+    "Intervals are conditional on your fixed parameters, initial conditions and specified measurement noise.",
+    "The selected parameters passed the numerical profile gate within your search bounds.",
+    "SYNTHETIC teaching data: numerical behavior only, not laboratory evidence."
+  ],
+  "parameters": [
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9016323521122666,
+      "interval": [
+        0.8995948572149278,
+        0.9036796376887344
+      ],
+      "unit": "1/day",
+      "status": "IDENTIFIABLE",
+      "reason": "Connected two-sided profile within supplied bounds, conditional on specified assumptions",
+      "method": "Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales"
+    }
+  ],
+  "confidence": 0.95,
+  "interval_method": "Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales",
+  "error_model": {
+    "kind": "additive",
+    "scales": {
+      "N": [
+        0.3,
+        "mg_N/liter"
+      ],
+      "X": [
+        0.003,
+        "g_DW/liter"
+      ]
+    }
+  },
+  "search_bounds_not_literature_ranges": {
+    "mu_max_day": {
+      "low": 0.3,
+      "high": 1.8,
+      "initial": 0.7,
+      "scale": "log"
+    }
+  },
+  "metrics_in_sample": [
+    {
+      "run_id": "synthetic-0",
+      "observable": "N",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "mg_N/liter",
+      "rmse": 0.2915354927960096,
+      "mae": 0.2337482712946734,
+      "nll": 1.4971899892437663
+    },
+    {
+      "run_id": "synthetic-0",
+      "observable": "X",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "g_DW/liter",
+      "rmse": 0.0037158614415159852,
+      "mae": 0.0028675714956517134,
+      "nll": -32.98491287796584
+    },
+    {
+      "run_id": "synthetic-1",
+      "observable": "N",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "mg_N/liter",
+      "rmse": 0.33263511734609996,
+      "mae": 0.2837204879121419,
+      "nll": 2.6373312217789464
+    },
+    {
+      "run_id": "synthetic-1",
+      "observable": "X",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "g_DW/liter",
+      "rmse": 0.002140935592208941,
+      "mae": 0.0019047462299765817,
+      "nll": -37.08447778576949
+    },
+    {
+      "run_id": "synthetic-2",
+      "observable": "N",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "mg_N/liter",
+      "rmse": 0.2770967024316396,
+      "mae": 0.2155045103823356,
+      "nll": 1.132285053184943
+    },
+    {
+      "run_id": "synthetic-2",
+      "observable": "X",
+      "split": "in-sample",
+      "origin": "SYNTHETIC",
+      "n": 8,
+      "unit": "g_DW/liter",
+      "rmse": 0.0022510333265229753,
+      "mae": 0.0019571802673554644,
+      "nll": -36.86956852926725
+    }
+  ],
+  "fit_points_in_sample": [
+    {
+      "time_day": 0.0,
+      "observable": "N",
+      "value": 8.632220355995797,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 9.000000000000002,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.0,
+      "observable": "X",
+      "value": 0.0607321406219227,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.06,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "N",
+      "value": 8.006164813429494,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 7.664135376237272,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "X",
+      "value": 0.0651626379003154,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.07068691630948054,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "N",
+      "value": 6.238808648977349,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 6.212965110535355,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "X",
+      "value": 0.0876484104903058,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.08229627916015708,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "N",
+      "value": 5.246673968630078,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 4.712350096010335,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "X",
+      "value": 0.0961011716870925,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.09430119985141022,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "N",
+      "value": 3.242866072130527,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 3.2725497053825277,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "X",
+      "value": 0.1055552957648728,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.10581960596985865,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "N",
+      "value": 2.3486448890161595,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 2.036461520641488,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "X",
+      "value": 0.1169969595842945,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.11570830981507359,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "N",
+      "value": 1.3234903460604106,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 1.1241720775814343,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "X",
+      "value": 0.1296380145147632,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.12300662322546975,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "N",
+      "value": 0.4990079063930703,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.5578323143866447,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "X",
+      "value": 0.1261896428987356,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-0",
+      "predicted": 0.12753734140353026,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.0,
+      "observable": "N",
+      "value": 35.54744092584285,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 34.99999999999999,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.0,
+      "observable": "X",
+      "value": 0.0609262289286298,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.06,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "N",
+      "value": 31.59946246802561,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 31.428677319136895,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "X",
+      "value": 0.090168452322994,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.08857058249351567,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "N",
+      "value": 25.919045764195264,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 26.298365870765025,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "X",
+      "value": 0.1275232313092218,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.12961307321026097,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "N",
+      "value": 19.127821484594868,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 19.17421546824525,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "X",
+      "value": 0.1836357469625869,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.18660628164911908,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "N",
+      "value": 9.996943049337368,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 10.119622707510295,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "X",
+      "value": 0.2583177901824581,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.2590430237928818,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "N",
+      "value": 1.7079647222246377,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 2.024499904085885,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "X",
+      "value": 0.3218274881202417,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.3238040045540906,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "N",
+      "value": 0.2481918723646938,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.07709802319308551,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "X",
+      "value": 0.3431579001017054,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.3393832263882571,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "N",
+      "value": -0.5136008320066885,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.0019142171329482862,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "X",
+      "value": 0.3411617621477029,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-1",
+      "predicted": 0.3399846914112906,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.0,
+      "observable": "N",
+      "value": 90.04849698079721,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 90.0,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.0,
+      "observable": "X",
+      "value": 0.0596699675828675,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.06,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "N",
+      "value": 84.38788972665785,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 84.90555673859477,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 0.7142857142857143,
+      "observable": "X",
+      "value": 0.1026345737086415,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.10075554641771434,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "N",
+      "value": 76.31301123840784,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 76.42562118723941,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 1.4285714285714286,
+      "observable": "X",
+      "value": 0.1641917915537342,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.1685950291164101,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "N",
+      "value": 62.318080662135095,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 62.47597296603835,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.142857142857143,
+      "observable": "X",
+      "value": 0.2811920744106718,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.2801922179607566,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "N",
+      "value": 39.99529498685956,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 40.17508009377287,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 2.857142857142857,
+      "observable": "X",
+      "value": 0.4561399588803937,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.4585993178129001,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "N",
+      "value": 8.849752266132935,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 8.922823001308904,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 3.571428571428572,
+      "observable": "X",
+      "value": 0.7066339713189526,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.7086174429916734,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "N",
+      "value": 0.1358482852153602,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.002102275059993706,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 4.285714285714286,
+      "observable": "X",
+      "value": 0.7819220534926652,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.7799832164391699,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "N",
+      "value": 0.5007680552043225,
+      "unit": "mg_N/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 6.985924291313083e-08,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    },
+    {
+      "time_day": 5.0,
+      "observable": "X",
+      "value": 0.7783364071240813,
+      "unit": "g_DW/liter",
+      "replicate": "technical-1",
+      "run_id": "synthetic-2",
+      "predicted": 0.7800000278835517,
+      "split": "in-sample",
+      "origin": "SYNTHETIC"
+    }
+  ],
+  "profiles": [
+    {
+      "parameter": "mu_max_day",
+      "value": 0.3,
+      "delta_deviance": 385943.18115112337,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.3588693596553946,
+      "delta_deviance": 335592.8373763957,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.42929072433157656,
+      "delta_deviance": 269390.95369729376,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.5135309578229115,
+      "delta_deviance": 185829.24127858132,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.6143017533237657,
+      "delta_deviance": 94667.60477932054,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.7348469228349533,
+      "delta_deviance": 27920.715964871037,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8790468154750563,
+      "delta_deviance": 487.0640001870472,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8856211386338034,
+      "delta_deviance": 242.7230209938668,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8934641951535175,
+      "delta_deviance": 62.3780322974477,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8974496493158475,
+      "delta_deviance": 16.233194430554185,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8993741585966775,
+      "delta_deviance": 4.712918082453122,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8995867979630162,
+      "delta_deviance": 3.865394197383793,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.8995948572149349,
+      "delta_deviance": 3.8349300636128945,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.899626671773442,
+      "delta_deviance": 3.7158522325896755,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9001620876120013,
+      "delta_deviance": 1.994470721159061,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9008946039497897,
+      "delta_deviance": 0.5013717147856767,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9013767097438468,
+      "delta_deviance": 0.060137474710380445,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.901632352112274,
+      "delta_deviance": 0.0,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9018979582482177,
+      "delta_deviance": 0.06484113137114633,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9023882839162112,
+      "delta_deviance": 0.5246327511777125,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9031362694083536,
+      "delta_deviance": 2.072952185738849,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9036525149593642,
+      "delta_deviance": 3.7358411256695945,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9036796376887414,
+      "delta_deviance": 3.8365838075511505,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9036877336077461,
+      "delta_deviance": 3.866913149109564,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9038775512520539,
+      "delta_deviance": 4.612051329024865,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9057394288384595,
+      "delta_deviance": 15.363389038376589,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.9098801727595659,
+      "delta_deviance": 61.29212764680355,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 0.917933033565107,
+      "delta_deviance": 233.68521360091327,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 1.0515432259221578,
+      "delta_deviance": 12276.341972958147,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 1.2578888137888424,
+      "delta_deviance": 51283.72461731788,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 1.5047258437402864,
+      "delta_deviance": 101156.89209066692,
+      "converged": true
+    },
+    {
+      "parameter": "mu_max_day",
+      "value": 1.8,
+      "delta_deviance": 141235.91334648198,
+      "converged": true
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "synthetic-0",
+      "origin": "SYNTHETIC",
+      "input_sha256": "ede784d57706af8ffa3fa28d56082d59c771ee4f547294d50ced09868fa261c1",
+      "kind": "monod",
+      "light": "monod",
+      "temperature_c": null,
+      "diurnal": false,
+      "conditions": {
+        "biomass_initial_g_L": 0.06,
+        "nitrogen_initial_mg_L": 9.0,
+        "incident_light_umol_m2_s": 60.0,
+        "optical_path_m": 0.05
+      },
+      "states": [
+        "X",
+        "N"
+      ],
+      "state_units": [
+        "g_DW/liter",
+        "mg_N/liter"
+      ],
+      "initial_state": [
+        0.06,
+        9.0
+      ],
+      "parameters_before_fitting": [
+        {
+          "parameter": "k_n_mg_L",
+          "value": 5.0,
+          "low": null,
+          "high": null,
+          "unit": "mg_N/liter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "elemental_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_a0",
+          "value": 12.0,
+          "low": null,
+          "high": null,
+          "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "background_extinction_m_inv",
+          "value": 0.3,
+          "low": null,
+          "high": null,
+          "unit": "1/meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "medium",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_exponent",
+          "value": 1.0,
+          "low": null,
+          "high": null,
+          "unit": "dimensionless",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dimensionless",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "loss_rate_day",
+          "value": 0.0,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "biomass_yield_g_per_gN",
+          "value": 8.0,
+          "low": null,
+          "high": null,
+          "unit": "g_DW/g_N",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight_per_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "mu_max_day",
+          "value": 0.9,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "k_i_umol_m2_s",
+          "value": 85.0,
+          "low": null,
+          "high": null,
+          "unit": "micromole/meter**2/second",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "photons",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        }
+      ]
+    },
+    {
+      "run_id": "synthetic-1",
+      "origin": "SYNTHETIC",
+      "input_sha256": "da13482a8025dda74e785828216a53cda713e4ee8e0193c1bd01f50b1b9aa581",
+      "kind": "monod",
+      "light": "monod",
+      "temperature_c": null,
+      "diurnal": false,
+      "conditions": {
+        "biomass_initial_g_L": 0.06,
+        "nitrogen_initial_mg_L": 35.0,
+        "incident_light_umol_m2_s": 200.0,
+        "optical_path_m": 0.05
+      },
+      "states": [
+        "X",
+        "N"
+      ],
+      "state_units": [
+        "g_DW/liter",
+        "mg_N/liter"
+      ],
+      "initial_state": [
+        0.06,
+        35.0
+      ],
+      "parameters_before_fitting": [
+        {
+          "parameter": "k_n_mg_L",
+          "value": 5.0,
+          "low": null,
+          "high": null,
+          "unit": "mg_N/liter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "elemental_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_a0",
+          "value": 12.0,
+          "low": null,
+          "high": null,
+          "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "background_extinction_m_inv",
+          "value": 0.3,
+          "low": null,
+          "high": null,
+          "unit": "1/meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "medium",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_exponent",
+          "value": 1.0,
+          "low": null,
+          "high": null,
+          "unit": "dimensionless",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dimensionless",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "loss_rate_day",
+          "value": 0.0,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "biomass_yield_g_per_gN",
+          "value": 8.0,
+          "low": null,
+          "high": null,
+          "unit": "g_DW/g_N",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight_per_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "mu_max_day",
+          "value": 0.9,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "k_i_umol_m2_s",
+          "value": 85.0,
+          "low": null,
+          "high": null,
+          "unit": "micromole/meter**2/second",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "photons",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        }
+      ]
+    },
+    {
+      "run_id": "synthetic-2",
+      "origin": "SYNTHETIC",
+      "input_sha256": "0db8cb08f3423b69caf75f58e837fe0fdb62f755a9b2720ce431ac71eb13a3d3",
+      "kind": "monod",
+      "light": "monod",
+      "temperature_c": null,
+      "diurnal": false,
+      "conditions": {
+        "biomass_initial_g_L": 0.06,
+        "nitrogen_initial_mg_L": 90.0,
+        "incident_light_umol_m2_s": 500.0,
+        "optical_path_m": 0.05
+      },
+      "states": [
+        "X",
+        "N"
+      ],
+      "state_units": [
+        "g_DW/liter",
+        "mg_N/liter"
+      ],
+      "initial_state": [
+        0.06,
+        90.0
+      ],
+      "parameters_before_fitting": [
+        {
+          "parameter": "k_n_mg_L",
+          "value": 5.0,
+          "low": null,
+          "high": null,
+          "unit": "mg_N/liter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "elemental_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_a0",
+          "value": 12.0,
+          "low": null,
+          "high": null,
+          "unit": "liter ** 1.0 / g_DW ** 1.0 / meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "background_extinction_m_inv",
+          "value": 0.3,
+          "low": null,
+          "high": null,
+          "unit": "1/meter",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "medium",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "extinction_exponent",
+          "value": 1.0,
+          "low": null,
+          "high": null,
+          "unit": "dimensionless",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dimensionless",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "loss_rate_day",
+          "value": 0.0,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "biomass_yield_g_per_gN",
+          "value": 8.0,
+          "low": null,
+          "high": null,
+          "unit": "g_DW/g_N",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "dry_weight_per_nitrogen",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "mu_max_day",
+          "value": 0.9,
+          "low": null,
+          "high": null,
+          "unit": "1/day",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "specific_growth",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        },
+        {
+          "parameter": "k_i_umol_m2_s",
+          "value": 85.0,
+          "low": null,
+          "high": null,
+          "unit": "micromole/meter**2/second",
+          "source": null,
+          "status": "UNVERIFIED",
+          "species": "SYNTHETIC",
+          "conditions": "SYNTHETIC teaching assumptions",
+          "basis": "photons",
+          "tier": "DEMO",
+          "evidence": "synthetic_assumption",
+          "locator": ""
+        }
+      ]
+    }
+  ],
+  "proxy_calibration": null,
+  "cross_validation": {
+    "method": "Leave-one-whole-run-out; refit and reprofile training runs only",
+    "folds": [
+      {
+        "held_out": "synthetic-0",
+        "status": "SCORED",
+        "reason": "Training profiles supported all fitted parameters"
+      },
+      {
+        "held_out": "synthetic-1",
+        "status": "SCORED",
+        "reason": "Training profiles supported all fitted parameters"
+      },
+      {
+        "held_out": "synthetic-2",
+        "status": "SCORED",
+        "reason": "Training profiles supported all fitted parameters"
+      }
+    ],
+    "metrics": [
+      {
+        "run_id": "synthetic-0",
+        "observable": "N",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.29158273593194417,
+        "mae": 0.23377570515471244,
+        "nll": 1.4984143596324653,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-0",
+        "observable": "X",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.0037155925689414814,
+        "mae": 0.0028674115041134977,
+        "nll": -32.985800928709,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.33249568142489583,
+        "mae": 0.28346976453377215,
+        "nll": 2.6332093050834837,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.0021425562218644655,
+        "mae": 0.0019067499059102141,
+        "nll": -37.081392472941445,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.2766707157217639,
+        "mae": 0.21459926368915294,
+        "nll": 1.1218007171629183,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.0022567001056959337,
+        "mae": 0.0019619040669027242,
+        "nll": -36.85821549374238,
+        "held_out_fold": "synthetic-0"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "N",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.3331053014050692,
+        "mae": 0.28456025784892847,
+        "nll": 2.651243245437093,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "X",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.002135534016146115,
+        "mae": 0.0018980351495260193,
+        "nll": -37.09474430837833,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-0",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.29137737319967105,
+        "mae": 0.23365638964558885,
+        "nll": 1.4930935471516875,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-0",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.00371676269130334,
+        "mae": 0.002868107345457312,
+        "nll": -32.98193569977954,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.2785746706235603,
+        "mae": 0.21853646011796,
+        "nll": 1.1687857027198967,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.0022323959165434924,
+        "mae": 0.0019413578521618778,
+        "nll": -36.906706088785924,
+        "held_out_fold": "synthetic-1"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "N",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.2677847497404808,
+        "mae": 0.19418050271056012,
+        "nll": 0.9067779285219776,
+        "held_out_fold": "synthetic-2"
+      },
+      {
+        "run_id": "synthetic-2",
+        "observable": "X",
+        "split": "held-out",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.002431096435554803,
+        "mae": 0.0020928535054492046,
+        "nll": -36.49486682177828,
+        "held_out_fold": "synthetic-2"
+      },
+      {
+        "run_id": "synthetic-0",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.29289900942665487,
+        "mae": 0.23453666656391095,
+        "nll": 1.5326071520572553,
+        "held_out_fold": "synthetic-2"
+      },
+      {
+        "run_id": "synthetic-0",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.0037081751416667558,
+        "mae": 0.0028629739371153606,
+        "nll": -33.01027437630806,
+        "held_out_fold": "synthetic-2"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "N",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "mg_N/liter",
+        "rmse": 0.32880442630030826,
+        "mae": 0.27651769608952004,
+        "nll": 2.524719197904331,
+        "held_out_fold": "synthetic-2"
+      },
+      {
+        "run_id": "synthetic-1",
+        "observable": "X",
+        "split": "in-sample",
+        "origin": "SYNTHETIC",
+        "n": 8,
+        "unit": "g_DW/liter",
+        "rmse": 0.002188909336892065,
+        "mae": 0.001962308361174942,
+        "nll": -36.992158285704505,
+        "held_out_fold": "synthetic-2"
+      }
+    ],
+    "all_folds_scored": true,
+    "scope": "Whole-run held-out errors; no independent biological validation claim"
+  }
+}
