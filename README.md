@@ -1,3 +1,9 @@
+> **Draft recovery checkpoint, not a release.** This branch preserves paired-DW
+> calibration/unit-mapping APIs after workspace loss. The app wizard/reports are
+> not integrated here. Current-source verification is pending; v0.6 pass counts
+> below are historical. See [checkpoint/status](docs/STEP5_CHECKPOINT.md) and
+> [verification](docs/VERIFICATION.md).
+
 # 🧫 AlgaTwin
 
 **A transparent, interactive microalgal batch photobioreactor simulator and parameter-calibration prototype.**

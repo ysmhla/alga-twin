@@ -1,3 +1,13 @@
+# Draft Step 5 checkpoint verification
+
+Current recovery-draft source: PENDING cloud verification. Core observation and
+mapping modules/tests were reconstructed after workspace loss; prior local pass
+counts do not certify this exact source. See STEP5_CHECKPOINT.md for preserved
+scope, unavailable UI/report files and remaining acceptance. Main/released
+version remains v0.6. No biological validation or observed usability is claimed.
+
+The following v0.6 record is historical and applies only to its stated commit.
+
 # Verification record — v0.6.0, 2026-10-25
 
 ## Current implementation

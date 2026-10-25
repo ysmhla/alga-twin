@@ -322,3 +322,44 @@ source/origin and permission evidence; neither a DOI nor metadata syntax
 establishes rights, source verification or biological validity. All currently
 shipped data are SYNTHETIC. Independent biological evaluation is pending human
 candidate datasets with recorded permission to reuse/redistribute.
+
+## Draft Step 5 observation-model checkpoint
+
+This section applies to the recovery draft; the Streamlit app has not yet been
+wired to these APIs. It changes no growth ODE, N ledger or biological default.
+
+Paired measurements fit X_DW(S) = c0 + c1*S, or c0 + c1*S + c2*S^2, using
+equal-weight ordinary least squares with an estimated intercept. X_DW is g DW/L.
+S is dimensionless OD for specified wavelength/path/blank/dilution, or cells/L
+for a specified counting method. Cells/mL is multiplied by 1000. DW input in
+g_DW/meter^3 is multiplied by 0.001; carbon mass is rejected; f_C is not assumed.
+Coefficient c_k has units (g DW/L)/(unit of S)^k; c0 is g DW/L. Calculations use
+a centered/scaled S coordinate; coefficients are reported in physical ascending
+powers. Replicated pairs receive equal weight per row; no random-effects or
+errors-in-variables model is implied.
+
+More observations than fitted coefficients, sufficient distinct signal levels,
+and varying DW are required. Derivatives at both domain endpoints must be
+nonnegative with a positive derivative somewhere. For degree <=2 this establishes
+monotonicity across the measured domain. Endpoint fitted DW must be nonnegative
+within 1e-12 g DW/L numerical roundoff. There is no extrapolation beyond the
+closed measured interval. c2=0 is the linear limiting case. Explicit changes of
+cell-count/DW concentration units preserve concentration and total mass X_DW*V;
+tests include this mass-conversion check. Existing growth-model N balances still
+apply; no new carbon balance is claimed.
+
+Residuals are observed minus fitted DW in g DW/L. Descriptive in-sample R-squared
+is 1 - sum(residual^2)/sum((observed-mean(observed))^2). No coefficient interval is
+estimated, no strain/instrument transfer is established, and conversion
+uncertainty is not propagated into growth-profile intervals. Status remains
+UNVERIFIED, with explicit species/conditions/SYNTHETIC or MEASURED origin and OLS
+method. These coefficients do not become literature presets.
+
+The wide-table adapter maps hours/24 to days, g_DW/meter^3/1000 to g_DW/L,
+g_N/L*1000 to mg_N/L and leaves g_N/g_DW quota unchanged. It does not shift time
+zero, derive initial states, convert nitrate-ion mass or infer f_C. OD/cell count
+requires an explicit paired calibration. Technical measurement ids are preserved;
+independent cultures require separate run ids. Missing measurement cells are
+omitted; missing metadata, malformed/infinite values, duplicate headings or
+measurement identities refuse. Raw negative assays remain available for additive
+errors; this does not alter physical-state constraints or the log-normal gate.
