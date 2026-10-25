@@ -1,4 +1,4 @@
-# AlgaTwin v0.4 — model, units and parameter evidence
+# AlgaTwin v0.5 — model, units and parameter evidence
 
 ## Retained baseline equations
 
@@ -110,12 +110,13 @@ temperature. The selectable synthetic workspace adds the reduced models below.
 No model includes dynamic pH, CO2, mixing, feeding, photoadaptation or oxygen.
 The LOT records remain catalogue entries only.
 
-Existing growth fitting estimates mu_max and, with >=3 nutrient observations,
-yield. It uses multistart bounded least squares and assumed noise floors, not a
-replicate error model. No profiles, formal intervals or independent-run
-cross-validation exist. All RMSE is in-sample. Sensitivity and convergence do not
-establish identifiability. Changes to entered calibration conditions invalidate
-fits; saved scenarios preserve their parameters.
+The baseline adapter estimates mu_max and, with >=3 nutrient observations,
+yield, now subject to reoptimized profile gates. The joint API supports shared
+selected parameters and whole-run held-out evaluation; noise SDs and search
+bounds remain explicit assumptions. See the v0.5 section below. Independent
+biological validation, empirical interval coverage and model-support selection
+remain unestablished. Changing calibration inputs invalidates displayed fits;
+saved baseline scenarios retain their parameter snapshots.
 
 ## Executable checks
 
@@ -233,3 +234,62 @@ conservation, monotonic N within 1e-8 mg/L, quota limits, darkness, saturation,
 transparent/thick optics, Han equivalence/normalization, cardinal limits and the
 amended Eq. 9 analytic acceptance have synthetic tests. No independent
 out-of-sample biological validation is established.
+
+## Calibration and numerical coordinates (v0.5.0)
+
+`calibration.py` shares selected parameters across runs, preserving separate
+controlled light/N/temperature conditions, supplied initial states and technical
+replicate observations. Model biology is unchanged. Active model parameters
+remain source/status records; search bounds and assumed observation SDs are
+stored as separate algorithm inputs. Complete equations, refusal thresholds,
+input schema and limitations are in [CALIBRATION.md](CALIBRATION.md).
+
+For observation y and prediction f, additive residuals are `(f-y)/sigma`; sigma
+has the corresponding state unit. For log-normal errors the residual is
+`(log(f)-log(y))/sigma_log`, with dimensionless sigma_log and f interpreted as
+conditional median. NLL adds log(sigma)+0.5*log(2*pi) per observation; log-normal
+NLL additionally adds log(y). No SD is implicitly estimated from pooled runs.
+Technical repeats contribute individually under a stated independent-error
+assumption. Biological replicates are separate run ids.
+
+To retain near-depleted nitrogen in log-normal likelihoods, optional numerical
+coordinates use u=log(N/N_ref), with N_ref=1 mg N/L (a unit reference,
+not a noise floor or biological parameter):
+
+    Monod: du/dt = -1000*G*X / [Y_XN*(K_N+N)]
+    Droop: du/dt = -1000*rho_max*(1-q/Q_max)*X / (K_N+N)
+    N = N_ref*exp(u)
+
+This is an equivalent numerical transformation for N(0)>0, not a change of
+physical states, equations, mass basis, noise floor or measured values. At
+N>1e-100 the implementation uses the equivalent `(dN/dt)/N`; below it, the
+analytic expression avoids underflow/division by zero. `log_N` preserves the
+prediction in log units even if exp(u) underflows in a display column. Log-normal
+likelihoods consume that log prediction; no concentration pseudocount is used.
+At N(0)=0 the ordinary physical-coordinate solver remains available. Zero or
+negative log-normal observations are rejected. Biomass underflow resulting in
+non-finite log predictions is rejected rather than replaced by a floor.
+
+`simulate_model` now exposes positive rtol/atol/max_step_day algorithm settings;
+its defaults remain 1e-10/1e-12/0.05 day. Calibration uses 1e-8/1e-10/0.5 day and
+log N when initial N>0; dawn/dusk splitting and diurnal period/96 cap remain.
+Tests compare log/physical-coordinate trajectories and verify N conservation
+with and without loss for Monod/Droop. No carbon/oxygen balance is added.
+
+Bounded multistart least squares estimates the selected parameters. At each
+profile point all nuisance parameters are reoptimized. Only supported two-sided,
+connected, interior profiles yield a point estimate and a named marginal
+asymptotic profile interval (`chi2.ppf(confidence,1)`). Flat/open/boundary,
+disconnected or failed profiles withhold estimates/intervals. A detected better
+profile optimum invalidates the common result. The original single-run fitter
+uses this gate too; it conditions on the first observed X/N and excludes time-zero
+observations from the likelihood. Sensitivity or optimizer convergence alone
+never establishes identifiability.
+
+Leave-one-whole-run-out refits/reprofiles training runs only, using pre-specified
+noise/search/model choices. Only supported training fits score the held-out run.
+RMSE, MAE and NLL retain split/run/state/unit/origin/fold labels. Starting states
+are treated as supplied conditions; their uncertainty is not propagated.
+Synthetic held-out tests check leakage/refusal behavior, not biological validity.
+MCMC, censored errors, random culture effects and empirically calibrated coverage
+remain unimplemented. No independent cultivation dataset has validated AlgaTwin.

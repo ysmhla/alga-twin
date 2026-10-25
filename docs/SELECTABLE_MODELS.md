@@ -6,7 +6,7 @@
 `params` evidence records and `rhs(t, state)`. `MonodModel` has X,N;
 `DroopModel` has X,N,q. `simulate_model` integrates either interface and a
 separate removed-N accounting ledger. Model choice does not establish that data
-can identify its parameters. Fitting through this interface is work package 3.
+can identify its parameters. Fitting through this interface is implemented in calibration.py; see CALIBRATION.md.
 
 The Streamlit DEMO tier offers Workspace → Selectable models (SYNTHETIC).
 Choose nutrient/light laws, optional CTMI, diurnal illumination and loss.
@@ -31,7 +31,7 @@ print(result[["time_day", "X", "N", "q", "removed_n_mg_L", "total_n_mg_L"]])
 `MonodModel.from_baseline(parameters, conditions)` adapts the existing explicit
 Monod configuration. Its trajectories are regression-compared to `simulate`.
 The original simulator, CLI fitting, TrustLens and planner retain their baseline
-scope. They do not silently fit Droop or compare model support.
+scope. They retain their Monod scope; the joint interface fits selected Droop parameters. Model-support selection remains pending.
 
 ## Source audit for this implementation
 

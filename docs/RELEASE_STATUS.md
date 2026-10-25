@@ -1,20 +1,26 @@
-# Release status — v0.4.0 (2026-10-25)
+# Release status — v0.5.0 (2026-10-25)
 
-Steps 1 and 2 engineering are implemented: parameter evidence/units, optical helper,
-common model interface, Monod/Droop, Haldane/steady-state Han, CTMI, diurnal forcing,
-N-loss ledger and a separate synthetic model workspace with provenance export.
-Local verification passed: 100 tests (Python 3.12), Ruff lint/format and compileall.
-Cloud Python 3.11 and 3.12 passed 100 tests and Ruff each: https://github.com/ysmhla/alga-twin/actions/runs/40197007799.
-Source commit: 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee. See VERIFICATION.md.
+Steps 1–3 engineering are implemented. Local v0.5 verification passed: 119 tests,
+Ruff lint/format and compileall. Current cloud CI is pending.
+Source evidence/units, optical helper and selectable models remain in place.
+Calibration now shares selected parameters across runs, preserves technical
+replicates, supports additive/log-normal errors with explicit SDs, computes
+nuisance-reoptimized profiles and withholds unsupported estimates/intervals.
+The baseline UI/CLI uses the same gate. Whole-run holdouts refit/reprofile
+training data, with separate in-sample/held-out metrics and failed-fold reasons.
+Explicit JSON jobs/long CSV, joint Streamlit workspace and fit-joint CLI run.
+See MODEL.md, CALIBRATION.md and VERIFICATION.md for assumptions and checks.
 
-Missing C. minutissima values and f_C remain unset. All new numerical fixtures are
-SYNTHETIC / UNVERIFIED. No species parameter ranges are invented. Eq. 9's printed
-high-light branch discrepancy and the amended analytic check are documented in
-SELECTABLE_MODELS.md. No independent biological validation is claimed.
+Missing C. minutissima values/f_C remain unset; no species range is invented.
+All provided example data/biological parameters are SYNTHETIC / UNVERIFIED.
+Optional log-N integration preserves near-depletion likelihoods without adding
+pseudocounts. Named marginal asymptotic intervals do not establish empirical
+coverage or independent biological validation.
 
-- NOT DEPLOYED: hosted app. Streamlit sign-in/terms remain pending.
-- NOT TESTED: visual browser layout and Docker build/run.
+- NOT DEPLOYED: hosted app; sign-in/terms remain pending.
+- NOT TESTED: visual browser layout, timed novice studies and Docker build/run.
 - NOT VALIDATED: independent cultivation/optical data.
-- NOT BUILT: joint calibration, profile likelihood/identifiability, licensed
-  benchmark/PEtab pipeline, experiment recommendation, model-support selection,
-  OD calibration, tutorial/report/user-testing workflows and publication package.
+- NOT BUILT: licensed benchmark/PEtab pipeline, supported model comparison,
+  information-based experiment recommender, OD calibration/full wizard,
+  HTML/PDF reports, tutorials/observed usability and publication package.
+- Optional MCMC, detection-limit/correlated-error models: NOT BUILT.

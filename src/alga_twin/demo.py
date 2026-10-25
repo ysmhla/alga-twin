@@ -64,6 +64,7 @@ def synthetic_experiment(seed: int = 42) -> pd.DataFrame:
     # First observations are the exact initial conditions for a stable teaching example.
     observed.loc[0, "biomass_g_L"] = DEMO_CONDITIONS.biomass_initial_g_L
     observed.loc[0, "nitrate_n_mg_L"] = DEMO_CONDITIONS.nitrogen_initial_mg_L
+    observed.attrs["origin"] = "SYNTHETIC"
     return observed
 
 

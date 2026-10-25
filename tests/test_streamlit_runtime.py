@@ -104,4 +104,38 @@ def test_selectable_model_sandbox_with_droop_han_ctmi_and_diurnal():
     assert not app.exception
     provenance = next(frame.value for frame in app.dataframe if "basis" in frame.value.columns)
     assert "han_sigma" in set(provenance.parameter)
-    assert any("pending" in m.value for m in app.caption)
+    assert any("selection" in m.value for m in app.caption)
+
+
+def test_weak_data_ui_hides_fitted_point_estimates():
+    app = AppTest.from_file(str(APP), default_timeout=120).run()
+    app.radio[0].set_value("DEMO — synthetic assumptions").run()
+    next(w for w in app.number_input if w.label.startswith("Fixed biomass SD")).set_value(10.0).run()
+    next(w for w in app.number_input if w.label.startswith("Fixed N SD")).set_value(1000.0).run()
+    next(w for w in app.button if "Fit supported parameters" in w.label).click().run()
+    assert not app.exception
+    fit = app.session_state["calibration"][1]
+    assert not fit.success and fit.parameters is None
+    assert not any(w.label in {"Fitted µmax", "Fitted yield"} for w in app.metric)
+    assert any("withheld" in w.value for w in app.warning)
+
+
+def test_joint_workspace_profiles_and_whole_run_cv():
+    app = AppTest.from_file(str(APP), default_timeout=120).run()
+    app.radio[0].set_value("DEMO — synthetic assumptions").run()
+    next(w for w in app.selectbox if w.label == "Workspace").set_value("Joint calibration").run()
+    assert not app.exception
+    next(w for w in app.button if w.label == "Fit shared parameters").click().run()
+    assert not app.exception
+    result = app.session_state["joint_fit"][1]
+    assert result.supported
+    assert set(result.metrics.origin) == {"SYNTHETIC"}
+    next(w for w in app.button if w.label == "Run leave-one-run-out").click().run()
+    assert not app.exception
+    cv = app.session_state["joint_cv"][1]
+    assert set(cv.folds.status) == {"SCORED"}
+    assert set(cv.metrics.split) == {"in-sample", "held-out"}
+    next(w for w in app.radio if w.label == "Joint input").set_value("Upload configuration and CSV").run()
+    assert not app.exception
+    assert any("Both files are required" in w.value for w in app.info)
+    assert not any("passed the conditional" in w.value for w in app.success)

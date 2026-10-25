@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 — 2026-10-25
+
+- Fit selected shared parameters across runs with additive/log-normal errors and explicit SDs/bounds.
+- Preserve technical replicates; reject duplicate identities, unit errors and mixed data origins.
+- Reoptimize nuisance parameters for each profile; withhold unsupported points/intervals.
+- Apply the profile gate to the existing single-run UI/CLI too.
+- Add whole-run refitting/profiling cross-validation with separate training/held-out metrics.
+- Add an equivalent log-nitrogen numerical coordinate for near-depletion likelihoods, without pseudocounts.
+- Add explicit JSON jobs/long CSV, joint Streamlit workspace and fit-joint CLI exports.
+- Keep independent biological evaluation, empirical coverage, optional MCMC and supported model comparison pending.
+
+
 ## 0.4.0 — 2026-10-25
 
 - Add ModelBase interface, retained Monod adapter and reduced N-quota Droop model.

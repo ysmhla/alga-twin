@@ -4,7 +4,7 @@
 
 - **Data ingestion:** `alga_twin.data` accepts one cultivation run, with user-mapped source columns. Units must already be correct; no uncalibrated optical density conversion is performed.
 - **Scientific core:** `alga_twin.model` solves a single-species, batch two-state Monod/light model. The reactor is well mixed and the light gradient is an **effective one-dimensional** approximation, not hydrodynamics.
-- **Calibration:** `alga_twin.fitting` estimates only growth-rate and optionally biomass-yield parameters; it deliberately fixes the remaining assumptions to avoid claiming full identifiability.
+- **Calibration:** `alga_twin.calibration` implements shared multi-run likelihoods, nuisance-reoptimized profiles, refusal gates and whole-run holdouts. `fitting` adapts baseline mu/yield estimation to the same gate. Noise SDs, initial states and fixed parameters condition the intervals.
 - **Trust diagnostics:** `alga_twin.trust` computes local finite-difference elasticities and heuristic scenario departure warnings. These are **not** confidence intervals.
 - **Scenario design:** `alga_twin.planner` performs a bounded discrete sample of surface light / initial nitrogen settings and marks non-dominated samples. This is neither guaranteed global optimisation nor validated experimental advice.
 - **Interfaces:** Streamlit UI in `app.py`; scriptable `alga_twin` CLI in `alga_twin.cli`. Scientific logic is independent of UI.
@@ -49,7 +49,9 @@ The solver tracks nitrogen consumption from **gross** biomass growth; a biomass-
 with selectable Haldane or steady-state Han light, CTMI and diurnal forcing.
 `optimum.py` keeps the printed Eq. 9 diagnostic separate from the general
 boundary/compensation-root optimum. `model_ui.py` exposes these through an explicit
-synthetic workspace. They are not connected to legacy calibration/planning;
-parameter-support comparisons and joint fitting remain pending. These models have
+synthetic workspace. `calibration_io.py` loads explicit evidence-bearing jobs;
+`calibration_ui.py` exposes joint profiles and labelled fold results. The baseline
+calibration uses the same refusal gate. Joint models are not connected to the
+legacy planner; supported model comparison remains pending. These models have
 state/unit specifications and synthetic conservation/limiting tests, but no
 independent biological evaluation. See SELECTABLE_MODELS.md and MODEL.md.

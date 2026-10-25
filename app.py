@@ -13,6 +13,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from alga_twin import __version__
+from alga_twin.calibration import ErrorModel, FitParameter
 from alga_twin.data import read_experiment_csv
 from alga_twin.demo import demo_parameters, synthetic_experiment
 from alga_twin.fitting import fit_experiment
@@ -60,7 +61,14 @@ st.markdown(
 
 render_parameter_gate()
 
-workspace = st.selectbox("Workspace", ["Baseline workflow", "Selectable models (SYNTHETIC)"])
+workspace = st.selectbox(
+    "Workspace", ["Baseline workflow", "Selectable models (SYNTHETIC)", "Joint calibration"]
+)
+if workspace == "Joint calibration":
+    from alga_twin.calibration_ui import render_joint_calibration
+
+    render_joint_calibration()
+    st.stop()
 if workspace == "Selectable models (SYNTHETIC)":
     from alga_twin.model_ui import render_model_sandbox
 
@@ -147,6 +155,19 @@ with st.sidebar:
         extinction = st.number_input("Extinction a0 (exponent-dependent units)", 0.0, 10000.0, 12.0, 1.0)
         background = st.number_input("Background attenuation (m⁻¹)", 0.0, 10000.0, 0.3, 0.1)
         fixed_yield = st.number_input("Initial/fixed biomass yield (g/g N)", 1.0, 25.0, 8.0, 0.5)
+    with st.expander("Calibration likelihood assumptions"):
+        st.caption("DEMO settings: noise SDs and search bounds are user assumptions, not literature ranges.")
+        noise_kind = st.selectbox("Observation error model", ["additive", "log-normal"])
+        sigma_x = st.number_input(
+            "Fixed biomass SD (g DW/L; dimensionless for log-normal)", 0.00001, 10.0, 0.005, 0.001
+        )
+        sigma_n = st.number_input(
+            "Fixed N SD (mg N/L; dimensionless for log-normal)", 0.00001, 1000.0, 1.0, 0.1
+        )
+        mu_low = st.number_input("µ search lower bound (day⁻¹)", 0.00001, 10.0, 0.01, 0.01)
+        mu_high = st.number_input("µ search upper bound (day⁻¹)", 0.00001, 10.0, 3.0, 0.1)
+        yield_low = st.number_input("Yield search lower bound (g DW/g N)", 0.00001, 1000.0, 1.0, 0.5)
+        yield_high = st.number_input("Yield search upper bound (g DW/g N)", 0.00001, 1000.0, 25.0, 0.5)
     st.markdown("---")
     st.caption(
         "All calculations are local to this app session. Uploaded data are not intentionally stored on disk by the application."
@@ -167,7 +188,21 @@ fixed_parameters = demo_parameters(
     extinction_exponent=float(exponent),
 )
 fit_signature = hashlib.sha256(
-    raw_data + json.dumps([asdict(base_conditions), asdict(fixed_parameters)], sort_keys=True).encode()
+    raw_data
+    + json.dumps(
+        [
+            asdict(base_conditions),
+            asdict(fixed_parameters),
+            noise_kind,
+            sigma_x,
+            sigma_n,
+            mu_low,
+            mu_high,
+            yield_low,
+            yield_high,
+        ],
+        sort_keys=True,
+    ).encode()
 ).hexdigest()
 existing_bundle = st.session_state.get("calibration")
 active_fit = existing_bundle[1] if existing_bundle and existing_bundle[0] == fit_signature else None
@@ -277,7 +312,24 @@ with calib_tab:
     if do_fit:
         with st.spinner("Solving calibration trajectories..."):
             try:
-                fit_result = fit_experiment(data, base_conditions, fixed_parameters)
+                search = {
+                    "mu_max_day": FitParameter(
+                        mu_low, mu_high, float(np.clip(fixed_parameters.mu_max_day, mu_low, mu_high))
+                    )
+                }
+                scales = {"X": (sigma_x, "g_DW/liter" if noise_kind == "additive" else "dimensionless")}
+                if np.isfinite(data.nitrate_n_mg_L).sum() >= 3:
+                    search["biomass_yield_g_per_gN"] = FitParameter(
+                        yield_low, yield_high, float(np.clip(fixed_yield, yield_low, yield_high))
+                    )
+                    scales["N"] = (sigma_n, "mg_N/liter" if noise_kind == "additive" else "dimensionless")
+                fit_result = fit_experiment(
+                    data,
+                    base_conditions,
+                    fixed_parameters,
+                    search=search,
+                    errors=ErrorModel(noise_kind, scales),
+                )
                 st.session_state.calibration = (fit_signature, fit_result)
                 active_fit = fit_result
                 active_p = fit_result.parameters if fit_result.success else fixed_parameters
@@ -286,17 +338,30 @@ with calib_tab:
     if active_fit is not None:
         if active_fit.success:
             st.success(
-                "Constrained calibration converged. These are **in-sample fit statistics**, not prediction validation."
+                "Constrained calibration converged and selected profiles passed the conditional gate. "
+                "These are **in-sample fit statistics**, not prediction validation."
             )
         else:
-            st.warning(f"Optimizer did not report convergence: {active_fit.message}")
-        p1, p2, p3 = st.columns(3)
-        p1.metric("Fitted µmax", f"{active_fit.parameters.mu_max_day:.3f} day⁻¹")
-        p2.metric(
-            "Fitted yield" if "biomass_yield_g_per_gN" in active_fit.fitted_names else "Fixed yield",
-            f"{active_fit.parameters.biomass_yield_g_per_gN:.2f} g/g N",
+            st.warning(active_fit.message)
+        if active_fit.success:
+            p1, p2 = st.columns(2)
+            p1.metric("Fitted µmax", f"{active_fit.parameters.mu_max_day:.3f} day⁻¹")
+            p2.metric(
+                "Fitted yield" if "biomass_yield_g_per_gN" in active_fit.fitted_names else "Fixed yield",
+                f"{active_fit.parameters.biomass_yield_g_per_gN:.2f} g/g N",
+            )
+        st.metric("In-sample biomass RMSE", f"{active_fit.rmse_biomass_g_L:.4f} g/L")
+        st.dataframe(active_fit.inference.table(), width="stretch", hide_index=True)
+        st.caption(
+            "Intervals: reoptimized profile likelihood; marginal asymptotic chi-square(df=1), "
+            "95%, conditional on fixed assumptions and noise SDs. NOT IDENTIFIABLE values are withheld."
         )
-        p3.metric("In-sample biomass RMSE", f"{active_fit.rmse_biomass_g_L:.4f} g/L")
+        st.download_button(
+            "Download calibration evidence",
+            json.dumps(active_fit.inference.report(), indent=2, allow_nan=False),
+            "calibration_evidence.json",
+            "application/json",
+        )
         p4, p5 = st.columns(2)
         with p4:
             st.plotly_chart(biomass_figure(active_fit.prediction, data), width="stretch")
@@ -612,7 +677,10 @@ with methods_tab:
     st.markdown("""
 **Current assumptions:** single-strain batch culture, time-constant surface irradiance, well-mixed biomass and external nitrogen, one-dimensional optical attenuation, no explicit CO₂ / temperature / pH / photoinhibition / feed control. Nitrogen is expressed as **mg elemental nitrogen per litre**. Yield is g biomass per g consumed nitrogen.
 
-**Calibration:** only `mu_max_day` and, with at least three nitrogen observations, `biomass_yield_g_per_gN` are estimated. Other parameters remain fixed. No statistical uncertainty interval or independent validation is claimed.
+**Calibration:** only `mu_max_day` and, with at least three nitrogen observations, `biomass_yield_g_per_gN` are estimated. Other parameters remain fixed. Selected parameters receive reoptimized profiles;
+only supported two-sided marginal asymptotic intervals/point estimates are shown.
+These intervals condition on fixed parameters, initial states and specified noise SDs.
+No independent validation is claimed.
 
 **Scientific use:** educational and research prototyping; do not operate production reactors based solely on model outputs.
 """)
@@ -643,7 +711,7 @@ with methods_tab:
     with st.expander("Run manifest preview"):
         st.code(report, language="json")
     st.markdown(
-        "**Next planned scientific milestones:** independent-run validation, formal identifiability/profile likelihood, uncertainty intervals, and advanced optimiser. Selectable models are available in the synthetic workspace."
+        "**Next planned scientific milestones:** independent biological evaluation, interval coverage assessment, supported model selection and an information-based experiment recommender. Selectable models are available in the synthetic workspace."
     )
     st.caption(
         "Project documentation and full model specification are in the GitHub repository and docs/ directory."

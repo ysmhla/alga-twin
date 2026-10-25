@@ -37,3 +37,21 @@ def test_fit_rejects_identifiability_failure_no_light():
     observations = synthetic_experiment()
     with pytest.raises(ValueError, match="cannot be identified"):
         fit_experiment(observations, replace(DEMO_CONDITIONS, incident_light_umol_m2_s=0), DEMO_PARAMETERS)
+
+
+def test_legacy_adapter_withholds_points_on_flat_data():
+    import pandas as pd
+
+    from alga_twin.calibration import ErrorModel
+
+    # Large explicit assay errors leave the profile uninformative.
+    observations = simulate(np.linspace(0, 5, 8), DEMO_CONDITIONS, DEMO_PARAMETERS)
+    result = fit_experiment(
+        observations,
+        DEMO_CONDITIONS,
+        DEMO_PARAMETERS,
+        errors=ErrorModel("additive", {"X": (100, "g_DW/liter"), "N": (1000, "mg_N/liter")}),
+    )
+    assert not result.success and result.parameters is None
+    assert all(e.value is None for e in result.inference.estimates.values())
+    assert isinstance(result.prediction, pd.DataFrame)

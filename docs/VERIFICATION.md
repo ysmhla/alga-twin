@@ -1,18 +1,20 @@
-# Verification record — v0.4.0, 2026-10-25
+# Verification record — v0.5.0, 2026-10-25
 
 ## Current implementation
 
 | Check | Result | Evidence and scope |
 |---|---|---|
-| Local pytest, Python 3.12 | PASS: 100 tests | Full suite; 26.84 s; synthetic scientific cases and real Streamlit AppTest |
-| Ruff lint/format and compileall | PASS | ruff check; ruff format --check (25 files); compileall src app.py tests |
-| Selectable model checks | PASS | tests/test_model_families.py: baseline regression, units, quota equilibrium, N ledger, positivity, light/temperature/diurnal limits, Eq. 9 discrepancy |
-| Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py includes new synthetic model workspace |
-| Current cloud CI, Python 3.11 / 3.12 | PASS: 100 tests and Ruff each | [Run 40197007799](https://github.com/ysmhla/alga-twin/actions/runs/40197007799); source commit 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee; pytest 26.47 s / 21.38 s; compilation and import checks passed |
+| Local full pytest, Python 3.12 | PASS: 119 tests | Full suite, 265.33 s; synthetic inference/physics and real Streamlit AppTest |
+| Ruff lint/format and compileall | PASS | ruff check; ruff format --check (29 files); compileall src app.py tests |
+| Joint calibration | PASS | Noisy additive/log-normal recovery, nuisance profiles, flat/sparse/failed cases, confounding and whole-run leakage/refusal tests |
+| Log-nitrogen numerical coordinates | PASS | Unit/limiting checks, original-coordinate agreement, Monod/Droop N ledger with/without loss |
+| Real Streamlit workflows | PASS | Baseline gate, weak-data refusal and joint profiles/whole-run CV |
+| Current cloud Python 3.11/3.12 | NOT YET RUN | Historical checks below do not certify v0.5 |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
-| Visual browser verification | NOT TESTED | AppTest is not pixel/browser verification |
+| Visual browser/usability testing | NOT TESTED | AppTest is not pixel review or a timed novice study |
 | Docker build/run | NOT TESTED | No build/run claim |
-| Independent laboratory/optical validation | NOT VALIDATED | Recovery uses explicitly synthetic data only |
+| Independent biological evaluation | NOT VALIDATED | Recovery and held-out code checks use synthetic data |
+| Empirical interval coverage | NOT ESTABLISHED | Named marginal asymptotic profiles condition on specified fixed parameters/SDs |
 
 ## Reproduce
 
@@ -22,13 +24,17 @@
     python -m ruff format --check src app.py tests
     python -m compileall -q src app.py tests
 
-No pixel-level usability, <5-minute completion, independent prediction accuracy,
-confidence intervals or novel-method claims are made. Streamlit >=1.50 is
-required; no deprecated use_container_width arguments remain. New model fitting,
-profiles, independent cross-validation and formal model support remain pending.
+No novice <5-minute completion, independent biological predictive accuracy,
+finite-sample interval coverage or novelty claim is made. Optional MCMC,
+censored likelihoods, random culture effects and supported model comparison
+remain unimplemented. See CALIBRATION.md for explicit assumptions/refusal rules.
+Streamlit >=1.50 is required; deprecated use_container_width is not used.
 
 ## Historical evidence
 
+v0.4.0 passed 100 tests and Ruff on Python 3.11/3.12:
+https://github.com/ysmhla/alga-twin/actions/runs/40197007799;
+source commit 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee.
 v0.3.0 passed 62 tests and Ruff on Python 3.11/3.12 in
 https://github.com/ysmhla/alga-twin/actions/runs/40182152435,
 source commit 6746dde6bf07151c75511731c5f9eb17e296935b.

@@ -8,12 +8,12 @@
 
 *Illustrative simulation and synthetic measurements — not lab-validated.*
 
-## What it does today (v0.4.0)
+## What it does today (v0.5.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
 - Accepts UTF-8 CSV with user-mapped time, biomass and optional nitrate-N columns; checks units/values and plots observations.
-- Calibrates **one** growth-rate parameter for biomass-only observations; estimates biomass yield too if at least three nitrogen observations exist. Other parameters remain fixed assumptions.
+- The baseline fitter estimates growth-rate and optionally yield, then reoptimizes profiles. It withholds unsupported point estimates/intervals; other parameters remain fixed assumptions.
 - Shows biomass and nitrogen curves, a depth-vs-time light heatmap, and stored comparative scenarios with snapshot model parameters.
 - **TrustLens:** local finite-difference parameter sensitivity and warnings about leaving the calibration conditions (NOT uncertainty intervals).
 - **Planner:** a bounded light × nitrogen grid with sampled Pareto tags; scenario exploration, NOT an experimentally validated optimiser.
@@ -28,9 +28,15 @@
 - Provides a separate **Selectable models (SYNTHETIC)** workspace: Monod / Droop N quota,
   saturation / Haldane / steady-state Han light, optional CTMI temperature and half-sine diurnal light.
 - Tracks dissolved, stored and removed nitrogen with a common `ModelBase.rhs/params/states`
-  interface. New-model fitting/model-support selection is pending.
+  interface. A separate joint calibration workspace/API fits selected shared parameters; supported model selection is pending.
 - Documents and regression-tests the printed arXiv v1 Eq. 9 high-light branch discrepancy;
   the general optical-depth calculation compares both compensation roots and Y=0.
+
+- Fits shared parameters across multiple light/N runs with additive or log-normal errors and explicit noise SDs/search bounds.
+- Preserves technical replicates, computes nuisance-reoptimized profile likelihoods and named conditional marginal intervals.
+- Labels flat/open/unsupported profiles **NOT IDENTIFIABLE** and refuses their point estimates.
+- Refits/reprofiles whole-run holdouts and exports **in-sample vs held-out** metrics separately.
+- Provides a paired JSON-job/long-CSV loader and `fit-joint` CLI; see [calibration methods/limitations](docs/CALIBRATION.md).
 
 ### Parameter tiers and evidence
 
@@ -38,7 +44,7 @@ LITERATURE contains audited source records, not a complete runnable Monod preset
 
 ### Not built yet
 
-Joint multi-run fitting, profile likelihood/identifiability, dynamic photosystem adaptation, multi-strain consortia, dynamic pH/CO₂, online IoT, formal statistical parameter intervals, independent-laboratory validation, global/continuous optimisation, formal model uncertainty intervals and scientifically supported operational recommendations.
+Optional MCMC, censoring/detection-limit errors, empirical interval coverage, random culture effects, dynamic photosystem adaptation, multi-strain consortia, dynamic pH/CO₂, online IoT, independent-laboratory validation, global/continuous optimisation, prediction uncertainty intervals and scientifically supported operational recommendations.
 
 ## Quick start
 
@@ -61,7 +67,7 @@ alga-twin simulate --demo --days 12 --light 180 --nitrogen 70 --output simulatio
 alga-twin fit --demo --input data/synthetic_chlorella_demo.csv --light 180 --path-cm 5 --output fitted.json
 ```
 
-The CLI requires --demo because a complete literature Monod configuration is unavailable. Its fit reports in-sample residual metrics only. Missing explicit parameters in the Python API are rejected; use alga_twin.demo.demo_parameters() deliberately for synthetic examples.
+The baseline simulate/fit CLI requires --demo because a complete literature Monod configuration is unavailable. Its single-run fit reports conditional profiles/intervals and in-sample residual metrics. The `fit-joint` command uses a complete explicit JSON configuration and optionally whole-run holdouts; it supplies no biological defaults. Missing explicit parameters in the Python API are rejected; use alga_twin.demo.demo_parameters() deliberately for synthetic examples.
 
 ### Docker
 
@@ -107,9 +113,13 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**v0.4: 100 local tests passed (Python 3.12); Ruff lint/format and compileall passed.** **Cloud Python 3.11/3.12: 100 tests and Ruff passed each.** [Current CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40197007799) certifies source commit 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee; see [verification record](docs/VERIFICATION.md).
-The historical v0.3.0 cloud run passed 62 tests and Ruff on Python 3.11/3.12
-([run 40182152435](https://github.com/ysmhla/alga-twin/actions/runs/40182152435)); it does not certify the new model code. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
+**v0.5: 119 local tests passed (Python 3.12), Ruff lint/format and compileall passed.**
+Current cloud CI is pending. The historical v0.4 run passed 100 tests
+and Ruff on Python 3.11/3.12 ([evidence](https://github.com/ysmhla/alga-twin/actions/runs/40197007799));
+it does not certify the new calibration code. See [verification record](docs/VERIFICATION.md).
+Public deployment, visual browser checks, Docker build and independent biological
+validation remain unverified.
+
 
 ```bash
 pip install -r requirements.txt -e '.[dev]'
@@ -138,7 +148,7 @@ See [Architecture](docs/ARCHITECTURE.md), [Release status](docs/RELEASE_STATUS.m
 ## Research roadmap
 
 1. Independent-run evaluation on legally shareable measured data.
-2. Local identifiability diagnostics and statistically defensible intervals.
+2. Empirical coverage assessment and broader profile robustness on licensed benchmark problems.
 3. Statistically and operationally meaningful light/nutrient optimisation; current grid is exploratory only.
 4. Evaluate the selectable models against independently held-out cultivation runs.
 5. Research collaboration and reproducible benchmark suites.

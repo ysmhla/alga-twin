@@ -230,6 +230,25 @@ class ModelBase(ABC):
     def rhs(self, time: float, state: np.ndarray) -> np.ndarray:
         """State derivatives, ordered as states, per day."""
 
+    def log_nitrogen_rate(self, time: float, state: np.ndarray) -> float:
+        """d(log N)/dt evaluated without dividing a near-zero concentration."""
+        x, n = np.maximum(state[:2], 0)
+        if self.kind == "monod":
+            return (
+                -1000
+                * self.potential_growth(time, x)
+                * x
+                / (self.value("biomass_yield_g_per_gN") * (self.value("k_n_mg_L") + n))
+            )
+        q = max(state[2], self.value("q_min"))
+        return (
+            -1000
+            * self.value("rho_max")
+            * max(0, 1 - q / self.value("q_max"))
+            * x
+            / (self.value("k_n_mg_L") + n)
+        )
+
     @abstractmethod
     def retained_nitrogen(self, state: np.ndarray) -> float:
         """Dissolved plus biomass-associated N, in mg N/L."""
@@ -322,8 +341,19 @@ class DroopModel(ModelBase):
         )
 
 
-def simulate_model(model: ModelBase, times_day, initial_state) -> pd.DataFrame:
+def simulate_model(
+    model: ModelBase,
+    times_day,
+    initial_state,
+    *,
+    rtol: float = 1e-10,
+    atol: float = 1e-12,
+    max_step_day: float = 0.05,
+    log_nitrogen: bool = False,
+) -> pd.DataFrame:
     """Common solver with a separate removed-N ledger for conservation accounting."""
+    for name, value in (("rtol", rtol), ("atol", atol), ("max_step_day", max_step_day)):
+        _positive(value, name)
     times = np.asarray(times_day, dtype=float)
     if times.ndim != 1 or len(times) < 2 or np.any(~np.isfinite(times)):
         raise ValueError("Supply at least two finite times")
@@ -331,10 +361,23 @@ def simulate_model(model: ModelBase, times_day, initial_state) -> pd.DataFrame:
         raise ValueError("Times must start at zero, increase strictly and end within 365 days")
     initial = model.validate_initial(initial_state)
 
-    def augmented(time, values):
-        return np.r_[model.rhs(time, values[:-1]), model.nitrogen_loss(values[:-1])]
+    if log_nitrogen and initial[1] <= 0:
+        raise ValueError("Log-nitrogen integration needs strictly positive initial N")
 
-    step = min(0.05, model.value("period_day") / 96) if model.diurnal else 0.05
+    def augmented(time, values):
+        physical = values[:-1].copy()
+        if log_nitrogen:
+            physical[1] = np.exp(physical[1])
+        derivative = model.rhs(time, physical)
+        if log_nitrogen:
+            derivative[1] = (
+                derivative[1] / physical[1]
+                if physical[1] > 1e-100
+                else model.log_nitrogen_rate(time, physical)
+            )
+        return np.r_[derivative, model.nitrogen_loss(physical)]
+
+    step = min(max_step_day, model.value("period_day") / 96) if model.diurnal else max_step_day
     # Split at dawn/dusk; interpolation across a light switch can otherwise
     # create tiny, unphysical increases of dissolved N in the dark interval.
     breaks = [0.0, float(times[-1])]
@@ -349,10 +392,12 @@ def simulate_model(model: ModelBase, times_day, initial_state) -> pd.DataFrame:
     breaks = sorted(set(breaks))
     output = np.empty((len(initial) + 1, len(times)))
     current = np.r_[initial, 0.0]
+    if log_nitrogen:
+        current[1] = np.log(initial[1])
     output[:, 0] = current
     for start, end in pairwise(breaks):
         solution = solve_ivp(
-            augmented, (start, end), current, dense_output=True, rtol=1e-10, atol=1e-12, max_step=step
+            augmented, (start, end), current, dense_output=True, rtol=rtol, atol=atol, max_step=step
         )
         if not solution.success or np.any(~np.isfinite(solution.y)):
             raise RuntimeError(f"Numerical solver failed: {solution.message}")
@@ -360,7 +405,9 @@ def simulate_model(model: ModelBase, times_day, initial_state) -> pd.DataFrame:
         if np.any(selected):
             output[:, selected] = solution.sol(times[selected])
         current = solution.y[:, -1]
-    values = output[:-1].T
+    values = output[:-1].T.copy()
+    if log_nitrogen:
+        values[:, 1] = np.exp(values[:, 1])
     if np.any(values[:, :2] < -1e-7):
         raise RuntimeError("Solver returned materially negative concentrations")
     values[:, :2] = np.maximum(values[:, :2], 0)
@@ -371,6 +418,8 @@ def simulate_model(model: ModelBase, times_day, initial_state) -> pd.DataFrame:
         raise RuntimeError("Solver violated quota bounds")
     result = pd.DataFrame(values, columns=model.states)
     result.insert(0, "time_day", times)
+    if log_nitrogen:
+        result["log_N"] = output[1]
     result["removed_n_mg_L"] = output[-1]
     result["total_n_mg_L"] = [model.retained_nitrogen(state) for state in values] + result.removed_n_mg_L
     return result

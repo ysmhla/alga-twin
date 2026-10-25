@@ -18,7 +18,7 @@ def render_model_sandbox():
     st.markdown("### Selectable model sandbox")
     st.warning("SYNTHETIC / UNVERIFIED: these assumptions are not C. minutissima values or reported ranges.")
     st.caption(
-        "This page simulates models. Joint fitting, identifiability and supported model selection are pending."
+        "This page simulates models. Joint fitting/profiles are in the Joint calibration workspace. Supported model selection remains pending."
     )
     kind = st.selectbox("Nutrient model", ["Monod", "Droop"]).lower()
     light_choice = st.selectbox(

@@ -8,7 +8,10 @@ from dataclasses import asdict
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
+from .calibration import fit_joint, leave_one_run_out
+from .calibration_io import load_job
 from .data import read_experiment_csv
 from .demo import demo_parameters
 from .fitting import fit_experiment
@@ -33,11 +36,36 @@ def main(argv: list[str] | None = None) -> int:
     fit_command.add_argument("--path-cm", type=float, required=True)
     fit_command.add_argument("--initial-nitrogen", type=float, default=70.0)
     fit_command.add_argument("--output", type=Path, required=True)
+    joint_command = sub.add_parser("fit-joint", help="Explicit JSON job + long CSV; profile-gated estimates")
+    joint_command.add_argument("--config", type=Path, required=True)
+    joint_command.add_argument("--observations", type=Path, required=True)
+    joint_command.add_argument("--output", type=Path, required=True)
+    joint_command.add_argument("--cross-validate", action="store_true")
     for command in (simulate_command, fit_command):
         command.add_argument(
             "--demo", action="store_true", help="Explicitly use UNVERIFIED synthetic parameters"
         )
     args = parser.parse_args(argv)
+    if args.command == "fit-joint":
+        runs, search, errors = load_job(
+            json.loads(args.config.read_text()),
+            pd.read_csv(args.observations, dtype={"run_id": str, "replicate": str}),
+        )
+        result = fit_joint(runs, search, errors)
+        payload = result.report()
+        result.profiles.to_csv(args.output.with_suffix(".profiles.csv"), index=False)
+        result.predictions.to_csv(args.output.with_suffix(".in_sample.csv"), index=False)
+        if args.cross_validate:
+            cv = leave_one_run_out(runs, search, errors)
+            payload["cross_validation"] = {
+                "method": cv.method,
+                "folds": cv.folds.to_dict("records"),
+                "metrics": cv.metrics.to_dict("records"),
+            }
+            cv.predictions.to_csv(args.output.with_suffix(".held_out.csv"), index=False)
+        args.output.write_text(json.dumps(payload, indent=2, allow_nan=False) + "\n")
+        print(f"Wrote profile-gated joint evidence: {args.output}")
+        return 0 if result.supported else 1
     if not args.demo:
         parser.error(
             "No complete literature Monod preset exists. Supply --demo for synthetic assumptions only."
@@ -54,8 +82,11 @@ def main(argv: list[str] | None = None) -> int:
         result = fit_experiment(data, c, demo_parameters())
         payload = {
             "success": result.success,
-            "parameters": asdict(result.parameters),
-            "parameter_provenance": provenance_rows(result.parameters),
+            "parameters": asdict(result.parameters) if result.parameters is not None else None,
+            "parameter_provenance": provenance_rows(result.parameters)
+            if result.parameters is not None
+            else [],
+            "calibration": result.inference.report(),
             "fitted_names": result.fitted_names,
             "rmse_biomass_g_L": result.rmse_biomass_g_L,
             "rmse_nitrogen_mg_L": result.rmse_nitrogen_mg_L,
