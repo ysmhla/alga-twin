@@ -136,8 +136,10 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 ## Tests
 
 **v0.8.0 local verification:** 155 tests passed (215.24 s), plus Ruff lint/format,
-compilation and dependency checks. Cloud and live rollout evidence is pending; current public deployment
-evidence below applies to v0.7.1. See [decision methods](docs/DECISION_SUPPORT.md)
+compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)
+passed 155 tests/Ruff and both tutorials on Python 3.12, and 144 tests/one optional skip/Ruff
+on Python 3.11. Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c.
+Live v0.8 rollout is pending; browser evidence below applies to v0.7.1. See [decision methods](docs/DECISION_SUPPORT.md)
 and [generated synthetic example](docs/decision_example/README.md).
 
 **v0.7.1: cloud Python 3.12 passed 143 tests/Ruff and both real-kernel tutorial

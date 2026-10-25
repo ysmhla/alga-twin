@@ -1,10 +1,10 @@
-# Release status — v0.8.0 verification in progress, 2026-10-26
+# Release status — v0.8.0, 2026-10-26
 
-Step 6 implementation passed 155 local tests (215.24 s), Ruff lint/format,
-compilation and pip check. Cloud and live rollout checks remain in progress.
-No v0.8 cloud/deployment claim is made here yet. See DECISION_SUPPORT.md for the new conditional methods.
+Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
+155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.
+Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c. Live v0.8 rollout remains pending. See DECISION_SUPPORT.md for the new conditional methods.
 
-Steps 1–5 software engineering are implemented (5/7 engineering packages).
+Steps 1–6 software engineering are implemented (6/7 engineering packages).
 Step 5 human acceptance remains incomplete: no independent novice <5-minute
 upload-to-report study or five observed human issues/fixes has been conducted.
 Measured benchmark/biological evaluation also remains pending human data.

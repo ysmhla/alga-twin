@@ -52,7 +52,7 @@ boundary/compensation-root optimum. `model_ui.py` exposes these through an expli
 synthetic workspace. `calibration_io.py` loads explicit evidence-bearing jobs;
 `calibration_ui.py` exposes joint profiles and labelled fold results. The baseline
 calibration uses the same refusal gate. Joint models are not connected to the
-legacy planner; supported model comparison remains pending. These models have
+legacy planner; model_selection.py now compares same-data models with profile/approximate residual gates and AIC/BIC. experiment_design.py ranks proposed runs using local expected Fisher information and refuses unsupported or stale fits. See DECISION_SUPPORT.md. These models have
 state/unit specifications and synthetic conservation/limiting tests, but no
 independent biological evaluation. See SELECTABLE_MODELS.md and MODEL.md.
 
