@@ -49,5 +49,7 @@ preview is **a report preview, not an app screenshot**. The current environment
 does not permit a browser connection to the local app or local-file browser
 previews. Actual app browser screenshots and public-host smoke checks remain
 pending a reachable deployed app. No pixel review of the Streamlit app is claimed.
-Streamlit Cloud account setup/sign-in/terms also require the account holder as
-applicable. See DEPLOYMENT.md for the prepared smoke checklist.
+The observed Streamlit Cloud screen states that sign-in accepts its Terms of
+Service; the account holder must complete this prerequisite. The captured
+[hosting screen](../assets/hosting-pending.jpg) is not an app screenshot.
+See DEPLOYMENT.md for the prepared smoke checklist.

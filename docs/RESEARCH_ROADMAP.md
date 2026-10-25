@@ -8,7 +8,7 @@ Progress counts completed work packages, not elapsed effort or scientific valida
 | 2 | Shared model interface; Droop, Haldane/Han, CTMI, diurnal light | Implemented in synthetic workspace; no independent biological validation |
 | 3 | Multi-run error models, profiles/identifiability and held-out evaluation | Implemented; 119 tests/Ruff passed locally and cloud Python 3.11/3.12; conditional intervals and synthetic holdouts only |
 | 4 | Licensed candidate datasets, PEtab/pyPESTO benchmark/scoreboard | Pipeline verified: 130 local/cloud Python 3.12 tests + Ruff; measured datasets pending human input |
-| 5 | OD calibration, wizard, reports, tutorials, observed usability, hosting | Core UI implemented: 143 local tests/Ruff; tutorials executed in-process; hosting/app screenshots/human usability acceptance pending |
+| 5 | OD calibration, wizard, reports, tutorials, observed usability, hosting | Core UI implemented: 143 local/cloud Python 3.12 tests/Ruff; cloud Python 3.11 132+1 skip; tutorials executed with cloud kernels; hosting/app screenshots/human usability acceptance pending |
 | 6 | Information-based experiment ranking and supported model selection | Pending |
 | 7 | Packaging/publication, docs site, DOI and honest JOSS draft | Pending |
 

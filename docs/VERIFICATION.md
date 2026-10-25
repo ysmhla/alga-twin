@@ -2,15 +2,17 @@
 
 | Check | Result | Evidence and scope |
 |---|---|---|
-| Local full pytest, Python 3.12 | PASS: 143 tests | 192.33 s; includes optional benchmark toolchain and actual Streamlit AppTest |
+| Local full pytest, Python 3.12 | PASS: 143 tests | 195.43 s; recovered current source includes optional benchmark toolchain and actual Streamlit AppTest |
 | Ruff lint/format, compileall, pip check | PASS | Current source; tutorials runner included in lint/format; no broken requirements |
-| Targeted wizard/proxy/report/existing UI checks | PASS: 21 tests | 53.17 s; column/unit refusals, profile export gate, six-step navigation and stale-state handling |
+| Prior targeted wizard/proxy/report/existing UI checks | PASS: 21 tests | 53.17 s before interruption; current full suite reran them; column/unit refusals, profile export gate, six-step navigation and stale-state handling |
 | Proxy observation model | VERIFIED NUMERICALLY ONLY | Linear/quadratic recovery, zero-curvature limit, cell/DW units, mass conversion, extrapolation/nonphysical refusal |
-| Tutorials | EXECUTED IN-PROCESS | Both SYNTHETIC notebooks, 4 + 6 code cells, IPython; PNG plot and actual fit/CV/report outputs saved |
+| Tutorials | EXECUTED IN CLOUD JUPYTER AND LOCALLY IN-PROCESS | Both SYNTHETIC notebooks executed with a real kernel in Python 3.12 CI; committed outputs record the explicit local IPython method (4 + 6 code cells) |
 | Real Jupyter kernel locally | UNAVAILABLE | TCP/IPC socket binding refused by environment; no local kernel-run claim |
 | HTML/PDF/JSON report | GENERATED | Actual SYNTHETIC shared fit, all 3/3 synthetic CV folds scored; PDF seven pages rendered/visually inspected |
 | Streamlit browser screenshot / pixel review | NOT TESTED | Browser cannot connect to local app; local-file browser preview prohibited; AppTest is not pixel review |
-| Current cloud Python 3.11/3.12 | PENDING | Source not yet certified by current cloud run; historical v0.6 evidence below |
+| Current cloud Python 3.11 | PASS: 132 tests, 1 skip, Ruff | [Run 40222521288](https://github.com/ysmhla/alga-twin/actions/runs/40222521288), 117.21 s; optional PEtab module skipped |
+| Current cloud Python 3.12 | PASS: 143 tests, Ruff and both notebooks | Same run, 203.89 s pytest; real Jupyter execution completed for both notebooks |
+| Hosting prerequisite screen | CAPTURED, NOT DEPLOYED | assets/hosting-pending.jpg records the Streamlit sign-in/terms screen; this is not an app screenshot |
 | Hosted deployment | NOT DEPLOYED | Account setup/sign-in/terms pending; no public app URL |
 | Timed novice study / five observed human issues | NOT TESTED | Engineering findings/fixes are labelled separately in USABILITY.md |
 | Independent biological evaluation | NOT VALIDATED | Only synthetic inference/held-out checks; measured datasets pending human input |
@@ -36,8 +38,9 @@ Full benchmark checks require Python 3.12+; app/CLI still support Python 3.11:
 
 Use `--in-process` only when kernel sockets are unavailable; the output metadata
 records that method. Both committed notebooks use this explicit local fallback.
-The current Python 3.12 CI includes a real kernel tutorial execution step; its
-result will be recorded only after observed completion. Formats require the
+Cloud Python 3.12 completed both real-kernel tutorials successfully. Current-source
+CI evidence above certifies edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2; later evidence-only
+commits do not alter that source. Formats require the
 explicit native PEtab reader; stock SBML/AMICI interoperability is not claimed.
 PEtab 0.9 requires Python 3.12; its optional module skips on core Python 3.11.
 

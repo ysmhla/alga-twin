@@ -130,8 +130,11 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 **v0.7: 143 tests passed locally (Python 3.12, full optional benchmark toolchain),
 plus Ruff lint/format, compilation and dependency checks.** Both SYNTHETIC tutorial
 notebooks were executed in-process with IPython; actual fit/CV/report outputs
-are included. Current cloud verification is pending; previous v0.6 evidence is
-recorded in [VERIFICATION.md](docs/VERIFICATION.md). PEtab 0.9 benchmarks require
+are included. Cloud Python 3.12 passed 143 tests/Ruff and executed both notebooks with a real
+Jupyter kernel; Python 3.11 passed 132 tests, 1 optional benchmark skip and Ruff.
+[CI run 40222521288](https://github.com/ysmhla/alga-twin/actions/runs/40222521288)
+certifies source edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2. See
+[VERIFICATION.md](docs/VERIFICATION.md). PEtab 0.9 benchmarks require
 Python 3.12+; app/core CLI support Python 3.11. Public hosting, app browser
 screenshots and timed novice usability remain pending; [five engineering
 findings/fixes](docs/USABILITY.md) are not a human study. No measured data or

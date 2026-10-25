@@ -19,7 +19,9 @@ On Unix a local `--transport ipc` option is available. In socket-restricted
 environments use `--in-process`; it executes all code cells with IPython and
 records that method in notebook metadata, rather than claiming a Jupyter kernel
 run. Current committed outputs were executed using that explicit fallback.
-The CI Python 3.12 tutorial step attempts a real Jupyter kernel execution.
+The CI Python 3.12 tutorial step executed both notebooks with real Jupyter
+kernels successfully in run 40222521288; committed outputs retain the local
+in-process method metadata.
 
 Actual worked-example artifacts (SYNTHETIC):
 [HTML report](output/synthetic_report.html), [PDF report](output/synthetic_report.pdf),

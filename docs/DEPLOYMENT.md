@@ -55,3 +55,12 @@ Default local URL: `http://localhost:8501`.
 ## Limitations for public hosting
 
 The app deliberately has no persistent user storage; session data may be reset when the service restarts. No authentication. Use only non-confidential experiments on public third-party hosting. Python dependency ranges are constrained, but there is no frozen lockfile in this alpha release. CI tests numerical kernel and synthetic demo, not full browser automation.
+
+## Current hosting prerequisite (2026-10-26)
+
+The observed https://share.streamlit.io/ screen requires account sign-in and
+states that signing in accepts its Terms of Service. The account holder must
+review/complete that step. [Captured screen](../assets/hosting-pending.jpg).
+No app was deployed and no public AlgaTwin app URL is available. After sign-in,
+use repository ysmhla/alga-twin, branch main, entry point app.py; complete the
+smoke checklist and real app screenshots before claiming deployment.
