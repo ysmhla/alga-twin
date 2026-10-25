@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use AlgaTwin in a publication, please cite the software release."
+title: "AlgaTwin: Mechanistic microalgal batch photobioreactor simulation"
+type: software
+authors:
+  - family-names: "Yash"
+    given-names: "Ram"
+version: 0.2.0
+date-released: 2026-10-25
+license: MIT

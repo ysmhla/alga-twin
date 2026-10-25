@@ -1,0 +1,27 @@
+name: Scientific Python CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install project and dashboard
+        run: pip install -r requirements.txt -e '.[dev]'
+      - name: Check Python compilation
+        run: python -m compileall -q src app.py
+      - name: Run tests
+        run: pytest -q
+      - name: Dashboard import sanity check
+        run: python -c 'import streamlit, plotly, alga_twin; print(alga_twin.__version__)'
