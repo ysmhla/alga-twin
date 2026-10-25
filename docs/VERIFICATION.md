@@ -40,7 +40,9 @@ restored; the successful exact-source run above supersedes that failed attempt.
 
 [Scoped browser record and actual exports](smoke/README.md). Initial browser
 artifacts were captured from 0b1090d45c2741996e66047058d7b73c1957b945 (v0.7.0).
-The later caption patch does not alter their numerical computations. No measured
+The later caption patch does not alter their numerical computations. A fresh
+post-rollout browser session displayed v0.7.1, completed the SYNTHETIC fit and
+showed the full method/confidence caption (assets/screenshots/interval-method-visible.jpg). No measured
 cultivation data, inferred species ranges, f_C or proxy-uncertainty propagation
 is supplied. Method/status/origin and licence fields retain their stated limits.
 

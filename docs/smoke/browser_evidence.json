@@ -52,5 +52,14 @@
     "filename": "synthetic-invalid.csv",
     "outcome": "Refused: Each measurement must map to a different CSV column",
     "measurement_data": false
+  },
+  "post_rollout": {
+    "version_observed": "0.7.1",
+    "main_commit": "f27575be4ec1025bf16955c8109484243a4d7b16",
+    "source_ci_commit": "3b69d4a56059b8b207f3b8e0f13010ada78f2074",
+    "method_caption_observed": "Interval method: Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales. Confidence: 95%. Marginal intervals conditional on fixed inputs; empirical coverage is not established.",
+    "synthetic_wizard_fit_completed": true,
+    "screenshot": "assets/screenshots/interval-method-visible.jpg",
+    "screenshot_sha256": "af2bb3092a0aef564be70f9acb306e1ef470f7ed3ca7c36e5bdd1be9c0a7fbe4"
   }
 }

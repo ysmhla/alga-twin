@@ -45,6 +45,11 @@ A browser review found that the method column could fall beyond horizontal
 scrolling. The v0.7.1 UI patch also displays the complete method/confidence above
 all fit-result tables; its source/tests are tracked in VERIFICATION.md. It does
 not change equations, parameters, likelihood or the exported numerical report.
+After rollout/restart, the public app displayed v0.7.1; a fresh SYNTHETIC wizard
+fit completed and the full method/95% confidence caption was visibly verified.
+[Updated live caption capture](../../assets/screenshots/interval-method-visible.jpg).
+This phase is recorded separately in browser_evidence.json; original 3/3 CV
+exports above retain their actual v0.7.0 provenance.
 
 ## Not established by this test
 

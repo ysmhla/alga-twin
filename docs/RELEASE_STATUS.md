@@ -10,7 +10,8 @@ showed public/searchable. Python 3.12.15 and Streamlit 1.66.1 were observed afte
 selecting/rebuilding the runtime. Actual app screenshots, three-run SYNTHETIC
 fit/profile/CV checks, parsed HTML/PDF/JSON downloads and checksums are in
 [smoke/README.md](smoke/README.md). Initial browser artifacts record v0.7.0/source
-0b1090d45c2741996e66047058d7b73c1957b945. All 3/3 synthetic holdouts scored.
+0b1090d45c2741996e66047058d7b73c1957b945. All 3/3 synthetic holdouts scored. A separate fresh session verified the deployed
+v0.7.1 header and full interval-method/confidence caption after rollout.
 
 The v0.7.1 UI-only patch keeps full interval method/confidence visible above all
 result tables. No model, likelihood, parameter default or numerical report law
