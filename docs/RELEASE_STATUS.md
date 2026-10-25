@@ -11,10 +11,11 @@
 
 ## Remaining gates
 
-- **BLOCKED:** Public GitHub repository creation was rejected by automatic approval review because explicit authorization for the public publication destination was required. No repository was created and no files were published. Requested destination: `ysmhla/alga-twin`.
+- **PUBLISHED:** All 43 project files are public at https://github.com/ysmhla/alga-twin after explicit user authorization.
+- **PASS:** GitHub Actions on Python 3.11 and 3.12: https://github.com/ysmhla/alga-twin/actions/runs/40177389592 (source commit `42b524388b1e666caf0f690fc95e2b4591e80f57`).
 - **NOT DEPLOYED:** Hosted Streamlit application.
-- **NOT TESTED:** Visual browser interaction, Docker build/run and remote GitHub Actions.
+- **NOT TESTED:** Visual dashboard browser interaction and Docker build/run.
 - **NOT VALIDATED:** Independent measured cultivation data.
 - **NOT BUILT:** Droop quota, formal uncertainty intervals, global optimisation, sensor ingestion and photoinhibition.
 
-The package is prepared for publication, not an already published or scientifically validated service. See [verification](VERIFICATION.md).
+The source is published. The hosted service and independent scientific validation remain pending. Streamlit sign-in requires agreement to its Terms of Service; that step awaits separate confirmation. See [verification](VERIFICATION.md).

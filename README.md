@@ -92,7 +92,7 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-Local verification: **34 tests passed**, including a real Streamlit widget workflow. Local HTTP health and HTML responses passed. Public deployment, visual browser checks, Docker and independent laboratory validation remain unverified; see [verification record](docs/VERIFICATION.md).
+Verification: **34 tests passed** locally and in GitHub Actions on Python 3.11 and 3.12, including a real Streamlit widget workflow. [Cloud CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40177389592). Local HTTP health and HTML responses passed. Public deployment, visual browser checks, Docker and independent laboratory validation remain unverified; see [verification record](docs/VERIFICATION.md).
 
 ```bash
 pip install -e '.[dev]'

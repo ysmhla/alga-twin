@@ -10,7 +10,7 @@ Verified locally with Python 3.12. Streamlit 1.66.1 and Plotly 6.9.0 were instal
 | HTTP server | PASS | Actual `streamlit run app.py` process returned HTTP 200 and `ok` at `/_stcore/health`, and HTTP 200 HTML at `/` |
 | Python compilation and fatal-error lint | PASS | Commands below |
 | Visual browser verification | NOT TESTED | Cloud browser could not reach the local server; no rendered browser screenshot is claimed |
-| GitHub publication and cloud CI | BLOCKED | Public repository creation was rejected by automatic approval review pending explicit user authorization |
+| GitHub publication and cloud CI | PASS | 43 files published; Python 3.11 and 3.12 jobs succeeded in [run 40177389592](https://github.com/ysmhla/alga-twin/actions/runs/40177389592), source commit `42b524388b1e666caf0f690fc95e2b4591e80f57` |
 | Hosted Streamlit deployment | NOT DEPLOYED | No hosting application has been created |
 | Docker build/run | NOT TESTED | Docker executable is unavailable |
 | Independent laboratory validation | NOT VALIDATED | Calibration recovery uses synthetic data only |
