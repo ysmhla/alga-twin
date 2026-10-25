@@ -1,32 +1,50 @@
-# Verification record — v0.7.0, 2026-10-26
+# Verification record — 2026-10-26
 
-| Check | Result | Evidence and scope |
-|---|---|---|
-| Local full pytest, Python 3.12 | PASS: 143 tests | 195.43 s; recovered current source includes optional benchmark toolchain and actual Streamlit AppTest |
-| Ruff lint/format, compileall, pip check | PASS | Current source; tutorials runner included in lint/format; no broken requirements |
-| Prior targeted wizard/proxy/report/existing UI checks | PASS: 21 tests | 53.17 s before interruption; current full suite reran them; column/unit refusals, profile export gate, six-step navigation and stale-state handling |
-| Proxy observation model | VERIFIED NUMERICALLY ONLY | Linear/quadratic recovery, zero-curvature limit, cell/DW units, mass conversion, extrapolation/nonphysical refusal |
-| Tutorials | EXECUTED IN CLOUD JUPYTER AND LOCALLY IN-PROCESS | Both SYNTHETIC notebooks executed with a real kernel in Python 3.12 CI; committed outputs record the explicit local IPython method (4 + 6 code cells) |
-| Real Jupyter kernel locally | UNAVAILABLE | TCP/IPC socket binding refused by environment; no local kernel-run claim |
-| HTML/PDF/JSON report | GENERATED | Actual SYNTHETIC shared fit, all 3/3 synthetic CV folds scored; PDF seven pages rendered/visually inspected |
-| Streamlit browser screenshot / pixel review | NOT TESTED | Browser cannot connect to local app; local-file browser preview prohibited; AppTest is not pixel review |
-| Current cloud Python 3.11 | PASS: 132 tests, 1 skip, Ruff | [Run 40222521288](https://github.com/ysmhla/alga-twin/actions/runs/40222521288), 117.21 s; optional PEtab module skipped |
-| Current cloud Python 3.12 | PASS: 143 tests, Ruff and both notebooks | Same run, 203.89 s pytest; real Jupyter execution completed for both notebooks |
-| Hosting prerequisite screen | CAPTURED, NOT DEPLOYED | assets/hosting-pending.jpg records the Streamlit sign-in/terms screen; this is not an app screenshot |
-| Hosted deployment | NOT DEPLOYED | Account setup/sign-in/terms pending; no public app URL |
-| Timed novice study / five observed human issues | NOT TESTED | Engineering findings/fixes are labelled separately in USABILITY.md |
-| Independent biological evaluation | NOT VALIDATED | Only synthetic inference/held-out checks; measured datasets pending human input |
-| Empirical interval coverage | NOT ESTABLISHED | Conditional marginal asymptotic profile intervals; proxy conversion uncertainty not propagated |
+## Current v0.7.1 patch
 
-No dynamics were changed. MODEL.md adds empirical observation equations/units and
-mapping/report assumptions; new unit, limiting-case and total-DW conversion tests
-complement existing Monod/Droop nitrogen balances. No complete VERIFIED-range
-C. minutissima preset is invented; missing biological inputs, extinction and f_C
-stay unset. Unknown-strain inputs require explicit user evidence.
+UI-only change: the complete profile interval method/confidence remains visible
+above result tables, including when the table requires horizontal scrolling.
+No growth equation, likelihood, biological default or report computation changed.
+Targeted UI checks: **11 passed in 51.69 s**; local Ruff lint/format, compileall
+and pip check passed. Full current-source cloud run **40240500191** certifies
+3b69d4a56059b8b207f3b8e0f13010ada78f2074:
+
+| Current-source check | Result |
+|---|---|
+| Cloud Python 3.12 | PASS: 143 tests in 363.57 s; Ruff, compilation/import and both real-kernel tutorials |
+| Cloud Python 3.11 | PASS: 132 tests, one optional PEtab skip in 297.51 s; Ruff and compilation/import |
+| Actual benchmark-extra installation | PASS with petab 0.9.0 and pypesto 0.7.0; local pip check also passed |
+
+[CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40240500191).
+Durations are the full scientific test suite, not a novice upload-to-report timing.
+The first patch run (40240019299) failed before tests during dependency install:
+a version edit accidentally changed the pyPESTO pin. Its verified 0.7.0 pin was
+restored; the successful exact-source run above supersedes that failed attempt.
+
+## Deployed numerical source / browser evidence
+
+| Check | Observed result / scope |
+|---|---|
+| Public demo | DEPLOYED: https://alga-twin.streamlit.app/ ; main/app.py; public/searchable setting observed |
+| Hosted runtime | Python 3.12.15 / Streamlit 1.66.1 after rebuild; provider replaced PyArrow 26 with 24 |
+| Actual app screenshots | CAPTURED: assets/screenshots; desktop literature gate, proxy refusal, guided result |
+| Hosted SYNTHETIC fit / CV | Three cultures/48 measurements; 3/3 folds scored; separate training/held-out errors |
+| Hosted reports | HTML/PDF/JSON actually downloaded and parsed; hashes in smoke/browser_evidence.json; seven-page PDF all seven pages rendered/reviewed |
+| Live refusal/state checks | Paired-DW extrapolation refused; changing model setup withheld old PDF |
+| Current local pre-caption full pytest | 143 passed in 192.33 s; unchanged numerical source, full optional benchmark stack |
+| v0.7.0 source cloud 3.12 | 143 tests/Ruff (203.89 s) and both real-kernel notebooks; run 40222521288, source edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2 |
+| v0.7.0 source cloud 3.11 | 132 tests, one optional PEtab module skip/Ruff (117.21 s), same run |
+| Independent novice <5-minute / five observed human issues | NOT TESTED; agent browser checks are not a human study |
+| Mobile / measured-CSV browser acceptance | NOT TESTED; file/unit/refusal APIs have automated coverage |
+| Independent biological evaluation / empirical coverage | NOT VALIDATED / NOT ESTABLISHED; synthetic evidence only |
+
+[Scoped browser record and actual exports](smoke/README.md). Initial browser
+artifacts were captured from 0b1090d45c2741996e66047058d7b73c1957b945 (v0.7.0).
+The later caption patch does not alter their numerical computations. No measured
+cultivation data, inferred species ranges, f_C or proxy-uncertainty propagation
+is supplied. Method/status/origin and licence fields retain their stated limits.
 
 ## Reproduce
-
-Full benchmark checks require Python 3.12+; app/CLI still support Python 3.11:
 
     python3.12 -m pip install -r requirements.txt -e '.[dev,benchmark,tutorials]'
     python3.12 -m pytest -q
@@ -36,13 +54,11 @@ Full benchmark checks require Python 3.12+; app/CLI still support Python 3.11:
     python3.12 -m pip check
     python3.12 tutorials/execute_tutorials.py
 
-Use `--in-process` only when kernel sockets are unavailable; the output metadata
-records that method. Both committed notebooks use this explicit local fallback.
-Cloud Python 3.12 completed both real-kernel tutorials successfully. Current-source
-CI evidence above certifies edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2; later evidence-only
-commits do not alter that source. Formats require the
-explicit native PEtab reader; stock SBML/AMICI interoperability is not claimed.
-PEtab 0.9 requires Python 3.12; its optional module skips on core Python 3.11.
+Python 3.12 is required for the optional PEtab 0.9 benchmark toolchain. Core
+app/CLI still support Python 3.11. Native PEtab reader is explicit; generic
+SBML/AMICI interoperability is not claimed. Committed tutorial outputs retain
+their actual local IPython in-process method; cloud CI separately executed both
+with real Jupyter kernels. No local kernel-run or human-usability claim follows.
 
 ## Historical evidence
 

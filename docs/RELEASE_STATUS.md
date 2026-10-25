@@ -1,40 +1,31 @@
-# Release status — v0.7.0 (2026-10-26)
+# Release status — v0.7.1, 2026-10-26
 
-Steps 1–4 engineering are implemented. Step 5 core UI is implemented and locally
-checked: paired OD/cell-count -> DW OLS; six-step upload/mapping/units/model/fit/
-report workflow; blank unknown-strain inputs; profile-gated HTML/PDF/JSON reports;
-two executed SYNTHETIC tutorials. Local Python 3.12 passed 143 tests (195.43 s),
-Ruff lint/format, compilation and pip check. Targeted UI/report checks: 21 passed.
-Cloud Python 3.12 passed 143 tests/Ruff (203.89 s) and both real-kernel notebooks;
-Python 3.11 passed 132 tests, 1 optional benchmark skip and Ruff (117.21 s).
-CI: https://github.com/ysmhla/alga-twin/actions/runs/40222521288; source
-edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2. See VERIFICATION.md for exact evidence.
+Steps 1–5 software engineering are implemented (5/7 engineering packages).
+Step 5 human acceptance remains incomplete: no independent novice <5-minute
+upload-to-report study or five observed human issues/fixes has been conducted.
+Measured benchmark/biological evaluation also remains pending human data.
 
-Committed tutorial outputs use an explicit IPython in-process fallback because
-local Jupyter TCP/IPC sockets were refused. The cloud CI separately executed both
-notebooks with real Jupyter kernels successfully; no local kernel-run claim.
-PDF seven-page report was rendered/reviewed. Streamlit AppTest is actual widget
-verification, not browser pixel review or a human usability study. Report proxy
-uncertainty is not propagated into conditional growth-profile intervals.
+**Public demo deployed:** https://alga-twin.streamlit.app/ . App settings explicitly
+showed public/searchable. Python 3.12.15 and Streamlit 1.66.1 were observed after
+selecting/rebuilding the runtime. Actual app screenshots, three-run SYNTHETIC
+fit/profile/CV checks, parsed HTML/PDF/JSON downloads and checksums are in
+[smoke/README.md](smoke/README.md). Initial browser artifacts record v0.7.0/source
+0b1090d45c2741996e66047058d7b73c1957b945. All 3/3 synthetic holdouts scored.
 
-The observed hosting page requires sign-in/Terms of Service acceptance; the
-account holder must complete that step. assets/hosting-pending.jpg is evidence
-of this prerequisite, not an app screenshot or deployment proof.
+The v0.7.1 UI-only patch keeps full interval method/confidence visible above all
+result tables. No model, likelihood, parameter default or numerical report law
+changes. Current-source cloud run 40240500191 passed 143 tests/Ruff and both tutorials on
+Python 3.12, and 132 tests/one optional skip/Ruff on Python 3.11. Source:
+3b69d4a56059b8b207f3b8e0f13010ada78f2074. Local targeted UI checks, Ruff lint/format,
+compilation and dependency checks passed; see VERIFICATION.md for exact scope.
 
-Step 5 acceptance is incomplete: public app hosting/account setup, app browser
-screenshots, <5-minute novice completion and five actually observed human issues
-are pending. USABILITY.md records five engineering findings/fixes separately.
-No fabricated timing, participant feedback or validation claim is made.
+C. minutissima source gaps, extinction and f_C remain unset. No cross-species
+transplants or invented ranges are supplied. Conditional profile intervals do
+not establish empirical coverage; proxy-calibration uncertainty is not propagated.
+No biological validation, novelty or operational-recommendation claim is made.
 
-- PENDING HUMAN INPUT: measured candidate datasets and reuse/redistribution evidence.
-- NOT VALIDATED: independent cultivation/optical predictions or interval coverage.
-- NOT DEPLOYED: hosted app; account setup/sign-in/terms remain pending.
-- NOT TESTED: Streamlit pixel/mobile review, timed novice study and Docker build/run.
-- NOT BUILT: supported model selection, information-based experiment recommender,
-  publication/DOI/docs-site release, optional MCMC and streaming state estimation.
-
-C. minutissima verified-range coverage is incomplete; extinction/f_C remain unset.
-No other species parameters are transplanted. Example biological values and data
-are SYNTHETIC / UNVERIFIED. Previous benchmark artifacts retain their v0.6 version;
-PEtab 0.9 extra requires Python 3.12 and the explicit native reader. Generic
-SBML/AMICI compatibility and pyPESTO-based CV are not claimed.
+- PENDING HUMAN INPUT: legally reusable measured datasets/metadata and novice-study observations.
+- NOT VALIDATED: independent biological/optical predictions or interval coverage.
+- NOT TESTED: human novice/mobile/measured-upload browser acceptance and Docker/Render deployment.
+- NOT BUILT: information-based experiment ranking, supported model selection, publication/DOI/docs site,
+  optional MCMC or streaming estimator (deferred until suitable independent data).

@@ -4,11 +4,16 @@
 
 > **Scientific status: ALPHA.** Model implementation is tested on synthetic cases, but **independent laboratory validation has NOT been established**. Example datasets are synthetic. Do not use as a basis for operating production bioreactors.
 
-![AlgaTwin synthetic simulation preview](assets/demo-preview.png)
+**[Open the public demo](https://alga-twin.streamlit.app/)** · Python 3.12.
+Start with **Workspace -> Guided upload to report -> SYNTHETIC worked example**
+for the labelled teaching path. Real strain inputs require your own evidence.
 
-*Illustrative simulation and synthetic measurements — not lab-validated.*
+![Live AlgaTwin literature gate](assets/screenshots/literature-gate.jpg)
 
-## What it does today (v0.7.0)
+*Actual hosted app, initial v0.7.0 smoke capture. Missing species parameters remain
+unset. No independent biological validation.*
+
+## What it does today (v0.7.1)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -46,13 +51,13 @@
 - Provides a **Guided upload to report** workspace: explicit column/unit mapping, model/assumption entry, profile-gated fit and HTML/PDF/JSON reports.
 - Fits paired **OD/cell-count -> dry weight** linear/quadratic conversions with residuals/in-sample R² and refuses extrapolation. User conversion uncertainty is not propagated into growth intervals.
 - Keeps research/unknown-strain biological fields blank when evidence is missing; no executable VERIFIED-range C. minutissima preset is available.
-- Includes [two executed SYNTHETIC tutorials](tutorials/README.md), [worked report](tutorials/output/synthetic_report.pdf), and a [guided workflow guide](docs/GUIDED_WORKFLOW.md). Actual novice timing/observed usability and hosting remain pending.
+- Includes [two executed SYNTHETIC tutorials](tutorials/README.md), [worked report](tutorials/output/synthetic_report.pdf), and a [guided workflow guide](docs/GUIDED_WORKFLOW.md). Public hosting and actual app screenshots are verified in the [browser smoke record](docs/smoke/README.md); actual novice timing/observed human usability remain pending.
 
 ### Parameter tiers and evidence
 
 ![Actual SYNTHETIC report page preview; not an app screenshot](assets/report-preview.png)
 
-*Generated report preview. App browser screenshots and observed novice usability remain pending.*
+*Generated PDF preview, not an app screenshot. Actual hosted screenshots are in the browser smoke record; observed novice usability remains pending.*
 
 LITERATURE contains audited source records, not a complete runnable Monod preset. DEMO contains explicitly selected UNVERIFIED assumptions; MEASURED identifies user optical estimates. Source transcription does not establish validation for your strain. Reported Haldane points are not substituted into Monod equations. Verified-range overrides generate warnings when source-reported bounds exist; none were established for the present catalogue. See [source audit](docs/PARAMETER_AUDIT.md) and [model/units](docs/MODEL.md).
 
@@ -127,7 +132,16 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**v0.7: 143 tests passed locally (Python 3.12, full optional benchmark toolchain),
+**v0.7.1: cloud Python 3.12 passed 143 tests/Ruff and both real-kernel tutorial
+notebooks; Python 3.11 passed 132 tests, one optional PEtab skip and Ruff.**
+[CI run 40240500191](https://github.com/ysmhla/alga-twin/actions/runs/40240500191)
+certifies source 3b69d4a56059b8b207f3b8e0f13010ada78f2074. Local targeted UI checks,
+Ruff lint/format, compilation and dependency checks passed. Public deployment,
+actual screenshots and SYNTHETIC downloaded reports are documented in
+[the browser smoke record](docs/smoke/README.md). Human novice timing/five
+observed human issues remain **NOT TESTED**.
+
+**Prior v0.7.0: 143 tests passed locally (Python 3.12, full optional benchmark toolchain),
 plus Ruff lint/format, compilation and dependency checks.** Both SYNTHETIC tutorial
 notebooks were executed in-process with IPython; actual fit/CV/report outputs
 are included. Cloud Python 3.12 passed 143 tests/Ruff and executed both notebooks with a real
@@ -135,8 +149,7 @@ Jupyter kernel; Python 3.11 passed 132 tests, 1 optional benchmark skip and Ruff
 [CI run 40222521288](https://github.com/ysmhla/alga-twin/actions/runs/40222521288)
 certifies source edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2. See
 [VERIFICATION.md](docs/VERIFICATION.md). PEtab 0.9 benchmarks require
-Python 3.12+; app/core CLI support Python 3.11. Public hosting, app browser
-screenshots and timed novice usability remain pending; [five engineering
+Python 3.12+; app/core CLI support Python 3.11. Public hosting and app browser screenshots are recorded in [the smoke test](docs/smoke/README.md). Timed novice usability remains pending; [five engineering
 findings/fixes](docs/USABILITY.md) are not a human study. No measured data or
 independent biological validation is present.
 

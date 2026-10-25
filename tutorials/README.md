@@ -20,7 +20,7 @@ environments use `--in-process`; it executes all code cells with IPython and
 records that method in notebook metadata, rather than claiming a Jupyter kernel
 run. Current committed outputs were executed using that explicit fallback.
 The CI Python 3.12 tutorial step executed both notebooks with real Jupyter
-kernels successfully in run 40222521288; committed outputs retain the local
+kernels successfully in current v0.7.1 run 40240500191 (previous v0.7.0 run 40222521288 also passed); committed outputs retain the local
 in-process method metadata.
 
 Actual worked-example artifacts (SYNTHETIC):

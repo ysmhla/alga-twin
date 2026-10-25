@@ -8,11 +8,13 @@ Progress counts completed work packages, not elapsed effort or scientific valida
 | 2 | Shared model interface; Droop, Haldane/Han, CTMI, diurnal light | Implemented in synthetic workspace; no independent biological validation |
 | 3 | Multi-run error models, profiles/identifiability and held-out evaluation | Implemented; 119 tests/Ruff passed locally and cloud Python 3.11/3.12; conditional intervals and synthetic holdouts only |
 | 4 | Licensed candidate datasets, PEtab/pyPESTO benchmark/scoreboard | Pipeline verified: 130 local/cloud Python 3.12 tests + Ruff; measured datasets pending human input |
-| 5 | OD calibration, wizard, reports, tutorials, observed usability, hosting | Core UI implemented: 143 local/cloud Python 3.12 tests/Ruff; cloud Python 3.11 132+1 skip; tutorials executed with cloud kernels; hosting/app screenshots/human usability acceptance pending |
+| 5 | OD calibration, wizard, reports, tutorials, observed usability, hosting | Software/hosting implemented; public demo, actual app screenshots and SYNTHETIC browser exports checked. Human novice timing/five observed issues NOT TESTED |
 | 6 | Information-based experiment ranking and supported model selection | Pending |
 | 7 | Packaging/publication, docs site, DOI and honest JOSS draft | Pending |
 
-Steps 1–4 engineering implemented and locally/cloud verified (4/7 complete packages). Step 5 is partial until hosting/screenshots and actual human acceptance are completed; measured-data evaluation remains pending human inputs. Step 1: source audit, parameter dataclass, optical model/helper, provenance UI and
+Steps 1–5 engineering implemented (5/7 engineering packages). This count does not
+claim all acceptance criteria: Step 5 human novice timing/five observed issues are
+still NOT TESTED, and measured-data evaluation remains pending human inputs. Step 1: source audit, parameter dataclass, optical model/helper, provenance UI and
 local verification are implemented. A full species-specific parameter set and
 reported ranges are NOT established. LITERATURE simulation is blocked rather
 than silently importing another species or synthetic values. Tests are synthetic
