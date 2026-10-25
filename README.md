@@ -107,7 +107,7 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**v0.4: 100 local tests passed (Python 3.12); Ruff lint/format and compileall passed.** Current cloud CI is pending; see [verification record](docs/VERIFICATION.md).
+**v0.4: 100 local tests passed (Python 3.12); Ruff lint/format and compileall passed.** **Cloud Python 3.11/3.12: 100 tests and Ruff passed each.** [Current CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40197007799) certifies source commit 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee; see [verification record](docs/VERIFICATION.md).
 The historical v0.3.0 cloud run passed 62 tests and Ruff on Python 3.11/3.12
 ([run 40182152435](https://github.com/ysmhla/alga-twin/actions/runs/40182152435)); it does not certify the new model code. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
 

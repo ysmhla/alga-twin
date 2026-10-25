@@ -8,7 +8,7 @@
 | Ruff lint/format and compileall | PASS | ruff check; ruff format --check (25 files); compileall src app.py tests |
 | Selectable model checks | PASS | tests/test_model_families.py: baseline regression, units, quota equilibrium, N ledger, positivity, light/temperature/diurnal limits, Eq. 9 discrepancy |
 | Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py includes new synthetic model workspace |
-| Current cloud CI | NOT YET RUN | Historical v0.3 evidence below does not certify v0.4 |
+| Current cloud CI, Python 3.11 / 3.12 | PASS: 100 tests and Ruff each | [Run 40197007799](https://github.com/ysmhla/alga-twin/actions/runs/40197007799); source commit 8bf5527a21491ee6a636bf94f2dcf38e41f0ffee; pytest 26.47 s / 21.38 s; compilation and import checks passed |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
 | Visual browser verification | NOT TESTED | AppTest is not pixel/browser verification |
 | Docker build/run | NOT TESTED | No build/run claim |
