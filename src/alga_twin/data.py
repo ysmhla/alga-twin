@@ -1,4 +1,5 @@
 """A deliberately strict and documented single-run experimental CSV contract."""
+
 from __future__ import annotations
 
 from io import BytesIO

@@ -4,6 +4,7 @@ Not a laboratory recommendation. The numerical model is still illustrative
 until calibrated and independently validated. A Pareto point is not a proven
 optimum: it is non-dominated only among the sampled scenarios and metrics.
 """
+
 from __future__ import annotations
 
 from dataclasses import replace
@@ -17,7 +18,8 @@ from .model import Conditions, Parameters, simulate
 def scenario_grid(
     conditions: Conditions,
     parameters: Parameters,
-    *, days: float,
+    *,
+    days: float,
     max_light: float = 450.0,
     max_nitrogen: float = 150.0,
     steps: int = 7,
@@ -47,13 +49,15 @@ def scenario_grid(
             )
             result = simulate([0, float(days)], scenario, parameters)
             final = float(result.biomass_g_L.iloc[-1])
-            rows.append({
-                "light_umol_m2_s": float(light),
-                "initial_nitrogen_mg_L": float(nitrogen),
-                "final_biomass_g_L": final,
-                "biomass_gain_g_L": final - conditions.biomass_initial_g_L,
-                "average_productivity_g_L_day": (final - conditions.biomass_initial_g_L) / days,
-            })
+            rows.append(
+                {
+                    "light_umol_m2_s": float(light),
+                    "initial_nitrogen_mg_L": float(nitrogen),
+                    "final_biomass_g_L": final,
+                    "biomass_gain_g_L": final - conditions.biomass_initial_g_L,
+                    "average_productivity_g_L_day": (final - conditions.biomass_initial_g_L) / days,
+                }
+            )
     result = pd.DataFrame(rows)
     gains = result["final_biomass_g_L"].to_numpy()
     lights = result["light_umol_m2_s"].to_numpy()

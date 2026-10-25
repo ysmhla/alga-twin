@@ -8,6 +8,7 @@
 - **Trust diagnostics:** `alga_twin.trust` computes local finite-difference elasticities and heuristic scenario departure warnings. These are **not** confidence intervals.
 - **Scenario design:** `alga_twin.planner` performs a bounded discrete sample of surface light / initial nitrogen settings and marks non-dominated samples. This is neither guaranteed global optimisation nor validated experimental advice.
 - **Interfaces:** Streamlit UI in `app.py`; scriptable `alga_twin` CLI in `alga_twin.cli`. Scientific logic is independent of UI.
+- **Parameter evidence:** alga_twin.parameters separates species/source records from explicit numerical configurations; alga_twin.extinction fits user transmission measurements without source-data fabrication. LITERATURE blocks incomplete species configurations; DEMO requires selection.
 - **Provenance:** `alga_twin.reporting` emits JSON run information and source-data checksum.
 
 ## Data flow
@@ -32,7 +33,7 @@ CSV/DEMO --> strict ingest --> conditions --> constrained fit ----+
 - Extracellular nitrate-as-elemental-nitrogen `N` in mg N/L.
 - Incident irradiance in µmol photons m⁻² s⁻¹.
 - Optical path in metres.
-- Biomass extinction coefficient in L g⁻¹ m⁻¹.
+- Extinction a0 in L^s (g DW)^-s m^-1, with dimensionless exponent 0 < s <= 1.
 - Yield in g biomass/g elemental nitrogen.
 - Rate constants in day⁻¹.
 

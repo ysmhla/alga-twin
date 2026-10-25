@@ -3,11 +3,12 @@ from dataclasses import replace
 import numpy as np
 import pytest
 
-from alga_twin.model import Conditions, Parameters, light_limitation, local_irradiance, simulate
+from alga_twin.demo import demo_parameters
+from alga_twin.model import Conditions, light_limitation, local_irradiance, simulate
 
 
 def test_growth_and_mass_balance_without_loss():
-    p = Parameters(loss_rate_day=0)
+    p = demo_parameters(loss_rate_day=0)
     c = Conditions()
     result = simulate(np.linspace(0, 14, 141), c, p)
     x = result.biomass_g_L.to_numpy()
@@ -22,31 +23,31 @@ def test_growth_and_mass_balance_without_loss():
 def test_low_light_reduces_growth():
     c = Conditions()
     days = np.linspace(0, 4, 40)
-    bright = simulate(days, replace(c,incident_light_umol_m2_s=250))
-    dim = simulate(days, replace(c,incident_light_umol_m2_s=20))
+    bright = simulate(days, replace(c, incident_light_umol_m2_s=250), demo_parameters())
+    dim = simulate(days, replace(c, incident_light_umol_m2_s=20), demo_parameters())
     assert bright.biomass_g_L.iloc[-1] > dim.biomass_g_L.iloc[-1]
-    assert light_limitation(1.0,c,Parameters()) < light_limitation(.1,c,Parameters())
+    assert light_limitation(1.0, c, demo_parameters()) < light_limitation(0.1, c, demo_parameters())
 
 
 def test_no_light_means_no_growth_for_default_no_loss():
-    c = replace(Conditions(),incident_light_umol_m2_s=0)
-    frame = simulate([0,2,4],c)
-    np.testing.assert_allclose(frame.biomass_g_L, c.biomass_initial_g_L,atol=1e-9)
-    np.testing.assert_allclose(frame.nitrate_n_mg_L,c.nitrogen_initial_mg_L,atol=1e-9)
+    c = replace(Conditions(), incident_light_umol_m2_s=0)
+    frame = simulate([0, 2, 4], c, demo_parameters())
+    np.testing.assert_allclose(frame.biomass_g_L, c.biomass_initial_g_L, atol=1e-9)
+    np.testing.assert_allclose(frame.nitrate_n_mg_L, c.nitrogen_initial_mg_L, atol=1e-9)
 
 
 def test_attenuation_monotone_with_depth():
-    c,p=Conditions(),Parameters()
-    values=local_irradiance(np.linspace(0,c.optical_path_m,25),0.5,c,p)
-    assert np.all(np.diff(values)<=0)
+    c, p = Conditions(), demo_parameters()
+    values = local_irradiance(np.linspace(0, c.optical_path_m, 25), 0.5, c, p)
+    assert np.all(np.diff(values) <= 0)
 
 
-@pytest.mark.parametrize("times", [[1,2], [0,0,1], [0,-1,2], [0,366], [0,float('nan')]])
+@pytest.mark.parametrize("times", [[1, 2], [0, 0, 1], [0, -1, 2], [0, 366], [0, float("nan")]])
 def test_bad_time_grid_rejected(times):
     with pytest.raises(ValueError):
-        simulate(times)
+        simulate(times, parameters=demo_parameters())
 
 
 def test_invalid_conditions_rejected():
     with pytest.raises(ValueError):
-        simulate([0,1],Conditions(nitrogen_initial_mg_L=-1))
+        simulate([0, 1], Conditions(nitrogen_initial_mg_L=-1), demo_parameters())

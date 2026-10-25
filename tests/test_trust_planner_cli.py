@@ -5,13 +5,14 @@ import numpy as np
 import pytest
 
 from alga_twin.cli import main
-from alga_twin.model import Conditions, Parameters
+from alga_twin.demo import demo_parameters
+from alga_twin.model import Conditions
 from alga_twin.planner import scenario_grid
 from alga_twin.trust import local_sensitivity, scenario_warnings
 
 
 def test_sensitivity_is_finite_and_nonempty():
-    result = local_sensitivity(Conditions(), Parameters(), days=6)
+    result = local_sensitivity(Conditions(), demo_parameters(), days=6)
     assert len(result) >= 4
     assert np.isfinite(result.elasticity.to_numpy()).all()
     assert result.iloc[0].absolute_elasticity >= result.iloc[-1].absolute_elasticity
@@ -19,7 +20,7 @@ def test_sensitivity_is_finite_and_nonempty():
 
 def test_sensitivity_needs_valid_horizon():
     with pytest.raises(ValueError):
-        local_sensitivity(Conditions(), Parameters(), days=0)
+        local_sensitivity(Conditions(), demo_parameters(), days=0)
 
 
 def test_scenario_extrapolation_warnings():
@@ -31,7 +32,7 @@ def test_scenario_extrapolation_warnings():
 
 
 def test_planner_grid_and_pareto_candidates():
-    frame = scenario_grid(Conditions(), Parameters(), days=4, steps=3)
+    frame = scenario_grid(Conditions(), demo_parameters(), days=4, steps=3)
     assert len(frame) == 9
     assert frame.sampled_pareto_candidate.any()
     assert frame.biomass_gain_g_L.min() >= -1e-8
@@ -39,7 +40,7 @@ def test_planner_grid_and_pareto_candidates():
 
 
 def test_zero_resources_do_not_produce_growth():
-    frame = scenario_grid(Conditions(), Parameters(), days=3, steps=3)
+    frame = scenario_grid(Conditions(), demo_parameters(), days=3, steps=3)
     subset = frame[(frame.light_umol_m2_s == 0) | (frame.initial_nitrogen_mg_L == 0)]
     assert abs(subset.biomass_gain_g_L).max() < 1e-8
 
@@ -47,9 +48,25 @@ def test_zero_resources_do_not_produce_growth():
 def test_cli_simulate_and_fit(tmp_path):
     csv = tmp_path / "predicted.csv"
     result = tmp_path / "fit.json"
-    assert main(["simulate", "--days", "5", "--output", str(csv)]) == 0
+    assert main(["simulate", "--demo", "--days", "5", "--output", str(csv)]) == 0
     assert csv.exists()
-    assert main(["fit", "--input", str(csv), "--light", "180", "--path-cm", "5", "--output", str(result)]) == 0
+    assert (
+        main(
+            [
+                "fit",
+                "--demo",
+                "--input",
+                str(csv),
+                "--light",
+                "180",
+                "--path-cm",
+                "5",
+                "--output",
+                str(result),
+            ]
+        )
+        == 0
+    )
     payload = json.loads(result.read_text())
     assert payload["success"]
     assert "mu_max_day" in payload["fitted_names"]

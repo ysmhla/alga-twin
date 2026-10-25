@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 — 2026-10-25
+
+- Added immutable parameter evidence records, units/basis checks and C. minutissima source catalogue.
+- Removed implicit numerical model defaults; synthetic parameters require explicit DEMO selection or CLI --demo.
+- Kept extinction/carbon fraction and unsupported species parameters unset; no cross-species substitution.
+- Added optional sublinear extinction with exponent-dependent coefficient units.
+- Added direct dry-biomass/transmission extinction fitting and diagnostics, without automatic preset promotion.
+- Added provenance tables/exports and verified-range override warnings; no unsupported ranges invented.
+- Updated model equations, source audit, regression tests and CI lint. Replaced deprecated Streamlit width arguments.
+- Breaking API: extinction_L_per_g_m renamed extinction_a0; Parameters requires eight numerical fields.
+- No new biological validation, confidence intervals or advanced growth-model claims.
+
 ## 0.2.1 — 2026-10-25
 
 - Added a real Streamlit runtime workflow regression test.

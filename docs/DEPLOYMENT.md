@@ -6,7 +6,7 @@
 2. Commit the project to its `main` branch; do **not** flatten the `src/alga_twin` directory.
 3. Confirm the `Scientific Python CI` GitHub Actions workflow completes on Python 3.11 and 3.12.
 4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `OWNER/alga-twin`, branch `main`, entry point `app.py`.
-5. No secret values are needed. Check that the synthetic demo charts, tabs and CSV export work.
+5. No secret values are needed. Verify that LITERATURE initially blocks missing species parameters; explicitly select DEMO and check charts, tabs and exports.
 6. Run the public deployment smoke checklist below before publicising the link.
 
 This repository contains **deployment configuration**, not proof that hosting was deployed. GitHub connection alone does not publish a Streamlit Cloud app.
@@ -27,8 +27,8 @@ streamlit run app.py
 ## Docker
 
 ```bash
-docker build --tag alga-twin:0.1 .
-docker run --rm --publish 8501:8501 alga-twin:0.1
+docker build --tag alga-twin:0.3 .
+docker run --rm --publish 8501:8501 alga-twin:0.3
 ```
 
 Default local URL: `http://localhost:8501`.
@@ -36,7 +36,9 @@ Default local URL: `http://localhost:8501`.
 ## Smoke checklist
 
 - [ ] Startup loads with no import/asset errors.
-- [ ] Demo mode visibly identifies its data as synthetic.
+- [ ] LITERATURE is the initial screen; missing species parameters do not trigger simulation.
+- [ ] Direct extinction helper rejects invalid units/signals.
+- [ ] Explicitly selected DEMO identifies all parameter assumptions as UNVERIFIED.
 - [ ] `Fit supported parameters` returns estimates and diagnostics.
 - [ ] `Virtual Reactor` responds to irradiance and nitrogen sliders.
 - [ ] `LightScope` heatmap reflects optical attenuation.

@@ -1,4 +1,5 @@
 """Exercise real Streamlit widget state and the main research workflow."""
+
 from pathlib import Path
 
 import pytest
@@ -9,6 +10,8 @@ APP = Path(__file__).resolve().parents[1] / "app.py"
 
 def test_real_streamlit_calibration_scenarios_and_planner():
     app = AppTest.from_file(str(APP), default_timeout=60).run()
+    assert not app.exception
+    app.radio[0].set_value("DEMO — synthetic assumptions").run()
     assert not app.exception
     assert len(app.tabs) == 7
     initial_biomass = next(m.value for m in app.metric if m.label == "Final predicted biomass")
@@ -24,13 +27,17 @@ def test_real_streamlit_calibration_scenarios_and_planner():
     assert not app.exception
     fit = app.session_state["calibration"][1]
     assert fit.success and fit.rmse_biomass_g_L < 0.02
+    provenance = next(frame.value for frame in app.dataframe if "basis" in frame.value.columns)
+    row = provenance[provenance.parameter == "mu_max_day"].iloc[0]
+    assert row.value == pytest.approx(fit.parameters.mu_max_day)
+    assert row.status == "UNVERIFIED"
     assert any("Constrained calibration converged" in s.value for s in app.success)
 
     app.button[1].click().run()
     saved = app.session_state["scenarios"]["Scenario A"]
     assert saved[2] == fit.parameters
 
-    app.number_input[0].set_value(250.0).run()
+    next(w for w in app.number_input if w.label.startswith("Measured incident light")).set_value(250.0).run()
     assert not app.exception
     assert not any(m.label == "Fitted µmax" for m in app.metric)
     assert app.session_state["scenarios"]["Scenario A"] == saved
@@ -46,3 +53,30 @@ def test_real_streamlit_calibration_scenarios_and_planner():
     app.button[2].click().run()
     assert not app.exception
     assert app.session_state["scenarios"] == {}
+
+
+def test_literature_landing_cannot_silently_run_demo():
+    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    assert not app.exception
+    assert app.radio[0].value == "LITERATURE — C. minutissima"
+    assert len(app.tabs) == 0
+    assert not any(m.label == "Final predicted biomass" for m in app.metric)
+    assert any("NO_SPECIES_DATA" in m.value for m in app.info)
+    assert any("Measure extinction directly" in m.value for m in app.markdown)
+    assert not any("converged" in m.value.lower() for m in app.success)
+
+
+def test_sublinear_demo_renders_with_provenance():
+    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app.radio[0].set_value("DEMO — synthetic assumptions").run()
+    next(w for w in app.selectbox if w.label == "Extinction law").set_value("Sublinear").run()
+    assert not app.exception
+    assert any(w.label == "Synthetic extinction exponent s" for w in app.number_input)
+    assert any("UNVERIFIED" in w.value for w in app.warning)
+    provenance = next(
+        frame.value
+        for frame in app.dataframe
+        if "parameter" in frame.value.columns and "basis" in frame.value.columns
+    )
+    assert set(provenance.status) == {"UNVERIFIED"}
+    assert set(provenance.tier) == {"DEMO"}

@@ -1,21 +1,19 @@
-# Release status — v0.2.1 (2026-10-25)
+# Release status — v0.3.0 (2026-10-25)
 
-## Implemented and verified locally
+Step 1 engineering is implemented: parameter records, unit/mass-basis guards,
+C. minutissima catalogue, explicit DEMO gate, linear/sublinear extinction,
+user optical-fit helper, provenance UI/exports and override warnings.
 
-- Single-species batch Monod/light numerical model and nitrate-as-N balance.
-- CSV ingestion, constrained fitting and synthetic recovery checks.
-- Virtual Reactor, LightScope, ScenarioLab, TrustLens, sampled planner, CLI and exports.
-- Real Streamlit runtime workflow test in addition to the original 33 tests.
-- Local Streamlit server startup, health endpoint and HTML response.
-- CI and Docker/Streamlit/Render deployment configuration files.
+No verified minutissima parameter ranges were established in the audited papers.
+Research simulation remains blocked for the incomplete literature preset.
+Missing parameters and f_C are unset; source points do not become arbitrary ranges.
 
-## Remaining gates
+Local verification: 62 tests passed; Ruff lint and format checks passed. Current
+v0.3 cloud CI is pending. See VERIFICATION.md for exact limits and commands.
 
-- **PUBLISHED:** All 43 project files are public at https://github.com/ysmhla/alga-twin after explicit user authorization.
-- **PASS:** GitHub Actions on Python 3.11 and 3.12: https://github.com/ysmhla/alga-twin/actions/runs/40177389592 (source commit `42b524388b1e666caf0f690fc95e2b4591e80f57`).
-- **NOT DEPLOYED:** Hosted Streamlit application.
-- **NOT TESTED:** Visual dashboard browser interaction and Docker build/run.
-- **NOT VALIDATED:** Independent measured cultivation data.
-- **NOT BUILT:** Droop quota, formal uncertainty intervals, global optimisation, sensor ingestion and photoinhibition.
-
-The source is published. The hosted service and independent scientific validation remain pending. Streamlit sign-in requires agreement to its Terms of Service; that step awaits separate confirmation. See [verification](VERIFICATION.md).
+- NOT DEPLOYED: hosted app. Streamlit sign-in/terms remain pending.
+- NOT TESTED: visual browser layout and Docker build/run.
+- NOT VALIDATED: independent cultivation/optical data.
+- NOT BUILT: selectable Droop/Haldane/CTMI growth models, joint calibration,
+  profile likelihood, benchmark suite, experiment recommendation, tutorial/report
+  workflows and publication package. See RESEARCH_ROADMAP.md.

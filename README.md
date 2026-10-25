@@ -8,7 +8,7 @@
 
 *Illustrative simulation and synthetic measurements — not lab-validated.*
 
-## What it does today (v0.2.1)
+## What it does today (v0.3.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -20,6 +20,14 @@
 - **CLI:** run research simulations or constrained CSV fitting without the web interface.
 - Exports CSV predictions and a JSON provenance manifest.
 - Includes numerical/scientific tests, GitHub Actions and Docker/Streamlit deployment setup.
+- Records value, source, status, species, conditions, mass basis and evidence tier in a provenance table and JSON exports.
+- Keeps C. minutissima extinction at None / NO_SPECIES_DATA; no C. pyrenoidosa transfer or assumed carbon fraction.
+- Provides a direct extinction-measurement CSV helper with residuals, method and in-sample R²; user estimates stay UNVERIFIED / MEASURED.
+- Supports linear and optional sublinear extinction; coefficient units depend on the exponent. No verified species range is invented.
+
+### Parameter tiers and evidence
+
+LITERATURE contains audited source records, not a complete runnable Monod preset. DEMO contains explicitly selected UNVERIFIED assumptions; MEASURED identifies user optical estimates. Source transcription does not establish validation for your strain. Reported Haldane points are not substituted into Monod equations. Verified-range overrides generate warnings when source-reported bounds exist; none were established for the present catalogue. See [source audit](docs/PARAMETER_AUDIT.md) and [model/units](docs/MODEL.md).
 
 ### Not built yet
 
@@ -36,17 +44,17 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open http://localhost:8501 . No API keys or external services are required.
+Open http://localhost:8501 . The initial LITERATURE screen shows the C. minutissima catalogue and the direct extinction helper. Missing species parameters remain unset, so research simulation is blocked. Select **DEMO — synthetic assumptions** explicitly to run the simulator. No API keys are required.
 
 ### CLI usage
 
 ```bash
 pip install -e .
-alga-twin simulate --days 12 --light 180 --nitrogen 70 --output simulation.csv
-alga-twin fit --input data/synthetic_chlorella_demo.csv --light 180 --path-cm 5 --output fitted.json
+alga-twin simulate --demo --days 12 --light 180 --nitrogen 70 --output simulation.csv
+alga-twin fit --demo --input data/synthetic_chlorella_demo.csv --light 180 --path-cm 5 --output fitted.json
 ```
 
-The CLI fit reports training-data residual metrics, not independent prediction quality.
+The CLI requires --demo because a complete literature Monod configuration is unavailable. Its fit reports in-sample residual metrics only. Missing explicit parameters in the Python API are rejected; use alga_twin.demo.demo_parameters() deliberately for synthetic examples.
 
 ### Docker
 
@@ -92,12 +100,13 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-Verification: **34 tests passed** locally and in GitHub Actions on Python 3.11 and 3.12, including a real Streamlit widget workflow. [Cloud CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40177389592). Local HTTP health and HTML responses passed. Public deployment, visual browser checks, Docker and independent laboratory validation remain unverified; see [verification record](docs/VERIFICATION.md).
+**62 local tests passed on Python 3.12**, including real Streamlit workflows. **Ruff check and format check passed.** Current v0.3 cloud CI is pending; the older v0.2.1 cloud result does not certify this change. Public deployment, visual browser checks, Docker build and independent laboratory validation remain unverified. See [verification record](docs/VERIFICATION.md).
 
 ```bash
-pip install -e '.[dev]'
+pip install -r requirements.txt -e '.[dev]'
 pytest -q
-python -m compileall -q src app.py
+ruff check src app.py tests
+ruff format --check src app.py tests
 ```
 
 ## Project design

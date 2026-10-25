@@ -21,6 +21,8 @@ jobs:
         run: pip install -r requirements.txt -e '.[dev]'
       - name: Check Python compilation
         run: python -m compileall -q src app.py
+      - name: Ruff lint
+        run: ruff check src app.py tests
       - name: Run tests
         run: pytest -q
       - name: Dashboard import sanity check

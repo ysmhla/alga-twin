@@ -4,6 +4,7 @@ This illustrative, single-species batch model assumes a well-mixed culture,
 constant incident irradiance, constant temperature, nitrogen-limited growth,
 and an effective one-dimensional optical path. It is not a validated plant twin.
 """
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, replace
@@ -11,6 +12,8 @@ from dataclasses import asdict, dataclass, replace
 import numpy as np
 import pandas as pd
 from scipy.integrate import solve_ivp
+
+from .parameters import Parameter, parameter_units, provenance_rows
 
 # Gauss-Legendre quadrature over normalized optical depth [0,1].
 _GAUSS_POINTS, _GAUSS_WEIGHTS = np.polynomial.legendre.leggauss(16)
@@ -20,26 +23,35 @@ _DEPTH_WEIGHTS = _GAUSS_WEIGHTS / 2
 
 @dataclass(frozen=True)
 class Parameters:
-    """Biological/optical parameters; defaults illustrative, not strain estimates."""
+    """Explicit numerical configuration; no implicit biological parameter defaults."""
 
-    mu_max_day: float = 0.95  # maximum specific growth rate, day^-1
-    k_n_mg_L: float = 5.0  # Monod half-saturation, mg N / L
-    k_i_umol_m2_s: float = 85.0  # light half-saturation, umol photons / m² / s
-    biomass_yield_g_per_gN: float = 8.0  # g dry biomass / g nitrogen consumed
-    extinction_L_per_g_m: float = 12.0  # attenuation per [g biomass / L] per m
-    background_extinction_m_inv: float = 0.3  # medium background attenuation, m^-1
-    loss_rate_day: float = 0.0  # apparent first-order biomass loss, day^-1
+    mu_max_day: float
+    k_n_mg_L: float
+    k_i_umol_m2_s: float
+    biomass_yield_g_per_gN: float
+    extinction_a0: float
+    background_extinction_m_inv: float
+    loss_rate_day: float
+    extinction_exponent: float
+    provenance: tuple[tuple[str, Parameter], ...] = ()
+    tier: str = "LITERATURE"
+    species: str = "unspecified"
 
     def validate(self) -> None:
-        vals = asdict(self)
+        names = parameter_units(self.extinction_exponent)
+        vals = {name: getattr(self, name) for name in names}
         if any(not np.isfinite(v) for v in vals.values()):
             raise ValueError("Parameters must be finite")
         positive = ("mu_max_day", "k_n_mg_L", "k_i_umol_m2_s", "biomass_yield_g_per_gN")
         if any(vals[k] <= 0 for k in positive):
             raise ValueError("Growth, half-saturation and yield parameters must be positive")
-        nonnegative = ("extinction_L_per_g_m", "background_extinction_m_inv", "loss_rate_day")
+        nonnegative = ("extinction_a0", "background_extinction_m_inv", "loss_rate_day")
         if any(vals[k] < 0 for k in nonnegative):
             raise ValueError("Extinction and biomass loss cannot be negative")
+        if self.tier not in {"DEMO", "LITERATURE", "MEASURED"}:
+            raise ValueError("Unknown parameter tier")
+        # Every active value has explicit source/status metadata, including user overrides.
+        provenance_rows(self)
 
 
 @dataclass(frozen=True)
@@ -67,7 +79,8 @@ def local_irradiance(
     """Effective Beer-Lambert profile, units umol photons m^-2 s^-1."""
     depth = np.asarray(depth_m, dtype=float)
     return condition.incident_light_umol_m2_s * np.exp(
-        -(p.background_extinction_m_inv + p.extinction_L_per_g_m * max(0, biomass_g_L)) * depth
+        -(p.background_extinction_m_inv + p.extinction_a0 * max(0, biomass_g_L) ** p.extinction_exponent)
+        * depth
     )
 
 
@@ -95,7 +108,9 @@ def simulate(
     A positive loss_rate_day removes biomass without recycling N in this MVP.
     """
     c = conditions or Conditions()
-    p = parameters or Parameters()
+    if parameters is None:
+        raise ValueError("Supply explicit parameters; synthetic values require demo_parameters()")
+    p = parameters
     c.validate()
     p.validate()
     t = np.asarray(times_day, dtype=float)
@@ -126,15 +141,19 @@ def simulate(
     x, n = result.y
     # Small negative concentrations may arise from numerical tolerances; avoid
     # presenting them as physical concentrations.
-    return pd.DataFrame({
-        "time_day": t,
-        "biomass_g_L": np.maximum(x, 0),
-        "nitrate_n_mg_L": np.maximum(n, 0),
-    })
+    return pd.DataFrame(
+        {
+            "time_day": t,
+            "biomass_g_L": np.maximum(x, 0),
+            "nitrate_n_mg_L": np.maximum(n, 0),
+        }
+    )
 
 
 def conditions_for_observations(data: pd.DataFrame, base: Conditions) -> Conditions:
     """Use first biomass and first measured nitrogen at t0 as initial observations."""
     first = data.iloc[0]
-    nitrogen = float(first["nitrate_n_mg_L"]) if np.isfinite(first["nitrate_n_mg_L"]) else base.nitrogen_initial_mg_L
+    nitrogen = (
+        float(first["nitrate_n_mg_L"]) if np.isfinite(first["nitrate_n_mg_L"]) else base.nitrogen_initial_mg_L
+    )
     return replace(base, biomass_initial_g_L=float(first["biomass_g_L"]), nitrogen_initial_mg_L=nitrogen)

@@ -1,81 +1,127 @@
-# AlgaTwin v0.2 — Scientific specification
+# AlgaTwin v0.3 — model, units and parameter evidence
 
-## States, dimensional conventions
+## Equations implemented today
 
-- `X`: dry biomass concentration [g DW L^-1]
-- `N`: externally available nitrate **as elemental nitrogen** [mg N L^-1]
-- `t`: cultivation time [day]
-- `I`: irradiance [µmol photons m^-2 s^-1]
-- `L`: effective optical path [m]
+X is g dry biomass/L; N is mg elemental nitrogen/L (not nitrate ion); t is days;
+I is micromole photons/m²/s; z and L are metres.
 
-## Governing equations
+    epsilon(X) = a0 * X^s + a1
+    I(z) = I0 * exp(-epsilon(X) * z)
+    F(X) = (1/L) integral_0^L I(z)/(K_I + I(z)) dz
+    mu_g = mu_max * N/(K_N + N) * F(X)
+    dX/dt = (mu_g - k_loss) * X
+    dN/dt = -1000 * mu_g * X / Y_XN
 
-Gross specific growth rate:
+| Parameter | Solver unit |
+|---|---|
+| mu_max, k_loss | day^-1 |
+| K_N | mg elemental N/L |
+| K_I | micromole photons m^-2 s^-1 |
+| Y_XN | g DW/g N |
+| a0 (extinction_a0) | L^s (g DW)^-s m^-1 |
+| a1 (background_extinction_m_inv) | m^-1 |
+| s (extinction_exponent) | dimensionless; 0 < s <= 1 |
 
-```
-mu_g = mu_max * N/(K_N + N) * <f(I)>
-<f(I)> = (1/L) * integral_0^L [ I(z)/(K_I + I(z)) ] dz
-I(z) = I0 * exp(-(k0 + kX * X) * z)
-```
+The linear baseline is exactly s=1. The optional sublinear law is the family in
+Bernard & Lu, [arXiv:2108.10009v1](https://arxiv.org/html/2108.10009v1), Eq. 3.
+a0 must be re-estimated for a different s. This is effective attenuation, not a
+radiative-transfer/scattering solver. epsilon*z is dimensionless.
 
-Balance equations:
+Pint treats dry biomass, carbon and elemental nitrogen as distinct dimensions
+(g_DW, g_C, g_N). The nutrient equation's 1000 converts g N to mg N. At zero
+loss, X + Y_XN*N/1000 is conserved under either optical law. With loss, its
+derivative is -k_loss*X; removed biomass/nitrogen is not recycled.
 
-```
-dX/dt = (mu_g - k_loss) * X
+RK45 uses rtol=1e-8, atol=1e-10, max_step=0.12 day, with 16-point Gauss–Legendre
+quadrature across depth. Derivatives use nonnegative X/N; rounding-level negative
+outputs are clipped, not treated as measurements. Time starts at zero, increases
+strictly, and ends within 365 days.
 
-dN/dt = -1000 * mu_g * X / Y_XN
-```
+## Evidence and absence of scientific defaults
 
-The factor `1000` converts consumed g elemental N/L to mg N/L; `Y_XN` is g biomass per g elemental nitrogen consumed. Biomass loss in this prototype does not recycle nutrients. Light integration is numerical (16-point Gauss–Legendre quadrature), evaluated at every numerical solver step; we do not substitute a growth response at average irradiance.
+Parameter records contain value, low, high, unit, source URL, status, species,
+conditions, basis, tier, evidence and source locator. VERIFIED means checked
+source transcription, not independent validation or strain transferability.
 
-## Physical scope
+- LITERATURE: audited records; reported points never acquire inferred ranges.
+- DEMO: explicitly selected synthetic assumptions; all values are UNVERIFIED.
+- MEASURED: user optical estimates; UNVERIFIED, with method and residuals.
 
-Single species, well-mixed batch, constant incident light, fixed reactor path, no changes to temperature/pH/CO2, external nitrate-N as sole explicit limiting nutrient, no luxury uptake/quota, no photoinhibition, no maintenance uptake, no fed-batch, no biomass-light scattering model beyond effective Beer–Lambert absorption.
+Parameters requires all eight numerical fields. simulate and fit_experiment reject
+missing parameter configurations. demo_parameters() is an explicit opt-in factory;
+the CLI also requires --demo. Source-free explicit user inputs receive UNVERIFIED
+provenance. Numeric overrides revoke verified status; the source value/range and
+warning are retained separately. Arbitrary URLs are not automatically verified.
 
-This is **a research modelling prototype** rather than a validated 'digital replica' of any laboratory reactor. For dense/shallow cultures a simple exponential optical model may be inadequate.
+The former linear-only extinction_L_per_g_m field is renamed extinction_a0. Its
+unit depends on s; inconsistent unit/basis metadata is rejected before simulation.
+Experimental conditions are separate inputs; example starting conditions are
+illustrations, not recommendations.
 
-## Initial illustrative parameters
+## C. minutissima gate
 
-| Parameter | Default | Unit | Treatment in fitting |
-|---|---:|---|---|
-| `mu_max_day` | 0.95 | day^-1 | Fitted |
-| `k_n_mg_L` | 5 | mg N/L | Fixed |
-| `k_i_umol_m2_s` | 85 | µmol photons/m²/s | Fixed |
-| `biomass_yield_g_per_gN` | 8 | g DW/g N | Fitted only with >=3 nitrate observations |
-| `extinction_L_per_g_m` | 12 | L g^-1 m^-1 | Fixed |
-| `background_extinction_m_inv` | 0.3 | m^-1 | Fixed |
-| `loss_rate_day` | 0 | day^-1 | Fixed |
+The catalogue is not a complete runnable Monod preset. Extinction, carbon fraction,
+Monod and CTMI cardinal gaps remain unset. Haldane/LOT values belong to their own
+equations and cannot fill Monod gaps. No verified ranges were established from the
+audited sources. See [source audit](PARAMETER_AUDIT.md).
 
-These are **illustrative** values and are not asserted as *Chlorella* physiology constants.
+LITERATURE is the initial app screen. It shows provenance and the direct optical
+helper, then stops growth simulation/fitting rather than falling back to synthetic
+values. DEMO must be explicitly selected, also when uploading growth data. Uploaded
+data do not verify its fixed assumptions.
 
-## Calibration and identifiability
+For linear carbon coefficient k_C in m²/g C, dry-weight conversion is:
 
-The current estimator minimises scaled residuals for the two observed states, with deterministic multistart bounded least squares. Scale factors are assumed rough noise floors, not measured variance. Fitting does not account for correlated observations, errors-in-variables, replicate structure or parameter confidence intervals. For biomass-only data the yield stays fixed; from a single trajectory neither all optical nor all kinetic parameters are separately identifiable.
+    a0_DW = 1000 * k_C * f_C      [L/(g DW m)]
 
-Fitting depends on metadata entered manually (I0, L, nitrate N0 if first N observation is missing). Changing those conditions invalidates stored fits.
+f_C is g C/g DW and stays unset. For general s, first convert to litre-based
+carbon units, then multiply by f_C^s. The helper requires explicit f_C in (0,1];
+it does not certify that input or transfer coefficients between species.
 
-The reported RMSE is **in-sample**. Independent run testing is NOT implemented. No parameter credible/confidence intervals or field-ready parameter recommendations are currently available.
+## Direct extinction measurement
 
-## Numerical and implementation notes
+CSV columns: biomass, incident, transmitted, path. Select dry-weight/path units
+explicitly. Light readings must share calibrated photon-flux units, spectral
+response, geometry and medium. OD, watts/m² and carbon biomass are rejected.
 
-- `solve_ivp` RK45 with rtol=1e-8, atol=1e-10, maximum step=0.12 day.
-- Nonnegative initial conditions validated. Rounding-level negative nitrogen states are clipped for presentation; derivatives use N=max(0,N).
-- Time interval must begin at zero and end within 365 days.
-- Initial biomass for fitting comes from first observed dry biomass; initial N from first measured time-zero N or manually supplied sidebar value.
-- Calibration computes reference predictions only at measured time points; virtual experiments may use denser time grids.
+    epsilon_observed = ln(incident/transmitted) / path_m
 
-## Planned validation
+Constrained least squares fits epsilon=a0*X^s+a1: a0/a1 nonnegative; s=1 fixed
+or s fitted in (0,1]. There is no invented physiological upper bound. For free-s
+optimization, the initial 0.5 and lower numerical bound 1e-4 are algorithm settings,
+not biological values or a literature range. The biomass variable is scaled by
+its observed maximum to improve numerical conditioning.
 
-1. Test conservation of `X + Y_XN * N/1000` at zero biomass loss.
-2. Verify monotonic cumulative nitrogen consumption for positive growth.
-3. Compare optical response under low and high biomass or path length.
-4. Parameter recovery from clean synthetic data; failure cases flagged.
-5. Independent experiments, not shuffled timepoints from a single culture, for any claim of generalization.
+Require a medium blank (X=0) and >=3 distinct positive biomasses for a linear fit,
+or >=5 for free s. Reject non-finite/zero signals, invalid paths, transmission
+above incidence, flat attenuation and ill-conditioned Jacobians. These are
+screening heuristics, not profile-likelihood identifiability proofs.
 
-## References and general context
+Output method, residuals, in-sample R², measured biomass domain and UNVERIFIED,
+MEASURED parameter records. No interval, out-of-domain prediction, or automatic
+preset promotion is supplied. Independent optical measurements are needed for
+predictive evaluation. Log-transmission noise may be heteroscedastic; sensor
+uncertainty propagation is not implemented.
 
-- Monod, J. (1949): growth of bacterial cultures (classical nutrient-limited growth formulation).
-- Droop, M. R. (1973): nutrient status and growth (quota model, future work).
-- SciPy [`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) and [`least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html).
+## Scope and calibration limitations
 
-**No parameter in this implementation was empirically calibrated to a peer-reviewed experimental dataset at project creation.**
+Single-species, well-mixed batch; fixed illumination/path. No quota, temperature,
+pH, CO2, mixing, feeding, photoinhibition or diurnal dynamics. Haldane, LOT and CTMI
+records are catalogue entries only; those growth models are NOT BUILT in this step.
+
+Existing growth fitting estimates mu_max and, with >=3 nutrient observations,
+yield. It uses multistart bounded least squares and assumed noise floors, not a
+replicate error model. No profiles, formal intervals or independent-run
+cross-validation exist. All RMSE is in-sample. Sensitivity and convergence do not
+establish identifiability. Changes to entered calibration conditions invalidate
+fits; saved scenarios preserve their parameters.
+
+## Executable checks
+
+Tests cover evidence statuses, mass bases and units, explicit f_C, missing defaults,
+override warnings, synthetic optical recovery and unit invariance, and invalid or
+uninformative transmission data. Both optical laws have zero-light, transparent
+and zero-biomass limiting checks, monotonic nitrogen, positivity and zero-loss
+conservation. s=1 is compared to the original affine formula.
+
+No independent cultivation or optical dataset has validated AlgaTwin.

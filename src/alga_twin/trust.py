@@ -4,18 +4,21 @@ These checks are heuristics and local sensitivity measures, NOT quantified
 predictive uncertainty, statistical parameter confidence, or independent
 validation.  They are intended to make limitations visible.
 """
+
 from __future__ import annotations
 
-from dataclasses import fields, replace
+from dataclasses import replace
 
-import numpy as np
 import pandas as pd
 
 from .model import Conditions, Parameters, simulate
 
 _SENSITIVE_PARAMETERS = (
-    "mu_max_day", "k_n_mg_L", "k_i_umol_m2_s",
-    "biomass_yield_g_per_gN", "extinction_L_per_g_m",
+    "mu_max_day",
+    "k_n_mg_L",
+    "k_i_umol_m2_s",
+    "biomass_yield_g_per_gN",
+    "extinction_a0",
 )
 
 
@@ -40,15 +43,22 @@ def local_sensitivity(
         y0 = float(simulate([0, days], conditions, lower).biomass_g_L.iloc[-1])
         y1 = float(simulate([0, days], conditions, upper).biomass_g_L.iloc[-1])
         sensitivity = (y1 - y0) / (2 * relative_step * base_final)
-        rows.append({"parameter": name, "elasticity": sensitivity,
-                     "absolute_elasticity": abs(sensitivity), "relative_step": relative_step})
+        rows.append(
+            {
+                "parameter": name,
+                "elasticity": sensitivity,
+                "absolute_elasticity": abs(sensitivity),
+                "relative_step": relative_step,
+            }
+        )
     return pd.DataFrame(rows).sort_values("absolute_elasticity", ascending=False).reset_index(drop=True)
 
 
 def scenario_warnings(
     calibrated_at: Conditions,
     proposed: Conditions,
-    *, calibrated: bool,
+    *,
+    calibrated: bool,
     scenario_days: float,
     observed_days: float,
 ) -> list[str]:
@@ -69,7 +79,9 @@ def scenario_warnings(
         else:
             changed = abs(candidate / reference - 1) > 0.25
         if changed:
-            notes.append(f"{label} differs by more than 25% from calibration conditions; extrapolation is unvalidated.")
+            notes.append(
+                f"{label} differs by more than 25% from calibration conditions; extrapolation is unvalidated."
+            )
     if scenario_days > observed_days * 1.25:
         notes.append("Prediction extends more than 25% beyond observed experiment duration.")
     return notes

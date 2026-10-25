@@ -1,4 +1,5 @@
 """Reproducible command-line entry points for scripted use without Streamlit."""
+
 from __future__ import annotations
 
 import argparse
@@ -9,8 +10,10 @@ from pathlib import Path
 import numpy as np
 
 from .data import read_experiment_csv
+from .demo import demo_parameters
 from .fitting import fit_experiment
-from .model import Conditions, Parameters, simulate
+from .model import Conditions, simulate
+from .parameters import provenance_rows
 from .reporting import model_dataframe_to_csv
 
 
@@ -30,20 +33,29 @@ def main(argv: list[str] | None = None) -> int:
     fit_command.add_argument("--path-cm", type=float, required=True)
     fit_command.add_argument("--initial-nitrogen", type=float, default=70.0)
     fit_command.add_argument("--output", type=Path, required=True)
+    for command in (simulate_command, fit_command):
+        command.add_argument(
+            "--demo", action="store_true", help="Explicitly use UNVERIFIED synthetic parameters"
+        )
     args = parser.parse_args(argv)
+    if not args.demo:
+        parser.error(
+            "No complete literature Monod preset exists. Supply --demo for synthetic assumptions only."
+        )
     if args.command == "simulate":
         c = Conditions(args.biomass, args.nitrogen, args.light, args.path_cm / 100.0)
         times = np.linspace(0, args.days, int(max(2, np.ceil(args.days * 12))) + 1)
-        frame = simulate(times, c)
+        frame = simulate(times, c, demo_parameters())
         args.output.write_bytes(model_dataframe_to_csv(frame))
         print(f"Wrote {len(frame)} ILLUSTRATIVE timepoints: {args.output}")
     else:
         data = read_experiment_csv(args.input.read_bytes())
         c = Conditions(float(data.biomass_g_L.iloc[0]), args.initial_nitrogen, args.light, args.path_cm / 100)
-        result = fit_experiment(data, c, Parameters())
+        result = fit_experiment(data, c, demo_parameters())
         payload = {
             "success": result.success,
             "parameters": asdict(result.parameters),
+            "parameter_provenance": provenance_rows(result.parameters),
             "fitted_names": result.fitted_names,
             "rmse_biomass_g_L": result.rmse_biomass_g_L,
             "rmse_nitrogen_mg_L": result.rmse_nitrogen_mg_L,

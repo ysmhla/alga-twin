@@ -1,29 +1,36 @@
-# Verification record — 2026-10-25
+# Verification record — v0.3.0, 2026-10-25
 
-Verified locally with Python 3.12. Streamlit 1.66.1 and Plotly 6.9.0 were installed from the package registry alongside the scientific package.
+## Current implementation
 
-| Gate | Result | Evidence / caveat |
+| Check | Result | Evidence and scope |
 |---|---|---|
-| Scientific kernel, CSV importer, CLI and exports | PASS | Original 33 tests rerun successfully |
-| Real Streamlit widget runtime | PASS | `tests/test_streamlit_runtime.py`, using `streamlit.testing.v1.AppTest` rather than a fake UI |
-| Interactive workflow | PASS | Seven tabs render; darkness reduces growth; calibration converges; changing inputs invalidates active fit; saved scenarios preserve parameter snapshots; nine-point planner completes; changing conditions invalidates planner display; clear resets scenarios |
-| HTTP server | PASS | Actual `streamlit run app.py` process returned HTTP 200 and `ok` at `/_stcore/health`, and HTTP 200 HTML at `/` |
-| Python compilation and fatal-error lint | PASS | Commands below |
-| Visual browser verification | NOT TESTED | Cloud browser could not reach the local server; no rendered browser screenshot is claimed |
-| GitHub publication and cloud CI | PASS | 43 files published; Python 3.11 and 3.12 jobs succeeded in [run 40177389592](https://github.com/ysmhla/alga-twin/actions/runs/40177389592), source commit `42b524388b1e666caf0f690fc95e2b4591e80f57` |
-| Hosted Streamlit deployment | NOT DEPLOYED | No hosting application has been created |
-| Docker build/run | NOT TESTED | Docker executable is unavailable |
-| Independent laboratory validation | NOT VALIDATED | Calibration recovery uses synthetic data only |
+| Local pytest, Python 3.12 | PASS: 62 tests | Includes the original scientific workflows, explicit synthetic configurations and optical cases |
+| Parameter/unit evidence tests | PASS | tests/test_parameters_optics.py: statuses, missing species data, bases/units, f_C, overrides, synthetic recovery and failure cases |
+| Optical model limiting/conservation cases | PASS | s=1/s=0.5: zero light, clear medium, zero biomass, conserved X+Y*N/1000, monotonic N and positivity |
+| Real Streamlit workflows | PASS | tests/test_streamlit_runtime.py: LITERATURE gate, explicit DEMO, provenance, sublinear UI, calibration, scenario snapshots and planner invalidation |
+| Ruff lint | PASS | ruff check src app.py tests |
+| Ruff formatting | PASS | ruff format --check src app.py tests |
+| Current cloud CI | PENDING | The v0.2.1 result does not certify v0.3 |
+| Hosted deployment | NOT DEPLOYED | No public app URL |
+| Visual browser verification | NOT TESTED | AppTest is not pixel/browser verification |
+| Docker build/run | NOT TESTED | No build/run claim |
+| Independent laboratory/optical validation | NOT VALIDATED | Recovery uses explicitly synthetic data only |
 
 ## Reproduce
 
-```bash
-python -m pip install -r requirements.txt -e '.[dev]'
-python -m pytest -q
-python -m compileall -q src app.py tests
-python -m ruff check --select E9,F63,F7,F82 src app.py tests
-```
+    python -m pip install -r requirements.txt -e '.[dev]'
+    python -m pytest -q
+    python -m ruff check src app.py tests
+    python -m ruff format --check src app.py tests
+    python -m compileall -q src app.py tests
 
-The real Streamlit test is skipped when Streamlit is absent, allowing scientific-package-only installations. CI installs dashboard dependencies, so it executes the test.
+Streamlit 1.66.1, Plotly 6.9.0 and Ruff 0.17.2 were used locally. Deprecated
+use_container_width arguments were replaced by width="stretch"; Streamlit >=1.50
+is required. No pixel-level usability, <5-minute completion, independent prediction
+accuracy, confidence intervals or novel-method claims are made.
 
-Streamlit currently emits deprecation notices for `use_container_width`; the exercised workflow still passes. No claim of pixel-level UI quality, cloud availability, independent predictive accuracy or formal uncertainty intervals is made.
+## Historical evidence
+
+v0.2.1 passed 34 tests on cloud Python 3.11 and 3.12 in
+https://github.com/ysmhla/alga-twin/actions/runs/40177389592.
+The old local HTTP health check also applied to v0.2.1, not proof of hosting.
