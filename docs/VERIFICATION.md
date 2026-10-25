@@ -4,22 +4,22 @@
 
 | Check | Result | Evidence and scope |
 |---|---|---|
-| Local full pytest, Python 3.12 | IN PROGRESS | Final full-suite run pending |
+| Local full pytest, Python 3.12 | PASS: 130 tests | Current source, full optional benchmark toolchain; 384.12 s |
 | Ruff lint/format, compileall, pip check | PASS | Current source: all checks passed; no broken requirements |
 | Benchmark metadata/licence/units | PASS | Recorded permission, file hashes, bases/species and refusal cases |
 | PEtab round-trip / limits / N balance | PASS | Official format validators, likelihood/state/unit preservation, Monod/Droop light/temperature options and dark limit |
 | Actual pyPESTO benchmark | EXECUTED, SYNTHETIC ONLY | benchmark/results/synthetic_v0_6: three runs/48 measurements; 13 profile points; NLL difference 9.9476e-13; 3/3 native CV folds scored |
 | Benchmark refusal gate | PASS | Unsupported profiles must not produce point estimates or held-out aggregates |
-| Current cloud Python 3.11 | NOT YET RUN | Core suite; optional PEtab 0.9 toolchain unavailable on this Python |
-| Current cloud Python 3.12 | NOT YET RUN | Full suite with benchmark extra |
+| Current cloud Python 3.11 | PASS: 119 tests, 1 skipped, Ruff | [Run 40211930328](https://github.com/ysmhla/alga-twin/actions/runs/40211930328); 105.69 s; benchmark module explicitly skipped because PEtab 0.9 requires Python 3.12 |
+| Current cloud Python 3.12 | PASS: 130 tests and Ruff | Same [run](https://github.com/ysmhla/alga-twin/actions/runs/40211930328); 138.36 s; benchmark extra installed; compilation/import checks passed |
 | Hosted deployment | NOT DEPLOYED | No public app URL |
 | Visual browser/timed novice study | NOT TESTED | AppTest does not establish novice <5-minute usability |
 | Independent biological evaluation | NOT VALIDATED | Only synthetic inference/held-out checks |
 | Empirical interval coverage | NOT ESTABLISHED | Conditional marginal asymptotic profile intervals |
 
 Current-source targeted benchmark run: **11 tests passed in 49.53 s**, including
-PEtab-entry-point permission/unit refusal and flat-profile suppression. The final
-full suite and cloud jobs remain pending below.
+PEtab-entry-point permission/unit refusal and flat-profile suppression. Full suite
+and cloud evidence above certify source commit d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9.
 
 ## Reproduce
 

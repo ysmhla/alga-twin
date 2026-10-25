@@ -1,12 +1,16 @@
 # Release status — v0.6.0 (2026-10-25)
 
-Steps 1–3 remain implemented. Step 4 benchmark engineering is implemented;
-final full local/cloud checks are in progress. Metadata/licence/units/hash
+Steps 1–4 engineering are implemented and checked. Local/cloud Python 3.12
+passed 130 tests; cloud Python 3.11 core passed 119 tests with the optional
+benchmark module skipped (1 skip). Ruff passed on both; local formatting,
+compilation and dependency checks passed. Metadata/licence/units/hash
 loaders, a labelled synthetic fixture, PEtab 2 native-model exchange,
 actual pyPESTO full-data profiles and licence-bearing split scoreboards run.
 Native SciPy gates/whole-run CV remain the reported inference engine.
 The recorded synthetic run has three runs, 48 measurements, 13 external
 profile points, zero PEtab format issues and 3/3 held-out folds scored.
+CI: https://github.com/ysmhla/alga-twin/actions/runs/40211930328.
+Source commit: d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9.
 See benchmark/README.md and docs/VERIFICATION.md for scope/evidence.
 
 The optional PEtab 0.9 benchmark toolchain requires Python 3.12+; core app/CLI

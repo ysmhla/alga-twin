@@ -118,9 +118,11 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-v0.6 full verification is **IN PROGRESS**. The historical v0.5 run passed 119 tests
-on Python 3.11/3.12 ([evidence](https://github.com/ysmhla/alga-twin/actions/runs/40207853593));
-it does not certify the new benchmark code. See [verification record](docs/VERIFICATION.md).
+**v0.6: 130 tests passed locally and in cloud Python 3.12. Ruff, formatting,
+compilation and local dependency checks passed. Cloud Python 3.11 core passed
+119 tests, with the optional benchmark module explicitly skipped (1 skip), plus Ruff.**
+[Current CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40211930328) certifies source commit
+d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9. See [verification record](docs/VERIFICATION.md).
 The optional PEtab 0.9 benchmark toolchain requires **Python 3.12+**; core app/CLI
 support Python 3.11. No measured cultivation data or independent biological
 validation is present. Public hosting and timed novice usability remain pending.
