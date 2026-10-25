@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.7.0 — 2026-10-26
+
+- Add paired OD/cell-count -> DW linear/quadratic OLS with residuals, in-sample R-squared,
+  explicit units/conditions/origins and refusal of extrapolation/nonphysical curves.
+- Add a six-step guided upload/mapping/units/model/fit/report workflow; research inputs
+  have no synthetic biological fallback, and unknown strains remain unset.
+- Keep verified-range presets unavailable when source coverage is incomplete.
+- Export self-contained HTML/PDF reports and full numerical JSON with fit curves,
+  named conditional intervals, identifiability flags, provenance and separate held-out errors.
+- Invalidate stale downstream results when inputs/mapping/model choices change.
+- Add two executed SYNTHETIC tutorials; record in-process execution when kernel sockets
+  are unavailable locally, with a real kernel execution step in cloud CI.
+- Add tests for units, zero-curvature limit, total-DW preservation, refusal cases,
+  export gates and actual Streamlit navigation/state behavior.
+- Public hosting, actual app browser screenshots and observed novice <5-minute/five-issue
+  usability acceptance remain pending; engineering review findings are labelled separately.
+
 ## 0.6.0 — 2026-10-25
 
 - Add benchmark metadata schema and fail-closed licence/unit/basis/species/hash loaders.

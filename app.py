@@ -59,11 +59,29 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+workspace = st.selectbox(
+    "Workspace",
+    [
+        "Baseline workflow",
+        "Guided upload to report",
+        "OD / cell count calibration",
+        "Selectable models (SYNTHETIC)",
+        "Joint calibration",
+    ],
+)
+if workspace == "Guided upload to report":
+    from alga_twin.wizard_ui import render_wizard
+
+    render_wizard()
+    st.stop()
+if workspace == "OD / cell count calibration":
+    from alga_twin.biomass_ui import render_biomass_calibration
+
+    render_biomass_calibration()
+    st.stop()
+
 render_parameter_gate()
 
-workspace = st.selectbox(
-    "Workspace", ["Baseline workflow", "Selectable models (SYNTHETIC)", "Joint calibration"]
-)
 if workspace == "Joint calibration":
     from alga_twin.calibration_ui import render_joint_calibration
 

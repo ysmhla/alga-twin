@@ -8,7 +8,7 @@
 
 *Illustrative simulation and synthetic measurements — not lab-validated.*
 
-## What it does today (v0.6.0)
+## What it does today (v0.7.0)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -43,7 +43,16 @@
 - Runs actual **pyPESTO profiles** as a full-data cross-check, alongside native profile-gated whole-run CV, and writes a licence-bearing scoreboard.
 - Keeps in-sample/held-out errors separate and refuses held-out aggregation when folds fail. See [benchmark instructions and compatibility limits](benchmark/README.md) and [actual synthetic scoreboard](benchmark/scoreboard.md).
 
+- Provides a **Guided upload to report** workspace: explicit column/unit mapping, model/assumption entry, profile-gated fit and HTML/PDF/JSON reports.
+- Fits paired **OD/cell-count -> dry weight** linear/quadratic conversions with residuals/in-sample R² and refuses extrapolation. User conversion uncertainty is not propagated into growth intervals.
+- Keeps research/unknown-strain biological fields blank when evidence is missing; no executable VERIFIED-range C. minutissima preset is available.
+- Includes [two executed SYNTHETIC tutorials](tutorials/README.md), [worked report](tutorials/output/synthetic_report.pdf), and a [guided workflow guide](docs/GUIDED_WORKFLOW.md). Actual novice timing/observed usability and hosting remain pending.
+
 ### Parameter tiers and evidence
+
+![Actual SYNTHETIC report page preview; not an app screenshot](assets/report-preview.png)
+
+*Generated report preview. App browser screenshots and observed novice usability remain pending.*
 
 LITERATURE contains audited source records, not a complete runnable Monod preset. DEMO contains explicitly selected UNVERIFIED assumptions; MEASURED identifies user optical estimates. Source transcription does not establish validation for your strain. Reported Haldane points are not substituted into Monod equations. Verified-range overrides generate warnings when source-reported bounds exist; none were established for the present catalogue. See [source audit](docs/PARAMETER_AUDIT.md) and [model/units](docs/MODEL.md).
 
@@ -62,7 +71,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open http://localhost:8501 . The initial LITERATURE screen shows the C. minutissima catalogue and the direct extinction helper. Missing species parameters remain unset, so research simulation is blocked. Select **DEMO — synthetic assumptions** explicitly to run the simulator. The Workspace selector also opens the new synthetic model sandbox; see [selectable models and Python example](docs/SELECTABLE_MODELS.md). No API keys are required.
+Open http://localhost:8501 . The Workspace selector opens **Guided upload to report** and **OD / cell count calibration** directly. The initial baseline LITERATURE screen shows the C. minutissima catalogue and the direct extinction helper. Missing species parameters remain unset, so research simulation is blocked. Select **DEMO — synthetic assumptions** explicitly to run the simulator. The Workspace selector also opens the new synthetic model sandbox; see [selectable models and Python example](docs/SELECTABLE_MODELS.md). No API keys are required.
 
 ### CLI usage
 
@@ -104,7 +113,7 @@ time_day,biomass_g_L,nitrate_n_mg_L
 8,0.53,18
 ```
 
-Values above are **illustrative**, not empirical measurements. All data must use g dry weight/L and **mg elemental nitrogen/L (nitrate-N, not nitrate ion)**. Biomass proxies such as OD or cell counts require independent calibration to dry weight before use. The app does not estimate this calibration.
+Values above are **illustrative**, not empirical measurements. All data must use g dry weight/L and **mg elemental nitrogen/L (nitrate-N, not nitrate ion)**. Biomass proxies such as OD or cell counts require independent calibration to dry weight before use. Use the paired-measurement **OD / cell count calibration** workspace to estimate this conversion within its measured domain. See [guided workflow](docs/GUIDED_WORKFLOW.md); the baseline CSV route below still requires preconverted DW.
 
 - File limit 2 MB, row limit 5,000; at least four observations. CSV column names can be mapped in the sidebar, but values must already use the documented units.
 - No duplicate time points; missing biomass/time rejected; missing nitrate values allowed.
@@ -118,22 +127,25 @@ See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calib
 
 ## Tests
 
-**v0.6: 130 tests passed locally and in cloud Python 3.12. Ruff, formatting,
-compilation and local dependency checks passed. Cloud Python 3.11 core passed
-119 tests, with the optional benchmark module explicitly skipped (1 skip), plus Ruff.**
-[Current CI evidence](https://github.com/ysmhla/alga-twin/actions/runs/40211930328) certifies source commit
-d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9. See [verification record](docs/VERIFICATION.md).
-The optional PEtab 0.9 benchmark toolchain requires **Python 3.12+**; core app/CLI
-support Python 3.11. No measured cultivation data or independent biological
-validation is present. Public hosting and timed novice usability remain pending.
-
+**v0.7: 143 tests passed locally (Python 3.12, full optional benchmark toolchain),
+plus Ruff lint/format, compilation and dependency checks.** Both SYNTHETIC tutorial
+notebooks were executed in-process with IPython; actual fit/CV/report outputs
+are included. Cloud Python 3.12 passed 143 tests/Ruff and executed both notebooks with a real
+Jupyter kernel; Python 3.11 passed 132 tests, 1 optional benchmark skip and Ruff.
+[CI run 40222521288](https://github.com/ysmhla/alga-twin/actions/runs/40222521288)
+certifies source edc3ffc4ecaa95a0628f6a0a27d58d6018945ea2. See
+[VERIFICATION.md](docs/VERIFICATION.md). PEtab 0.9 benchmarks require
+Python 3.12+; app/core CLI support Python 3.11. Public hosting, app browser
+screenshots and timed novice usability remain pending; [five engineering
+findings/fixes](docs/USABILITY.md) are not a human study. No measured data or
+independent biological validation is present.
 
 ```bash
 # Full benchmark checks require Python 3.12+:
 pip install -r requirements.txt -e '.[dev,benchmark]'
 pytest -q
-ruff check src app.py tests benchmark
-ruff format --check src app.py tests benchmark
+ruff check src app.py tests benchmark tutorials/execute_tutorials.py
+ruff format --check src app.py tests benchmark tutorials/execute_tutorials.py
 ```
 
 ## Project design

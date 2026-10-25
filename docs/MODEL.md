@@ -1,4 +1,4 @@
-# AlgaTwin v0.6 — model, units and parameter evidence
+# AlgaTwin v0.7 — model, units and parameter evidence
 
 ## Retained baseline equations
 
@@ -322,3 +322,69 @@ source/origin and permission evidence; neither a DOI nor metadata syntax
 establishes rights, source verification or biological validity. All currently
 shipped data are SYNTHETIC. Independent biological evaluation is pending human
 candidate datasets with recorded permission to reuse/redistribute.
+
+## Empirical OD/cell-count observation model (v0.7)
+
+This measurement conversion does not alter the growth ODEs or their N ledger.
+Paired samples fit an intercept-inclusive polynomial by equal-weight ordinary
+least squares:
+
+\[
+X_{DW}(S)=c_0+c_1S \quad\text{or}\quad X_{DW}(S)=c_0+c_1S+c_2S^2.
+\]
+
+Here X_DW is g dry weight/L. S is dimensionless OD for a specified wavelength,
+path/blank/dilution, or cells/L for a specified counting method. Cells/mL is
+explicitly multiplied by 1000. Input DW in g_DW/meter^3 is multiplied by 0.001
+to obtain g_DW/liter; carbon mass is rejected, and no f_C is assumed.
+Coefficient c_k has units (g_DW/L)/(unit of S)^k; c0 is g_DW/L. Coefficients are
+reported in ascending physical powers, but calculations use a centered/scaled
+S coordinate to avoid poor conditioning with large cell counts. There is no
+forced zero intercept. Replicated pairs receive equal per-row weight, so more
+technical repeats at a level increase that level's weight; no random-effects or
+errors-in-variables model is implied.
+
+More rows than fitted coefficients, sufficient distinct signal levels, and
+varying DW are required. Slopes at both domain endpoints must be nonnegative
+with a strictly positive slope somewhere. For a degree <=2 polynomial this
+establishes monotonicity across the domain; endpoint fitted concentrations must
+be nonnegative within numerical roundoff. Conversion refuses S outside the
+measured closed interval. A quadratic with c2=0 reduces to the linear map;
+changing cells/mL to cells/L or the DW concentration unit preserves converted
+concentration and mass X_DW*reactor volume. Unit/limiting-case/mass-conversion
+tests cover these properties; existing Monod/Droop N-balance tests still apply.
+
+Residuals are measured DW minus fitted DW, in g_DW/L. The displayed descriptive
+in-sample R-squared is 1 - sum(residual^2)/sum((measured-mean(measured))^2).
+It is not independent accuracy, interval coverage or evidence for instrument/
+strain transfer. No coefficient interval is estimated and proxy-conversion
+uncertainty is not propagated into growth profile intervals. All paired-fit
+coefficients remain UNVERIFIED with explicit SYNTHETIC/MEASURED origin, species,
+conditions and OLS method; they do not become literature presets.
+
+## Guided mapping and report scope (v0.7)
+
+The wizard performs only explicit conversions: hours/24 -> days;
+g_DW/meter^3/1000 -> g_DW/L; g_N/L*1000 -> mg_N/L; quota g_N/g_DW unchanged.
+It does not convert nitrate-ion mass, radiometric light, carbon or OD without a
+matched proxy calibration. It does not shift time zero or derive initial states
+from noisy first observations. Missing measurement cells are omitted; missing
+ids/metadata, nonnumeric/infinite cells and duplicate measurement identities
+refuse. Raw assay negatives are retained for additive-error fitting, as in the
+joint inference API; physical model states remain subject to the existing gate.
+
+Only source-reported VERIFIED ranges are eligible for species range presets;
+none currently forms an executable C. minutissima preset. The unknown-strain
+path keeps all biological inputs blank. Structural exponent selection is
+explicit, with coefficient units updated. User-entered research values have
+MEASURED tier / UNVERIFIED / user_supplied_not_verified evidence: this describes
+their input channel, not certification that they were measured or source-read.
+
+HTML/PDF reports retain profile method/confidence, support flags, provenance,
+initial/forcing/noise/search assumptions and input hashes. In-sample versus
+held-out errors keep separate split labels and observable units; failed folds
+are not pooled into a selectively optimistic score. Unsupported point estimates
+and intervals are withheld. Descriptive curves remain in-sample only. PDF table
+numbers are rounded to six significant figures; JSON retains full precision.
+All scientific interpretation remains conditional, with no independent
+biological validation claim. See GUIDED_WORKFLOW.md and USABILITY.md.

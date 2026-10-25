@@ -2,10 +2,10 @@
 
 ## Streamlit Community Cloud
 
-1. Create an empty GitHub repository called `alga-twin`.
-2. Commit the project to its `main` branch; do **not** flatten the `src/alga_twin` directory.
+1. Use the existing GitHub repository `ysmhla/alga-twin`.
+2. Use its checked `main` branch; do **not** flatten the `src/alga_twin` directory.
 3. Confirm the `Scientific Python CI` GitHub Actions workflow completes on Python 3.11 and 3.12.
-4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `OWNER/alga-twin`, branch `main`, entry point `app.py`.
+4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `ysmhla/alga-twin`, branch `main`, entry point `app.py`.
 5. No secret values are needed. Verify that LITERATURE initially blocks missing species parameters; explicitly select DEMO and check charts, tabs and exports.
 6. Run the public deployment smoke checklist below before publicising the link.
 
@@ -45,8 +45,22 @@ Default local URL: `http://localhost:8501`.
 - [ ] `ScenarioLab` stores two conditions and exports comparisons.
 - [ ] `Run manifest` downloads JSON with model revision and input checksum.
 - [ ] Invalid/empty uploads show a validation error and do not crash process.
+- [ ] Guided workflow maps units, profiles and exports HTML/PDF reports.
+- [ ] Changed source/mapping/model choices withhold stale reports.
+- [ ] Paired OD/cell-count helper refuses extrapolation and shows residuals/R-squared.
+- [ ] Unknown-strain and missing species inputs remain unset.
+- [ ] Save actual app screenshots; a rendered report is not an app screenshot.
 - [ ] Mobile and desktop layouts remain readable.
 
 ## Limitations for public hosting
 
 The app deliberately has no persistent user storage; session data may be reset when the service restarts. No authentication. Use only non-confidential experiments on public third-party hosting. Python dependency ranges are constrained, but there is no frozen lockfile in this alpha release. CI tests numerical kernel and synthetic demo, not full browser automation.
+
+## Current hosting prerequisite (2026-10-26)
+
+The observed https://share.streamlit.io/ screen requires account sign-in and
+states that signing in accepts its Terms of Service. The account holder must
+review/complete that step. [Captured screen](../assets/hosting-pending.jpg).
+No app was deployed and no public AlgaTwin app URL is available. After sign-in,
+use repository ysmhla/alga-twin, branch main, entry point app.py; complete the
+smoke checklist and real app screenshots before claiming deployment.

@@ -1,0 +1,2235 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>SYNTHETIC worked example - not biological validation</title><style>body{font:15px system-ui;color:#18323c;max-width:1100px;margin:40px auto;padding:0 24px}h1,h2{color:#126758}table{border-collapse:collapse;width:100%;font-size:12px;display:block;overflow:auto}th,td{border:1px solid #ccd6d6;padding:7px;text-align:left;overflow-wrap:anywhere}svg{width:100%;max-width:660px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10px}@media print{table{display:table;font-size:8px}body{margin:0}svg{max-width:500px}}</style><body><h1>SYNTHETIC worked example - not biological validation</h1><p>AlgaTwin 0.7.0 | 2026-10-25T17:49:34.873191+00:00</p><h2>What this result means</h2><ul><li>The fitted curves describe these uploaded measurements. Independent biological validation is absent.</li><li>Intervals are conditional on your fixed parameters, initial conditions and specified measurement noise.</li><li>The selected parameters passed the numerical profile gate within your search bounds.</li><li>SYNTHETIC teaching data: numerical behavior only, not laboratory evidence.</li></ul><h2>Parameter evidence</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>parameter</th>
+      <th>value</th>
+      <th>interval</th>
+      <th>unit</th>
+      <th>status</th>
+      <th>reason</th>
+      <th>method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mu_max_day</td>
+      <td>0.901632</td>
+      <td>(0.8995948572149274, 0.9036796376887335)</td>
+      <td>1/day</td>
+      <td>IDENTIFIABLE</td>
+      <td>Connected two-sided profile within supplied bounds, conditional on specified assumptions</td>
+      <td>Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales</td>
+    </tr>
+  </tbody>
+</table><p>Confidence: 0.95. Method: Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales</p><h2>In-sample fit</h2><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-0: N (mg_N/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-0: N (mg_N/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,45.000 135.000,66.522 215.000,89.902 295.000,114.079 375.000,137.276 455.000,157.190 535.000,171.888 615.000,181.013" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="50.925" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="61.012" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="89.486" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="105.470" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="137.754" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="152.161" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="168.677" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="181.960" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">0</text><text x="5" y="141.67" font-size="11">3</text><text x="5" y="93.33" font-size="11">6</text><text x="5" y="45.00" font-size="11">9</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-0: X (g_DW/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-0: X (g_DW/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,122.890 135.000,110.937 215.000,97.952 295.000,84.524 375.000,71.641 455.000,60.580 535.000,52.417 615.000,47.350" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="122.071" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="117.116" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="91.965" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="82.511" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="71.936" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="59.139" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="45.000" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="48.857" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">0</text><text x="5" y="141.67" font-size="11">0.0432</text><text x="5" y="93.33" font-size="11">0.0864</text><text x="5" y="45.00" font-size="11">0.13</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-1: N (mg_N/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-1: N (mg_N/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,47.201 135.000,61.561 215.000,82.190 295.000,110.836 375.000,147.244 455.000,179.794 535.000,187.625 615.000,187.927" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="45.000" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="60.875" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="83.715" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="111.023" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="147.738" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="181.067" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="186.937" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="190.000" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">-0.514</text><text x="5" y="141.67" font-size="11">11.5</text><text x="5" y="93.33" font-size="11">23.5</text><text x="5" y="45.00" font-size="11">35.5</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-1: X (g_DW/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-1: X (g_DW/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,164.647 135.000,152.575 215.000,135.233 295.000,111.150 375.000,80.542 455.000,53.178 535.000,46.595 615.000,46.341" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="164.256" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="151.900" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="136.116" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="112.405" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="80.849" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="54.013" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="45.000" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="45.843" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">0</text><text x="5" y="141.67" font-size="11">0.114</text><text x="5" y="93.33" font-size="11">0.229</text><text x="5" y="45.00" font-size="11">0.343</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-2: N (mg_N/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-2: N (mg_N/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,45.078 135.000,53.281 215.000,66.936 295.000,89.398 375.000,125.308 455.000,175.632 535.000,189.997 615.000,190.000" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="45.000" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="54.115" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="67.117" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="89.653" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="125.598" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="175.750" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="189.781" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="189.194" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">0</text><text x="5" y="141.67" font-size="11">30</text><text x="5" y="93.33" font-size="11">60</text><text x="5" y="45.00" font-size="11">90</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><svg viewBox="0 0 660 235" role="img" aria-label="synthetic-2: X (g_DW/liter) - in-sample"><text x="55" y="22" font-size="14">synthetic-2: X (g_DW/liter) - in-sample</text><path d="M55 40 V190 H620" fill="none" stroke="#999"/><polyline points="55.000,178.874 135.000,171.316 215.000,158.736 295.000,138.041 375.000,104.957 455.000,58.594 535.000,45.360 615.000,45.356" fill="none" stroke="#168575" stroke-width="2"/><circle cx="55.000" cy="178.935" r="3" fill="#1d4c5e"/><circle cx="135.000" cy="170.967" r="3" fill="#1d4c5e"/><circle cx="215.000" cy="159.552" r="3" fill="#1d4c5e"/><circle cx="295.000" cy="137.856" r="3" fill="#1d4c5e"/><circle cx="375.000" cy="105.413" r="3" fill="#1d4c5e"/><circle cx="455.000" cy="58.961" r="3" fill="#1d4c5e"/><circle cx="535.000" cy="45.000" r="3" fill="#1d4c5e"/><circle cx="615.000" cy="45.665" r="3" fill="#1d4c5e"/><text x="5" y="190.00" font-size="11">0</text><text x="5" y="141.67" font-size="11">0.261</text><text x="5" y="93.33" font-size="11">0.521</text><text x="5" y="45.00" font-size="11">0.782</text><text x="55" y="210">0</text><text x="580" y="210">5</text><text x="250" y="230">Time (day); line: model, dots: data</text></svg><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>run_id</th>
+      <th>observable</th>
+      <th>split</th>
+      <th>origin</th>
+      <th>n</th>
+      <th>unit</th>
+      <th>rmse</th>
+      <th>mae</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>synthetic-0</td>
+      <td>N</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.291535</td>
+      <td>0.233748</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>X</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.003716</td>
+      <td>0.002868</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>N</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.332635</td>
+      <td>0.283720</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>X</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002141</td>
+      <td>0.001905</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>N</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.277097</td>
+      <td>0.215505</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>X</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002251</td>
+      <td>0.001957</td>
+    </tr>
+  </tbody>
+</table><h2>Held-out evaluation</h2><p>Leave-one-whole-run-out; refit and reprofile training runs only. All folds scored: True.</p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>held_out</th>
+      <th>status</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>synthetic-0</td>
+      <td>SCORED</td>
+      <td>Training profiles supported all fitted parameters</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>SCORED</td>
+      <td>Training profiles supported all fitted parameters</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>SCORED</td>
+      <td>Training profiles supported all fitted parameters</td>
+    </tr>
+  </tbody>
+</table><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>run_id</th>
+      <th>observable</th>
+      <th>held_out_fold</th>
+      <th>split</th>
+      <th>origin</th>
+      <th>n</th>
+      <th>unit</th>
+      <th>rmse</th>
+      <th>mae</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>synthetic-0</td>
+      <td>N</td>
+      <td>synthetic-0</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.291583</td>
+      <td>0.233776</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>X</td>
+      <td>synthetic-0</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.003716</td>
+      <td>0.002867</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>N</td>
+      <td>synthetic-0</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.332496</td>
+      <td>0.283470</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>X</td>
+      <td>synthetic-0</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002143</td>
+      <td>0.001907</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>N</td>
+      <td>synthetic-0</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.276671</td>
+      <td>0.214599</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>X</td>
+      <td>synthetic-0</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002257</td>
+      <td>0.001962</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>N</td>
+      <td>synthetic-1</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.333105</td>
+      <td>0.284560</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>X</td>
+      <td>synthetic-1</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002136</td>
+      <td>0.001898</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>N</td>
+      <td>synthetic-1</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.291377</td>
+      <td>0.233656</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>X</td>
+      <td>synthetic-1</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.003717</td>
+      <td>0.002868</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>N</td>
+      <td>synthetic-1</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.278575</td>
+      <td>0.218536</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>X</td>
+      <td>synthetic-1</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002232</td>
+      <td>0.001941</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>N</td>
+      <td>synthetic-2</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.267785</td>
+      <td>0.194181</td>
+    </tr>
+    <tr>
+      <td>synthetic-2</td>
+      <td>X</td>
+      <td>synthetic-2</td>
+      <td>held-out</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002431</td>
+      <td>0.002093</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>N</td>
+      <td>synthetic-2</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.292899</td>
+      <td>0.234537</td>
+    </tr>
+    <tr>
+      <td>synthetic-0</td>
+      <td>X</td>
+      <td>synthetic-2</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.003708</td>
+      <td>0.002863</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>N</td>
+      <td>synthetic-2</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>mg_N/liter</td>
+      <td>0.328804</td>
+      <td>0.276518</td>
+    </tr>
+    <tr>
+      <td>synthetic-1</td>
+      <td>X</td>
+      <td>synthetic-2</td>
+      <td>in-sample</td>
+      <td>SYNTHETIC</td>
+      <td>8</td>
+      <td>g_DW/liter</td>
+      <td>0.002189</td>
+      <td>0.001962</td>
+    </tr>
+  </tbody>
+</table><h2>Run synthetic-0: provenance before fitting</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>parameter</th>
+      <th>value</th>
+      <th>low</th>
+      <th>high</th>
+      <th>unit</th>
+      <th>basis</th>
+      <th>source</th>
+      <th>status</th>
+      <th>species</th>
+      <th>conditions</th>
+      <th>tier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>k_n_mg_L</td>
+      <td>5.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>mg_N/liter</td>
+      <td>elemental_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_a0</td>
+      <td>12.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>liter ** 1.0 / g_DW ** 1.0 / meter</td>
+      <td>dry_weight</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>background_extinction_m_inv</td>
+      <td>0.3</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/meter</td>
+      <td>medium</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_exponent</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>dimensionless</td>
+      <td>dimensionless</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>loss_rate_day</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>biomass_yield_g_per_gN</td>
+      <td>8.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>g_DW/g_N</td>
+      <td>dry_weight_per_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>mu_max_day</td>
+      <td>0.9</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>k_i_umol_m2_s</td>
+      <td>85.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>micromole/meter**2/second</td>
+      <td>photons</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+  </tbody>
+</table><h2>Run synthetic-1: provenance before fitting</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>parameter</th>
+      <th>value</th>
+      <th>low</th>
+      <th>high</th>
+      <th>unit</th>
+      <th>basis</th>
+      <th>source</th>
+      <th>status</th>
+      <th>species</th>
+      <th>conditions</th>
+      <th>tier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>k_n_mg_L</td>
+      <td>5.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>mg_N/liter</td>
+      <td>elemental_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_a0</td>
+      <td>12.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>liter ** 1.0 / g_DW ** 1.0 / meter</td>
+      <td>dry_weight</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>background_extinction_m_inv</td>
+      <td>0.3</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/meter</td>
+      <td>medium</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_exponent</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>dimensionless</td>
+      <td>dimensionless</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>loss_rate_day</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>biomass_yield_g_per_gN</td>
+      <td>8.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>g_DW/g_N</td>
+      <td>dry_weight_per_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>mu_max_day</td>
+      <td>0.9</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>k_i_umol_m2_s</td>
+      <td>85.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>micromole/meter**2/second</td>
+      <td>photons</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+  </tbody>
+</table><h2>Run synthetic-2: provenance before fitting</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>parameter</th>
+      <th>value</th>
+      <th>low</th>
+      <th>high</th>
+      <th>unit</th>
+      <th>basis</th>
+      <th>source</th>
+      <th>status</th>
+      <th>species</th>
+      <th>conditions</th>
+      <th>tier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>k_n_mg_L</td>
+      <td>5.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>mg_N/liter</td>
+      <td>elemental_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_a0</td>
+      <td>12.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>liter ** 1.0 / g_DW ** 1.0 / meter</td>
+      <td>dry_weight</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>background_extinction_m_inv</td>
+      <td>0.3</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/meter</td>
+      <td>medium</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>extinction_exponent</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>dimensionless</td>
+      <td>dimensionless</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>loss_rate_day</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>biomass_yield_g_per_gN</td>
+      <td>8.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>g_DW/g_N</td>
+      <td>dry_weight_per_nitrogen</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>mu_max_day</td>
+      <td>0.9</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1/day</td>
+      <td>specific_growth</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+    <tr>
+      <td>k_i_umol_m2_s</td>
+      <td>85.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>micromole/meter**2/second</td>
+      <td>photons</td>
+      <td>None</td>
+      <td>UNVERIFIED</td>
+      <td>SYNTHETIC</td>
+      <td>Teaching fixture, not measured species physiology</td>
+      <td>DEMO</td>
+    </tr>
+  </tbody>
+</table><h2>Reproducibility and full numerical evidence</h2><pre>{
+  &quot;title&quot;: &quot;SYNTHETIC worked example - not biological validation&quot;,
+  &quot;software&quot;: &quot;AlgaTwin 0.7.0&quot;,
+  &quot;created_at_utc&quot;: &quot;2026-10-25T17:49:34.873191+00:00&quot;,
+  &quot;input_sha256&quot;: &quot;1c1a652dfb4d147ab0073dde64e3831fe9f599e4a4f05bd7ffde099682f5bf60&quot;,
+  &quot;supported&quot;: true,
+  &quot;messages&quot;: [
+    &quot;The fitted curves describe these uploaded measurements. Independent biological validation is absent.&quot;,
+    &quot;Intervals are conditional on your fixed parameters, initial conditions and specified measurement noise.&quot;,
+    &quot;The selected parameters passed the numerical profile gate within your search bounds.&quot;,
+    &quot;SYNTHETIC teaching data: numerical behavior only, not laboratory evidence.&quot;
+  ],
+  &quot;parameters&quot;: [
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9016323521122493,
+      &quot;interval&quot;: [
+        0.8995948572149274,
+        0.9036796376887335
+      ],
+      &quot;unit&quot;: &quot;1/day&quot;,
+      &quot;status&quot;: &quot;IDENTIFIABLE&quot;,
+      &quot;reason&quot;: &quot;Connected two-sided profile within supplied bounds, conditional on specified assumptions&quot;,
+      &quot;method&quot;: &quot;Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales&quot;
+    }
+  ],
+  &quot;confidence&quot;: 0.95,
+  &quot;interval_method&quot;: &quot;Reoptimized profile likelihood; marginal chi-square(df=1) asymptotic cutoff; fixed noise scales&quot;,
+  &quot;error_model&quot;: {
+    &quot;kind&quot;: &quot;additive&quot;,
+    &quot;scales&quot;: {
+      &quot;X&quot;: [
+        0.003,
+        &quot;g_DW/liter&quot;
+      ],
+      &quot;N&quot;: [
+        0.3,
+        &quot;mg_N/liter&quot;
+      ]
+    }
+  },
+  &quot;search_bounds_not_literature_ranges&quot;: {
+    &quot;mu_max_day&quot;: {
+      &quot;low&quot;: 0.3,
+      &quot;high&quot;: 1.8,
+      &quot;initial&quot;: 0.7,
+      &quot;scale&quot;: &quot;log&quot;
+    }
+  },
+  &quot;metrics_in_sample&quot;: [
+    {
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;rmse&quot;: 0.2915354927959672,
+      &quot;mae&quot;: 0.23374827129464867,
+      &quot;nll&quot;: 1.4971899892426666
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;rmse&quot;: 0.003715861441516221,
+      &quot;mae&quot;: 0.0028675714956518487,
+      &quot;nll&quot;: -32.984912877965066
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;rmse&quot;: 0.3326351173462263,
+      &quot;mae&quot;: 0.2837204879123689,
+      &quot;nll&quot;: 2.637331221782681
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;rmse&quot;: 0.002140935592207474,
+      &quot;mae&quot;: 0.0019047462299747638,
+      &quot;nll&quot;: -37.08447778577228
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;rmse&quot;: 0.27709670243201256,
+      &quot;mae&quot;: 0.21550451038313817,
+      &quot;nll&quot;: 1.1322850531941286
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;n&quot;: 8,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;rmse&quot;: 0.0022510333265178674,
+      &quot;mae&quot;: 0.0019571802673511883,
+      &quot;nll&quot;: -36.869568529277466
+    }
+  ],
+  &quot;fit_points_in_sample&quot;: [
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 8.632220355995797,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 9.000000000000002,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0607321406219227,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.06,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 8.006164813429494,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 7.6641353762373,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0651626379003154,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.07068691630948033,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 6.238808648977349,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 6.2129651105354124,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0876484104903058,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.08229627916015664,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 5.246673968630078,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 4.71235009601042,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0961011716870925,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.09430119985140957,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 3.242866072130527,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 3.272549705382632,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1055552957648728,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.10581960596985783,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 2.3486448890161595,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 2.0364615206415912,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1169969595842945,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.11570830981507277,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 1.3234903460604106,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 1.124172077581518,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1296380145147632,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.12300662322546908,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 0.4990079063930702,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.5578323143866998,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1261896428987356,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;predicted&quot;: 0.1275373414035298,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 35.54744092584285,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 34.99999999999999,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0609262289286298,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.06,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 31.59946246802561,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 31.42867731913699,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.090168452322994,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.088570582493515,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 25.919045764195264,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 26.29836587076526,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1275232313092218,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.1296130732102591,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 19.127821484594868,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 19.17421546824573,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1836357469625869,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.18660628164911533,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 9.996943049337368,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 10.119622707511033,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.2583177901824582,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.259043023792876,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 1.7079647222246357,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 2.0244999040863756,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.3218274881202418,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.32380400455408664,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 0.2481918723646936,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.0770980231931179,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.3431579001017054,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.3393832263882568,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: -0.5136008320066885,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.001914217132949235,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.3411617621477029,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;predicted&quot;: 0.33998469141129056,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 90.04849698079721,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 90.0,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.0596699675828675,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.06,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 84.38788972665785,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 84.90555673859484,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 0.7142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1026345737086415,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.10075554641771338,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 76.31301123840784,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 76.42562118723976,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 1.4285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.1641917915537342,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.1685950291164068,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 62.318080662135095,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 62.47597296603934,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.142857142857143,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.2811920744106718,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.28019221796074856,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 39.99529498685956,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 40.17508009377501,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 2.857142857142857,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.4561399588803936,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.4585993178128834,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 8.849752266132942,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 8.922823001311789,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 3.571428571428572,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.7066339713189524,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.7086174429916505,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 0.1358482852153602,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.0021022750599962226,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 4.285714285714286,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.781922053492665,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.7799832164391711,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;N&quot;,
+      &quot;value&quot;: 0.5007680552043225,
+      &quot;unit&quot;: &quot;mg_N/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 6.985924291322663e-08,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    },
+    {
+      &quot;time_day&quot;: 5.0,
+      &quot;observable&quot;: &quot;X&quot;,
+      &quot;value&quot;: 0.7783364071240808,
+      &quot;unit&quot;: &quot;g_DW/liter&quot;,
+      &quot;replicate&quot;: &quot;technical-1&quot;,
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;predicted&quot;: 0.7800000278835522,
+      &quot;split&quot;: &quot;in-sample&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;
+    }
+  ],
+  &quot;profiles&quot;: [
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.3,
+      &quot;delta_deviance&quot;: 385943.1811511223,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.3588693596553946,
+      &quot;delta_deviance&quot;: 335592.8373763955,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.42929072433157656,
+      &quot;delta_deviance&quot;: 269390.9536972935,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.5135309578229115,
+      &quot;delta_deviance&quot;: 185829.24127858167,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.6143017533237657,
+      &quot;delta_deviance&quot;: 94667.60477932036,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.7348469228349533,
+      &quot;delta_deviance&quot;: 27920.715964870902,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8790468154750563,
+      &quot;delta_deviance&quot;: 487.0640001870315,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8856211386337718,
+      &quot;delta_deviance&quot;: 242.72302099438787,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8934641951535014,
+      &quot;delta_deviance&quot;: 62.37803229770237,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.897449649315944,
+      &quot;delta_deviance&quot;: 16.23319442986918,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8993741585966937,
+      &quot;delta_deviance&quot;: 4.712918082387624,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8995867979630162,
+      &quot;delta_deviance&quot;: 3.8653941973817325,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.8995948572149349,
+      &quot;delta_deviance&quot;: 3.8349300636155803,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.899626671773442,
+      &quot;delta_deviance&quot;: 3.715852232604284,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9001620876119851,
+      &quot;delta_deviance&quot;: 1.994470721212764,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9008946039497735,
+      &quot;delta_deviance&quot;: 0.5013717148026728,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9013767097438306,
+      &quot;delta_deviance&quot;: 0.06013747471927644,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9016323521122416,
+      &quot;delta_deviance&quot;: 0.0,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9018979582482015,
+      &quot;delta_deviance&quot;: 0.06484113136350089,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.902388283916195,
+      &quot;delta_deviance&quot;: 0.5246327511600057,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9031362694083213,
+      &quot;delta_deviance&quot;: 2.072952185679604,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9036525149593642,
+      &quot;delta_deviance&quot;: 3.735841125656826,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9036796376887414,
+      &quot;delta_deviance&quot;: 3.836583807548031,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9036877336077461,
+      &quot;delta_deviance&quot;: 3.8669131491100686,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9038775512520703,
+      &quot;delta_deviance&quot;: 4.612051329093958,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9057394288385568,
+      &quot;delta_deviance&quot;: 15.363389039098799,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9098801727595331,
+      &quot;delta_deviance&quot;: 61.29212764655451,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 0.9179330335650739,
+      &quot;delta_deviance&quot;: 233.68521360041183,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 1.0515432259221578,
+      &quot;delta_deviance&quot;: 12276.341972958107,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 1.2578888137888424,
+      &quot;delta_deviance&quot;: 51283.72461731501,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 1.5047258437402864,
+      &quot;delta_deviance&quot;: 101156.89209066691,
+      &quot;converged&quot;: true
+    },
+    {
+      &quot;parameter&quot;: &quot;mu_max_day&quot;,
+      &quot;value&quot;: 1.8,
+      &quot;delta_deviance&quot;: 141235.9133464836,
+      &quot;converged&quot;: true
+    }
+  ],
+  &quot;runs&quot;: [
+    {
+      &quot;run_id&quot;: &quot;synthetic-0&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;input_sha256&quot;: &quot;b3da7f7f71022553cb113ae50bdc88d88d24ad1897f35a6ea152f62c672bc988&quot;,
+      &quot;kind&quot;: &quot;monod&quot;,
+      &quot;light&quot;: &quot;monod&quot;,
+      &quot;temperature_c&quot;: null,
+      &quot;diurnal&quot;: false,
+      &quot;conditions&quot;: {
+        &quot;biomass_initial_g_L&quot;: 0.06,
+        &quot;nitrogen_initial_mg_L&quot;: 9,
+        &quot;incident_light_umol_m2_s&quot;: 60,
+        &quot;optical_path_m&quot;: 0.05
+      },
+      &quot;states&quot;: [
+        &quot;X&quot;,
+        &quot;N&quot;
+      ],
+      &quot;state_units&quot;: [
+        &quot;g_DW/liter&quot;,
+        &quot;mg_N/liter&quot;
+      ],
+      &quot;initial_state&quot;: [
+        0.06,
+        9.0
+      ],
+      &quot;parameters_before_fitting&quot;: [
+        {
+          &quot;parameter&quot;: &quot;k_n_mg_L&quot;,
+          &quot;value&quot;: 5.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;mg_N/liter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;elemental_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_a0&quot;,
+          &quot;value&quot;: 12.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;liter ** 1.0 / g_DW ** 1.0 / meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;background_extinction_m_inv&quot;,
+          &quot;value&quot;: 0.3,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;medium&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_exponent&quot;,
+          &quot;value&quot;: 1.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;dimensionless&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dimensionless&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;loss_rate_day&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;biomass_yield_g_per_gN&quot;,
+          &quot;value&quot;: 8.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;g_DW/g_N&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight_per_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;mu_max_day&quot;,
+          &quot;value&quot;: 0.9,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;k_i_umol_m2_s&quot;,
+          &quot;value&quot;: 85.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;micromole/meter**2/second&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;photons&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        }
+      ]
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-1&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;input_sha256&quot;: &quot;34cdeb714a5988777aaa848d73d029d03fffa8c7572001252772bb853b478550&quot;,
+      &quot;kind&quot;: &quot;monod&quot;,
+      &quot;light&quot;: &quot;monod&quot;,
+      &quot;temperature_c&quot;: null,
+      &quot;diurnal&quot;: false,
+      &quot;conditions&quot;: {
+        &quot;biomass_initial_g_L&quot;: 0.06,
+        &quot;nitrogen_initial_mg_L&quot;: 35,
+        &quot;incident_light_umol_m2_s&quot;: 200,
+        &quot;optical_path_m&quot;: 0.05
+      },
+      &quot;states&quot;: [
+        &quot;X&quot;,
+        &quot;N&quot;
+      ],
+      &quot;state_units&quot;: [
+        &quot;g_DW/liter&quot;,
+        &quot;mg_N/liter&quot;
+      ],
+      &quot;initial_state&quot;: [
+        0.06,
+        35.0
+      ],
+      &quot;parameters_before_fitting&quot;: [
+        {
+          &quot;parameter&quot;: &quot;k_n_mg_L&quot;,
+          &quot;value&quot;: 5.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;mg_N/liter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;elemental_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_a0&quot;,
+          &quot;value&quot;: 12.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;liter ** 1.0 / g_DW ** 1.0 / meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;background_extinction_m_inv&quot;,
+          &quot;value&quot;: 0.3,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;medium&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_exponent&quot;,
+          &quot;value&quot;: 1.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;dimensionless&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dimensionless&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;loss_rate_day&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;biomass_yield_g_per_gN&quot;,
+          &quot;value&quot;: 8.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;g_DW/g_N&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight_per_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;mu_max_day&quot;,
+          &quot;value&quot;: 0.9,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;k_i_umol_m2_s&quot;,
+          &quot;value&quot;: 85.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;micromole/meter**2/second&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;photons&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        }
+      ]
+    },
+    {
+      &quot;run_id&quot;: &quot;synthetic-2&quot;,
+      &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+      &quot;input_sha256&quot;: &quot;0bb1f95c5dfde081b6d68f827168a340ed43fbecf964d5fe80bc4e3126b45a3c&quot;,
+      &quot;kind&quot;: &quot;monod&quot;,
+      &quot;light&quot;: &quot;monod&quot;,
+      &quot;temperature_c&quot;: null,
+      &quot;diurnal&quot;: false,
+      &quot;conditions&quot;: {
+        &quot;biomass_initial_g_L&quot;: 0.06,
+        &quot;nitrogen_initial_mg_L&quot;: 90,
+        &quot;incident_light_umol_m2_s&quot;: 500,
+        &quot;optical_path_m&quot;: 0.05
+      },
+      &quot;states&quot;: [
+        &quot;X&quot;,
+        &quot;N&quot;
+      ],
+      &quot;state_units&quot;: [
+        &quot;g_DW/liter&quot;,
+        &quot;mg_N/liter&quot;
+      ],
+      &quot;initial_state&quot;: [
+        0.06,
+        90.0
+      ],
+      &quot;parameters_before_fitting&quot;: [
+        {
+          &quot;parameter&quot;: &quot;k_n_mg_L&quot;,
+          &quot;value&quot;: 5.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;mg_N/liter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;elemental_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_a0&quot;,
+          &quot;value&quot;: 12.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;liter ** 1.0 / g_DW ** 1.0 / meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;background_extinction_m_inv&quot;,
+          &quot;value&quot;: 0.3,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/meter&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;medium&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;extinction_exponent&quot;,
+          &quot;value&quot;: 1.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;dimensionless&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dimensionless&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;loss_rate_day&quot;,
+          &quot;value&quot;: 0.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;biomass_yield_g_per_gN&quot;,
+          &quot;value&quot;: 8.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;g_DW/g_N&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;dry_weight_per_nitrogen&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;mu_max_day&quot;,
+          &quot;value&quot;: 0.9,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;1/day&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;specific_growth&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        },
+        {
+          &quot;parameter&quot;: &quot;k_i_umol_m2_s&quot;,
+          &quot;value&quot;: 85.0,
+          &quot;low&quot;: null,
+          &quot;high&quot;: null,
+          &quot;unit&quot;: &quot;micromole/meter**2/second&quot;,
+          &quot;source&quot;: null,
+          &quot;status&quot;: &quot;UNVERIFIED&quot;,
+          &quot;species&quot;: &quot;SYNTHETIC&quot;,
+          &quot;conditions&quot;: &quot;Teaching fixture, not measured species physiology&quot;,
+          &quot;basis&quot;: &quot;photons&quot;,
+          &quot;tier&quot;: &quot;DEMO&quot;,
+          &quot;evidence&quot;: &quot;synthetic&quot;,
+          &quot;locator&quot;: &quot;&quot;
+        }
+      ]
+    }
+  ],
+  &quot;proxy_calibration&quot;: null,
+  &quot;cross_validation&quot;: {
+    &quot;method&quot;: &quot;Leave-one-whole-run-out; refit and reprofile training runs only&quot;,
+    &quot;folds&quot;: [
+      {
+        &quot;held_out&quot;: &quot;synthetic-0&quot;,
+        &quot;status&quot;: &quot;SCORED&quot;,
+        &quot;reason&quot;: &quot;Training profiles supported all fitted parameters&quot;
+      },
+      {
+        &quot;held_out&quot;: &quot;synthetic-1&quot;,
+        &quot;status&quot;: &quot;SCORED&quot;,
+        &quot;reason&quot;: &quot;Training profiles supported all fitted parameters&quot;
+      },
+      {
+        &quot;held_out&quot;: &quot;synthetic-2&quot;,
+        &quot;status&quot;: &quot;SCORED&quot;,
+        &quot;reason&quot;: &quot;Training profiles supported all fitted parameters&quot;
+      }
+    ],
+    &quot;metrics&quot;: [
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.29158273593196177,
+        &quot;mae&quot;: 0.23377570515472232,
+        &quot;nll&quot;: 1.4984143596329214,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.003715592568941381,
+        &quot;mae&quot;: 0.0028674115041134353,
+        &quot;nll&quot;: -32.985800928709324,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.33249568142484204,
+        &quot;mae&quot;: 0.28346976453367645,
+        &quot;nll&quot;: 2.6332093050818943,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0021425562218650752,
+        &quot;mae&quot;: 0.0019067499059109306,
+        &quot;nll&quot;: -37.081392472940294,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.2766707157216522,
+        &quot;mae&quot;: 0.21459926368889215,
+        &quot;nll&quot;: 1.1218007171601725,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0022567001056980574,
+        &quot;mae&quot;: 0.001961904066904532,
+        &quot;nll&quot;: -36.85821549373813,
+        &quot;held_out_fold&quot;: &quot;synthetic-0&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.3331053014050337,
+        &quot;mae&quot;: 0.28456025784886585,
+        &quot;nll&quot;: 2.6512432454360413,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0021355340161465348,
+        &quot;mae&quot;: 0.0018980351495265554,
+        &quot;nll&quot;: -37.09474430837753,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.2913773731996843,
+        &quot;mae&quot;: 0.23365638964559607,
+        &quot;nll&quot;: 1.4930935471520306,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0037167626913032752,
+        &quot;mae&quot;: 0.002868107345457272,
+        &quot;nll&quot;: -32.981935699779754,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.2785746706234296,
+        &quot;mae&quot;: 0.2185364601176834,
+        &quot;nll&quot;: 1.168785702716662,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0022323959165451907,
+        &quot;mae&quot;: 0.001941357852163354,
+        &quot;nll&quot;: -36.906706088782556,
+        &quot;held_out_fold&quot;: &quot;synthetic-1&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.2677847497406362,
+        &quot;mae&quot;: 0.19418050271060222,
+        &quot;nll&quot;: 0.9067779285256781,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-2&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;held-out&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0024310964355478875,
+        &quot;mae&quot;: 0.0020928535054443977,
+        &quot;nll&quot;: -36.494866821793224,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.29289900942660774,
+        &quot;mae&quot;: 0.2345366665638837,
+        &quot;nll&quot;: 1.5326071520560285,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-0&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0037081751416670242,
+        &quot;mae&quot;: 0.00286297393711552,
+        &quot;nll&quot;: -33.01027437630718,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;N&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;mg_N/liter&quot;,
+        &quot;rmse&quot;: 0.3288044263004362,
+        &quot;mae&quot;: 0.2765176960897693,
+        &quot;nll&quot;: 2.52471919790807,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      },
+      {
+        &quot;run_id&quot;: &quot;synthetic-1&quot;,
+        &quot;observable&quot;: &quot;X&quot;,
+        &quot;split&quot;: &quot;in-sample&quot;,
+        &quot;origin&quot;: &quot;SYNTHETIC&quot;,
+        &quot;n&quot;: 8,
+        &quot;unit&quot;: &quot;g_DW/liter&quot;,
+        &quot;rmse&quot;: 0.0021889093368903274,
+        &quot;mae&quot;: 0.001962308361172907,
+        &quot;nll&quot;: -36.99215828570789,
+        &quot;held_out_fold&quot;: &quot;synthetic-2&quot;
+      }
+    ],
+    &quot;all_folds_scored&quot;: true,
+    &quot;scope&quot;: &quot;Whole-run held-out errors; no independent biological validation claim&quot;
+  }
+}</pre></body></html>
