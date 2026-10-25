@@ -1,55 +1,45 @@
-# Draft Step 5 checkpoint verification
-
-Current recovery-draft source: PENDING cloud verification. Core observation and
-mapping modules/tests were reconstructed after workspace loss; prior local pass
-counts do not certify this exact source. See STEP5_CHECKPOINT.md for preserved
-scope, unavailable UI/report files and remaining acceptance. Main/released
-version remains v0.6. No biological validation or observed usability is claimed.
-
-The following v0.6 record is historical and applies only to its stated commit.
-
-# Verification record — v0.6.0, 2026-10-25
-
-## Current implementation
+# Verification record — v0.7.0, 2026-10-26
 
 | Check | Result | Evidence and scope |
 |---|---|---|
-| Local full pytest, Python 3.12 | PASS: 130 tests | Current source, full optional benchmark toolchain; 384.12 s |
-| Ruff lint/format, compileall, pip check | PASS | Current source: all checks passed; no broken requirements |
-| Benchmark metadata/licence/units | PASS | Recorded permission, file hashes, bases/species and refusal cases |
-| PEtab round-trip / limits / N balance | PASS | Official format validators, likelihood/state/unit preservation, Monod/Droop light/temperature options and dark limit |
-| Actual pyPESTO benchmark | EXECUTED, SYNTHETIC ONLY | benchmark/results/synthetic_v0_6: three runs/48 measurements; 13 profile points; NLL difference 9.9476e-13; 3/3 native CV folds scored |
-| Benchmark refusal gate | PASS | Unsupported profiles must not produce point estimates or held-out aggregates |
-| Current cloud Python 3.11 | PASS: 119 tests, 1 skipped, Ruff | [Run 40211930328](https://github.com/ysmhla/alga-twin/actions/runs/40211930328); 105.69 s; benchmark module explicitly skipped because PEtab 0.9 requires Python 3.12 |
-| Current cloud Python 3.12 | PASS: 130 tests and Ruff | Same [run](https://github.com/ysmhla/alga-twin/actions/runs/40211930328); 138.36 s; benchmark extra installed; compilation/import checks passed |
-| Hosted deployment | NOT DEPLOYED | No public app URL |
-| Visual browser/timed novice study | NOT TESTED | AppTest does not establish novice <5-minute usability |
-| Independent biological evaluation | NOT VALIDATED | Only synthetic inference/held-out checks |
-| Empirical interval coverage | NOT ESTABLISHED | Conditional marginal asymptotic profile intervals |
+| Local full pytest, Python 3.12 | PASS: 143 tests | 192.33 s; includes optional benchmark toolchain and actual Streamlit AppTest |
+| Ruff lint/format, compileall, pip check | PASS | Current source; tutorials runner included in lint/format; no broken requirements |
+| Targeted wizard/proxy/report/existing UI checks | PASS: 21 tests | 53.17 s; column/unit refusals, profile export gate, six-step navigation and stale-state handling |
+| Proxy observation model | VERIFIED NUMERICALLY ONLY | Linear/quadratic recovery, zero-curvature limit, cell/DW units, mass conversion, extrapolation/nonphysical refusal |
+| Tutorials | EXECUTED IN-PROCESS | Both SYNTHETIC notebooks, 4 + 6 code cells, IPython; PNG plot and actual fit/CV/report outputs saved |
+| Real Jupyter kernel locally | UNAVAILABLE | TCP/IPC socket binding refused by environment; no local kernel-run claim |
+| HTML/PDF/JSON report | GENERATED | Actual SYNTHETIC shared fit, all 3/3 synthetic CV folds scored; PDF seven pages rendered/visually inspected |
+| Streamlit browser screenshot / pixel review | NOT TESTED | Browser cannot connect to local app; local-file browser preview prohibited; AppTest is not pixel review |
+| Current cloud Python 3.11/3.12 | PENDING | Source not yet certified by current cloud run; historical v0.6 evidence below |
+| Hosted deployment | NOT DEPLOYED | Account setup/sign-in/terms pending; no public app URL |
+| Timed novice study / five observed human issues | NOT TESTED | Engineering findings/fixes are labelled separately in USABILITY.md |
+| Independent biological evaluation | NOT VALIDATED | Only synthetic inference/held-out checks; measured datasets pending human input |
+| Empirical interval coverage | NOT ESTABLISHED | Conditional marginal asymptotic profile intervals; proxy conversion uncertainty not propagated |
 
-Current-source targeted benchmark run: **11 tests passed in 49.53 s**, including
-PEtab-entry-point permission/unit refusal and flat-profile suppression. Full suite
-and cloud evidence above certify source commit d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9.
+No dynamics were changed. MODEL.md adds empirical observation equations/units and
+mapping/report assumptions; new unit, limiting-case and total-DW conversion tests
+complement existing Monod/Droop nitrogen balances. No complete VERIFIED-range
+C. minutissima preset is invented; missing biological inputs, extinction and f_C
+stay unset. Unknown-strain inputs require explicit user evidence.
 
 ## Reproduce
 
-Full benchmark checks require Python 3.12+:
+Full benchmark checks require Python 3.12+; app/CLI still support Python 3.11:
 
-    python3.12 -m pip install -r requirements.txt -e '.[dev,benchmark]'
+    python3.12 -m pip install -r requirements.txt -e '.[dev,benchmark,tutorials]'
     python3.12 -m pytest -q
-    python3.12 -m ruff check src app.py tests benchmark
-    python3.12 -m ruff format --check src app.py tests benchmark
-    python3.12 -m compileall -q src app.py tests benchmark
+    python3.12 -m ruff check src app.py tests benchmark tutorials/execute_tutorials.py
+    python3.12 -m ruff format --check src app.py tests benchmark tutorials/execute_tutorials.py
+    python3.12 -m compileall -q src app.py tests benchmark tutorials/execute_tutorials.py
     python3.12 -m pip check
-    python3.12 benchmark/run_benchmark.py --registry benchmark/registry.json --output /tmp/alga-benchmark
+    python3.12 tutorials/execute_tutorials.py
 
-Core app/CLI still support Python 3.11; benchmark tests explicitly skip without
-its optional dependencies. Benchmark inference/CV uses the native SciPy profile
-gate; external pyPESTO is a full-data profile cross-check, not pyPESTO CV.
-The PEtab native reader is required; generic stock from_yaml/SBML/AMICI
-compatibility is not claimed. Permission metadata checks do not authenticate
-ownership. No measured dataset, biological validation, novelty or empirically
-calibrated interval coverage is claimed. MCMC remains optional/unimplemented.
+Use `--in-process` only when kernel sockets are unavailable; the output metadata
+records that method. Both committed notebooks use this explicit local fallback.
+The current Python 3.12 CI includes a real kernel tutorial execution step; its
+result will be recorded only after observed completion. Formats require the
+explicit native PEtab reader; stock SBML/AMICI interoperability is not claimed.
+PEtab 0.9 requires Python 3.12; its optional module skips on core Python 3.11.
 
 ## Historical evidence
 
@@ -65,3 +55,12 @@ source commit 6746dde6bf07151c75511731c5f9eb17e296935b.
 v0.2.1 passed 34 tests on cloud Python 3.11/3.12 in
 https://github.com/ysmhla/alga-twin/actions/runs/40177389592.
 The old local HTTP health check applied to v0.2.1, not proof of hosting.
+
+
+v0.6.0 passed 130 local/cloud Python 3.12 tests and Ruff; Python 3.11 core passed
+119 tests, 1 optional benchmark-module skip. Local full run: 384.12 s; CI:
+https://github.com/ysmhla/alga-twin/actions/runs/40211930328; source
+d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9. Recorded benchmark/results/synthetic_v0_6
+contains three runs/48 measurements, 13 external pyPESTO profile points, zero
+PEtab format issues and 3/3 native CV folds scored. These artifacts retain their
+original v0.6 version; they are not measured biological evidence.

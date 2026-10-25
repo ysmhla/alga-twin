@@ -25,8 +25,13 @@ jobs:
       - name: Check Python compilation
         run: python -m compileall -q src app.py benchmark
       - name: Ruff lint
-        run: ruff check src app.py tests benchmark
+        run: ruff check src app.py tests benchmark tutorials/execute_tutorials.py
       - name: Run tests
         run: pytest -q
+      - name: Execute SYNTHETIC tutorials (Python 3.12)
+        if: matrix.python-version == '3.12'
+        run: |
+          pip install -e '.[tutorials]'
+          python tutorials/execute_tutorials.py
       - name: Dashboard import sanity check
         run: python -c 'import streamlit, plotly, alga_twin; print(alga_twin.__version__)'

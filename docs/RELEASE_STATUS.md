@@ -1,32 +1,32 @@
-# Release status — v0.6.0 (2026-10-25)
+# Release status — v0.7.0 (2026-10-26)
 
-Steps 1–4 engineering are implemented and checked. Local/cloud Python 3.12
-passed 130 tests; cloud Python 3.11 core passed 119 tests with the optional
-benchmark module skipped (1 skip). Ruff passed on both; local formatting,
-compilation and dependency checks passed. Metadata/licence/units/hash
-loaders, a labelled synthetic fixture, PEtab 2 native-model exchange,
-actual pyPESTO full-data profiles and licence-bearing split scoreboards run.
-Native SciPy gates/whole-run CV remain the reported inference engine.
-The recorded synthetic run has three runs, 48 measurements, 13 external
-profile points, zero PEtab format issues and 3/3 held-out folds scored.
-CI: https://github.com/ysmhla/alga-twin/actions/runs/40211930328.
-Source commit: d5ba18bc3a7cd8a61aff214eede3031c88bdf5e9.
-See benchmark/README.md and docs/VERIFICATION.md for scope/evidence.
+Steps 1–4 engineering are implemented. Step 5 core UI is implemented and locally
+checked: paired OD/cell-count -> DW OLS; six-step upload/mapping/units/model/fit/
+report workflow; blank unknown-strain inputs; profile-gated HTML/PDF/JSON reports;
+two executed SYNTHETIC tutorials. Local Python 3.12 passed 143 tests (192.33 s),
+Ruff lint/format, compilation and pip check. Targeted UI/report checks: 21 passed.
+Current cloud certification is pending. See VERIFICATION.md for exact evidence.
 
-The optional PEtab 0.9 benchmark toolchain requires Python 3.12+; core app/CLI
-remain Python 3.11 compatible. Native exports require the explicit reader;
-stock from_yaml/SBML/AMICI compatibility is NOT IMPLEMENTED. Source DOI
-syntax and provider licence records are not independent verification of
-ownership or scientific validity. No measured dataset is present.
+Tutorial code cells ran with an explicit IPython in-process fallback because
+local Jupyter TCP/IPC sockets were refused; this is not a local kernel-run claim.
+PDF seven-page report was rendered/reviewed. Streamlit AppTest is actual widget
+verification, not browser pixel review or a human usability study. Report proxy
+uncertainty is not propagated into conditional growth-profile intervals.
 
-C. minutissima missing parameters/f_C stay unset. All example biological
-parameters and data remain SYNTHETIC / UNVERIFIED, with no invented range/DOI.
-Conditional profile intervals do not establish empirical coverage.
+Step 5 acceptance is incomplete: public app hosting/account setup, app browser
+screenshots, <5-minute novice completion and five actually observed human issues
+are pending. USABILITY.md records five engineering findings/fixes separately.
+No fabricated timing, participant feedback or validation claim is made.
 
-- PENDING HUMAN INPUT: measured candidate datasets and recorded reuse/redistribution permission.
-- NOT VALIDATED: independent cultivation/optical predictions.
-- NOT DEPLOYED: hosted app; sign-in/terms remain pending.
-- NOT TESTED: pixel review, timed novice studies and Docker build/run.
+- PENDING HUMAN INPUT: measured candidate datasets and reuse/redistribution evidence.
+- NOT VALIDATED: independent cultivation/optical predictions or interval coverage.
+- NOT DEPLOYED: hosted app; account setup/sign-in/terms remain pending.
+- NOT TESTED: Streamlit pixel/mobile review, timed novice study and Docker build/run.
 - NOT BUILT: supported model selection, information-based experiment recommender,
-  OD calibration/full wizard, HTML/PDF reports, tutorials/observed usability,
-  publication/DOI/docs-site package and optional MCMC.
+  publication/DOI/docs-site release, optional MCMC and streaming state estimation.
+
+C. minutissima verified-range coverage is incomplete; extinction/f_C remain unset.
+No other species parameters are transplanted. Example biological values and data
+are SYNTHETIC / UNVERIFIED. Previous benchmark artifacts retain their v0.6 version;
+PEtab 0.9 extra requires Python 3.12 and the explicit native reader. Generic
+SBML/AMICI compatibility and pyPESTO-based CV are not claimed.

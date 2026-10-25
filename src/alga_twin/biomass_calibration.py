@@ -31,7 +31,7 @@ class BiomassCalibration:
     kind: str
     signal_unit: str
     degree: int
-    coefficients: tuple[float, ...]
+    coefficients: tuple[float, ...]  # Ascending powers, in canonical signal units.
     center: float
     scale: float
     scaled_coefficients: tuple[float, ...]
@@ -55,9 +55,7 @@ class BiomassCalibration:
                 f"Extrapolation refused: use proxy values within {self.domain} {self.canonical_signal_unit}; "
                 "measure new paired dry weights to extend the calibration."
             )
-        return np.polynomial.polynomial.polyval(
-            (x - self.center) / self.scale, self.scaled_coefficients
-        )
+        return np.polynomial.polynomial.polyval((x - self.center) / self.scale, self.scaled_coefficients)
 
     def report(self):
         return {
@@ -111,19 +109,14 @@ def fit_biomass_calibration(
     derivative = np.polynomial.polynomial.polyder(scaled)
     slopes = np.polynomial.polynomial.polyval([-1.0, 1.0], derivative)
     ends = np.polynomial.polynomial.polyval([-1.0, 1.0], scaled)
-    # Endpoint derivatives establish monotonicity throughout a degree <=2 fit.
+    # For degrees 1/2, endpoint derivatives establish monotonicity everywhere.
     if min(slopes) < 0 or max(slopes) <= 0 or min(ends) < -1e-12:
-        raise ValueError("Fit is not nonnegative and increasing across the measured domain; inspect residuals")
-    physical = np.polynomial.Polynomial(scaled)(
-        np.polynomial.Polynomial([-center / scale, 1 / scale])
-    )
+        raise ValueError(
+            "Fit is not nonnegative and increasing across the measured domain; inspect residuals"
+        )
+    physical = np.polynomial.Polynomial(scaled)(np.polynomial.Polynomial([-center / scale, 1 / scale]))
     residuals = pd.DataFrame(
-        {
-            "signal_canonical": x,
-            "observed_g_DW_L": y,
-            "fitted_g_DW_L": fitted,
-            "residual_g_DW_L": y - fitted,
-        }
+        {"signal_canonical": x, "observed_g_DW_L": y, "fitted_g_DW_L": fitted, "residual_g_DW_L": y - fitted}
     )
     return BiomassCalibration(
         kind,

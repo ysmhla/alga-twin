@@ -18,7 +18,7 @@ def read_wide_csv(raw: bytes) -> pd.DataFrame:
     headings = next(csv.reader(BytesIO(raw).read().decode("utf-8-sig").splitlines()), [])
     if not headings or len(headings) != len(set(headings)) or any(not name.strip() for name in headings):
         raise ValueError("Use unique, nonempty CSV column headings")
-    # Preserve identifiers such as 001 until explicit numeric field conversion.
+    # Keep identifiers such as 001 intact. Numeric conversions happen after mapping.
     frame = pd.read_csv(BytesIO(raw), dtype=str, encoding="utf-8-sig")
     if not 1 <= len(frame) <= 5000 or not frame.columns.is_unique:
         raise ValueError("Use 1-5000 rows and unique column headings")
@@ -32,14 +32,20 @@ def map_observations(
     *,
     calibration: BiomassCalibration | None = None,
 ) -> pd.DataFrame:
-    """Convert wide technical measurements to canonical long data without time shifting.
+    """Map wide technical measurements to canonical long data; no time shifting.
 
-    Missing X/N/q cells are omitted; missing metadata and malformed cells refuse.
-    Without a replicate column each row gets a distinct technical row id.
-    Independent biological cultures must have separate run_id values.
+    Missing X/N/q cells are omitted; missing metadata and nonnumeric cells refuse.
+    Without replicate column each input row receives a distinct technical row id.
+    Biological cultures must have separate run_id values.
     """
-    allowed = {"time", "X", "N", "q", "run", "replicate"}
-    if not {"time", "X"} <= mapping.keys() or not mapping.keys() <= allowed:
+    if not {"time", "X"} <= mapping.keys() or not mapping.keys() <= {
+        "time",
+        "X",
+        "N",
+        "q",
+        "run",
+        "replicate",
+    }:
         raise ValueError("Map time and X; optional N, q, run and technical replicate")
     if len(set(mapping.values())) != len(mapping) or not set(mapping.values()) <= set(data.columns):
         raise ValueError("Each mapped field needs its own existing column")
@@ -52,17 +58,12 @@ def map_observations(
         raise ValueError("N must be elemental nitrogen, not nitrate-ion mass")
     if "q" in units and units["q"] != "g_N/g_DW":
         raise ValueError("Quota must be g_N/g_DW")
-    times = pd.to_numeric(data[mapping["time"]], errors="raise").to_numpy(float)
-    times = times * TIME_FACTORS[units["time"]]
+    times = pd.to_numeric(data[mapping["time"]], errors="raise").to_numpy(float) * TIME_FACTORS[units["time"]]
     if np.any(~np.isfinite(times)) or np.any(times < 0) or times.max() > 365:
         raise ValueError(
             "Time must be finite, nonnegative and <=365 days from inoculation; no automatic shifting"
         )
-    runs = (
-        data[mapping["run"]].astype("string")
-        if "run" in mapping
-        else pd.Series("run-1", index=data.index)
-    )
+    runs = data[mapping["run"]].astype("string") if "run" in mapping else pd.Series("run-1", index=data.index)
     reps = (
         data[mapping["replicate"]].astype("string")
         if "replicate" in mapping
@@ -79,18 +80,13 @@ def map_observations(
     for obs in ("X", "N", "q"):
         if obs not in mapping:
             continue
-        present = (
-            data[mapping[obs]].notna()
-            & data[mapping[obs]].astype(str).str.strip().ne("")
-        )
+        present = data[mapping[obs]].notna() & data[mapping[obs]].astype(str).str.strip().ne("")
         value = pd.to_numeric(data.loc[present, mapping[obs]], errors="raise").to_numpy(float)
         if np.any(~np.isfinite(value)):
             raise ValueError("Measurements must be finite; omit missing values instead of infinity")
         if obs == "X":
             value = (
-                calibration.predict(value, unit=units[obs])
-                if calibration
-                else value * DW_FACTORS[units[obs]]
+                calibration.predict(value, unit=units[obs]) if calibration else value * DW_FACTORS[units[obs]]
             )
             unit = "g_DW/liter"
         elif obs == "N":
@@ -114,6 +110,4 @@ def map_observations(
         raise ValueError("Every declared run needs measurements; at most 15000 mapped measurements")
     if result.duplicated(["run_id", "time_day", "observable", "replicate"]).any():
         raise ValueError("Duplicate measurement identity; distinct technical repeats need distinct ids")
-    return result.sort_values(
-        ["run_id", "time_day", "observable"], kind="stable"
-    ).reset_index(drop=True)
+    return result.sort_values(["run_id", "time_day", "observable"], kind="stable").reset_index(drop=True)

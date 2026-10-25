@@ -2,10 +2,10 @@
 
 ## Streamlit Community Cloud
 
-1. Create an empty GitHub repository called `alga-twin`.
-2. Commit the project to its `main` branch; do **not** flatten the `src/alga_twin` directory.
+1. Use the existing GitHub repository `ysmhla/alga-twin`.
+2. Use its checked `main` branch; do **not** flatten the `src/alga_twin` directory.
 3. Confirm the `Scientific Python CI` GitHub Actions workflow completes on Python 3.11 and 3.12.
-4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `OWNER/alga-twin`, branch `main`, entry point `app.py`.
+4. In [Streamlit Community Cloud](https://share.streamlit.io/), create a new app with repository `ysmhla/alga-twin`, branch `main`, entry point `app.py`.
 5. No secret values are needed. Verify that LITERATURE initially blocks missing species parameters; explicitly select DEMO and check charts, tabs and exports.
 6. Run the public deployment smoke checklist below before publicising the link.
 
@@ -45,6 +45,11 @@ Default local URL: `http://localhost:8501`.
 - [ ] `ScenarioLab` stores two conditions and exports comparisons.
 - [ ] `Run manifest` downloads JSON with model revision and input checksum.
 - [ ] Invalid/empty uploads show a validation error and do not crash process.
+- [ ] Guided workflow maps units, profiles and exports HTML/PDF reports.
+- [ ] Changed source/mapping/model choices withhold stale reports.
+- [ ] Paired OD/cell-count helper refuses extrapolation and shows residuals/R-squared.
+- [ ] Unknown-strain and missing species inputs remain unset.
+- [ ] Save actual app screenshots; a rendered report is not an app screenshot.
 - [ ] Mobile and desktop layouts remain readable.
 
 ## Limitations for public hosting

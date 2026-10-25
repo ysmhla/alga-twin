@@ -1,4 +1,4 @@
-"""Synthetic observation-model units, limiting case, mass conversion and refusals."""
+"""Observation-model units, limiting cases, mass conversion and upload refusals."""
 
 import numpy as np
 import pandas as pd
@@ -21,43 +21,35 @@ def fit(x=None, y=None, **changes):
         "origin": "SYNTHETIC",
     }
     options.update(changes)
-    return fit_biomass_calibration(
-        pd.DataFrame({"signal": x, "dry_weight": y}), **options
-    )
+    return fit_biomass_calibration(pd.DataFrame({"signal": x, "dry_weight": y}), **options)
 
 
-def test_linear_quadratic_recovery_and_zero_curvature_limit():
+def test_linear_and_quadratic_recovery_zero_curvature_limit():
     linear, quadratic = fit(), fit(degree=2)
     x = np.linspace(0, 1, 51)
     assert linear.coefficients == pytest.approx((0.04, 0.5), abs=1e-12)
     assert quadratic.coefficients == pytest.approx((0.04, 0.5, 0), abs=1e-12)
     assert linear.r_squared == pytest.approx(1)
     np.testing.assert_allclose(
-        linear.predict(x, unit="dimensionless"),
-        quadratic.predict(x, unit="dimensionless"),
+        linear.predict(x, unit="dimensionless"), quadratic.predict(x, unit="dimensionless")
     )
-    levels = np.linspace(0, 1, 8)
-    nonlinear = fit(y=0.04 + 0.4 * levels + 0.1 * levels**2, degree=2)
+    nonlinear = fit(y=0.04 + 0.4 * np.linspace(0, 1, 8) + 0.1 * np.linspace(0, 1, 8) ** 2, degree=2)
     assert nonlinear.coefficients == pytest.approx((0.04, 0.4, 0.1))
     assert nonlinear.report()["interval"] is None
     assert nonlinear.status == "UNVERIFIED"
 
 
-def test_cell_and_dw_units_preserve_total_dry_mass():
+def test_cell_and_dry_weight_units_preserve_total_dry_mass():
     cells_ml = np.linspace(0, 1e6, 8)
     y = 0.04 + cells_ml * 5e-7
     a = fit(cells_ml, y, kind="cell_count", signal_unit="cells/mL")
     b = fit(
-        cells_ml * 1000,
-        y * 1000,
-        kind="cell_count",
-        signal_unit="cells/L",
-        dry_weight_unit="g_DW/meter**3",
+        cells_ml * 1000, y * 1000, kind="cell_count", signal_unit="cells/L", dry_weight_unit="g_DW/meter**3"
     )
     np.testing.assert_allclose(
-        a.predict(cells_ml, unit="cells/mL"),
-        b.predict(cells_ml * 1000, unit="cells/L"),
+        a.predict(cells_ml, unit="cells/mL"), b.predict(cells_ml * 1000, unit="cells/L")
     )
+    # Same dry mass in a 2 L reactor, irrespective of input concentration convention.
     assert (a.predict([1e6], unit="cells/mL") * 2)[0] == pytest.approx(
         (b.predict([1e9], unit="cells/L") * 2)[0]
     )
@@ -68,7 +60,7 @@ def test_cell_and_dw_units_preserve_total_dry_mass():
         fit(signal_unit="absorbance/cm")
 
 
-def test_conversion_refuses_extrapolation_bad_shapes_and_insufficient_data():
+def test_conversion_refuses_extrapolation_bad_shapes_and_underdetermined_data():
     result = fit()
     for value in (-1e-12, 1 + 1e-12):
         with pytest.raises(ValueError):
@@ -78,11 +70,7 @@ def test_conversion_refuses_extrapolation_bad_shapes_and_insufficient_data():
     with pytest.raises(ValueError, match="increasing"):
         x = np.linspace(0, 1, 8)
         fit(x, 0.2 + x - 0.8 * x * x, degree=2)
-    for x, y in [
-        ([0, 1], [0.1, 0.5]),
-        ([1] * 5, [0.1, 0.2, 0.3, 0.4, 0.5]),
-        ([0, 1, 2, 3], [0.2] * 4),
-    ]:
+    for x, y in [([0, 1], [0.1, 0.5]), ([1] * 5, [0.1, 0.2, 0.3, 0.4, 0.5]), ([0, 1, 2, 3], [0.2] * 4)]:
         with pytest.raises(ValueError):
             fit(x, y)
     with pytest.raises(ValueError, match="finite"):
@@ -92,9 +80,8 @@ def test_conversion_refuses_extrapolation_bad_shapes_and_insufficient_data():
 
 
 def test_wide_mapping_units_replicates_missing_values_and_ids():
-    data = read_wide_csv(
-        b"culture,hour,DW,N,tech\n001,0,100,0.04,01\n001,24,200,,01\n001,24,210,0.02,02\n"
-    )
+    raw = b"culture,hour,DW,N,tech\n001,0,100,0.04,01\n001,24,200,,01\n001,24,210,0.02,02\n"
+    data = read_wide_csv(raw)
     result = map_observations(
         data,
         {"run": "culture", "time": "hour", "X": "DW", "N": "N", "replicate": "tech"},
@@ -122,11 +109,7 @@ def test_wide_proxy_range_and_unit_refusals():
         map_observations(data, {"time": "t", "X": "t"}, {"time": "day", "X": "g_DW/liter"})
     data["other"] = 1.0
     with pytest.raises(ValueError, match="elemental nitrogen"):
-        map_observations(
-            data,
-            {**mapping, "N": "other"},
-            {**units, "X": "g_DW/liter", "N": "mg_NO3/liter"},
-        )
+        map_observations(data, {**mapping, "N": "other"}, {**units, "X": "g_DW/liter", "N": "mg_NO3/liter"})
 
 
 def test_wide_no_time_shift_or_silent_bad_cell_drop():
