@@ -108,12 +108,16 @@ def test_new_user_lands_on_empty_upload_without_demo_fallback():
     assert not any(w.label == "Download PDF report" for w in app.get("download_button"))
 
 
-def test_uploaded_synthetic_origin_and_file_removal_invalidate_results(monkeypatch):
+@pytest.mark.parametrize("reset", ["origin", "native_remove", "explicit_clear"])
+def test_uploaded_synthetic_origin_and_file_removal_invalidate_results(monkeypatch, reset):
     from alga_twin.wizard_ui import _worked_wide
 
     _, raw = _worked_wide()
     current_upload = [BytesIO(raw)]
-    monkeypatch.setattr("streamlit.file_uploader", lambda *a, **kw: current_upload[0])
+    monkeypatch.setattr(
+        "streamlit.file_uploader",
+        lambda *a, **kw: current_upload[0] if kw.get("key") == "guide_upload_0" else None,
+    )
     app = AppTest.from_file(str(APP), default_timeout=120).run()
     assert app.session_state["guide_source"][1] is False
     widget(app, "radio", "Uploaded data origin").set_value("SYNTHETIC — simulated teaching data").run()
@@ -132,15 +136,24 @@ def test_uploaded_synthetic_origin_and_file_removal_invalidate_results(monkeypat
     widget(app, "button", "Fit and check identifiability").click().run()
     assert not app.exception
     assert app.session_state["guide_fit"][1].supported
-    # The same uploaded bytes relabelled measured cannot reuse a synthetic fit/configuration.
     widget(app, "selectbox", "Current step").set_value("1 Upload").run()
-    widget(app, "radio", "Uploaded data origin").set_value("MEASURED — laboratory observations").run()
-    assert app.session_state["guide_source"][1] is False
-    assert "guide_fit" not in app.session_state and "guide_job" not in app.session_state
-    # Removing a file while staying in upload mode must also clear every dependent result.
-    current_upload[0] = None
-    app.run()
+    assert widget(app, "radio", "Uploaded data origin").value.startswith("SYNTHETIC")
+    assert any("Active CSV:" in w.value for w in app.caption)
+    if reset == "origin":
+        # The same bytes relabelled measured cannot reuse a synthetic fit/configuration.
+        widget(app, "radio", "Uploaded data origin").set_value("MEASURED — laboratory observations").run()
+        assert app.session_state["guide_source"][1] is False
+        assert "guide_fit" not in app.session_state and "guide_job" not in app.session_state
+        current_upload[0] = None
+        app.run()
+    elif reset == "native_remove":
+        current_upload[0] = None
+        app.run()
+    else:
+        widget(app, "button", "Remove current CSV and results").click().run()
+        assert app.session_state["guide_upload_generation"] == 1
     assert "guide_source" not in app.session_state
+    assert "guide_fit" not in app.session_state and "guide_job" not in app.session_state
     assert "guide_observations" not in app.session_state
     widget(app, "selectbox", "Current step").set_value("6 Read result / report").run()
     assert any("Start with Step 1" in w.value for w in app.info)

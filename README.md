@@ -151,10 +151,12 @@ The [v0.8.1 Zenodo software archive](https://zenodo.org/records/23665342) is pub
 
 ## Tests
 
-**Unreleased usability patch:** 158 local tests passed (277.10 s); Ruff
+**Unreleased usability patch:** 160 local tests passed (287.20 s); Ruff
 lint/format, strict docs, citation schema and separate development distribution/
 Twine checks passed. Agent/source findings are recorded in
-[usability evidence](docs/USABILITY.md); human novice acceptance remains NOT TESTED.
+[usability evidence](docs/USABILITY.md); human novice acceptance remains NOT TESTED. The [actual CSV-to-report agent
+rehearsal](docs/smoke/v0_8_2_dev/README.md) records 3/3 synthetic holdouts and
+parsed reports, with its exact source and 192.868-second timing boundary.
 
 **Post-archive update:** 156 tests passed locally (256.23 s); repository-wide
 Ruff lint/format, citation schema and strict docs checks passed. Both formatted

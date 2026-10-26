@@ -4,6 +4,7 @@
 
 - Start new sessions in the guided upload workspace; add a blank CSV template and explicit units/row limit.
 - Record an explicit MEASURED/SYNTHETIC upload declaration. Origin changes and file removal invalidate dependent jobs/fits/reports; synthetic uploads never become measured evidence.
+- Retain upload origin across step navigation, show the active filename and provide an explicit file/results reset; test native removal, origin change and explicit reset independently.
 - Disable report navigation before a current fit exists; correct stale feature/DOI text.
 - Expand the agent primary-source related-work audit with PEtab Select and REALM; retain human review and biological/usability acceptance flags.
 - Preserve the published v0.8.1 tag, files and DOI. CITATION.cff continues to cite that archived release; this development snapshot has no separate archive DOI.

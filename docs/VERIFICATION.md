@@ -1,5 +1,35 @@
 # Verification record — 2026-10-26
 
+## Return-navigation and explicit reset follow-up
+
+After the browser rehearsal exposed confusing retained-source display on return
+to Step 1, the declaration was retained outside temporary widget state, the
+active filename was made explicit and a dedicated reset changes the uploader key.
+Local Python 3.12 `pytest -q`: **160 passed in 287.20 s**. Repository-wide Ruff
+lint/format passed (91 files); no model or likelihood changed. The three reset
+regressions exercise native removal, origin relabelling and explicit clearing
+independently after an actual fitted synthetic job. The earlier 158-test source
+and its browser timing are identified separately below.
+
+## Actual hosted CSV-to-report rehearsal
+
+Source **806212f064cbd6a9f3bfa099a2cd4f39fe18f64c** passed cloud scientific
+[CI 40339593674](https://github.com/ysmhla/alga-twin/actions/runs/40339593674):
+Python 3.12 **158 passed in 432.02 s**, Ruff and both real-kernel tutorials;
+Python 3.11 **147 passed, 1 skipped in 348.81 s**, Ruff. Distribution 40339594065
+and docs 40339593518 passed. A fresh public app session displayed 0.8.2.dev0 and
+the guided landing. A real file-picker CSV upload, mapping, explicit unit/model
+checks, joint fitting, 3/3 whole-run holdouts and HTML/PDF/JSON exports were exercised.
+The downloaded reports were parsed for original source hash, SYNTHETIC origins,
+DEMO/UNVERIFIED parameters, interval method and training/held-out separation.
+
+Agent interaction time: **192.868 seconds**, with exact start/end/setup and retry
+boundaries in [the evidence](smoke/v0_8_2_dev/browser_evidence.json). This is not
+an independent human novice result or biological validation. The first JSON
+path was unavailable; a separate retry succeeded and was parsed. These observations
+must not be attributed to a later source revision without a separate retest.
+[Actual reports and screenshots scope](smoke/v0_8_2_dev/README.md).
+
 ## Unreleased 0.8.2.dev0 agent usability fixes
 
 Local Python 3.12 `pytest -q`: **158 passed in 277.10 s**. Repository-wide Ruff

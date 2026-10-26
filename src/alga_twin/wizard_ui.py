@@ -59,12 +59,18 @@ def render_wizard():
             _, raw = _worked_wide()
             st.warning("SYNTHETIC / DEMO teaching data. All model values are UNVERIFIED assumptions.")
         else:
+            origin_options = ["MEASURED — laboratory observations", "SYNTHETIC — simulated teaching data"]
             origin = st.radio(
                 "Uploaded data origin",
-                ["MEASURED — laboratory observations", "SYNTHETIC — simulated teaching data"],
+                origin_options,
+                index=origin_options.index(
+                    st.session_state.get("guide_upload_declaration", origin_options[0])
+                ),
                 key="guide_upload_origin",
                 help="Declare where the CSV values came from. This declaration is recorded; it is not independently verified.",
             )
+            # Keep the declaration outside widget state: Step 2-6 do not render this radio.
+            st.session_state.guide_upload_declaration = origin
             synthetic = origin.startswith("SYNTHETIC")
             if synthetic:
                 st.warning(
@@ -84,13 +90,22 @@ def render_wizard():
                 "replicate identifies a technical reading. Maximum 2 MB and 5,000 rows. "
                 "Other headings/units can be mapped in Step 2. The template has no invented measurements."
             )
-            upload = st.file_uploader("Cultivation measurements CSV", type=["csv"], key="guide_upload")
+            generation = st.session_state.get("guide_upload_generation", 0)
+            upload = st.file_uploader(
+                "Cultivation measurements CSV", type=["csv"], key=f"guide_upload_{generation}"
+            )
             st.write(
                 "Use a wide table: one time column, dry-weight (or calibrated proxy) column, optional elemental N/quota, run id and technical replicate id."
             )
             if upload is None:
                 _clear(st, "source", "raw", "observations", "confirmed", "job", "fit", "cv", "proxy")
                 return
+            st.caption(f"Active CSV: {getattr(upload, 'name', 'uploaded.csv')}")
+            if st.button("Remove current CSV and results", key="guide_remove_upload"):
+                _clear(st, "source", "raw", "observations", "confirmed", "job", "fit", "cv", "proxy")
+                # A fresh widget key resets the uploader without assigning to its protected state.
+                st.session_state.guide_upload_generation = generation + 1
+                st.rerun()
             raw = upload.getvalue()
         digest = hashlib.sha256(raw).hexdigest()
         source = (digest, synthetic)

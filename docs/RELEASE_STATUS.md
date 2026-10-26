@@ -4,7 +4,7 @@ Main is the **unreleased 0.8.2.dev0 usability patch**: guided landing, a blank
 CSV template, declared upload origin, file-removal/origin invalidation and a
 current-fit report gate. No model equations/defaults changed. CITATION.cff
 continues to cite the archived v0.8.1 release below; no DOI is assigned to this
-development snapshot. Local development checks: 158 tests passed in 277.10 s;
+development snapshot. Local development checks: 160 tests passed in 287.20 s;
 Ruff, strict docs, citation schema and development build/Twine checks passed.
 See VERIFICATION.md for scope.
 
@@ -13,7 +13,8 @@ is published from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d with four verified as
 Its exact-source scientific, distribution and docs CI passed; see VERIFICATION.md.
 [Zenodo v0.8.1 archive](https://zenodo.org/records/23665342) is published with
 verified version DOI **10.5281/zenodo.23665342** (MIT; four matching files).
-Human scholarly review remains pending.
+Human scholarly review remains pending. The subsequent [development rehearsal](smoke/v0_8_2_dev/README.md)
+exercised an actual SYNTHETIC CSV upload and reports; no human-study acceptance follows.
 
 v0.8.1 passed 156 local tests/Ruff and current-source cloud checks:
 Python 3.12 156 tests/Ruff and both tutorials; Python 3.11 145 tests/one optional

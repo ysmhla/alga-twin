@@ -1,0 +1,61 @@
+{
+  "evidence_kind": "AI_AGENT_DESKTOP_BROWSER_REHEARSAL",
+  "human_novice_acceptance": "NOT TESTED",
+  "biological_validation": "ABSENT",
+  "public_app": "https://alga-twin.streamlit.app/",
+  "version": "0.8.2.dev0",
+  "tested_source_commit": "806212f064cbd6a9f3bfa099a2cd4f39fe18f64c",
+  "data_origin": "SYNTHETIC",
+  "data_licence": "MIT; repository LICENSE",
+  "data_source": "tutorials/output/synthetic_observations_wide.csv",
+  "input_sha256": "1c1a652dfb4d147ab0073dde64e3831fe9f599e4a4f05bd7ffde099682f5bf60",
+  "culture_runs": 3,
+  "mapped_measurements": 48,
+  "checks": [
+    "Fresh session opens guided upload with no demo fallback",
+    "Actual blank template download has zero measurement rows",
+    "Duplicate-heading CSV refused via actual file picker",
+    "Actual synthetic CSV file-picker upload; map; unit check; explicit model assumptions; joint fit; whole-run CV; result",
+    "Report navigation disabled before fit and available after current fit",
+    "Actual HTML/PDF read and JSON parsed; source hash, DEMO/UNVERIFIED provenance, interval method and both error splits verified"
+  ],
+  "held_out_folds_scored": 3,
+  "pdf_pages": 7,
+  "agent_timing": {
+    "seconds": 192.868,
+    "start_utc": "2026-10-26T14:28:10.140Z",
+    "end_utc": "2026-10-26T14:31:23.008Z",
+    "start": "Before valid CSV file-picker interaction, after declaring SYNTHETIC origin",
+    "end": "After report-screen interpretation and HTML/PDF downloads plus initial JSON request",
+    "includes": "Model fitting, CV and browser tool round trips",
+    "excludes": "Earlier setup/invalid-input test and later file parsing/JSON retry",
+    "interpretation": "Agent rehearsal only; no human under-five-minute claim"
+  },
+  "download_note": "First JSON path was unavailable after checking the shared folder; a separate retry succeeded and was parsed. No failed path is linked.",
+  "boundary_notes": [
+    "User-declared origin is not independently verified",
+    "Synthetic held-out errors do not validate biology",
+    "A subsequent patch addresses confusing origin/picker display on return to Step 1; its live reset retest is recorded separately"
+  ],
+  "cloud_ci": {
+    "scientific_run": 40339593674,
+    "python_3_12": "158 passed in 432.02 s; Ruff and both real-kernel tutorials passed",
+    "python_3_11": "147 passed, 1 skipped in 348.81 s; Ruff passed",
+    "distribution_run": 40339594065,
+    "distribution_status": "success",
+    "docs_run": 40339593518,
+    "docs_status": "success"
+  },
+  "sha256": {
+    "report.pdf": "d082cc290ece34698b83e3a566d78e8e5609832c1a2e356d80fcc7e49ccf1916",
+    "report.json": "2cd53dc9d11bc7c59c109af7ac81535627d7f731922208622f71cb7c4297cacf",
+    "report.html": "8db6de2e3cdb965ea78cce767be7322b3d6f0ae9846aa6f41a1b331125e49d82",
+    "blank_template.csv": "82e76343107e6e012fe44a129d74a5cccbddcb3738f1dbf1688c99575a719256"
+  },
+  "screenshots": {
+    "guided-landing-v082.jpg": "f594ed4af3fb7ff9517241c6ecf7839e377bd8ff0203a74e930b95ae75e239b5",
+    "duplicate-refusal-v082.jpg": "b2d9a8dd5a33c65df2778e71087d77a05aaa494e185f6f1033cd3211d1ba75af",
+    "report-gate-v082.jpg": "c1c65be0e581da8315ceac4b58b5e6462e6d591acbae61bf7b1824bcee7ff763",
+    "uploaded-result-v082.jpg": "242f73c29bd33694acd81d1eb2efbb4f21858969a685fb4b248c2f3712d8de94"
+  }
+}

@@ -1,14 +1,17 @@
 # Guided upload to report
 
 Public demo: https://alga-twin.streamlit.app/ . [Observed browser checks](smoke/README.md)
-use only the explicitly selected SYNTHETIC example; novice acceptance is pending.
+use explicitly labelled SYNTHETIC data; the [development rehearsal](smoke/v0_8_2_dev/README.md)
+also exercises the actual file picker. Human novice acceptance is pending.
 
 **Guided upload to report** is the landing workspace. It is accessible
 without switching the research gate to DEMO. Its initial choice is **Upload my
 measurements**, with user-declared MEASURED origin; teaching data require an
 explicit SYNTHETIC worked-example or uploaded-data-origin selection. This origin
 is retained in the job/report and is not independently verified. Switching origin
-or removing the uploaded file clears all dependent results.
+or removing the uploaded file clears all dependent results. The active filename
+is displayed on return to Step 1; **Remove current CSV and results** resets the
+uploader and all cached calculation state.
 
 1. Download the blank CSV template if needed and fill it with your own data,
    then upload a UTF-8 wide CSV (<=2 MB, <=5000 rows). The template headings are

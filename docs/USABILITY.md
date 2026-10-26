@@ -37,13 +37,16 @@ measurements, user quotes or novice timing are claimed.
 | Uploaded files were always routed as measured, even for a deliberately uploaded synthetic fixture (source, with actual pre-fix upload preview) | Explicit uploaded-data-origin choice; default user-declared MEASURED; explicit SYNTHETIC retains DEMO parameter provenance | Uploaded-byte AppTest checks job run origins and parameter tiers |
 | Removing the file without changing input mode returned before clearing previous source/results (source) | Clear dependent data, configuration, fit, CV and proxy state when upload is absent | File-removal regression withholds all old results/report |
 | Result-navigation button was enabled before a fit existed (source) | Enable it only for a current signature-matching fit | Actual Streamlit test checks disabled-before-fit and enabled-after-fit |
+| Back-navigation made the browser picker/origin display confusing despite retained source bytes (post-fix browser review) | Retain the declaration outside widget state, show the active filename and provide an explicit CSV/results reset with a fresh uploader key | Return-navigation/origin persistence and three reset-path AppTests; live retest recorded separately |
 | About screen still called implemented model support/design features future milestones; paper still said no software DOI (source) | Correct feature status and cite the actual released v0.8.1 DOI | Text review; no model or citation identity invented |
 
 Changing the uploaded origin also invalidates a prior synthetic fit/configuration.
 The declaration records what the uploader says; it does not independently verify
 that measurements are biological observations. The archived v0.8.1 files/tag are
-preserved; these changes are an unreleased development snapshot. A post-deployment
-actual CSV-to-report check is recorded separately when completed. None of these
+preserved; these changes are an unreleased development snapshot. The [post-deployment CSV-to-report rehearsal](smoke/v0_8_2_dev/README.md)
+records actual file-picker uploads, parsed HTML/PDF/JSON exports and 3/3 synthetic
+whole-run holdouts. Its 192.868-second agent timing belongs specifically to source
+806212f064cbd6a9f3bfa099a2cd4f39fe18f64c, before the later return-navigation/reset patch. None of these
 items is substituted into the human participant table below.
 
 ## Concrete human study protocol (pending)
