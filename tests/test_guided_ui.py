@@ -1,5 +1,6 @@
 """Actual Streamlit state tests; these are not human usability observations."""
 
+from io import BytesIO
 from pathlib import Path
 
 import pytest
@@ -38,9 +39,11 @@ def test_guided_synthetic_fit_report_and_back_navigation_invalidation():
     widget(app, "button", "Confirm model and all explicit assumptions").click().run()
     assert not app.exception
     assert app.session_state["guide_job"]["kind"] == "monod"
+    assert widget(app, "button", "Read result and export report").disabled
     widget(app, "button", "Fit and check identifiability").click().run()
     assert not app.exception
     assert app.session_state["guide_fit"][1].supported
+    assert not widget(app, "button", "Read result and export report").disabled
     widget(app, "button", "Read result and export report").click().run()
     assert not app.exception
     assert any("Download PDF report" == w.label for w in app.get("download_button"))
@@ -92,3 +95,53 @@ def test_proxy_workspace_fit_residuals_and_extrapolation_refusal():
     assert not any(w.label.startswith("Converted dry weight") for w in app.metric)
     widget(app, "radio", "Conversion curve").set_value("Quadratic").run()
     assert "active_dw_calibration" not in app.session_state
+
+
+def test_new_user_lands_on_empty_upload_without_demo_fallback():
+    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    assert not app.exception
+    assert widget(app, "selectbox", "Workspace").value == "Guided upload to report"
+    assert widget(app, "radio", "Guided input").value == "Upload my measurements"
+    assert widget(app, "radio", "Uploaded data origin").value.startswith("MEASURED")
+    assert "guide_source" not in app.session_state
+    assert any(w.label == "Download blank CSV template" for w in app.get("download_button"))
+    assert not any(w.label == "Download PDF report" for w in app.get("download_button"))
+
+
+def test_uploaded_synthetic_origin_and_file_removal_invalidate_results(monkeypatch):
+    from alga_twin.wizard_ui import _worked_wide
+
+    _, raw = _worked_wide()
+    current_upload = [BytesIO(raw)]
+    monkeypatch.setattr("streamlit.file_uploader", lambda *a, **kw: current_upload[0])
+    app = AppTest.from_file(str(APP), default_timeout=120).run()
+    assert app.session_state["guide_source"][1] is False
+    widget(app, "radio", "Uploaded data origin").set_value("SYNTHETIC — simulated teaching data").run()
+    assert app.session_state["guide_source"][1] is True
+    widget(app, "button", "Continue to column mapping").click().run()
+    widget(app, "button", "Apply mapping and conversions").click().run()
+    widget(
+        app, "checkbox", "I confirm the units, culture/technical replicate ids, and times from inoculation"
+    ).check().run()
+    widget(app, "button", "Continue to model").click().run()
+    widget(app, "button", "Confirm model and all explicit assumptions").click().run()
+    assert not app.exception
+    config = app.session_state["guide_job"]
+    assert {r["origin"] for r in config["runs"]} == {"SYNTHETIC"}
+    assert {p["tier"] for p in config["parameters"].values()} == {"DEMO"}
+    widget(app, "button", "Fit and check identifiability").click().run()
+    assert not app.exception
+    assert app.session_state["guide_fit"][1].supported
+    # The same uploaded bytes relabelled measured cannot reuse a synthetic fit/configuration.
+    widget(app, "selectbox", "Current step").set_value("1 Upload").run()
+    widget(app, "radio", "Uploaded data origin").set_value("MEASURED — laboratory observations").run()
+    assert app.session_state["guide_source"][1] is False
+    assert "guide_fit" not in app.session_state and "guide_job" not in app.session_state
+    # Removing a file while staying in upload mode must also clear every dependent result.
+    current_upload[0] = None
+    app.run()
+    assert "guide_source" not in app.session_state
+    assert "guide_observations" not in app.session_state
+    widget(app, "selectbox", "Current step").set_value("6 Read result / report").run()
+    assert any("Start with Step 1" in w.value for w in app.info)
+    assert not any(w.label == "Download PDF report" for w in app.get("download_button"))

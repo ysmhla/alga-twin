@@ -62,8 +62,8 @@ st.markdown(
 workspace = st.selectbox(
     "Workspace",
     [
-        "Baseline workflow",
         "Guided upload to report",
+        "Baseline workflow",
         "OD / cell count calibration",
         "Selectable models (SYNTHETIC)",
         "Joint calibration",
@@ -738,7 +738,9 @@ No independent validation is claimed.
     with st.expander("Run manifest preview"):
         st.code(report, language="json")
     st.markdown(
-        "**Next planned scientific milestones:** independent biological evaluation, interval coverage assessment, supported model selection and an information-based experiment recommender. Selectable models are available in the synthetic workspace."
+        "**Available now:** conditional model comparison and local Fisher experiment ranking in "
+        "**Model support and next experiment**. **Research work still pending:** independent biological "
+        "evaluation, interval coverage assessment and a human novice usability study."
     )
     st.caption(
         "Project documentation and full model specification are in the GitHub repository and docs/ directory."

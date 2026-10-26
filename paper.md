@@ -15,7 +15,8 @@ bibliography: paper.bib
 > DRAFT — NOT SUBMITTED. Author identity follows the existing CITATION.cff;
 > authorship/contributions, affiliations, ORCID (if provided), funding and final
 > related-work assessment require human confirmation. Missing affiliations are
-> deliberately not invented. A software DOI has not been assigned. This is a
+> deliberately not invented. The released v0.8.1 software is archived at
+> https://doi.org/10.5281/zenodo.23665342. This is a
 > reviewable JOSS-style draft, not a submission-ready or accepted paper.
 
 # Summary
@@ -63,6 +64,14 @@ nonlinear experimental-design tools based on expected Fisher information
 [@nloed]. AlgaTwin neither introduces these mathematical principles nor claims
 to replace the broader capabilities of these projects. Its optional benchmark
 pipeline uses actual pyPESTO profiles and PEtab 2 native-model validation.
+
+PEtab Select already offers model-space search and AIC/AICc/BIC criteria with
+external calibration [@petabselect]. An algal comparator, the REALM raceway model,
+is described by its authors as a MATLAB mechanistic simulator coupling biological,
+engineering and thermal processes with weather inputs [@realm]. Its source archive
+has not been executed here; the retrieved licence field was unavailable and no
+code, data or parameters were copied. These documentation comparisons establish
+relevant prior work, not head-to-head performance or biological validation.
 
 The present implementation explores a narrow microalgal workflow with explicit
 species-evidence gaps, units, fit refusals and reports. A related-work table is

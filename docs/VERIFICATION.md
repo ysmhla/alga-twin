@@ -1,5 +1,26 @@
 # Verification record — 2026-10-26
 
+## Unreleased 0.8.2.dev0 agent usability fixes
+
+Local Python 3.12 `pytest -q`: **158 passed in 277.10 s**. Repository-wide Ruff
+lint/format passed (91 files); strict MkDocs, CFF schema, `pip check` and
+`git diff --check` passed. A separate development wheel/source build and strict
+Twine checks passed; the existing published v0.8.1 distribution files were not
+replaced. The release citation/DOI still identify v0.8.1, not this development code.
+
+New actual Streamlit regressions cover the empty guided landing, explicit
+uploaded SYNTHETIC origin/DEMO parameter provenance, invalidation after relabelling
+or removing the file, and withholding report navigation before a current fit.
+The file-uploader return is patched with real CSV bytes in AppTest; this does not
+stand in for a browser file-picker test. No model, likelihood or species default
+changed. Desktop/source findings and their evidence types are in USABILITY.md;
+no human participant, biological dataset or novice timing has been fabricated.
+
+The preceding DOI/docs commit d1aaedf7fe9dd3eb6900bc0b257db225b18b0943 also
+completed scientific CI [40332769045](https://github.com/ysmhla/alga-twin/actions/runs/40332769045),
+distribution checks 40332769227 and docs deployment 40332768958 successfully.
+These are distinct from the local development checks above.
+
 ## Post-archive citation/docs and tutorial formatting check
 
 After adding the real archive DOI and formatting only tutorial imports/code

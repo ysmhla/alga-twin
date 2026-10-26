@@ -1,4 +1,12 @@
-# Release status — v0.8.1, 2026-10-26
+# Release status — 2026-10-26
+
+Main is the **unreleased 0.8.2.dev0 usability patch**: guided landing, a blank
+CSV template, declared upload origin, file-removal/origin invalidation and a
+current-fit report gate. No model equations/defaults changed. CITATION.cff
+continues to cite the archived v0.8.1 release below; no DOI is assigned to this
+development snapshot. Local development checks: 158 tests passed in 277.10 s;
+Ruff, strict docs, citation schema and development build/Twine checks passed.
+See VERIFICATION.md for scope.
 
 The [v0.8.1 GitHub ALPHA pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1)
 is published from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d with four verified assets.

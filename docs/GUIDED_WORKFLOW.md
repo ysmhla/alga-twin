@@ -3,11 +3,18 @@
 Public demo: https://alga-twin.streamlit.app/ . [Observed browser checks](smoke/README.md)
 use only the explicitly selected SYNTHETIC example; novice acceptance is pending.
 
-Select **Guided upload to report** in the Workspace menu. It is accessible
+**Guided upload to report** is the landing workspace. It is accessible
 without switching the research gate to DEMO. Its initial choice is **Upload my
-measurements**; teaching data require an explicit SYNTHETIC selection.
+measurements**, with user-declared MEASURED origin; teaching data require an
+explicit SYNTHETIC worked-example or uploaded-data-origin selection. This origin
+is retained in the job/report and is not independently verified. Switching origin
+or removing the uploaded file clears all dependent results.
 
-1. Upload a UTF-8 wide CSV (<=2 MB, <=5000 rows). One row is a sampling/technical
+1. Download the blank CSV template if needed and fill it with your own data,
+   then upload a UTF-8 wide CSV (<=2 MB, <=5000 rows). The template headings are
+   time_day (days since inoculation), X (g DW/L), optional N (mg elemental N/L),
+   run_id (culture) and replicate (technical reading). Other headings/units can
+   be mapped in Step 2. The template contains no fabricated observations. One row is a sampling/technical
    measurement event; independent biological cultures need separate run ids.
 2. Map time and biomass, optional elemental N, quota, run and technical replicate
    columns. Select each unit. The conversion preview is long-form, with all
@@ -25,7 +32,7 @@ measurements**; teaching data require an explicit SYNTHETIC selection.
 5. Fit/reprofile. Optionally compute leave-one-whole-run-out error with >=2
    independent cultures. Settings should be prespecified; repeated choice based
    on held-out errors invalidates their interpretation as untouched evaluation.
-6. Read the plain-language flags and split errors. Download self-contained HTML,
+6. After a current fit exists, read the plain-language flags and split errors. Download self-contained HTML,
    PDF, complete evidence JSON, mapped data and reusable model-job JSON.
 
 The app keys results to input bytes, converted data, complete configuration and

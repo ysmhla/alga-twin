@@ -78,7 +78,9 @@ def test_dashboard_default_demo_path(monkeypatch, with_upload):
 
     fake.file_uploader = upload
     fake.radio = lambda _label, options, **_kw: options[1]
-    fake.selectbox = lambda _label, options, index=0, **_kw: options[index]
+    fake.selectbox = lambda _label, options, index=0, **_kw: (
+        "Baseline workflow" if _label == "Workspace" else options[index]
+    )
     fake.number_input = number_input
     fake.slider = slider
     fake.text_input = lambda *_args, **kwargs: kwargs.get("value", "")

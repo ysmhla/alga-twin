@@ -23,6 +23,29 @@ five minutes. An agent browser smoke test is now recorded in smoke/README.md.
 The built-in worked example does not exercise file upload; a novice upload
 acceptance test requires an actual upload with a documented data origin.
 
+## Additional agent review — 0.8.2.dev0
+
+This is an agent-operated desktop/source review, not an independent participant
+study. The pre-fix hosted upload page was inspected and a real file-picker upload
+of the repository's MIT-licensed SYNTHETIC CSV reached its preview. No laboratory
+measurements, user quotes or novice timing are claimed.
+
+| Observed issue and evidence type | Development fix | Check |
+|---|---|---|
+| Fresh hosted sessions landed on the incomplete literature gate before the guided task (browser) | Guided upload is the landing workspace; the baseline literature gate remains available | Empty landing AppTest refuses silent demo/report fallback |
+| Upload page explained a wide table but offered no downloadable header template or visible 5,000-row limit (browser/source) | Blank template plus heading/unit/culture/technical-repeat guidance and limits | Actual empty landing renders the download; numerical mapping tests retained |
+| Uploaded files were always routed as measured, even for a deliberately uploaded synthetic fixture (source, with actual pre-fix upload preview) | Explicit uploaded-data-origin choice; default user-declared MEASURED; explicit SYNTHETIC retains DEMO parameter provenance | Uploaded-byte AppTest checks job run origins and parameter tiers |
+| Removing the file without changing input mode returned before clearing previous source/results (source) | Clear dependent data, configuration, fit, CV and proxy state when upload is absent | File-removal regression withholds all old results/report |
+| Result-navigation button was enabled before a fit existed (source) | Enable it only for a current signature-matching fit | Actual Streamlit test checks disabled-before-fit and enabled-after-fit |
+| About screen still called implemented model support/design features future milestones; paper still said no software DOI (source) | Correct feature status and cite the actual released v0.8.1 DOI | Text review; no model or citation identity invented |
+
+Changing the uploaded origin also invalidates a prior synthetic fit/configuration.
+The declaration records what the uploader says; it does not independently verify
+that measurements are biological observations. The archived v0.8.1 files/tag are
+preserved; these changes are an unreleased development snapshot. A post-deployment
+actual CSV-to-report check is recorded separately when completed. None of these
+items is substituted into the human participant table below.
+
 ## Concrete human study protocol (pending)
 
 Use a new user who has not built the app. Prepare a legally reusable dataset and

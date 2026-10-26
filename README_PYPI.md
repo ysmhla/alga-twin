@@ -1,5 +1,8 @@
 # AlgaTwin
 
+Development snapshot: **0.8.2.dev0**. The archived citation below refers to the
+released v0.8.1 software; no separate development DOI is assigned.
+
 A Python research prototype for batch microalgal growth, evidence-bearing
 parameters, conditional multi-run calibration and experimental design.
 

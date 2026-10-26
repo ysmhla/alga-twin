@@ -59,11 +59,37 @@ def render_wizard():
             _, raw = _worked_wide()
             st.warning("SYNTHETIC / DEMO teaching data. All model values are UNVERIFIED assumptions.")
         else:
+            origin = st.radio(
+                "Uploaded data origin",
+                ["MEASURED — laboratory observations", "SYNTHETIC — simulated teaching data"],
+                key="guide_upload_origin",
+                help="Declare where the CSV values came from. This declaration is recorded; it is not independently verified.",
+            )
+            synthetic = origin.startswith("SYNTHETIC")
+            if synthetic:
+                st.warning(
+                    "SYNTHETIC / DEMO upload. These values are simulated, not laboratory observations. "
+                    "Teaching parameter assumptions may be edited; they are not species evidence."
+                )
+            st.download_button(
+                "Download blank CSV template",
+                "time_day,X,N,run_id,replicate\n",
+                "alga_twin_blank_template.csv",
+                "text/csv",
+                key="guide_blank_template",
+            )
+            st.caption(
+                "Template headings: time_day = days since inoculation; X = g dry weight/L; "
+                "N = mg elemental N/L. N is optional. run_id identifies one culture; "
+                "replicate identifies a technical reading. Maximum 2 MB and 5,000 rows. "
+                "Other headings/units can be mapped in Step 2. The template has no invented measurements."
+            )
             upload = st.file_uploader("Cultivation measurements CSV", type=["csv"], key="guide_upload")
             st.write(
                 "Use a wide table: one time column, dry-weight (or calibrated proxy) column, optional elemental N/quota, run id and technical replicate id."
             )
             if upload is None:
+                _clear(st, "source", "raw", "observations", "confirmed", "job", "fit", "cv", "proxy")
                 return
             raw = upload.getvalue()
         digest = hashlib.sha256(raw).hexdigest()
@@ -85,6 +111,11 @@ def render_wizard():
         st.info("Start with Step 1: upload a CSV or explicitly select the synthetic example.")
         return
     digest, synthetic = st.session_state.guide_source
+    st.caption(
+        "Data origin: SYNTHETIC / DEMO — simulated values, not laboratory observations."
+        if synthetic
+        else "Data origin: MEASURED — user-declared laboratory observations; not independently verified."
+    )
     raw = st.session_state.guide_raw
     if index == 1:
         _clear(st, "confirmed", "job", "fit", "cv")
@@ -221,7 +252,11 @@ def render_wizard():
             st.info(
                 "Held-out evaluation needs at least two independent cultures; one-run in-sample error cannot replace it."
             )
-        if st.button("Read result and export report", key="guide_to_result"):
+        if st.button(
+            "Read result and export report",
+            disabled=not (bundle and bundle[0] == signature),
+            key="guide_to_result",
+        ):
             _next(st, 5)
         return
     bundle = st.session_state.get("guide_fit")

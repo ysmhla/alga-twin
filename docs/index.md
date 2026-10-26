@@ -9,7 +9,7 @@ conditional calibration. **ALPHA: no independent biological validation.**
 
 ## Try the teaching workflow
 
-1. Open the app and choose **Guided upload to report**.
+1. Open the app; **Guided upload to report** is the starting workspace.
 2. Select **SYNTHETIC worked example** explicitly.
 3. Follow column mapping and unit checks, then choose the supplied DEMO model.
 4. Fit, review the identifiability gate and read/export the report.

@@ -4,6 +4,10 @@ This page separates preparatory artifacts from actual external publication.
 The v0.8.1 software archive is published on Zenodo. No PyPI upload, journal
 submission or acceptance is established.
 
+Main is now the unreleased 0.8.2.dev0 usability patch. Its separate development
+version does not rewrite the v0.8.1 archive. CITATION.cff deliberately cites the
+released v0.8.1 record; no development-snapshot DOI is claimed.
+
 ## Published software pre-release
 
 [v0.8.1](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1) is published on GitHub

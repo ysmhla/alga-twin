@@ -8,8 +8,14 @@ AppTest = pytest.importorskip("streamlit.testing.v1").AppTest
 APP = Path(__file__).resolve().parents[1] / "app.py"
 
 
+def baseline_start(timeout=60):
+    app = AppTest.from_file(str(APP), default_timeout=timeout).run()
+    next(w for w in app.selectbox if w.label == "Workspace").set_value("Baseline workflow").run()
+    return app
+
+
 def test_real_streamlit_calibration_scenarios_and_planner():
-    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app = baseline_start()
     assert not app.exception
     app.radio[0].set_value("DEMO — synthetic assumptions").run()
     assert not app.exception
@@ -56,7 +62,7 @@ def test_real_streamlit_calibration_scenarios_and_planner():
 
 
 def test_literature_landing_cannot_silently_run_demo():
-    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app = baseline_start()
     assert not app.exception
     assert app.radio[0].value == "LITERATURE — C. minutissima"
     assert len(app.tabs) == 0
@@ -67,7 +73,7 @@ def test_literature_landing_cannot_silently_run_demo():
 
 
 def test_sublinear_demo_renders_with_provenance():
-    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app = baseline_start()
     app.radio[0].set_value("DEMO — synthetic assumptions").run()
     next(w for w in app.selectbox if w.label == "Extinction law").set_value("Sublinear").run()
     assert not app.exception
@@ -83,7 +89,7 @@ def test_sublinear_demo_renders_with_provenance():
 
 
 def test_selectable_model_sandbox_with_droop_han_ctmi_and_diurnal():
-    app = AppTest.from_file(str(APP), default_timeout=60).run()
+    app = baseline_start()
     app.radio[0].set_value("DEMO — synthetic assumptions").run()
     next(w for w in app.selectbox if w.label == "Workspace").set_value("Selectable models (SYNTHETIC)").run()
     assert not app.exception
@@ -108,7 +114,7 @@ def test_selectable_model_sandbox_with_droop_han_ctmi_and_diurnal():
 
 
 def test_weak_data_ui_hides_fitted_point_estimates():
-    app = AppTest.from_file(str(APP), default_timeout=120).run()
+    app = baseline_start(timeout=120)
     app.radio[0].set_value("DEMO — synthetic assumptions").run()
     next(w for w in app.number_input if w.label.startswith("Fixed biomass SD")).set_value(10.0).run()
     next(w for w in app.number_input if w.label.startswith("Fixed N SD")).set_value(1000.0).run()
@@ -121,7 +127,7 @@ def test_weak_data_ui_hides_fitted_point_estimates():
 
 
 def test_joint_workspace_profiles_and_whole_run_cv():
-    app = AppTest.from_file(str(APP), default_timeout=120).run()
+    app = baseline_start(timeout=120)
     app.radio[0].set_value("DEMO — synthetic assumptions").run()
     next(w for w in app.selectbox if w.label == "Workspace").set_value("Joint calibration").run()
     assert not app.exception

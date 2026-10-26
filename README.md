@@ -1,3 +1,5 @@
+**Development main: 0.8.2.dev0.** The archived stable citation remains v0.8.1, DOI 10.5281/zenodo.23665342. This development snapshot has no separate archive DOI.
+
 # 🧫 AlgaTwin
 
 **A transparent, interactive microalgal batch photobioreactor simulator and parameter-calibration prototype.**
@@ -148,6 +150,11 @@ Use `mkdocs build --strict` for the documentation site. See [publication status]
 The [v0.8.1 Zenodo software archive](https://zenodo.org/records/23665342) is published under MIT: version DOI **10.5281/zenodo.23665342**. No PyPI upload or journal acceptance is established.
 
 ## Tests
+
+**Unreleased usability patch:** 158 local tests passed (277.10 s); Ruff
+lint/format, strict docs, citation schema and separate development distribution/
+Twine checks passed. Agent/source findings are recorded in
+[usability evidence](docs/USABILITY.md); human novice acceptance remains NOT TESTED.
 
 **Post-archive update:** 156 tests passed locally (256.23 s); repository-wide
 Ruff lint/format, citation schema and strict docs checks passed. Both formatted
