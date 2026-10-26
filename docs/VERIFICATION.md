@@ -1,5 +1,21 @@
 # Verification record — 2026-10-26
 
+## Final usability-patch source — cloud and live retest verified
+
+Exact executable source: **c3bbf121d4ea923fa0073d027f69a059afbc108c**.
+[Scientific CI 40342968193](https://github.com/ysmhla/alga-twin/actions/runs/40342968193)
+passed Python 3.12 **160 tests in 243.23 s**, Ruff and both real-kernel tutorials;
+Python 3.11 **149 passed, 1 skipped in 342.32 s**, Ruff. Distribution/citation/
+installed-wheel checks passed in 40342967956; docs build/deploy passed in 40342968057.
+The later evidence-only commit changes no executable code or published artifact.
+
+A separate fresh public browser session uploaded the labelled synthetic CSV and
+fitted it using this final source. Returning to Step 1 retained the SYNTHETIC
+choice and active filename. Clicking the explicit reset, then selecting Step 6,
+showed “Start with Step 1” with zero PDF-report controls. [Exact reset evidence](smoke/v0_8_2_dev/reset_evidence.json).
+This was not timed and is not substituted for the earlier source-806 rehearsal.
+No new human novice or biological acceptance claim follows from either check.
+
 ## Return-navigation and explicit reset follow-up
 
 After the browser rehearsal exposed confusing retained-source display on return

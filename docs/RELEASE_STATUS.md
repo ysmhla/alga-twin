@@ -6,7 +6,10 @@ current-fit report gate. No model equations/defaults changed. CITATION.cff
 continues to cite the archived v0.8.1 release below; no DOI is assigned to this
 development snapshot. Local development checks: 160 tests passed in 287.20 s;
 Ruff, strict docs, citation schema and development build/Twine checks passed.
-See VERIFICATION.md for scope.
+Final-source cloud CI 40342968193 passed Python 3.12 160 tests/Ruff and both
+notebooks; Python 3.11 149 tests/one optional skip/Ruff. Actual upload/fit/return/
+reset withholding was retested in a fresh public browser session.
+See VERIFICATION.md for exact source and scope.
 
 The [v0.8.1 GitHub ALPHA pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1)
 is published from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d with four verified assets.

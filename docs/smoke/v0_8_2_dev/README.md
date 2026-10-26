@@ -31,3 +31,17 @@ silently assign this rehearsal's timing to a different source.
 
 Human novice/mobile/measured-upload acceptance and independent biological
 validation remain NOT TESTED/ABSENT. No participant or lab observation is invented.
+
+## Final-source return/reset retest
+
+Source **c3bbf121d4ea923fa0073d027f69a059afbc108c** was checked in a fresh public
+browser session with another actual file-picker upload and fitted teaching job.
+On returning to Step 1, the SYNTHETIC choice and active filename remained clear.
+The explicit remove-source/results button reset the uploader; Step 6 then showed
+“Start with Step 1” and no PDF report control. See [reset evidence](reset_evidence.json).
+This retest was not timed; the earlier timing is not reassigned to this source.
+
+Exact final-source cloud verification: [scientific CI 40342968193](https://github.com/ysmhla/alga-twin/actions/runs/40342968193)
+passed Python 3.12 160 tests/Ruff and both real-kernel tutorials; Python 3.11
+149 tests/one optional skip/Ruff. Distribution 40342967956 and docs 40342968057
+passed. The later evidence-only record does not change executable code.

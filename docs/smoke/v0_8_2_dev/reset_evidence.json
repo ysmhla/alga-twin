@@ -1,0 +1,34 @@
+{
+  "evidence_kind": "AI_AGENT_DESKTOP_BROWSER_RESET_RETEST",
+  "tested_source_commit": "c3bbf121d4ea923fa0073d027f69a059afbc108c",
+  "public_app": "https://alga-twin.streamlit.app/",
+  "version": "0.8.2.dev0",
+  "origin": "SYNTHETIC",
+  "licence": "MIT; repository LICENSE",
+  "fixture_sha256": "1c1a652dfb4d147ab0073dde64e3831fe9f599e4a4f05bd7ffde099682f5bf60",
+  "checks": [
+    "Fresh file-picker upload declared SYNTHETIC; active filename and explicit reset control visible",
+    "Mapped same 3 cultures/48 measurements, confirmed units and explicit unchanged teaching configuration, fitted successfully",
+    "Returned to Step 1 after fitting: SYNTHETIC choice retained; active CSV explicitly displayed even when native picker looked empty",
+    "Clicked Remove current CSV and results; then selected Step 6",
+    "Step 6 showed Start with Step 1 and no Download PDF report control"
+  ],
+  "report_download_controls_after_reset": 0,
+  "human_novice_acceptance": "NOT TESTED",
+  "biological_validation": "ABSENT",
+  "timing": "Not timed; do not assign earlier 192.868-second source-806 rehearsal to this retest",
+  "screenshots": {
+    "retained-origin-v082.jpg": "6dec9a6d6067710574ce2ebfa77065e994a8908ef15366caab7897bc33584b8b",
+    "cleared-report-v082.jpg": "24efd43a4ec07df9db1680f7b5844f00a24b4634520e520b529637b1d6989261"
+  },
+  "cloud_ci": {
+    "scientific_run": 40342968193,
+    "source_commit": "c3bbf121d4ea923fa0073d027f69a059afbc108c",
+    "python_3_12": "160 passed in 243.23 s; Ruff and both real-kernel tutorials passed",
+    "python_3_11": "149 passed, 1 skipped in 342.32 s; Ruff passed",
+    "distribution_run": 40342967956,
+    "distribution_status": "success",
+    "docs_run": 40342968057,
+    "docs_status": "success"
+  }
+}

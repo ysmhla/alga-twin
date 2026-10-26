@@ -151,7 +151,10 @@ The [v0.8.1 Zenodo software archive](https://zenodo.org/records/23665342) is pub
 
 ## Tests
 
-**Unreleased usability patch:** 160 local tests passed (287.20 s); Ruff
+**Unreleased usability patch:** [final-source cloud CI](https://github.com/ysmhla/alga-twin/actions/runs/40342968193)
+passed Python 3.12 160 tests/Ruff and both notebooks; Python 3.11 149 tests/one
+optional skip/Ruff. Source: c3bbf121d4ea923fa0073d027f69a059afbc108c.
+160 local tests passed (287.20 s); Ruff
 lint/format, strict docs, citation schema and separate development distribution/
 Twine checks passed. Agent/source findings are recorded in
 [usability evidence](docs/USABILITY.md); human novice acceptance remains NOT TESTED. The [actual CSV-to-report agent
