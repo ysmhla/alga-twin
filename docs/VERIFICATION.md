@@ -1,5 +1,21 @@
 # Verification record — 2026-10-26
 
+## Published v0.8.1 release source
+
+Release/tag source: f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d.
+[Scientific CI 40292325912](https://github.com/ysmhla/alga-twin/actions/runs/40292325912):
+Python 3.12 **156 passed in 268.58 s**, Ruff/import/compilation and both real-kernel
+tutorials; Python 3.11 **145 passed, one optional skip in 349.82 s**, Ruff/import/compilation.
+Distribution/citation/actual installed-wheel checks passed in run 40292325963
+on both versions; strict docs build/deployment passed in run 40292325816.
+
+[The public ALPHA pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1)
+was opened and its four uploaded assets checked. GitHub SHA-256 digests matched
+the local wheel, source archive, installed smoke and manifest byte-for-byte.
+The tag/source artifacts are retained. Later publication bookkeeping changes no
+model or parameter default. DOI, PyPI upload and journal submission are absent;
+human review/metadata/data/usability requirements remain pending.
+
 ## v0.8.1 packaging and incremental deployment — verified source
 
 Exact tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.

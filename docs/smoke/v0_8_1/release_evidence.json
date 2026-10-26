@@ -1,0 +1,17 @@
+{
+  "release_url": "https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1",
+  "tag": "v0.8.1",
+  "commit": "f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d",
+  "draft": false,
+  "prerelease": true,
+  "asset_digest_check": "GitHub-reported SHA-256 equals local file bytes for all four assets",
+  "sha256": {
+    "alga_twin-0.8.1.tar.gz": "366fd47abe88ac95f333ea5f9affd14ed4300f84595803b3ec73e47f7df566a7",
+    "release-manifest.json": "3f5e7cc075d482e709bbc6d1938342d890a58c3015fd54e1e8ee71d78e028c0d",
+    "alga_twin-0.8.1-py3-none-any.whl": "1daf166c515ce68be7527db255723510d7bbf6801ebf0bd09031ef3679ec0579",
+    "installed-smoke.json": "81ac72a6d3fd203a2f07d1bfa8c0fa09c068df86cd65e423efd6328f587e1687"
+  },
+  "screenshot_sha256": "8e0c978f8d2d5f48bca19ce31bc7824db7319f73dd9fa7e158eb956d85abba5a",
+  "archive_doi": null,
+  "archive_status": "PENDING_AUTHENTICATION"
+}

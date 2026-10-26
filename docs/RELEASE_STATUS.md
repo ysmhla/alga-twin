@@ -1,5 +1,10 @@
 # Release status — v0.8.1, 2026-10-26
 
+The [v0.8.1 GitHub ALPHA pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1)
+is published from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d with four verified assets.
+Its exact-source scientific, distribution and docs CI passed; see VERIFICATION.md.
+Zenodo DOI/authentication and human review remain pending.
+
 v0.8.1 passed 156 local tests/Ruff and current-source cloud checks:
 Python 3.12 156 tests/Ruff and both tutorials; Python 3.11 145 tests/one optional
 skip/Ruff. Distribution/citation/installed-wheel checks passed on both Python

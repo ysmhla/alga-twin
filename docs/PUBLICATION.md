@@ -3,6 +3,20 @@
 This page separates preparatory artifacts from actual external publication.
 No archive DOI, PyPI upload, journal submission or acceptance is established.
 
+## Published software pre-release
+
+[v0.8.1](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1) is published on GitHub
+as an ALPHA pre-release from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d. Four
+assets are available: wheel, complete source archive, installed-wheel evidence
+and SHA-256 manifest. GitHub-reported digests matched all four local uploads.
+This is software publication, not a Zenodo DOI, PyPI upload or journal acceptance.
+
+[Exact release-source CI 40292325912](https://github.com/ysmhla/alga-twin/actions/runs/40292325912)
+passed Python 3.12: 156 tests/Ruff and both tutorials; Python 3.11: 145 tests/one
+optional skip/Ruff. Distribution CI 40292325963 and docs deployment 40292325816
+passed. The release tag is preserved; this later publication record changes no
+model code or release artifact. DOI authentication and human review remain pending.
+
 ## Verified preparation
 
 Current tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.

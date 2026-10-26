@@ -133,7 +133,11 @@ Values above are **illustrative**, not empirical measurements. All data must use
 
 See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calibration restrictions, numerical integration, and current limitations. Assumed parameters in the default model are pedagogical placeholders, **not measured parameters for any specific Chlorella strain**.
 
-## Packaging and publication preparation
+## Packaging and publication
+
+**[v0.8.1 GitHub pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1) is published**, with checked wheel/source archives, installed-wheel evidence and a SHA-256 manifest. The release is ALPHA; no independent biological validation.
+
+### Build preparation
 
 Build a wheel/source archive with `python -m build`; check with
 `python -m twine check --strict dist/*.whl dist/*.tar.gz`. The wheel provides the
