@@ -13,7 +13,7 @@ for the labelled teaching path. Real strain inputs require your own evidence.
 *Actual hosted app, initial v0.7.0 smoke capture. Missing species parameters remain
 unset. No independent biological validation.*
 
-## What it does today (v0.8.0)
+## What it does today (v0.8.1)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -133,7 +133,23 @@ Values above are **illustrative**, not empirical measurements. All data must use
 
 See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calibration restrictions, numerical integration, and current limitations. Assumed parameters in the default model are pedagogical placeholders, **not measured parameters for any specific Chlorella strain**.
 
+## Packaging and publication preparation
+
+Build a wheel/source archive with `python -m build`; check with
+`python -m twine check --strict dist/*.whl dist/*.tar.gz`. The wheel provides the
+API/CLI; the source archive also includes the dashboard, tutorials, benchmark and docs.
+A separate installed-wheel check exercises the actual CLI and Monod/Droop nitrogen ledger.
+Use `mkdocs build --strict` for the documentation site. See [publication status](docs/PUBLICATION.md),
+[JOSS-style draft](paper.md) and [related work — HUMAN REVIEW PENDING](docs/RELATED_WORK.md).
+No archive DOI, PyPI upload or journal acceptance is established.
+
 ## Tests
+
+**v0.8.1 verification in progress:** distribution build/strict Twine, real installed-wheel
+API/CLI/refusal/nitrogen checks, citation schema and strict docs build passed locally.
+The full current-source pytest suite and cloud/live checks remain in progress.
+The patch separates job-identity imports to fix a live cached-calibration ImportError;
+no model RHS, likelihood or biological default changed.
 
 **v0.8.0 local verification:** 155 tests passed (215.24 s), plus Ruff lint/format,
 compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1 — 2026-10-26
+
+- Make new decision features compatible with an already-imported calibration API; separate provenance identity and source-version modules without reloading sessions or changing the likelihood/RHS. Add a regression for the observed cached-import failure.
+- Add modern SPDX licence metadata, a PyPI README, distribution file manifest, app/docs extras and real installed-wheel API/CLI checks.
+- Add strict MkDocs build/Pages workflow and distribution CI, schema-checked citation metadata, a JOSS-style draft and an explicitly unreviewed related-work table.
+- Keep DOI, final authorship/affiliations/funding, human related-work review and independent measured/usability acceptance pending; no invented identifiers or novelty/validation claims.
+
 ## 0.8.0 — 2026-10-26
 
 - Add same-data Monod/Droop/saturation/Haldane comparison with AIC/BIC, conditional profile gates and a labelled approximate fixed-noise residual screen.

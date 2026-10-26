@@ -1,4 +1,9 @@
-# Release status — v0.8.0, 2026-10-26
+# Release status — v0.8.1 verification in progress, 2026-10-26
+
+The v0.8.1 compatibility fix and publication artifacts are undergoing full
+pytest/cloud/live checks. Local build/Twine, installed-wheel smoke, citation
+schema and strict docs build passed. No current-source full-suite or live-rollout
+pass is claimed before those checks finish.
 
 Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
 155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.
@@ -32,5 +37,5 @@ No biological validation, novelty or operational-recommendation claim is made.
 - PENDING HUMAN INPUT: legally reusable measured datasets/metadata and novice-study observations.
 - NOT VALIDATED: independent biological/optical predictions or interval coverage.
 - NOT TESTED: human novice/mobile/measured-upload browser acceptance and Docker/Render deployment.
-- NOT BUILT: publication/DOI/docs site,
-  optional MCMC or streaming estimator (deferred until suitable independent data).
+- PUBLICATION IN PROGRESS: package/docs/paper preparation; archive DOI and final author/related-work review pending.
+- NOT BUILT: optional MCMC or streaming estimator (deferred until suitable independent data).

@@ -1,5 +1,23 @@
 # Verification record — 2026-10-26
 
+## v0.8.1 packaging and incremental deployment — verification in progress
+
+Local source/wheel build, strict Twine, real installed-wheel Monod/Droop N ledger,
+CLI execution outside the checkout and missing-DEMO refusal passed. Citation
+schema and strict MkDocs builds passed; Ruff lint/format, compilation and pip
+check passed. Current full pytest, cloud CI and hosted rollout are in progress.
+
+The hosted v0.8 workspace initially failed importing a new name from an already
+cached calibration module. A stable independent provenance helper removes that
+new-export dependency; a direct source-version import avoids stale package-header
+text. This changes neither fitted likelihood nor growth/nitrogen equations.
+A subprocess regression exercises the missing-export scenario with an actual fit.
+No service reboot or cache-clearing operation is part of the fix.
+
+Step 7 artifacts include modern distribution metadata/manifest, publication CI,
+documentation source, citation metadata, paper.md/paper.bib and RELATED_WORK.md.
+DOI/account publication and final author/related-work review remain incomplete.
+
 ## v0.8.0 decision support — verified source
 
 Exact tested source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c.

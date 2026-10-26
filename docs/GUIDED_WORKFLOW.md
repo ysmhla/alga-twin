@@ -87,4 +87,4 @@ asymptotic likelihood intervals; empirical coverage is not established.
 
 See [MODEL](MODEL.md), [calibration](CALIBRATION.md),
 [verification](VERIFICATION.md), [usability status](USABILITY.md) and
-[two executed teaching notebooks](../tutorials/README.md).
+[two executed teaching notebooks](https://github.com/ysmhla/alga-twin/blob/main/tutorials/README.md).
