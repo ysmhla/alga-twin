@@ -38,5 +38,6 @@ The `--demo` flag explicitly selects teaching assumptions. Research jobs require
 complete evidence-bearing parameter records and user-specified units/noise/bounds.
 See the repository for reproducible synthetic verification and source reading.
 
-MIT licence. Cite release metadata from CITATION.cff; a software DOI is not yet
-assigned. Package readiness does not mean a PyPI or archival publication exists.
+MIT licence. Cite the [v0.8.1 software archive](https://zenodo.org/records/23665342),
+version DOI **10.5281/zenodo.23665342**, and release metadata in CITATION.cff.
+No PyPI upload or independent biological validation is established.

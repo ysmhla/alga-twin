@@ -3,7 +3,9 @@
 The [v0.8.1 GitHub ALPHA pre-release](https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1)
 is published from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d with four verified assets.
 Its exact-source scientific, distribution and docs CI passed; see VERIFICATION.md.
-Zenodo DOI/authentication and human review remain pending.
+[Zenodo v0.8.1 archive](https://zenodo.org/records/23665342) is published with
+verified version DOI **10.5281/zenodo.23665342** (MIT; four matching files).
+Human scholarly review remains pending.
 
 v0.8.1 passed 156 local tests/Ruff and current-source cloud checks:
 Python 3.12 156 tests/Ruff and both tutorials; Python 3.11 145 tests/one optional
@@ -12,14 +14,17 @@ versions; strict docs builds passed. Exact source:
 2b303b502f9c7236c7cdfa6961d83ee6279c4979. See VERIFICATION.md for CI links and scope.
 The compatible-import fix requires no service reboot. Live v0.8.1 comparison, ranking and actual JSON exports were checked in a fresh
 session; the public docs site is deployed at https://ysmhla.github.io/alga-twin/ .
-See smoke/v0_8_1/README.md for source and screenshots. Package/docs/citation/paper preparation is implemented; DOI/account
-publication and final author/related-work review remain pending.
+See smoke/v0_8_1/README.md for source and screenshots. Package/docs/citation/paper
+preparation and Zenodo software publication are complete; final paper author/
+related-work review and any PyPI account publication remain pending.
 
 Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
 155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.
 Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c. The initial cached-import rollout issue is fixed in v0.8.1. See DECISION_SUPPORT.md for the new conditional methods.
 
-Steps 1–6 software engineering are implemented (6/7 engineering packages).
+Steps 1–7 engineering deliverables are implemented (7/7 engineering packages),
+including the archived software release and unsubmitted paper draft. This counts
+implementation, not all scientific/human acceptance criteria or a PyPI upload.
 Step 5 human acceptance remains incomplete: no independent novice <5-minute
 upload-to-report study or five observed human issues/fixes has been conducted.
 Measured benchmark/biological evaluation also remains pending human data.
@@ -47,5 +52,6 @@ No biological validation, novelty or operational-recommendation claim is made.
 - PENDING HUMAN INPUT: legally reusable measured datasets/metadata and novice-study observations.
 - NOT VALIDATED: independent biological/optical predictions or interval coverage.
 - NOT TESTED: human novice/mobile/measured-upload browser acceptance and Docker/Render deployment.
-- PUBLICATION IN PROGRESS: package/docs/paper preparation; archive DOI and final author/related-work review pending.
+- SOFTWARE PUBLISHED: GitHub ALPHA release and Zenodo version DOI; docs live.
+- PUBLICATION PENDING: optional PyPI upload and final paper author/related-work review/submission.
 - NOT BUILT: optional MCMC or streaming estimator (deferred until suitable independent data).

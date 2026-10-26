@@ -5,7 +5,9 @@
 - Make new decision features compatible with an already-imported calibration API; separate provenance identity and source-version modules without reloading sessions or changing the likelihood/RHS. Add a regression for the observed cached-import failure.
 - Add modern SPDX licence metadata, a PyPI README, distribution file manifest, app/docs extras and real installed-wheel API/CLI checks.
 - Add strict MkDocs build/Pages workflow and distribution CI, schema-checked citation metadata, a JOSS-style draft and an explicitly unreviewed related-work table.
-- Keep DOI, final authorship/affiliations/funding, human related-work review and independent measured/usability acceptance pending; no invented identifiers or novelty/validation claims.
+- Publish the checked GitHub pre-release and matching MIT Zenodo software archive; verified version DOI 10.5281/zenodo.23665342 is recorded on main after deposition, without rewriting the release tag/files.
+- Tidy tutorial import/formatting and the decision-support code example; no model or likelihood change.
+- Keep final paper authorship/affiliations/funding, human related-work review and independent measured/usability acceptance pending; no invented identifiers or novelty/validation claims.
 
 ## 0.8.0 — 2026-10-26
 

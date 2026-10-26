@@ -1,5 +1,19 @@
 # Verification record — 2026-10-26
 
+## Post-archive citation/docs and tutorial formatting check
+
+After adding the real archive DOI and formatting only tutorial imports/code
+examples, local Python 3.12 `pytest -q` passed **156 tests in 256.23 s**.
+`ruff check .` and `ruff format --check .` passed (91 formatted files), as did
+CITATION.cff schema validation, `mkdocs build --strict`, `git diff --check` and
+`pip check`. No model, likelihood, parameter default or published artifact changed.
+
+Both tutorial notebooks executed through the existing `--in-process` runner
+(4 and 6 code cells). A local TCP Jupyter-kernel attempt failed with socket
+permission errors; it is not reported as a successful real-kernel run. The
+previous release-source cloud real-kernel checks remain recorded below. Generated
+report outputs were not substituted for the original checked-in teaching artifacts.
+
 ## Published v0.8.1 release source
 
 Release/tag source: f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d.
@@ -13,8 +27,22 @@ on both versions; strict docs build/deployment passed in run 40292325816.
 was opened and its four uploaded assets checked. GitHub SHA-256 digests matched
 the local wheel, source archive, installed smoke and manifest byte-for-byte.
 The tag/source artifacts are retained. Later publication bookkeeping changes no
-model or parameter default. DOI, PyPI upload and journal submission are absent;
-human review/metadata/data/usability requirements remain pending.
+model or parameter default. The later Zenodo archive is verified below. PyPI
+upload and journal submission are absent; human review/metadata/data/usability
+requirements remain pending.
+
+## Zenodo archival publication — verified
+
+[Software record 23665342](https://zenodo.org/records/23665342) is published under
+MIT, version 0.8.1, creator Ram Yash. The actual downloaded public JSON reports
+`is_published: true`, `is_draft: false`, `status: published`; all four file sizes
+and MD5 values equal local release files. Version DOI 10.5281/zenodo.23665342 and
+concept DOI 10.5281/zenodo.23665341 were followed separately; both resolved to the
+published v0.8.1 record. [Exact evidence](smoke/v0_8_1/zenodo_evidence.json).
+No published tag/archive was rebuilt or rewritten to insert the later DOI.
+CITATION.cff and main-branch publication documentation record the real identifier.
+Archival publication supplies no independent biological validation or human
+usability evidence.
 
 ## v0.8.1 packaging and incremental deployment — verified source
 
@@ -54,8 +82,8 @@ This is agent engineering smoke, not a human novice or biological study.
 
 Step 7 includes modern distribution metadata/manifest, publication CI,
 documentation source, schema-valid citation metadata, paper.md/paper.bib and
-RELATED_WORK.md. Zenodo is not signed in; no DOI is assigned. Final author,
-affiliation/funding and human related-work review remain incomplete. No PyPI
+RELATED_WORK.md. The subsequent Zenodo publication is recorded above. Final paper
+author, affiliation/funding and human related-work review remain incomplete. No PyPI
 upload, journal acceptance or independent biological validation is claimed.
 
 ## v0.8.0 decision support — verified source

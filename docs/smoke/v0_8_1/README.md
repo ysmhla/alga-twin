@@ -23,5 +23,9 @@ and [public documentation](https://github.com/ysmhla/alga-twin/blob/main/assets/
 Expected local Fisher SD/volume ratios are not confidence intervals or guaranteed
 improvements. Model comparison is in-sample; held-out error is explicitly not
 computed by this workspace. No manual service reboot or cache-clearing operation was
-performed for this compatibility fix. Archive authentication/DOI and human author/
-related-work review remain pending.
+performed for this compatibility fix. At the initial smoke recording archive
+authentication/DOI was pending. Subsequently, the four matching release assets
+were published under MIT as [Zenodo record 23665342](https://zenodo.org/records/23665342),
+version DOI 10.5281/zenodo.23665342; see [Zenodo evidence](zenodo_evidence.json).
+The earlier release_evidence.json preserves its historical pre-deposit status.
+Human paper author/related-work review remains pending.

@@ -4,7 +4,8 @@ Transparent batch microalgal modelling, explicit parameter evidence and
 conditional calibration. **ALPHA: no independent biological validation.**
 
 [Open the public demo](https://alga-twin.streamlit.app/) ·
-[Source and installation](https://github.com/ysmhla/alga-twin)
+[Source and installation](https://github.com/ysmhla/alga-twin) ·
+[Archived v0.8.1 software / DOI](https://zenodo.org/records/23665342)
 
 ## Try the teaching workflow
 
@@ -39,5 +40,6 @@ inputs and noise; expected uncertainty reduction is not a confidence interval.
 - [MIT licence](https://github.com/ysmhla/alga-twin/blob/main/LICENSE).
 
 The Python API/CLI are available from built source distributions/wheels. The
-source checkout includes the Streamlit app, benchmark and tutorials. No archive
-DOI, PyPI upload or journal acceptance follows from a successful package build.
+source checkout includes the Streamlit app, benchmark and tutorials. The v0.8.1
+software archive is published with version DOI **10.5281/zenodo.23665342**.
+No PyPI upload or journal acceptance is established.

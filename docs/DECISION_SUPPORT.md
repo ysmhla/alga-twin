@@ -11,20 +11,22 @@ with hashes, parameter evidence, assumptions, profile methods and decisions.
 
 ```python
 from alga_twin.decision_io import (
-    synthetic_decision_problem, load_selection, load_experiments,
+    synthetic_decision_problem,
+    load_selection,
+    load_experiments,
 )
 from alga_twin.model_selection import compare_models
 from alga_twin.experiment_design import rank_experiments
 
 config, observations, proposals = synthetic_decision_problem()
 candidates, errors = load_selection(config, observations)
-comparison = compare_models(candidates, errors, **config['decision'])
+comparison = compare_models(candidates, errors, **config["decision"])
 print(comparison.table)
 if comparison.recommendation:
     selected = next(c for c in candidates if c.name == comparison.recommendation)
     fit = comparison.fits[selected.name]
     ranking = rank_experiments(selected.runs, fit, load_experiments(proposals))
-    print(ranking.top3[['candidate', 'reason']])
+    print(ranking.top3[["candidate", "reason"]])
 ```
 
 The worked proposals have two initial states because the demonstrated supported

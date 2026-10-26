@@ -145,9 +145,14 @@ API/CLI; the source archive also includes the dashboard, tutorials, benchmark an
 A separate installed-wheel check exercises the actual CLI and Monod/Droop nitrogen ledger.
 Use `mkdocs build --strict` for the documentation site. See [publication status](docs/PUBLICATION.md),
 [JOSS-style draft](paper.md) and [related work — HUMAN REVIEW PENDING](docs/RELATED_WORK.md).
-No archive DOI, PyPI upload or journal acceptance is established.
+The [v0.8.1 Zenodo software archive](https://zenodo.org/records/23665342) is published under MIT: version DOI **10.5281/zenodo.23665342**. No PyPI upload or journal acceptance is established.
 
 ## Tests
+
+**Post-archive update:** 156 tests passed locally (256.23 s); repository-wide
+Ruff lint/format, citation schema and strict docs checks passed. Both formatted
+tutorials executed with the explicit in-process runner. See
+[the verification record](docs/VERIFICATION.md) for method and limitations.
 
 **v0.8.1 verified source:** 156 local tests passed (626.97 s). Cloud Python 3.12
 passed 156 tests/Ruff and both real-kernel tutorials; Python 3.11 passed 145 tests,

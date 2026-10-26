@@ -6,6 +6,7 @@ authors:
   - family-names: "Yash"
     given-names: "Ram"
 version: 0.8.1
+doi: "10.5281/zenodo.23665342"
 date-released: 2026-10-26
 license: MIT
 repository-code: "https://github.com/ysmhla/alga-twin"

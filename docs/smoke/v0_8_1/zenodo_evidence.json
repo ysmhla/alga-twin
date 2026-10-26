@@ -1,0 +1,84 @@
+{
+  "observed_date": "2026-10-26",
+  "record_url": "https://zenodo.org/records/23665342",
+  "version_doi": "10.5281/zenodo.23665342",
+  "concept_doi": "10.5281/zenodo.23665341",
+  "resolver_check": "Both DOI links followed separately; both resolved to https://zenodo.org/records/23665342",
+  "is_published": true,
+  "is_draft": false,
+  "status": "published",
+  "metadata": {
+    "creators": [
+      {
+        "person_or_org": {
+          "family_name": "Yash",
+          "given_name": "Ram",
+          "name": "Yash, Ram",
+          "type": "personal"
+        }
+      }
+    ],
+    "description": "<p>AlgaTwin v0.8.1 is an alpha research prototype for mechanistic microalgal batch photobioreactor simulation and conditional calibration, focused on Chlorella minutissima. It includes Monod and Droop models, optional photoinhibition and temperature responses, explicit parameter provenance and biomass bases, joint multi-run fitting, profile-likelihood identifiability gates, leave-one-run-out cross-validation, synthetic PEtab benchmarks, model support comparison and local Fisher-information experiment ranking.</p>\n<p>This archive contains the checked source distribution and Python wheel, installed-wheel smoke evidence and a release checksum manifest. Source release: https://github.com/ysmhla/alga-twin/releases/tag/v0.8.1 ; commit f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d . Documentation: https://ysmhla.github.io/alga-twin/ . Demo: https://alga-twin.streamlit.app/ .</p>\n<p>Limitations: no independent biological validation or measured benchmark dataset is included. Teaching fixtures are explicitly SYNTHETIC/DEMO/UNVERIFIED. Missing species-specific extinction, carbon conversion and literature ranges remain unset. Local Fisher predictions are conditional approximations, not empirical uncertainty coverage. The JOSS-style paper is an unsubmitted draft; human related-work review and novice usability testing remain pending.</p>\n<p>Released source verification: Python 3.12: 156 tests passed; Python 3.11: 145 passed and 1 skipped; Ruff, distribution checks and documentation builds passed. These verify software behavior and do not establish biological validity. MIT licence.</p>",
+    "publication_date": "2026-10-26",
+    "publisher": "Zenodo",
+    "resource_type": {
+      "id": "software",
+      "title": {
+        "de": "Software",
+        "en": "Software"
+      }
+    },
+    "rights": [
+      {
+        "description": {
+          "en": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code."
+        },
+        "id": "mit",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://opensource.org/licenses/MIT"
+        },
+        "title": {
+          "en": "MIT License"
+        }
+      }
+    ],
+    "title": "AlgaTwin v0.8.1: Mechanistic microalgal batch photobioreactor simulation (alpha)",
+    "version": "0.8.1"
+  },
+  "release_source_commit": "f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d",
+  "release_tag_unchanged": "v0.8.1",
+  "files": {
+    "alga_twin-0.8.1-py3-none-any.whl": {
+      "bytes": 93092,
+      "zenodo_md5": "md5:b9c93dde6f57a48c2b7c288c577261dd",
+      "local_sha256": "1daf166c515ce68be7527db255723510d7bbf6801ebf0bd09031ef3679ec0579",
+      "checksum_and_size_match": true
+    },
+    "alga_twin-0.8.1.tar.gz": {
+      "bytes": 1215291,
+      "zenodo_md5": "md5:2dafcf4637ce7bbeb6260a951795a1a2",
+      "local_sha256": "366fd47abe88ac95f333ea5f9affd14ed4300f84595803b3ec73e47f7df566a7",
+      "checksum_and_size_match": true
+    },
+    "installed-smoke.json": {
+      "bytes": 667,
+      "zenodo_md5": "md5:5a82792027b7aaf87f309be3fd041aaf",
+      "local_sha256": "81ac72a6d3fd203a2f07d1bfa8c0fa09c068df86cd65e423efd6328f587e1687",
+      "checksum_and_size_match": true
+    },
+    "release-manifest.json": {
+      "bytes": 976,
+      "zenodo_md5": "md5:eb883f0ed0d70ebf0029efedd05acccd",
+      "local_sha256": "3f5e7cc075d482e709bbc6d1938342d890a58c3015fd54e1e8ee71d78e028c0d",
+      "checksum_and_size_match": true
+    }
+  },
+  "scientific_status": "Software archival publication only; no independent biological validation or novice usability study",
+  "automatic_github_archiving": "NOT CONFIGURED",
+  "screenshot_sha256": "214349cd53ea96025dc7752033043293754964ce9824d1392227b98b2ba0f1e9",
+  "access": {
+    "record": "public",
+    "files": "public"
+  }
+}

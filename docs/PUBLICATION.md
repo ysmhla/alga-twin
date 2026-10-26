@@ -1,7 +1,8 @@
 # Publication readiness and human inputs
 
 This page separates preparatory artifacts from actual external publication.
-No archive DOI, PyPI upload, journal submission or acceptance is established.
+The v0.8.1 software archive is published on Zenodo. No PyPI upload, journal
+submission or acceptance is established.
 
 ## Published software pre-release
 
@@ -9,17 +10,39 @@ No archive DOI, PyPI upload, journal submission or acceptance is established.
 as an ALPHA pre-release from f2db7f8ebd4c3d000e2441094f5f2934ec90dd2d. Four
 assets are available: wheel, complete source archive, installed-wheel evidence
 and SHA-256 manifest. GitHub-reported digests matched all four local uploads.
-This is software publication, not a Zenodo DOI, PyPI upload or journal acceptance.
+The same four checked files are now preserved in the Zenodo software archive
+described below. No PyPI upload or journal acceptance is claimed.
 
 [Exact release-source CI 40292325912](https://github.com/ysmhla/alga-twin/actions/runs/40292325912)
 passed Python 3.12: 156 tests/Ruff and both tutorials; Python 3.11: 145 tests/one
 optional skip/Ruff. Distribution CI 40292325963 and docs deployment 40292325816
 passed. The release tag is preserved; this later publication record changes no
-model code or release artifact. DOI authentication and human review remain pending.
+model code or release artifact. Human scholarly review remains pending.
+
+## Published Zenodo software archive
+
+[Record 23665342](https://zenodo.org/records/23665342) was published on 2026-10-26,
+resource type Software, version 0.8.1, creator Ram Yash, MIT licence, alpha/WIP.
+
+- Version DOI: [10.5281/zenodo.23665342](https://doi.org/10.5281/zenodo.23665342), for the exact archived release.
+- Concept DOI: [10.5281/zenodo.23665341](https://doi.org/10.5281/zenodo.23665341), for all versions; it currently resolves to v0.8.1.
+
+Both DOI links were followed separately and resolved to the published record.
+Its actual JSON export reports `is_published: true`, `is_draft: false`,
+`status: published`; all four file sizes and Zenodo MD5 checksums match the local
+GitHub release assets. The evidence also records their local SHA-256 values.
+[Publication evidence](smoke/v0_8_1/zenodo_evidence.json) and
+[published-record screenshot](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/zenodo-v081.jpg).
+
+The manual deposit preserves the original release files. Their embedded
+pre-deposit documentation has the earlier DOI-pending status; main-branch
+CITATION.cff/docs record the later verified DOI. The published tag and files were
+not rewritten or rebuilt. No biological validation or human-study claim follows
+from archival publication.
 
 ## Verified preparation
 
-Current tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.
+Earlier packaging-tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.
 Distribution checks on Python 3.11 and 3.12 passed in
 [CI 40290016328](https://github.com/ysmhla/alga-twin/actions/runs/40290016328),
 including actual installed-wheel API/CLI/refusal/N-ledger checks. Strict docs
@@ -27,7 +50,8 @@ build passed in [CI 40290016434](https://github.com/ysmhla/alga-twin/actions/run
 Scientific checks and exact counts are in VERIFICATION.md. GitHub Pages is
 configured to use Actions; public docs deployment passed in [run 40291099481](https://github.com/ysmhla/alga-twin/actions/runs/40291099481).
 The site was opened and its home/navigation verified at https://ysmhla.github.io/alga-twin/ .
-Zenodo displayed Log in in the current browser; archival authentication is needed.
+Zenodo authentication and manual archival publication were subsequently completed;
+see the published-record evidence above.
 
 ## Available artifacts
 
@@ -72,9 +96,9 @@ and source archive, `twine check` and installation are distinct checks.
 4. Authenticate the intended PyPI/TestPyPI account and confirm project ownership
    or a configured trusted publisher. No secret is requested in chat. Build
    readiness does not establish the availability/ownership of a PyPI project name.
-5. Authenticate Zenodo and enable this repository's integration, or select an
-   authorized manual deposit. Review record metadata before public deposition.
-   Only a DOI actually returned/resolved for the real record may enter CITATION.cff.
+5. Future archive versions require review of version, creator, licence and exact
+   files. The v0.8.1 manual deposit is complete; automatic GitHub-to-Zenodo
+   archiving is NOT CONFIGURED. Do not create duplicate v0.8.1 records.
 6. Review the final paper and decide whether/when to submit it. A draft is not a
    journal submission. Author/funding metadata and contribution review are incomplete.
 
