@@ -1,23 +1,33 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "alga-twin"
-version = "0.8.0"
+version = "0.8.1"
 description = "Transparent mechanistic simulation and calibration of batch microalgal cultivation"
-readme = "README.md"
+readme = "README_PYPI.md"
 requires-python = ">=3.11"
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{name = "AlgaTwin contributors"}]
 keywords = ["microalgae", "photobioreactor", "digital twin", "monod", "bioprocess"]
 classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Topic :: Scientific/Engineering :: Bio-Informatics"]
 dependencies = ["numpy>=1.26,<3", "pandas>=2.0,<3", "scipy>=1.11,<2", "pint>=0.24,<1"]
 
+[project.urls]
+Source = "https://github.com/ysmhla/alga-twin"
+Issues = "https://github.com/ysmhla/alga-twin/issues"
+Changelog = "https://github.com/ysmhla/alga-twin/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/ysmhla/alga-twin/tree/main/docs"
+Demo = "https://alga-twin.streamlit.app/"
+
 [project.scripts]
 alga-twin = "alga_twin.cli:main"
 
 [project.optional-dependencies]
+app = ["streamlit>=1.50,<2", "plotly>=5.22,<7", "reportlab>=4.2,<5"]
+docs = ["mkdocs>=1.6,<2"]
 dev = ["pytest>=8,<10", "ruff>=0.6,<1", "pypdf>=5,<7"]
 reports = ["reportlab>=4.2,<5"]
 tutorials = ["nbformat>=5,<6", "nbclient>=0.10,<1", "ipykernel>=6,<8", "matplotlib>=3.8,<4", "plotly>=5.22,<7"]
