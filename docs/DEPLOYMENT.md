@@ -58,3 +58,18 @@ render.yaml and Dockerfile remain configuration examples. **Render deployment
 and Docker build/run: NOT TESTED.** No claim of a frozen dependency lockfile,
 production hardening, persistence/authentication or independent biological
 validation is made for this alpha prototype.
+
+
+## Current documentation and incremental update check — 2026-10-26
+
+Public MkDocs site: https://ysmhla.github.io/alga-twin/ . GitHub Pages is configured
+for Actions. Strict build/deployment 40291099481 completed from merged v0.8.1
+source 5cd79163d38b505378e992b26e2e2e1add93fd7d; the actual public home/navigation
+was inspected. mkdocs.yml targets the repository's main branch for Edit links.
+
+The live app displayed v0.8.1 and completed the new SYNTHETIC model-selection and
+Fisher ranking/export smoke without a manual reboot/cache-clearing action. New
+modules import the job-identity helper independently of a cached calibration API;
+a subprocess regression checks that observed missing-export failure. This is a
+compatibility measure, not a guarantee about every provider's hot-reload behaviour.
+See smoke/v0_8_1/README.md and VERIFICATION.md for source/counts/limits.

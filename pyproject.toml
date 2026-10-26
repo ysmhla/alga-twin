@@ -19,7 +19,7 @@ dependencies = ["numpy>=1.26,<3", "pandas>=2.0,<3", "scipy>=1.11,<2", "pint>=0.2
 Source = "https://github.com/ysmhla/alga-twin"
 Issues = "https://github.com/ysmhla/alga-twin/issues"
 Changelog = "https://github.com/ysmhla/alga-twin/blob/main/CHANGELOG.md"
-Documentation = "https://github.com/ysmhla/alga-twin/tree/main/docs"
+Documentation = "https://ysmhla.github.io/alga-twin/"
 Demo = "https://alga-twin.streamlit.app/"
 
 [project.scripts]

@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-26",
+  "version": "0.8.1",
+  "source": "5cd79163d38b505378e992b26e2e2e1add93fd7d",
+  "scientific_ci_source": "2b303b502f9c7236c7cdfa6961d83ee6279c4979",
+  "app_url": "https://alga-twin.streamlit.app/",
+  "docs_url": "https://ysmhla.github.io/alga-twin/",
+  "origin": "SYNTHETIC",
+  "licence": "MIT",
+  "checks": [
+    "default upload path retained; no partial-upload fallback",
+    "literature gate retained with C. minutissima extinction/f_C unset",
+    "new workspace loaded without cached-import error",
+    "four-model comparison and conditional recommendation",
+    "top-three local Fisher ranking with method and not-interval warning",
+    "actual JSON exports downloaded and parsed; source version/origin/method/gates retained",
+    "dark control returned zero information gain",
+    "public docs home and navigation loaded"
+  ],
+  "not_established": [
+    "independent biological validation",
+    "human novice timing/five observed human issues",
+    "empirical coverage",
+    "archival DOI",
+    "PyPI publication"
+  ],
+  "sha256": {
+    "model_support.json": "63d01ce18c39016f8a93c11032627e413fa1edfb5b89ea245220c5f82544886e",
+    "experiment_ranking.json": "35df1b8a3284a1ad598ff25fee6418f8e4f48816a46aeae2349a3c6e180844da",
+    "assets/screenshots/documentation-live.jpg": "da70c42c042adda72c3ef871db4566fee7b1710480dead15407d439d09b6da24",
+    "assets/screenshots/fisher-recommendations.jpg": "c894395053b9f104094c9f92779cb3eedd199e584b8092d9000021804549d73b"
+  }
+}

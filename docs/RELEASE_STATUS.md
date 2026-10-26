@@ -5,13 +5,14 @@ Python 3.12 156 tests/Ruff and both tutorials; Python 3.11 145 tests/one optiona
 skip/Ruff. Distribution/citation/installed-wheel checks passed on both Python
 versions; strict docs builds passed. Exact source:
 2b303b502f9c7236c7cdfa6961d83ee6279c4979. See VERIFICATION.md for CI links and scope.
-The compatible-import fix requires no service reboot. Live app/docs rollout still
-follows merge. Package/docs/citation/paper preparation is implemented; DOI/account
+The compatible-import fix requires no service reboot. Live v0.8.1 comparison, ranking and actual JSON exports were checked in a fresh
+session; the public docs site is deployed at https://ysmhla.github.io/alga-twin/ .
+See smoke/v0_8_1/README.md for source and screenshots. Package/docs/citation/paper preparation is implemented; DOI/account
 publication and final author/related-work review remain pending.
 
 Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
 155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.
-Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c. Live v0.8 rollout remains pending. See DECISION_SUPPORT.md for the new conditional methods.
+Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c. The initial cached-import rollout issue is fixed in v0.8.1. See DECISION_SUPPORT.md for the new conditional methods.
 
 Steps 1–6 software engineering are implemented (6/7 engineering packages).
 Step 5 human acceptance remains incomplete: no independent novice <5-minute

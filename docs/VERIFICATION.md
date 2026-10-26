@@ -11,7 +11,7 @@ Exact tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.
 | Cloud Python 3.12 scientific suite | 156 passed in 239.34 s; Ruff, compilation/import and both real-kernel tutorials PASS |
 | Cloud Python 3.11 scientific suite | 145 passed, one optional PEtab skip in 231.51 s; Ruff and compilation/import PASS |
 | Cloud distribution checks, Python 3.11/3.12 | PASS: citation schema, wheel/source build, strict Twine, actual wheel install, Monod/Droop N ledger, CLI/refusal and pip check; artifacts uploaded |
-| Strict MkDocs cloud/local build | PASS; deployment to the live site still pending |
+| Strict MkDocs cloud/local build | PASS; public site deployed by run 40291099481 |
 
 [Scientific CI 40290016419](https://github.com/ysmhla/alga-twin/actions/runs/40290016419),
 [distribution CI 40290016328](https://github.com/ysmhla/alga-twin/actions/runs/40290016328),
@@ -27,8 +27,14 @@ cached calibration module. A stable independent provenance helper removes that
 new-export dependency; a direct source-version import avoids stale header text.
 This changes neither likelihood nor growth/nitrogen equations. A subprocess
 regression exercises the missing-export scenario with an actual fit. No service
-reboot or cache-clearing operation is part of this fix. Live v0.8.1 verification
-still follows merge; prior browser evidence below records v0.7.
+reboot or cache-clearing operation is part of this fix. Live v0.8.1 verification passed in a fresh browser session from merged source
+5cd79163d38b505378e992b26e2e2e1add93fd7d. The new workspace loaded, fitted four
+SYNTHETIC model candidates and produced top-three Fisher reasons. Actual hosted
+JSON exports were downloaded and parsed for version/origin/method/gates; the
+dark control had zero information gain. No manual service reboot/cache-clearing
+action was performed. The public docs home/navigation loaded after Pages run
+40291099481. [Current screenshots and exact exports](smoke/v0_8_1/README.md).
+This is agent engineering smoke, not a human novice or biological study.
 
 Step 7 includes modern distribution metadata/manifest, publication CI,
 documentation source, schema-valid citation metadata, paper.md/paper.bib and
@@ -57,7 +63,7 @@ first and the dark control last with zero information gain. These are conditiona
 teaching results, not species experiments or held-out accuracy.
 
 No measured data, biological defaults or growth RHS changed. See DECISION_SUPPORT.md.
-The live v0.8 rollout is still pending; prior browser evidence below records v0.7.
+The initial live rollout needed the v0.8.1 compatibility fix; current live evidence is recorded above.
 
 ## Previous v0.7.1 patch
 

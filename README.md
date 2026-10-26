@@ -4,7 +4,7 @@
 
 > **Scientific status: ALPHA.** Model implementation is tested on synthetic cases, but **independent laboratory validation has NOT been established**. Example datasets are synthetic. Do not use as a basis for operating production bioreactors.
 
-**[Open the public demo](https://alga-twin.streamlit.app/)** · Python 3.12.
+**[Open the public demo](https://alga-twin.streamlit.app/)** · **[Documentation site](https://ysmhla.github.io/alga-twin/)** · Python 3.12.
 Start with **Workspace -> Guided upload to report -> SYNTHETIC worked example**
 for the labelled teaching path. Real strain inputs require your own evidence.
 
@@ -151,7 +151,9 @@ one optional PEtab skip and Ruff. [Scientific CI 40290016419](https://github.com
 certifies 2b303b502f9c7236c7cdfa6961d83ee6279c4979. [Distribution CI](https://github.com/ysmhla/alga-twin/actions/runs/40290016328)
 passed citation/build/Twine and actual installed-wheel/CLI/N-ledger checks on both
 Python versions. [Strict docs build](https://github.com/ysmhla/alga-twin/actions/runs/40290016434)
-passed. Hosted v0.8.1 rollout remains pending; no biological validation follows.
+passed. Hosted v0.8.1 model comparison/top-three ranking and actual JSON downloads were checked;
+the public docs site is live. [Current browser record](docs/smoke/v0_8_1/README.md).
+These SYNTHETIC checks are not biological validation.
 See [VERIFICATION.md](docs/VERIFICATION.md) for the initial metadata failure and
 cached-import regression. No model RHS, likelihood or biological default changed.
 
@@ -159,7 +161,7 @@ cached-import regression. No model RHS, likelihood or biological default changed
 compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)
 passed 155 tests/Ruff and both tutorials on Python 3.12, and 144 tests/one optional skip/Ruff
 on Python 3.11. Exact source: af118784d1bf8bba824f8a2ab7f81faf1edd3e8c.
-Live v0.8 rollout is pending; browser evidence below applies to v0.7.1. See [decision methods](docs/DECISION_SUPPORT.md)
+The initial rollout needed the v0.8.1 cached-import fix; current browser evidence is above. See [decision methods](docs/DECISION_SUPPORT.md)
 and [generated synthetic example](docs/decision_example/README.md).
 
 **v0.7.1: cloud Python 3.12 passed 143 tests/Ruff and both real-kernel tutorial

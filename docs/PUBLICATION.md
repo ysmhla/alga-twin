@@ -11,7 +11,8 @@ Distribution checks on Python 3.11 and 3.12 passed in
 including actual installed-wheel API/CLI/refusal/N-ledger checks. Strict docs
 build passed in [CI 40290016434](https://github.com/ysmhla/alga-twin/actions/runs/40290016434).
 Scientific checks and exact counts are in VERIFICATION.md. GitHub Pages is
-configured to use Actions; actual site deployment remains pending merge.
+configured to use Actions; public docs deployment passed in [run 40291099481](https://github.com/ysmhla/alga-twin/actions/runs/40291099481).
+The site was opened and its home/navigation verified at https://ysmhla.github.io/alga-twin/ .
 Zenodo displayed Log in in the current browser; archival authentication is needed.
 
 ## Available artifacts
