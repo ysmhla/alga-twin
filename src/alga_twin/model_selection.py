@@ -10,7 +10,9 @@ import numpy as np
 import pandas as pd
 from scipy.stats import chi2
 
-from .calibration import CalibrationRun, ErrorModel, FitParameter, JointFitResult, fit_joint, run_provenance
+from .calibration import CalibrationRun, ErrorModel, FitParameter, JointFitResult, fit_joint
+from .calibration_provenance import run_provenance
+from .version import __version__
 
 
 @dataclass(frozen=True)
@@ -39,6 +41,7 @@ class SelectionResult:
             "comparison": rows,
             "settings": self.settings,
             "fits": {name: fit.report() for name, fit in self.fits.items()},
+            "software_version": __version__,
             "scope": "In-sample conditional model support; held-out error not computed here; no biological validation",
         }
 

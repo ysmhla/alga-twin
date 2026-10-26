@@ -9,3 +9,5 @@ build/
 .streamlit/secrets.toml
 .env
 .ipynb_checkpoints/
+
+site/

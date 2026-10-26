@@ -1,0 +1,8 @@
+include LICENSE README.md README_PYPI.md CITATION.cff CHANGELOG.md app.py requirements.txt mkdocs.yml paper.md paper.bib
+recursive-include src *.py
+recursive-include docs *.md *.json *.html *.pdf *.csv *.txt
+recursive-include assets *.jpg *.png
+recursive-include benchmark *.py *.md *.json *.csv *.tsv *.yaml *.txt
+recursive-include tutorials *.ipynb *.md *.py *.json *.csv *.pdf *.html
+recursive-include examples *.py
+recursive-include tests *.py

@@ -11,9 +11,11 @@ from dataclasses import asdict, dataclass
 import numpy as np
 import pandas as pd
 
-from .calibration import ErrorModel, JointFitResult, predict_run, run_provenance, with_values
+from .calibration import ErrorModel, JointFitResult, predict_run, with_values
+from .calibration_provenance import run_provenance
 from .model import Conditions
 from .models import ModelBase, simulate_model
+from .version import __version__
 
 DESIGN_METHOD = (
     "Local expected Fisher information; fixed independent noise; D-information gain at profile-supported fit"
@@ -71,6 +73,7 @@ class DesignResult:
     def report(self):
         return {
             "method": self.method,
+            "software_version": __version__,
             "ranking": self.ranking.to_dict("records"),
             "parameters": self.parameters,
             "information_before_normalized_coordinates": self.information_before.tolist(),

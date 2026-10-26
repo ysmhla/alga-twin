@@ -7,7 +7,6 @@ identifiability proofs or independent biological validation. See CALIBRATION.md.
 
 from __future__ import annotations
 
-import hashlib
 from dataclasses import asdict, dataclass, replace
 from itertools import product
 
@@ -16,6 +15,7 @@ import pandas as pd
 from scipy.optimize import brentq, least_squares
 from scipy.stats import chi2
 
+from .calibration_provenance import run_provenance
 from .models import ModelBase, simulate_model
 
 PROFILE_METHOD = (
@@ -143,26 +143,6 @@ class CalibrationRun:
         if data.duplicated(["time_day", "observable", "replicate"]).any():
             raise ValueError("Duplicate measurement identity; use distinct technical replicate ids")
         object.__setattr__(self, "observations", data)
-
-
-def run_provenance(run: CalibrationRun) -> dict:
-    """Exact input identity used to bind downstream decisions to a fitted job."""
-    return {
-        "run_id": run.run_id,
-        "origin": run.origin,
-        "input_sha256": hashlib.sha256(run.observations.to_csv(index=False).encode()).hexdigest(),
-        "kind": run.model.kind,
-        "light": run.model.light,
-        "temperature_c": run.model.temperature_c,
-        "diurnal": run.model.diurnal,
-        "conditions": asdict(run.model.conditions),
-        "states": run.model.states,
-        "state_units": run.model.state_units,
-        "initial_state": run.initial_state,
-        "parameters_before_fitting": [
-            {"parameter": name, **asdict(record)} for name, record in run.model.params.items()
-        ],
-    }
 
 
 def with_values(model: ModelBase, values: dict[str, float]) -> ModelBase:

@@ -13,7 +13,7 @@ for the labelled teaching path. Real strain inputs require your own evidence.
 *Actual hosted app, initial v0.7.0 smoke capture. Missing species parameters remain
 unset. No independent biological validation.*
 
-## What it does today (v0.8.0)
+## What it does today (v0.8.1)
 
 - Simulates dry biomass and nitrate-as-nitrogen concentration in a **single-species, well-mixed, batch** photobioreactor.
 - Baseline workflow uses Monod nitrogen limitation, spatially integrated light saturation, Beer–Lambert-type biomass self-shading and fixed biomass yield.
@@ -133,7 +133,27 @@ Values above are **illustrative**, not empirical measurements. All data must use
 
 See [docs/MODEL.md](docs/MODEL.md) for equations, dimensional conventions, calibration restrictions, numerical integration, and current limitations. Assumed parameters in the default model are pedagogical placeholders, **not measured parameters for any specific Chlorella strain**.
 
+## Packaging and publication preparation
+
+Build a wheel/source archive with `python -m build`; check with
+`python -m twine check --strict dist/*.whl dist/*.tar.gz`. The wheel provides the
+API/CLI; the source archive also includes the dashboard, tutorials, benchmark and docs.
+A separate installed-wheel check exercises the actual CLI and Monod/Droop nitrogen ledger.
+Use `mkdocs build --strict` for the documentation site. See [publication status](docs/PUBLICATION.md),
+[JOSS-style draft](paper.md) and [related work — HUMAN REVIEW PENDING](docs/RELATED_WORK.md).
+No archive DOI, PyPI upload or journal acceptance is established.
+
 ## Tests
+
+**v0.8.1 verified source:** 156 local tests passed (626.97 s). Cloud Python 3.12
+passed 156 tests/Ruff and both real-kernel tutorials; Python 3.11 passed 145 tests,
+one optional PEtab skip and Ruff. [Scientific CI 40290016419](https://github.com/ysmhla/alga-twin/actions/runs/40290016419)
+certifies 2b303b502f9c7236c7cdfa6961d83ee6279c4979. [Distribution CI](https://github.com/ysmhla/alga-twin/actions/runs/40290016328)
+passed citation/build/Twine and actual installed-wheel/CLI/N-ledger checks on both
+Python versions. [Strict docs build](https://github.com/ysmhla/alga-twin/actions/runs/40290016434)
+passed. Hosted v0.8.1 rollout remains pending; no biological validation follows.
+See [VERIFICATION.md](docs/VERIFICATION.md) for the initial metadata failure and
+cached-import regression. No model RHS, likelihood or biological default changed.
 
 **v0.8.0 local verification:** 155 tests passed (215.24 s), plus Ruff lint/format,
 compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)

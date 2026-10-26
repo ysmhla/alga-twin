@@ -35,10 +35,10 @@ PDF table values are rounded; JSON retains full values. Named conditional margin
 asymptotic profile intervals have no established empirical coverage. Synthetic
 held-out errors are engineering checks, not independent biological validation.
 
-Screenshots: [literature gate](../../assets/screenshots/literature-gate.jpg),
-[proxy refusal](../../assets/screenshots/proxy-extrapolation-refused.jpg),
-[guided result](../../assets/screenshots/guided-result.jpg),
-[invalid upload](../../assets/screenshots/invalid-upload-refused.jpg).
+Screenshots: [literature gate](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/literature-gate.jpg),
+[proxy refusal](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/proxy-extrapolation-refused.jpg),
+[guided result](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/guided-result.jpg),
+[invalid upload](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/invalid-upload-refused.jpg).
 These are actual app captures; assets/report-preview.png is only a PDF preview.
 
 A browser review found that the method column could fall beyond horizontal
@@ -47,7 +47,7 @@ all fit-result tables; its source/tests are tracked in VERIFICATION.md. It does
 not change equations, parameters, likelihood or the exported numerical report.
 After rollout/restart, the public app displayed v0.7.1; a fresh SYNTHETIC wizard
 fit completed and the full method/95% confidence caption was visibly verified.
-[Updated live caption capture](../../assets/screenshots/interval-method-visible.jpg).
+[Updated live caption capture](https://github.com/ysmhla/alga-twin/blob/main/assets/screenshots/interval-method-visible.jpg).
 This phase is recorded separately in browser_evidence.json; original 3/3 CV
 exports above retain their actual v0.7.0 provenance.
 

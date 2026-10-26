@@ -5,6 +5,13 @@ type: software
 authors:
   - family-names: "Yash"
     given-names: "Ram"
-version: 0.8.0
+version: 0.8.1
 date-released: 2026-10-26
 license: MIT
+repository-code: "https://github.com/ysmhla/alga-twin"
+url: "https://alga-twin.streamlit.app/"
+abstract: "Research prototype for microalgal batch simulation and conditional calibration; no independent biological validation. Missing C. minutissima values remain unset."
+keywords:
+  - microalgae
+  - photobioreactor
+  - parameter estimation

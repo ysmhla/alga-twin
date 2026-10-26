@@ -12,7 +12,6 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from alga_twin import __version__
 from alga_twin.calibration import ErrorModel, FitParameter
 from alga_twin.data import read_experiment_csv
 from alga_twin.demo import demo_parameters, synthetic_experiment
@@ -23,6 +22,7 @@ from alga_twin.parameters import provenance_rows
 from alga_twin.planner import scenario_grid
 from alga_twin.reporting import manifest, model_dataframe_to_csv
 from alga_twin.trust import local_sensitivity, scenario_warnings
+from alga_twin.version import __version__
 
 st.set_page_config(
     page_title="AlgaTwin | Microalgal Digital Twin",
