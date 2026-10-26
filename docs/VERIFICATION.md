@@ -1,22 +1,40 @@
 # Verification record — 2026-10-26
 
-## v0.8.1 packaging and incremental deployment — verification in progress
+## v0.8.1 packaging and incremental deployment — verified source
 
-Local source/wheel build, strict Twine, real installed-wheel Monod/Droop N ledger,
-CLI execution outside the checkout and missing-DEMO refusal passed. Citation
-schema and strict MkDocs builds passed; Ruff lint/format, compilation and pip
-check passed. Current full pytest, cloud CI and hosted rollout are in progress.
+Exact tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.
+
+| Check | Actual result |
+|---|---|
+| Local Python 3.12 full suite | 156 passed in 626.97 s |
+| Local Ruff lint/format, compileall, pip check | PASS |
+| Cloud Python 3.12 scientific suite | 156 passed in 239.34 s; Ruff, compilation/import and both real-kernel tutorials PASS |
+| Cloud Python 3.11 scientific suite | 145 passed, one optional PEtab skip in 231.51 s; Ruff and compilation/import PASS |
+| Cloud distribution checks, Python 3.11/3.12 | PASS: citation schema, wheel/source build, strict Twine, actual wheel install, Monod/Droop N ledger, CLI/refusal and pip check; artifacts uploaded |
+| Strict MkDocs cloud/local build | PASS; deployment to the live site still pending |
+
+[Scientific CI 40290016419](https://github.com/ysmhla/alga-twin/actions/runs/40290016419),
+[distribution CI 40290016328](https://github.com/ysmhla/alga-twin/actions/runs/40290016328),
+[docs build 40290016434](https://github.com/ysmhla/alga-twin/actions/runs/40290016434).
+The first distribution run 40289598030 failed correctly: project metadata was
+omitted from the initial commit, causing module/wheel versions to differ. The
+matching pyproject change is included in the successful exact source above.
+Local build/Twine and real installed-wheel checks also passed; no performance
+comparison follows from these test durations.
 
 The hosted v0.8 workspace initially failed importing a new name from an already
 cached calibration module. A stable independent provenance helper removes that
-new-export dependency; a direct source-version import avoids stale package-header
-text. This changes neither fitted likelihood nor growth/nitrogen equations.
-A subprocess regression exercises the missing-export scenario with an actual fit.
-No service reboot or cache-clearing operation is part of the fix.
+new-export dependency; a direct source-version import avoids stale header text.
+This changes neither likelihood nor growth/nitrogen equations. A subprocess
+regression exercises the missing-export scenario with an actual fit. No service
+reboot or cache-clearing operation is part of this fix. Live v0.8.1 verification
+still follows merge; prior browser evidence below records v0.7.
 
-Step 7 artifacts include modern distribution metadata/manifest, publication CI,
-documentation source, citation metadata, paper.md/paper.bib and RELATED_WORK.md.
-DOI/account publication and final author/related-work review remain incomplete.
+Step 7 includes modern distribution metadata/manifest, publication CI,
+documentation source, schema-valid citation metadata, paper.md/paper.bib and
+RELATED_WORK.md. Zenodo is not signed in; no DOI is assigned. Final author,
+affiliation/funding and human related-work review remain incomplete. No PyPI
+upload, journal acceptance or independent biological validation is claimed.
 
 ## v0.8.0 decision support — verified source
 

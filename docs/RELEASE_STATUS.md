@@ -1,9 +1,13 @@
-# Release status — v0.8.1 verification in progress, 2026-10-26
+# Release status — v0.8.1, 2026-10-26
 
-The v0.8.1 compatibility fix and publication artifacts are undergoing full
-pytest/cloud/live checks. Local build/Twine, installed-wheel smoke, citation
-schema and strict docs build passed. No current-source full-suite or live-rollout
-pass is claimed before those checks finish.
+v0.8.1 passed 156 local tests/Ruff and current-source cloud checks:
+Python 3.12 156 tests/Ruff and both tutorials; Python 3.11 145 tests/one optional
+skip/Ruff. Distribution/citation/installed-wheel checks passed on both Python
+versions; strict docs builds passed. Exact source:
+2b303b502f9c7236c7cdfa6961d83ee6279c4979. See VERIFICATION.md for CI links and scope.
+The compatible-import fix requires no service reboot. Live app/docs rollout still
+follows merge. Package/docs/citation/paper preparation is implemented; DOI/account
+publication and final author/related-work review remain pending.
 
 Step 6 passed 155 local tests/Ruff plus cloud CI 40244015427: Python 3.12
 155 tests and both real-kernel tutorials; Python 3.11 144 tests/one optional skip.

@@ -3,7 +3,18 @@
 This page separates preparatory artifacts from actual external publication.
 No archive DOI, PyPI upload, journal submission or acceptance is established.
 
-## Available preparation
+## Verified preparation
+
+Current tested source: 2b303b502f9c7236c7cdfa6961d83ee6279c4979.
+Distribution checks on Python 3.11 and 3.12 passed in
+[CI 40290016328](https://github.com/ysmhla/alga-twin/actions/runs/40290016328),
+including actual installed-wheel API/CLI/refusal/N-ledger checks. Strict docs
+build passed in [CI 40290016434](https://github.com/ysmhla/alga-twin/actions/runs/40290016434).
+Scientific checks and exact counts are in VERIFICATION.md. GitHub Pages is
+configured to use Actions; actual site deployment remains pending merge.
+Zenodo displayed Log in in the current browser; archival authentication is needed.
+
+## Available artifacts
 
 - Semantic project version and CHANGELOG; source/wheel build configuration.
 - Separate PyPI README with absolute links and explicit scientific limitations.

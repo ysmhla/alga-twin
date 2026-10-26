@@ -145,11 +145,15 @@ No archive DOI, PyPI upload or journal acceptance is established.
 
 ## Tests
 
-**v0.8.1 verification in progress:** distribution build/strict Twine, real installed-wheel
-API/CLI/refusal/nitrogen checks, citation schema and strict docs build passed locally.
-The full current-source pytest suite and cloud/live checks remain in progress.
-The patch separates job-identity imports to fix a live cached-calibration ImportError;
-no model RHS, likelihood or biological default changed.
+**v0.8.1 verified source:** 156 local tests passed (626.97 s). Cloud Python 3.12
+passed 156 tests/Ruff and both real-kernel tutorials; Python 3.11 passed 145 tests,
+one optional PEtab skip and Ruff. [Scientific CI 40290016419](https://github.com/ysmhla/alga-twin/actions/runs/40290016419)
+certifies 2b303b502f9c7236c7cdfa6961d83ee6279c4979. [Distribution CI](https://github.com/ysmhla/alga-twin/actions/runs/40290016328)
+passed citation/build/Twine and actual installed-wheel/CLI/N-ledger checks on both
+Python versions. [Strict docs build](https://github.com/ysmhla/alga-twin/actions/runs/40290016434)
+passed. Hosted v0.8.1 rollout remains pending; no biological validation follows.
+See [VERIFICATION.md](docs/VERIFICATION.md) for the initial metadata failure and
+cached-import regression. No model RHS, likelihood or biological default changed.
 
 **v0.8.0 local verification:** 155 tests passed (215.24 s), plus Ruff lint/format,
 compilation and dependency checks. Cloud run [40244015427](https://github.com/ysmhla/alga-twin/actions/runs/40244015427)
