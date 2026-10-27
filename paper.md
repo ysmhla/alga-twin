@@ -7,15 +7,18 @@ tags:
   - parameter estimation
 authors:
   - name: Ram Yash
-affiliations: []
-date: 26 October 2026
+    affiliation: 1
+affiliations:
+  - name: Industrial University of Ho Chi Minh City, VT
+    index: 1
+date: 27 October 2026
 bibliography: paper.bib
 ---
 
 > DRAFT — NOT SUBMITTED. Author identity follows the existing CITATION.cff;
-> authorship/contributions, affiliations, ORCID (if provided), funding and final
-> related-work assessment require human confirmation. Missing affiliations are
-> deliberately not invented. The released v0.8.1 software is archived at
+> current affiliation and no-funding declaration were supplied by the author on
+> 27 October 2026. Authorship/contributions, optional ORCID and final related-work
+> assessment still require human confirmation. The released v0.8.1 software is archived at
 > https://doi.org/10.5281/zenodo.23665342. This is a
 > reviewable JOSS-style draft, not a submission-ready or accepted paper.
 
@@ -147,12 +150,13 @@ assisted with code, tests, source-audit documentation and this paper draft.
 Quality checks include source reading, executable unit/limiting/conservation
 checks, synthetic inference failures, linting and hosted-app smoke inspection.
 They do not substitute for independent biological evidence or author review.
-The human researcher must confirm scientific interpretation, authorship,
-affiliations, funding, related work and the final submission text.
+The author supplied the current affiliation and no-funding declaration.
+The human researcher must still confirm scientific interpretation, authorship,
+contributions, related work and the final submission text.
 
 # Acknowledgements
 
-Funding and additional contributors have not been supplied and must be confirmed
-by the author. No unsupported acknowledgement is made.
+The author reports no funding for this work. Additional contributors have not
+been supplied; no unsupported acknowledgement is made.
 
 # References

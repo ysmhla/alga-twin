@@ -89,9 +89,17 @@ installation outside the source checkout must import the installed package,
 execute the CLI and preserve the synthetic nitrogen ledger. Building both wheel
 and source archive, `twine check` and installation are distinct checks.
 
+## Author declarations received
+
+On 2026-10-27 the author supplied the current affiliation as
+**Industrial University of Ho Chi Minh City, VT** and declared **no funding**.
+These declarations are recorded in `paper.md`; the suffix “VT” is retained
+verbatim without inferring a department or expanding it into a country name.
+The existing v0.8.1 archive and released citation metadata are unchanged.
+
 ## Still requires the human researcher/account owner
 
-1. Confirm paper authors/contributions, affiliations, optional ORCID and funding.
+1. Confirm paper authors/contributions and supply an ORCID only if desired.
    Existing citation metadata names Ram Yash; no additional identities are inferred.
 2. Review RELATED_WORK.md and decide the scholarly contribution/build-versus-
    contribute justification. The draft contains no novelty or external-impact claim.
@@ -104,7 +112,8 @@ and source archive, `twine check` and installation are distinct checks.
    files. The v0.8.1 manual deposit is complete; automatic GitHub-to-Zenodo
    archiving is NOT CONFIGURED. Do not create duplicate v0.8.1 records.
 6. Review the final paper and decide whether/when to submit it. A draft is not a
-   journal submission. Author/funding metadata and contribution review are incomplete.
+   journal submission. Authorship/contribution and scholarly review are incomplete;
+   the current affiliation and no-funding declaration have been supplied.
 
 If archival metadata exists from a real release, verify its version DOI and
 concept DOI separately. Do not construct a DOI, insert a placeholder in the
