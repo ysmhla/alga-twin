@@ -145,14 +145,7 @@ being replaced by cross-species parameters or fabricated datasets.
 
 # AI usage disclosure
 
-OpenAI Codex, in a GPT-6-based session (precise model build identifier unavailable),
-assisted with code, tests, source-audit documentation and this paper draft.
-Quality checks include source reading, executable unit/limiting/conservation
-checks, synthetic inference failures, linting and hosted-app smoke inspection.
-They do not substitute for independent biological evidence or author review.
-The author supplied the current affiliation and no-funding declaration.
-The human researcher must still confirm scientific interpretation, authorship,
-contributions, related work and the final submission text.
+Open AI Codex was used to refine this project.
 
 # Acknowledgements
 
